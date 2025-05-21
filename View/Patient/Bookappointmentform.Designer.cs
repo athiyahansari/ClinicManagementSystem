@@ -35,6 +35,14 @@
             lablid = new Label();
             lablpatient1 = new Label();
             panel5 = new Panel();
+            dataGridView1 = new DataGridView();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
+            Column6 = new DataGridViewTextBoxColumn();
+            Column7 = new DataGridViewTextBoxColumn();
             totalappopanel = new Panel();
             label15 = new Label();
             label16 = new Label();
@@ -44,33 +52,15 @@
             completedpnl = new Panel();
             label25 = new Label();
             label26 = new Label();
-            panel12 = new Panel();
-            label27 = new Label();
-            timelbl2 = new Label();
-            cancelbtn2 = new Button();
-            label29 = new Label();
-            reshedulebtn2 = new Button();
-            datelbl2 = new Label();
-            label31 = new Label();
-            panel13 = new Panel();
-            label32 = new Label();
-            timelbl1 = new Label();
-            cancelbtn1 = new Button();
-            label34 = new Label();
-            reshedulebtn1 = new Button();
-            datelbl1 = new Label();
-            label36 = new Label();
-            newappointbtn = new Button();
             managelbl = new Label();
             appoinmentslbl = new Label();
             flowLayoutPanelmain.SuspendLayout();
             panel1.SuspendLayout();
             panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             totalappopanel.SuspendLayout();
             upcomingpanel.SuspendLayout();
             completedpnl.SuspendLayout();
-            panel12.SuspendLayout();
-            panel13.SuspendLayout();
             SuspendLayout();
             // 
             // flowLayoutPanelmain
@@ -143,12 +133,10 @@
             // 
             panel5.BackColor = Color.Lavender;
             panel5.BorderStyle = BorderStyle.FixedSingle;
+            panel5.Controls.Add(dataGridView1);
             panel5.Controls.Add(totalappopanel);
             panel5.Controls.Add(upcomingpanel);
             panel5.Controls.Add(completedpnl);
-            panel5.Controls.Add(panel12);
-            panel5.Controls.Add(panel13);
-            panel5.Controls.Add(newappointbtn);
             panel5.Controls.Add(managelbl);
             panel5.Controls.Add(appoinmentslbl);
             panel5.Location = new Point(135, 0);
@@ -156,6 +144,51 @@
             panel5.Name = "panel5";
             panel5.Size = new Size(788, 499);
             panel5.TabIndex = 3;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.BackgroundColor = SystemColors.ButtonHighlight;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 });
+            dataGridView1.Location = new Point(22, 93);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(743, 210);
+            dataGridView1.TabIndex = 10;
+            // 
+            // Column1
+            // 
+            Column1.HeaderText = "Doctor";
+            Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            Column2.HeaderText = "Time";
+            Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            Column3.HeaderText = "Date";
+            Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            Column4.HeaderText = "Consultation";
+            Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            Column5.HeaderText = "Status";
+            Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            Column6.HeaderText = "Reshedule";
+            Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            Column7.HeaderText = "Cancel";
+            Column7.Name = "Column7";
             // 
             // totalappopanel
             // 
@@ -247,184 +280,6 @@
             label26.TabIndex = 0;
             label26.Text = "Completed";
             // 
-            // panel12
-            // 
-            panel12.BorderStyle = BorderStyle.FixedSingle;
-            panel12.Controls.Add(label27);
-            panel12.Controls.Add(timelbl2);
-            panel12.Controls.Add(cancelbtn2);
-            panel12.Controls.Add(label29);
-            panel12.Controls.Add(reshedulebtn2);
-            panel12.Controls.Add(datelbl2);
-            panel12.Controls.Add(label31);
-            panel12.Location = new Point(40, 203);
-            panel12.Name = "panel12";
-            panel12.Size = new Size(708, 107);
-            panel12.TabIndex = 4;
-            // 
-            // label27
-            // 
-            label27.AutoSize = true;
-            label27.ForeColor = SystemColors.ControlDarkDark;
-            label27.Location = new Point(11, 15);
-            label27.Name = "label27";
-            label27.Size = new Size(63, 15);
-            label27.TabIndex = 6;
-            label27.Text = "Upcoming";
-            // 
-            // timelbl2
-            // 
-            timelbl2.AutoSize = true;
-            timelbl2.Font = new Font("Tahoma", 9.75F);
-            timelbl2.Location = new Point(645, 36);
-            timelbl2.Name = "timelbl2";
-            timelbl2.Size = new Size(54, 16);
-            timelbl2.TabIndex = 7;
-            timelbl2.Text = "4.00 pm";
-            // 
-            // cancelbtn2
-            // 
-            cancelbtn2.Location = new Point(87, 79);
-            cancelbtn2.Name = "cancelbtn2";
-            cancelbtn2.Size = new Size(67, 22);
-            cancelbtn2.TabIndex = 5;
-            cancelbtn2.Text = "Cancel";
-            cancelbtn2.UseVisualStyleBackColor = true;
-            // 
-            // label29
-            // 
-            label29.AutoSize = true;
-            label29.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label29.Location = new Point(11, 50);
-            label29.Name = "label29";
-            label29.Size = new Size(107, 17);
-            label29.TabIndex = 1;
-            label29.Text = "Dr. Michael Chen";
-            // 
-            // reshedulebtn2
-            // 
-            reshedulebtn2.Location = new Point(11, 79);
-            reshedulebtn2.Name = "reshedulebtn2";
-            reshedulebtn2.Size = new Size(70, 22);
-            reshedulebtn2.TabIndex = 4;
-            reshedulebtn2.Text = "Reshedule";
-            reshedulebtn2.UseVisualStyleBackColor = true;
-            // 
-            // datelbl2
-            // 
-            datelbl2.AutoSize = true;
-            datelbl2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            datelbl2.Location = new Point(604, 19);
-            datelbl2.Name = "datelbl2";
-            datelbl2.Size = new Size(99, 17);
-            datelbl2.TabIndex = 6;
-            datelbl2.Text = "April 28th 2025";
-            // 
-            // label31
-            // 
-            label31.AutoSize = true;
-            label31.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label31.Location = new Point(11, 30);
-            label31.Name = "label31";
-            label31.Size = new Size(118, 20);
-            label31.TabIndex = 0;
-            label31.Text = "Dental Cleaning";
-            // 
-            // panel13
-            // 
-            panel13.BorderStyle = BorderStyle.FixedSingle;
-            panel13.Controls.Add(label32);
-            panel13.Controls.Add(timelbl1);
-            panel13.Controls.Add(cancelbtn1);
-            panel13.Controls.Add(label34);
-            panel13.Controls.Add(reshedulebtn1);
-            panel13.Controls.Add(datelbl1);
-            panel13.Controls.Add(label36);
-            panel13.Location = new Point(41, 89);
-            panel13.Name = "panel13";
-            panel13.Size = new Size(707, 108);
-            panel13.TabIndex = 3;
-            // 
-            // label32
-            // 
-            label32.AutoSize = true;
-            label32.ForeColor = SystemColors.ControlDarkDark;
-            label32.Location = new Point(10, 13);
-            label32.Name = "label32";
-            label32.Size = new Size(63, 15);
-            label32.TabIndex = 6;
-            label32.Text = "Upcoming";
-            // 
-            // timelbl1
-            // 
-            timelbl1.AutoSize = true;
-            timelbl1.Font = new Font("Tahoma", 9.75F);
-            timelbl1.Location = new Point(638, 36);
-            timelbl1.Name = "timelbl1";
-            timelbl1.Size = new Size(61, 16);
-            timelbl1.TabIndex = 7;
-            timelbl1.Text = "10.30 am";
-            // 
-            // cancelbtn1
-            // 
-            cancelbtn1.Location = new Point(86, 77);
-            cancelbtn1.Name = "cancelbtn1";
-            cancelbtn1.Size = new Size(67, 22);
-            cancelbtn1.TabIndex = 5;
-            cancelbtn1.Text = "Cancel";
-            cancelbtn1.UseVisualStyleBackColor = true;
-            // 
-            // label34
-            // 
-            label34.AutoSize = true;
-            label34.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label34.Location = new Point(10, 48);
-            label34.Name = "label34";
-            label34.Size = new Size(105, 17);
-            label34.TabIndex = 1;
-            label34.Text = "Dr. Sarah Wilson";
-            // 
-            // reshedulebtn1
-            // 
-            reshedulebtn1.Location = new Point(10, 77);
-            reshedulebtn1.Name = "reshedulebtn1";
-            reshedulebtn1.Size = new Size(70, 22);
-            reshedulebtn1.TabIndex = 4;
-            reshedulebtn1.Text = "Reshedule";
-            reshedulebtn1.UseVisualStyleBackColor = true;
-            // 
-            // datelbl1
-            // 
-            datelbl1.AutoSize = true;
-            datelbl1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            datelbl1.Location = new Point(604, 19);
-            datelbl1.Name = "datelbl1";
-            datelbl1.Size = new Size(95, 17);
-            datelbl1.TabIndex = 6;
-            datelbl1.Text = "May 15th 2025";
-            // 
-            // label36
-            // 
-            label36.AutoSize = true;
-            label36.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label36.Location = new Point(10, 28);
-            label36.Name = "label36";
-            label36.Size = new Size(125, 20);
-            label36.TabIndex = 0;
-            label36.Text = "General Checkup";
-            // 
-            // newappointbtn
-            // 
-            newappointbtn.BackColor = Color.CornflowerBlue;
-            newappointbtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            newappointbtn.ForeColor = SystemColors.ButtonHighlight;
-            newappointbtn.Location = new Point(570, 22);
-            newappointbtn.Name = "newappointbtn";
-            newappointbtn.Size = new Size(160, 38);
-            newappointbtn.TabIndex = 2;
-            newappointbtn.Text = "+New appoinment";
-            newappointbtn.UseVisualStyleBackColor = false;
-            // 
             // managelbl
             // 
             managelbl.AutoSize = true;
@@ -453,22 +308,18 @@
             Controls.Add(flowLayoutPanelmain);
             Name = "Bookappointmentform";
             Text = "Bookappoinmentform";
-            //Load += this.Bookappointmentform_Load;
             flowLayoutPanelmain.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             totalappopanel.ResumeLayout(false);
             totalappopanel.PerformLayout();
             upcomingpanel.ResumeLayout(false);
             upcomingpanel.PerformLayout();
             completedpnl.ResumeLayout(false);
             completedpnl.PerformLayout();
-            panel12.ResumeLayout(false);
-            panel12.PerformLayout();
-            panel13.ResumeLayout(false);
-            panel13.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -490,24 +341,15 @@
         private Panel completedpnl;
         private Label label25;
         private Label label26;
-        private Panel panel12;
-        private Label label27;
-        private Label timelbl2;
-        private Button cancelbtn2;
-        private Label label29;
-        private Button reshedulebtn2;
-        private Label datelbl2;
-        private Label label31;
-        private Panel panel13;
-        private Label label32;
-        private Label timelbl1;
-        private Button cancelbtn1;
-        private Label label34;
-        private Button reshedulebtn1;
-        private Label datelbl1;
-        private Label label36;
-        private Button newappointbtn;
         private Label managelbl;
         private Label appoinmentslbl;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn Column6;
+        private DataGridViewTextBoxColumn Column7;
     }
 }
