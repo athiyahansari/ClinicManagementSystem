@@ -16,5 +16,10 @@ namespace CMS.View.Patient
         {
             InitializeComponent();
         }
+
+        private void PatientDashboard_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
