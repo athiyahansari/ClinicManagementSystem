@@ -44,6 +44,8 @@
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
             pictureBox1 = new PictureBox();
+            label2 = new Label();
+            label3 = new Label();
             sidenav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -54,6 +56,8 @@
             // sidenav
             // 
             sidenav.BackColor = Color.CornflowerBlue;
+            sidenav.Controls.Add(label3);
+            sidenav.Controls.Add(label2);
             sidenav.Controls.Add(navprofile);
             sidenav.Controls.Add(logout);
             sidenav.Controls.Add(navappointment);
@@ -68,9 +72,9 @@
             // navprofile
             // 
             navprofile.BackColor = Color.LightSteelBlue;
-            navprofile.Location = new Point(-1, 551);
+            navprofile.Location = new Point(29, 554);
             navprofile.Name = "navprofile";
-            navprofile.Size = new Size(277, 68);
+            navprofile.Size = new Size(214, 42);
             navprofile.TabIndex = 4;
             navprofile.Text = "MyProfile";
             navprofile.UseVisualStyleBackColor = false;
@@ -78,9 +82,9 @@
             // logout
             // 
             logout.BackColor = Color.LightSteelBlue;
-            logout.Location = new Point(-2, 618);
+            logout.Location = new Point(29, 602);
             logout.Name = "logout";
-            logout.Size = new Size(277, 68);
+            logout.Size = new Size(214, 44);
             logout.TabIndex = 3;
             logout.Text = "LogOut";
             logout.UseVisualStyleBackColor = false;
@@ -88,9 +92,9 @@
             // navappointment
             // 
             navappointment.BackColor = Color.LightSteelBlue;
-            navappointment.Location = new Point(-1, 173);
+            navappointment.Location = new Point(29, 244);
             navappointment.Name = "navappointment";
-            navappointment.Size = new Size(276, 65);
+            navappointment.Size = new Size(214, 47);
             navappointment.TabIndex = 2;
             navappointment.Text = "Appointment Schedules";
             navappointment.UseVisualStyleBackColor = false;
@@ -98,9 +102,9 @@
             // navpatient
             // 
             navpatient.BackColor = Color.LightSteelBlue;
-            navpatient.Location = new Point(-1, 112);
+            navpatient.Location = new Point(29, 192);
             navpatient.Name = "navpatient";
-            navpatient.Size = new Size(276, 62);
+            navpatient.Size = new Size(214, 46);
             navpatient.TabIndex = 1;
             navpatient.Text = "Patients";
             navpatient.UseVisualStyleBackColor = false;
@@ -108,9 +112,9 @@
             // navdoc
             // 
             navdoc.BackColor = Color.LightSteelBlue;
-            navdoc.Location = new Point(-1, 48);
+            navdoc.Location = new Point(29, 141);
             navdoc.Name = "navdoc";
-            navdoc.Size = new Size(276, 65);
+            navdoc.Size = new Size(214, 45);
             navdoc.TabIndex = 0;
             navdoc.Text = "Doctors";
             navdoc.UseVisualStyleBackColor = false;
@@ -139,11 +143,12 @@
             // 
             dash_appointmenttrends.ActiveLinkColor = SystemColors.ActiveCaptionText;
             dash_appointmenttrends.AutoSize = true;
+            dash_appointmenttrends.Font = new Font("Yu Gothic UI", 10F);
             dash_appointmenttrends.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_appointmenttrends.LinkColor = Color.Black;
             dash_appointmenttrends.Location = new Point(921, 481);
             dash_appointmenttrends.Name = "dash_appointmenttrends";
-            dash_appointmenttrends.Size = new Size(174, 25);
+            dash_appointmenttrends.Size = new Size(190, 28);
             dash_appointmenttrends.TabIndex = 28;
             dash_appointmenttrends.TabStop = true;
             dash_appointmenttrends.Text = "Appointment Trends";
@@ -152,11 +157,12 @@
             // 
             dash_upcomingappointments.ActiveLinkColor = SystemColors.ActiveCaptionText;
             dash_upcomingappointments.AutoSize = true;
+            dash_upcomingappointments.Font = new Font("Yu Gothic UI", 10F);
             dash_upcomingappointments.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_upcomingappointments.LinkColor = Color.Black;
             dash_upcomingappointments.Location = new Point(921, 373);
             dash_upcomingappointments.Name = "dash_upcomingappointments";
-            dash_upcomingappointments.Size = new Size(214, 25);
+            dash_upcomingappointments.Size = new Size(234, 28);
             dash_upcomingappointments.TabIndex = 27;
             dash_upcomingappointments.TabStop = true;
             dash_upcomingappointments.Text = "Upcoming Appointments";
@@ -165,11 +171,12 @@
             // 
             dash_patientedit.ActiveLinkColor = SystemColors.ActiveCaptionText;
             dash_patientedit.AutoSize = true;
+            dash_patientedit.Font = new Font("Yu Gothic UI", 10F);
             dash_patientedit.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_patientedit.LinkColor = Color.Black;
             dash_patientedit.Location = new Point(495, 481);
             dash_patientedit.Name = "dash_patientedit";
-            dash_patientedit.Size = new Size(123, 25);
+            dash_patientedit.Size = new Size(137, 28);
             dash_patientedit.TabIndex = 26;
             dash_patientedit.TabStop = true;
             dash_patientedit.Text = "Patient Details";
@@ -178,11 +185,12 @@
             // 
             dash_newdoctors.ActiveLinkColor = SystemColors.ActiveCaptionText;
             dash_newdoctors.AutoSize = true;
+            dash_newdoctors.Font = new Font("Yu Gothic UI", 10F);
             dash_newdoctors.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_newdoctors.LinkColor = Color.Black;
             dash_newdoctors.Location = new Point(495, 373);
             dash_newdoctors.Name = "dash_newdoctors";
-            dash_newdoctors.Size = new Size(143, 25);
+            dash_newdoctors.Size = new Size(157, 28);
             dash_newdoctors.TabIndex = 25;
             dash_newdoctors.TabStop = true;
             dash_newdoctors.Text = "Register Doctors";
@@ -219,6 +227,28 @@
             pictureBox1.TabIndex = 21;
             pictureBox1.TabStop = false;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Kristen ITC", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = SystemColors.ButtonFace;
+            label2.Location = new Point(38, 39);
+            label2.Name = "label2";
+            label2.Size = new Size(160, 39);
+            label2.TabIndex = 5;
+            label2.Text = "John Doe";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Yu Gothic UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = SystemColors.ButtonHighlight;
+            label3.Location = new Point(71, 78);
+            label3.Name = "label3";
+            label3.Size = new Size(151, 28);
+            label3.TabIndex = 6;
+            label3.Text = "Admin ID-2346";
+            // 
             // AdminDashboard
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -239,6 +269,7 @@
             Name = "AdminDashboard";
             Text = "AdminDashboard";
             sidenav.ResumeLayout(false);
+            sidenav.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -265,5 +296,7 @@
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
         private PictureBox pictureBox1;
+        private Label label3;
+        private Label label2;
     }
 }

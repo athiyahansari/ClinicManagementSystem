@@ -43,6 +43,8 @@
             dash_currentpatients = new LinkLabel();
             dash_upcomingappointments = new LinkLabel();
             dash_appointmenttrends = new LinkLabel();
+            label3 = new Label();
+            label2 = new Label();
             sidenav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -53,7 +55,9 @@
             // sidenav
             // 
             sidenav.BackColor = Color.CornflowerBlue;
+            sidenav.Controls.Add(label3);
             sidenav.Controls.Add(navprofile);
+            sidenav.Controls.Add(label2);
             sidenav.Controls.Add(logout);
             sidenav.Controls.Add(navappointment);
             sidenav.Controls.Add(navpatient);
@@ -66,9 +70,10 @@
             // navprofile
             // 
             navprofile.BackColor = Color.LightSteelBlue;
-            navprofile.Location = new Point(-1, 551);
+            navprofile.Font = new Font("Segoe UI", 9F);
+            navprofile.Location = new Point(46, 485);
             navprofile.Name = "navprofile";
-            navprofile.Size = new Size(277, 68);
+            navprofile.Size = new Size(177, 49);
             navprofile.TabIndex = 4;
             navprofile.Text = "MyProfile";
             navprofile.UseVisualStyleBackColor = false;
@@ -76,9 +81,10 @@
             // logout
             // 
             logout.BackColor = Color.LightSteelBlue;
-            logout.Location = new Point(-2, 618);
+            logout.Font = new Font("Segoe UI", 9F);
+            logout.Location = new Point(46, 540);
             logout.Name = "logout";
-            logout.Size = new Size(277, 68);
+            logout.Size = new Size(177, 46);
             logout.TabIndex = 3;
             logout.Text = "LogOut";
             logout.UseVisualStyleBackColor = false;
@@ -86,9 +92,10 @@
             // navappointment
             // 
             navappointment.BackColor = Color.LightSteelBlue;
-            navappointment.Location = new Point(-1, 121);
+            navappointment.Font = new Font("Segoe UI", 9F);
+            navappointment.Location = new Point(46, 187);
             navappointment.Name = "navappointment";
-            navappointment.Size = new Size(276, 62);
+            navappointment.Size = new Size(177, 51);
             navappointment.TabIndex = 1;
             navappointment.Text = "My Appointment";
             navappointment.UseVisualStyleBackColor = false;
@@ -96,9 +103,10 @@
             // navpatient
             // 
             navpatient.BackColor = Color.LightSteelBlue;
-            navpatient.Location = new Point(-1, 57);
+            navpatient.Font = new Font("Segoe UI", 9F);
+            navpatient.Location = new Point(46, 130);
             navpatient.Name = "navpatient";
-            navpatient.Size = new Size(276, 65);
+            navpatient.Size = new Size(177, 51);
             navpatient.TabIndex = 0;
             navpatient.Text = "My Patients";
             navpatient.UseVisualStyleBackColor = false;
@@ -159,11 +167,12 @@
             // 
             dash_pastpatient.ActiveLinkColor = SystemColors.ActiveCaptionText;
             dash_pastpatient.AutoSize = true;
+            dash_pastpatient.Font = new Font("Yu Gothic UI", 10F);
             dash_pastpatient.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_pastpatient.LinkColor = Color.Black;
             dash_pastpatient.Location = new Point(485, 323);
             dash_pastpatient.Name = "dash_pastpatient";
-            dash_pastpatient.Size = new Size(110, 25);
+            dash_pastpatient.Size = new Size(122, 28);
             dash_pastpatient.TabIndex = 9;
             dash_pastpatient.TabStop = true;
             dash_pastpatient.Text = "Past Patients";
@@ -172,11 +181,12 @@
             // 
             dash_currentpatients.ActiveLinkColor = SystemColors.ActiveCaptionText;
             dash_currentpatients.AutoSize = true;
+            dash_currentpatients.Font = new Font("Yu Gothic UI", 10F);
             dash_currentpatients.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_currentpatients.LinkColor = Color.Black;
             dash_currentpatients.Location = new Point(485, 431);
             dash_currentpatients.Name = "dash_currentpatients";
-            dash_currentpatients.Size = new Size(136, 25);
+            dash_currentpatients.Size = new Size(151, 28);
             dash_currentpatients.TabIndex = 10;
             dash_currentpatients.TabStop = true;
             dash_currentpatients.Text = "Current Patients";
@@ -185,11 +195,12 @@
             // 
             dash_upcomingappointments.ActiveLinkColor = SystemColors.ActiveCaptionText;
             dash_upcomingappointments.AutoSize = true;
+            dash_upcomingappointments.Font = new Font("Yu Gothic UI", 10F);
             dash_upcomingappointments.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_upcomingappointments.LinkColor = Color.Black;
             dash_upcomingappointments.Location = new Point(911, 323);
             dash_upcomingappointments.Name = "dash_upcomingappointments";
-            dash_upcomingappointments.Size = new Size(214, 25);
+            dash_upcomingappointments.Size = new Size(234, 28);
             dash_upcomingappointments.TabIndex = 11;
             dash_upcomingappointments.TabStop = true;
             dash_upcomingappointments.Text = "Upcoming Appointments";
@@ -198,14 +209,37 @@
             // 
             dash_appointmenttrends.ActiveLinkColor = SystemColors.ActiveCaptionText;
             dash_appointmenttrends.AutoSize = true;
+            dash_appointmenttrends.Font = new Font("Yu Gothic UI", 10F);
             dash_appointmenttrends.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_appointmenttrends.LinkColor = Color.Black;
             dash_appointmenttrends.Location = new Point(911, 431);
             dash_appointmenttrends.Name = "dash_appointmenttrends";
-            dash_appointmenttrends.Size = new Size(174, 25);
+            dash_appointmenttrends.Size = new Size(190, 28);
             dash_appointmenttrends.TabIndex = 12;
             dash_appointmenttrends.TabStop = true;
             dash_appointmenttrends.Text = "Appointment Trends";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Yu Gothic UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = SystemColors.ButtonHighlight;
+            label3.Location = new Point(79, 82);
+            label3.Name = "label3";
+            label3.Size = new Size(152, 28);
+            label3.TabIndex = 24;
+            label3.Text = "Doctor ID-2346";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Kristen ITC", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = SystemColors.ButtonFace;
+            label2.Location = new Point(46, 43);
+            label2.Name = "label2";
+            label2.Size = new Size(160, 39);
+            label2.TabIndex = 23;
+            label2.Text = "John Doe";
             // 
             // DoctorDashboard
             // 
@@ -225,7 +259,9 @@
             Controls.Add(sidenav);
             Name = "DoctorDashboard";
             Text = "DoctorDashboard";
+            //Load += DoctorDashboard_Load;
             sidenav.ResumeLayout(false);
+            sidenav.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -251,5 +287,7 @@
         private LinkLabel dash_currentpatients;
         private LinkLabel dash_upcomingappointments;
         private LinkLabel dash_appointmenttrends;
+        private Label label3;
+        private Label label2;
     }
 }
