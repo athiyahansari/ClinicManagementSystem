@@ -156,6 +156,7 @@
             panel5.Name = "panel5";
             panel5.Size = new Size(788, 499);
             panel5.TabIndex = 3;
+            panel5.Paint += panel5_Paint;
             // 
             // totalappopanel
             // 
@@ -344,6 +345,7 @@
             panel13.Name = "panel13";
             panel13.Size = new Size(707, 108);
             panel13.TabIndex = 3;
+            panel13.Paint += panel13_Paint;
             // 
             // label32
             // 
@@ -453,7 +455,7 @@
             Controls.Add(flowLayoutPanelmain);
             Name = "Bookappointmentform";
             Text = "Bookappoinmentform";
-            //Load += this.Bookappointmentform_Load;
+            Load += Bookappointmentform_Load;
             flowLayoutPanelmain.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

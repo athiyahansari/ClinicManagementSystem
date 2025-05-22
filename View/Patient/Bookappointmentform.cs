@@ -21,5 +21,20 @@ namespace CMS
         {
 
         }
+
+        private void panel13_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Bookappointmentform_Load(object sender, EventArgs e)
+        {
+            //run a query //code the style
+        }
     }
 }

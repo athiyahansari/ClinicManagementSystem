@@ -32,6 +32,7 @@
             contextMenuStrip1 = new ContextMenuStrip(components);
             flowLayoutPanel1 = new FlowLayoutPanel();
             panel1 = new Panel();
+            label1 = new Label();
             sidenav = new Panel();
             label7 = new Label();
             navmedicalhistory = new Button();
@@ -71,12 +72,24 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(label1);
             panel1.Controls.Add(sidenav);
             panel1.Controls.Add(dataGridView1);
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
             panel1.Size = new Size(981, 463);
             panel1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = SystemColors.ActiveCaption;
+            label1.Font = new Font("Tahoma", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(510, 29);
+            label1.Name = "label1";
+            label1.Size = new Size(171, 29);
+            label1.TabIndex = 6;
+            label1.Text = "View Doctors";
             // 
             // sidenav
             // 
@@ -191,7 +204,7 @@
             dataGridView1.BackgroundColor = SystemColors.ActiveCaption;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column7, Column2, Column3, Column4, Column6 });
-            dataGridView1.Location = new Point(197, 3);
+            dataGridView1.Location = new Point(265, 90);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(646, 132);
             dataGridView1.TabIndex = 4;
@@ -236,6 +249,7 @@
             Text = "ViewDoctor";
             flowLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             sidenav.ResumeLayout(false);
             sidenav.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -263,5 +277,6 @@
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column6;
+        private Label label1;
     }
 }
