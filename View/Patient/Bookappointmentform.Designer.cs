@@ -29,7 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             flowLayoutPanelmain = new FlowLayoutPanel();
             panel1 = new Panel();
             logoutbtn = new Button();
@@ -43,14 +43,14 @@
             panel5 = new Panel();
             panel2 = new Panel();
             bookappobtn = new Button();
-            notes = new TextBox();
+            notestxt = new TextBox();
             label6 = new Label();
-            time = new TextBox();
+            timepick = new TextBox();
             label5 = new Label();
-            date = new TextBox();
+            datepick = new TextBox();
             label4 = new Label();
             combodoctor = new ComboBox();
-            patientname = new TextBox();
+            txtpatientname = new TextBox();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
@@ -201,14 +201,14 @@
             // 
             panel2.BackColor = Color.FromArgb(192, 192, 255);
             panel2.Controls.Add(bookappobtn);
-            panel2.Controls.Add(notes);
+            panel2.Controls.Add(notestxt);
             panel2.Controls.Add(label6);
-            panel2.Controls.Add(time);
+            panel2.Controls.Add(timepick);
             panel2.Controls.Add(label5);
-            panel2.Controls.Add(date);
+            panel2.Controls.Add(datepick);
             panel2.Controls.Add(label4);
             panel2.Controls.Add(combodoctor);
-            panel2.Controls.Add(patientname);
+            panel2.Controls.Add(txtpatientname);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label2);
             panel2.Controls.Add(label1);
@@ -228,12 +228,12 @@
             bookappobtn.Text = "Book appointment";
             bookappobtn.UseVisualStyleBackColor = false;
             // 
-            // notes
+            // notestxt
             // 
-            notes.Location = new Point(19, 236);
-            notes.Name = "notes";
-            notes.Size = new Size(273, 23);
-            notes.TabIndex = 23;
+            notestxt.Location = new Point(19, 236);
+            notestxt.Name = "notestxt";
+            notestxt.Size = new Size(273, 23);
+            notestxt.TabIndex = 23;
             // 
             // label6
             // 
@@ -244,12 +244,12 @@
             label6.TabIndex = 22;
             label6.Text = "Notes";
             // 
-            // time
+            // timepick
             // 
-            time.Location = new Point(156, 183);
-            time.Name = "time";
-            time.Size = new Size(97, 23);
-            time.TabIndex = 21;
+            timepick.Location = new Point(156, 183);
+            timepick.Name = "timepick";
+            timepick.Size = new Size(97, 23);
+            timepick.TabIndex = 21;
             // 
             // label5
             // 
@@ -260,12 +260,12 @@
             label5.TabIndex = 20;
             label5.Text = "Time";
             // 
-            // date
+            // datepick
             // 
-            date.Location = new Point(19, 183);
-            date.Name = "date";
-            date.Size = new Size(97, 23);
-            date.TabIndex = 19;
+            datepick.Location = new Point(19, 183);
+            datepick.Name = "datepick";
+            datepick.Size = new Size(97, 23);
+            datepick.TabIndex = 19;
             // 
             // label4
             // 
@@ -284,12 +284,13 @@
             combodoctor.Size = new Size(258, 23);
             combodoctor.TabIndex = 17;
             // 
-            // patientname
+            // txtpatientname
             // 
-            patientname.Location = new Point(19, 73);
-            patientname.Name = "patientname";
-            patientname.Size = new Size(273, 23);
-            patientname.TabIndex = 14;
+            txtpatientname.Location = new Point(19, 73);
+            txtpatientname.Name = "txtpatientname";
+            txtpatientname.Size = new Size(273, 23);
+            txtpatientname.TabIndex = 14;
+            txtpatientname.TextChanged += patientname_TextChanged;
             // 
             // label3
             // 
@@ -319,18 +320,19 @@
             label1.Size = new Size(168, 20);
             label1.TabIndex = 12;
             label1.Text = "Book new appointment";
+            label1.Click += label1_Click;
             // 
             // dataGridView1
             // 
             dataGridView1.BackgroundColor = SystemColors.ButtonHighlight;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 });
             dataGridView1.Location = new Point(22, 90);
@@ -440,14 +442,14 @@
         private Panel panel2;
         private Label label1;
         private Label label2;
-        private TextBox patientname;
-        private TextBox time;
+        private TextBox txtpatientname;
+        private TextBox timepick;
         private Label label5;
-        private TextBox date;
+        private TextBox datepick;
         private Label label4;
         private ComboBox combodoctor;
         private Label label3;
-        private TextBox notes;
+        private TextBox notestxt;
         private Label label6;
         private Button bookappobtn;
     }
