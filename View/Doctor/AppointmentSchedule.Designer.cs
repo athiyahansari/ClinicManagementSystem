@@ -35,7 +35,18 @@
             logout = new Button();
             navappointment = new Button();
             navpatient = new Button();
+            dataGridView1 = new DataGridView();
+            vScrollBar1 = new VScrollBar();
+            appointmentschedulelabel = new Label();
+            AppointmentID = new DataGridViewTextBoxColumn();
+            PatientName = new DataGridViewTextBoxColumn();
+            Date = new DataGridViewTextBoxColumn();
+            Time = new DataGridViewTextBoxColumn();
+            Status = new DataGridViewTextBoxColumn();
+            Details = new DataGridViewTextBoxColumn();
+            Cancel = new DataGridViewButtonColumn();
             sidenav.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // sidenav
@@ -50,7 +61,7 @@
             sidenav.Dock = DockStyle.Left;
             sidenav.Location = new Point(0, 0);
             sidenav.Name = "sidenav";
-            sidenav.Size = new Size(274, 736);
+            sidenav.Size = new Size(274, 763);
             sidenav.TabIndex = 2;
             // 
             // label3
@@ -119,17 +130,102 @@
             navpatient.Text = "My Patients";
             navpatient.UseVisualStyleBackColor = false;
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { AppointmentID, PatientName, Date, Time, Status, Details, Cancel });
+            dataGridView1.Location = new Point(294, 203);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 62;
+            dataGridView1.Size = new Size(1136, 371);
+            dataGridView1.TabIndex = 3;
+            // 
+            // vScrollBar1
+            // 
+            vScrollBar1.Location = new Point(1405, 203);
+            vScrollBar1.Name = "vScrollBar1";
+            vScrollBar1.Size = new Size(25, 371);
+            vScrollBar1.TabIndex = 4;
+            // 
+            // appointmentschedulelabel
+            // 
+            appointmentschedulelabel.AutoSize = true;
+            appointmentschedulelabel.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            appointmentschedulelabel.ForeColor = Color.MidnightBlue;
+            appointmentschedulelabel.Location = new Point(695, 62);
+            appointmentschedulelabel.Name = "appointmentschedulelabel";
+            appointmentschedulelabel.Size = new Size(336, 38);
+            appointmentschedulelabel.TabIndex = 5;
+            appointmentschedulelabel.Text = "Appointment Schedule";
+            // 
+            // AppointmentID
+            // 
+            AppointmentID.HeaderText = "AppointmentID";
+            AppointmentID.MinimumWidth = 8;
+            AppointmentID.Name = "AppointmentID";
+            AppointmentID.ReadOnly = true;
+            AppointmentID.Width = 150;
+            // 
+            // PatientName
+            // 
+            PatientName.HeaderText = "PatientName";
+            PatientName.MinimumWidth = 8;
+            PatientName.Name = "PatientName";
+            PatientName.ReadOnly = true;
+            PatientName.Width = 150;
+            // 
+            // Date
+            // 
+            Date.HeaderText = "Date";
+            Date.MinimumWidth = 8;
+            Date.Name = "Date";
+            Date.Width = 150;
+            // 
+            // Time
+            // 
+            Time.HeaderText = "Time";
+            Time.MinimumWidth = 8;
+            Time.Name = "Time";
+            Time.Width = 150;
+            // 
+            // Status
+            // 
+            Status.HeaderText = "Status";
+            Status.MinimumWidth = 8;
+            Status.Name = "Status";
+            Status.Width = 150;
+            // 
+            // Details
+            // 
+            Details.HeaderText = "Details";
+            Details.MinimumWidth = 8;
+            Details.Name = "Details";
+            Details.ReadOnly = true;
+            Details.Width = 150;
+            // 
+            // Cancel
+            // 
+            Cancel.HeaderText = "Cancel";
+            Cancel.MinimumWidth = 8;
+            Cancel.Name = "Cancel";
+            Cancel.Width = 150;
+            // 
             // AppointmentSchedule
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1150, 736);
+            ClientSize = new Size(1452, 763);
+            Controls.Add(appointmentschedulelabel);
+            Controls.Add(vScrollBar1);
+            Controls.Add(dataGridView1);
             Controls.Add(sidenav);
             Name = "AppointmentSchedule";
             Text = "AppointmentSchedule";
             sidenav.ResumeLayout(false);
             sidenav.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -141,5 +237,15 @@
         private Button logout;
         private Button navappointment;
         private Button navpatient;
+        private DataGridView dataGridView1;
+        private VScrollBar vScrollBar1;
+        private Label appointmentschedulelabel;
+        private DataGridViewTextBoxColumn AppointmentID;
+        private DataGridViewTextBoxColumn PatientName;
+        private DataGridViewTextBoxColumn Date;
+        private DataGridViewTextBoxColumn Time;
+        private DataGridViewTextBoxColumn Status;
+        private DataGridViewTextBoxColumn Details;
+        private DataGridViewButtonColumn Cancel;
     }
 }
