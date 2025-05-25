@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             flowLayoutPanel1 = new FlowLayoutPanel();
             sidenav = new Panel();
             label3 = new Label();
@@ -38,8 +39,8 @@
             navpatient = new Button();
             navdoc = new Button();
             panel1 = new Panel();
-            label1 = new Label();
             dataGridView1 = new DataGridView();
+            label1 = new Label();
             column = new DataGridViewTextBoxColumn();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
@@ -78,16 +79,15 @@
             sidenav.Location = new Point(0, 0);
             sidenav.Margin = new Padding(0);
             sidenav.Name = "sidenav";
-            sidenav.Size = new Size(192, 446);
+            sidenav.Size = new Size(174, 446);
             sidenav.TabIndex = 2;
-            //sidenav.Paint += this.sidenav_Paint;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Yu Gothic UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = SystemColors.ButtonHighlight;
-            label3.Location = new Point(50, 47);
+            label3.Location = new Point(41, 47);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(106, 19);
@@ -99,7 +99,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Kristen ITC", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ButtonFace;
-            label2.Location = new Point(27, 23);
+            label2.Location = new Point(18, 23);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(113, 27);
@@ -109,10 +109,10 @@
             // navprofile
             // 
             navprofile.BackColor = Color.LightSteelBlue;
-            navprofile.Location = new Point(20, 332);
+            navprofile.Location = new Point(13, 342);
             navprofile.Margin = new Padding(2);
             navprofile.Name = "navprofile";
-            navprofile.Size = new Size(150, 25);
+            navprofile.Size = new Size(145, 29);
             navprofile.TabIndex = 4;
             navprofile.Text = "MyProfile";
             navprofile.UseVisualStyleBackColor = false;
@@ -121,10 +121,10 @@
             // logout
             // 
             logout.BackColor = Color.LightSteelBlue;
-            logout.Location = new Point(20, 361);
+            logout.Location = new Point(13, 375);
             logout.Margin = new Padding(2);
             logout.Name = "logout";
-            logout.Size = new Size(150, 26);
+            logout.Size = new Size(145, 29);
             logout.TabIndex = 3;
             logout.Text = "LogOut";
             logout.UseVisualStyleBackColor = false;
@@ -132,10 +132,10 @@
             // navappointment
             // 
             navappointment.BackColor = Color.LightSteelBlue;
-            navappointment.Location = new Point(20, 146);
+            navappointment.Location = new Point(13, 153);
             navappointment.Margin = new Padding(2);
             navappointment.Name = "navappointment";
-            navappointment.Size = new Size(150, 28);
+            navappointment.Size = new Size(145, 28);
             navappointment.TabIndex = 2;
             navappointment.Text = "Appointment Schedules";
             navappointment.UseVisualStyleBackColor = false;
@@ -143,10 +143,10 @@
             // navpatient
             // 
             navpatient.BackColor = Color.LightSteelBlue;
-            navpatient.Location = new Point(20, 115);
+            navpatient.Location = new Point(13, 121);
             navpatient.Margin = new Padding(2);
             navpatient.Name = "navpatient";
-            navpatient.Size = new Size(150, 28);
+            navpatient.Size = new Size(145, 28);
             navpatient.TabIndex = 1;
             navpatient.Text = "Patients";
             navpatient.UseVisualStyleBackColor = false;
@@ -154,10 +154,10 @@
             // navdoc
             // 
             navdoc.BackColor = Color.LightSteelBlue;
-            navdoc.Location = new Point(20, 85);
+            navdoc.Location = new Point(13, 91);
             navdoc.Margin = new Padding(2);
             navdoc.Name = "navdoc";
-            navdoc.Size = new Size(150, 27);
+            navdoc.Size = new Size(145, 28);
             navdoc.TabIndex = 0;
             navdoc.Text = "Doctors";
             navdoc.UseVisualStyleBackColor = false;
@@ -166,31 +166,43 @@
             // 
             panel1.Controls.Add(dataGridView1);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(192, 0);
+            panel1.Location = new Point(174, 0);
             panel1.Margin = new Padding(0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(767, 446);
+            panel1.Size = new Size(844, 446);
             panel1.TabIndex = 3;
-            //panel1.Paint += this.panel1_Paint;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.BackgroundColor = SystemColors.ButtonHighlight;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = SystemColors.Control;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle5.ForeColor = Color.SteelBlue;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.ButtonHighlight;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { column, Column1, Column2, Column3, Column4, Column5, Column6 });
+            dataGridView1.Location = new Point(35, 89);
+            dataGridView1.Margin = new Padding(0);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(783, 272);
+            dataGridView1.TabIndex = 1;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(111, 47);
+            label1.BackColor = SystemColors.ButtonFace;
+            label1.Font = new Font("Myanmar Text", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.DarkBlue;
+            label1.Location = new Point(273, 37);
             label1.Name = "label1";
-            label1.Size = new Size(149, 15);
+            label1.Size = new Size(223, 29);
             label1.TabIndex = 0;
-            label1.Text = "View Patient appointments";
+            label1.Text = "View Patient Appointments";
             label1.Click += label1_Click;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { column, Column1, Column2, Column3, Column4, Column5, Column6 });
-            dataGridView1.Location = new Point(25, 79);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(794, 261);
-            dataGridView1.TabIndex = 1;
             // 
             // column
             // 
@@ -201,11 +213,13 @@
             // 
             Column1.HeaderText = "Patient Name";
             Column1.Name = "Column1";
+            Column1.Width = 120;
             // 
             // Column2
             // 
             Column2.HeaderText = "Doctor Name";
             Column2.Name = "Column2";
+            Column2.Width = 120;
             // 
             // Column3
             // 
