@@ -22,19 +22,24 @@ namespace CMS
 
         }
 
-        private void panel13_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void panel5_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void Bookappointmentform_Load(object sender, EventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //run a query //code the style
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void patientname_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
