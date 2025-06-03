@@ -46,6 +46,7 @@
             navprescription = new Button();
             navappointment = new Button();
             navdoc = new Button();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             sidenav.SuspendLayout();
             SuspendLayout();
@@ -67,9 +68,10 @@
             dataGridView1.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { PrescriptionID, Date, DoctorName, Diagnosis, Medicines });
-            dataGridView1.Location = new Point(273, 98);
+            dataGridView1.Location = new Point(273, 104);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(918, 496);
             dataGridView1.TabIndex = 3;
             // 
@@ -262,5 +264,6 @@
         private Button navprescription;
         private Button navappointment;
         private Button navdoc;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
