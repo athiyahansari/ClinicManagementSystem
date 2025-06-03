@@ -36,8 +36,6 @@
             navappointment = new Button();
             navpatient = new Button();
             dataGridView1 = new DataGridView();
-            vScrollBar1 = new VScrollBar();
-            appointmentschedulelabel = new Label();
             AppointmentID = new DataGridViewTextBoxColumn();
             PatientName = new DataGridViewTextBoxColumn();
             Date = new DataGridViewTextBoxColumn();
@@ -45,6 +43,8 @@
             Status = new DataGridViewTextBoxColumn();
             Details = new DataGridViewTextBoxColumn();
             Cancel = new DataGridViewButtonColumn();
+            vScrollBar1 = new VScrollBar();
+            appointmentschedulelabel = new Label();
             sidenav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -140,24 +140,6 @@
             dataGridView1.Size = new Size(1136, 371);
             dataGridView1.TabIndex = 3;
             // 
-            // vScrollBar1
-            // 
-            vScrollBar1.Location = new Point(1405, 203);
-            vScrollBar1.Name = "vScrollBar1";
-            vScrollBar1.Size = new Size(25, 371);
-            vScrollBar1.TabIndex = 4;
-            // 
-            // appointmentschedulelabel
-            // 
-            appointmentschedulelabel.AutoSize = true;
-            appointmentschedulelabel.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            appointmentschedulelabel.ForeColor = Color.MidnightBlue;
-            appointmentschedulelabel.Location = new Point(695, 62);
-            appointmentschedulelabel.Name = "appointmentschedulelabel";
-            appointmentschedulelabel.Size = new Size(336, 38);
-            appointmentschedulelabel.TabIndex = 5;
-            appointmentschedulelabel.Text = "Appointment Schedule";
-            // 
             // AppointmentID
             // 
             AppointmentID.HeaderText = "AppointmentID";
@@ -209,6 +191,24 @@
             Cancel.MinimumWidth = 8;
             Cancel.Name = "Cancel";
             Cancel.Width = 150;
+            // 
+            // vScrollBar1
+            // 
+            vScrollBar1.Location = new Point(1408, 203);
+            vScrollBar1.Name = "vScrollBar1";
+            vScrollBar1.Size = new Size(25, 371);
+            vScrollBar1.TabIndex = 4;
+            // 
+            // appointmentschedulelabel
+            // 
+            appointmentschedulelabel.AutoSize = true;
+            appointmentschedulelabel.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            appointmentschedulelabel.ForeColor = Color.MidnightBlue;
+            appointmentschedulelabel.Location = new Point(695, 62);
+            appointmentschedulelabel.Name = "appointmentschedulelabel";
+            appointmentschedulelabel.Size = new Size(336, 38);
+            appointmentschedulelabel.TabIndex = 5;
+            appointmentschedulelabel.Text = "Appointment Schedule";
             // 
             // AppointmentSchedule
             // 
