@@ -19,6 +19,7 @@
 
             }
             base.Dispose(disposing);
+
         }
 
         #region Windows Form Designer generated code
@@ -42,33 +43,31 @@
             lablpatient1 = new Label();
             panel5 = new Panel();
             panel2 = new Panel();
+            dateTimePickerform = new DateTimePicker();
             bookappobtn = new Button();
             notestxt = new TextBox();
             label6 = new Label();
-            timepick = new TextBox();
+            timepickform = new TextBox();
             label5 = new Label();
-            datepick = new TextBox();
             label4 = new Label();
             combodoctor = new ComboBox();
-            txtpatientname = new TextBox();
             label3 = new Label();
-            label2 = new Label();
             label1 = new Label();
-            dataGridView1 = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewTextBoxColumn();
-            Column7 = new DataGridViewTextBoxColumn();
+            appointmentdatagrid = new DataGridView();
+            DoctorNameColumn = new DataGridViewTextBoxColumn();
+            TimeColumn = new DataGridViewTextBoxColumn();
+            DateColumn = new DataGridViewTextBoxColumn();
+            ConsultaionColumn = new DataGridViewTextBoxColumn();
+            StatusColumn = new DataGridViewTextBoxColumn();
+            ResheduleColumn = new DataGridViewButtonColumn();
+            CancelColumn = new DataGridViewButtonColumn();
             managelbl = new Label();
             appoinmentslbl = new Label();
             flowLayoutPanelmain.SuspendLayout();
             panel1.SuspendLayout();
             panel5.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)appointmentdatagrid).BeginInit();
             SuspendLayout();
             // 
             // flowLayoutPanelmain
@@ -99,7 +98,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(155, 663);
             panel1.TabIndex = 2;
-            panel1.Paint += panel1_Paint;
             // 
             // logoutbtn
             // 
@@ -150,6 +148,7 @@
             doctorbtn.TabIndex = 3;
             doctorbtn.Text = "Doctor";
             doctorbtn.UseVisualStyleBackColor = false;
+            //doctorbtn.Click += doctorbtn_Click;
             // 
             // appointmentbtn
             // 
@@ -160,6 +159,7 @@
             appointmentbtn.TabIndex = 2;
             appointmentbtn.Text = "Appointments";
             appointmentbtn.UseVisualStyleBackColor = false;
+            appointmentbtn.Click += appointmentbtn_Click;
             // 
             // lablid
             // 
@@ -187,7 +187,7 @@
             // 
             panel5.BackColor = Color.Lavender;
             panel5.Controls.Add(panel2);
-            panel5.Controls.Add(dataGridView1);
+            panel5.Controls.Add(appointmentdatagrid);
             panel5.Controls.Add(managelbl);
             panel5.Controls.Add(appoinmentslbl);
             panel5.Location = new Point(155, 0);
@@ -195,42 +195,47 @@
             panel5.Name = "panel5";
             panel5.Size = new Size(813, 663);
             panel5.TabIndex = 3;
-            panel5.Paint += panel5_Paint;
             // 
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(192, 192, 255);
+            panel2.Controls.Add(dateTimePickerform);
             panel2.Controls.Add(bookappobtn);
             panel2.Controls.Add(notestxt);
             panel2.Controls.Add(label6);
-            panel2.Controls.Add(timepick);
+            panel2.Controls.Add(timepickform);
             panel2.Controls.Add(label5);
-            panel2.Controls.Add(datepick);
             panel2.Controls.Add(label4);
             panel2.Controls.Add(combodoctor);
-            panel2.Controls.Add(txtpatientname);
             panel2.Controls.Add(label3);
-            panel2.Controls.Add(label2);
             panel2.Controls.Add(label1);
-            panel2.Location = new Point(239, 317);
+            panel2.Location = new Point(231, 317);
             panel2.Name = "panel2";
-            panel2.Size = new Size(306, 320);
+            panel2.Size = new Size(329, 284);
             panel2.TabIndex = 13;
+            // 
+            // dateTimePickerform
+            // 
+            dateTimePickerform.Location = new Point(21, 120);
+            dateTimePickerform.Name = "dateTimePickerform";
+            dateTimePickerform.Size = new Size(192, 23);
+            dateTimePickerform.TabIndex = 25;
             // 
             // bookappobtn
             // 
             bookappobtn.BackColor = SystemColors.ActiveCaption;
             bookappobtn.FlatStyle = FlatStyle.Flat;
-            bookappobtn.Location = new Point(82, 279);
+            bookappobtn.Location = new Point(84, 216);
             bookappobtn.Name = "bookappobtn";
             bookappobtn.Size = new Size(155, 23);
             bookappobtn.TabIndex = 24;
             bookappobtn.Text = "Book appointment";
             bookappobtn.UseVisualStyleBackColor = false;
+            bookappobtn.Click += bookappobtn_Click;
             // 
             // notestxt
             // 
-            notestxt.Location = new Point(19, 236);
+            notestxt.Location = new Point(21, 173);
             notestxt.Name = "notestxt";
             notestxt.Size = new Size(273, 23);
             notestxt.TabIndex = 23;
@@ -238,39 +243,32 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(19, 218);
+            label6.Location = new Point(21, 155);
             label6.Name = "label6";
             label6.Size = new Size(38, 15);
             label6.TabIndex = 22;
             label6.Text = "Notes";
             // 
-            // timepick
+            // timepickform
             // 
-            timepick.Location = new Point(156, 183);
-            timepick.Name = "timepick";
-            timepick.Size = new Size(97, 23);
-            timepick.TabIndex = 21;
+            timepickform.Location = new Point(219, 120);
+            timepickform.Name = "timepickform";
+            timepickform.Size = new Size(97, 23);
+            timepickform.TabIndex = 21;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(156, 165);
+            label5.Location = new Point(219, 102);
             label5.Name = "label5";
             label5.Size = new Size(33, 15);
             label5.TabIndex = 20;
             label5.Text = "Time";
             // 
-            // datepick
-            // 
-            datepick.Location = new Point(19, 183);
-            datepick.Name = "datepick";
-            datepick.Size = new Size(97, 23);
-            datepick.TabIndex = 19;
-            // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(19, 165);
+            label4.Location = new Point(21, 102);
             label4.Name = "label4";
             label4.Size = new Size(31, 15);
             label4.TabIndex = 18;
@@ -279,52 +277,34 @@
             // combodoctor
             // 
             combodoctor.FormattingEnabled = true;
-            combodoctor.Location = new Point(19, 132);
+            combodoctor.Location = new Point(21, 69);
             combodoctor.Name = "combodoctor";
             combodoctor.Size = new Size(258, 23);
             combodoctor.TabIndex = 17;
             // 
-            // txtpatientname
-            // 
-            txtpatientname.Location = new Point(19, 73);
-            txtpatientname.Name = "txtpatientname";
-            txtpatientname.Size = new Size(273, 23);
-            txtpatientname.TabIndex = 14;
-            txtpatientname.TextChanged += patientname_TextChanged;
-            // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(19, 114);
+            label3.Location = new Point(21, 51);
             label3.Name = "label3";
             label3.Size = new Size(43, 15);
             label3.TabIndex = 15;
             label3.Text = "Doctor";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(19, 55);
-            label2.Name = "label2";
-            label2.Size = new Size(79, 15);
-            label2.TabIndex = 13;
-            label2.Text = "Patient Name";
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ImageAlign = ContentAlignment.TopCenter;
-            label1.Location = new Point(69, 12);
+            label1.Location = new Point(84, 12);
             label1.Name = "label1";
             label1.Size = new Size(168, 20);
             label1.TabIndex = 12;
             label1.Text = "Book new appointment";
-            label1.Click += label1_Click;
             // 
-            // dataGridView1
+            // appointmentdatagrid
             // 
-            dataGridView1.BackgroundColor = SystemColors.ButtonHighlight;
+            appointmentdatagrid.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
@@ -332,49 +312,55 @@
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 });
-            dataGridView1.Location = new Point(22, 90);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(742, 210);
-            dataGridView1.TabIndex = 11;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            appointmentdatagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            appointmentdatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            appointmentdatagrid.Columns.AddRange(new DataGridViewColumn[] { DoctorNameColumn, TimeColumn, DateColumn, ConsultaionColumn, StatusColumn, ResheduleColumn, CancelColumn });
+            appointmentdatagrid.Location = new Point(42, 87);
+            appointmentdatagrid.Name = "appointmentdatagrid";
+            appointmentdatagrid.Size = new Size(742, 210);
+            appointmentdatagrid.TabIndex = 11;
+            appointmentdatagrid.CellFormatting += appointmentdatagrid_CellFormatting;
             // 
-            // Column1
+            // DoctorNameColumn
             // 
-            Column1.HeaderText = "Doctor";
-            Column1.Name = "Column1";
+            DoctorNameColumn.HeaderText = "Doctor";
+            DoctorNameColumn.Name = "DoctorNameColumn";
             // 
-            // Column2
+            // TimeColumn
             // 
-            Column2.HeaderText = "Time";
-            Column2.Name = "Column2";
+            TimeColumn.HeaderText = "Time";
+            TimeColumn.Name = "TimeColumn";
             // 
-            // Column3
+            // DateColumn
             // 
-            Column3.HeaderText = "Date";
-            Column3.Name = "Column3";
+            DateColumn.HeaderText = "Date";
+            DateColumn.Name = "DateColumn";
             // 
-            // Column4
+            // ConsultaionColumn
             // 
-            Column4.HeaderText = "Consultation";
-            Column4.Name = "Column4";
+            ConsultaionColumn.HeaderText = "Consultation";
+            ConsultaionColumn.Name = "ConsultaionColumn";
+            ConsultaionColumn.Width = 150;
             // 
-            // Column5
+            // StatusColumn
             // 
-            Column5.HeaderText = "Status";
-            Column5.Name = "Column5";
+            StatusColumn.DataPropertyName = "Status";
+            StatusColumn.HeaderText = "Status";
+            StatusColumn.Name = "StatusColumn";
             // 
-            // Column6
+            // ResheduleColumn
             // 
-            Column6.HeaderText = "Reshedule";
-            Column6.Name = "Column6";
+            ResheduleColumn.HeaderText = "Reshedule";
+            ResheduleColumn.Name = "ResheduleColumn";
+            ResheduleColumn.Text = "Reshedule";
+            ResheduleColumn.UseColumnTextForButtonValue = true;
             // 
-            // Column7
+            // CancelColumn
             // 
-            Column7.HeaderText = "Cancel";
-            Column7.Name = "Column7";
+            CancelColumn.HeaderText = "Cancel";
+            CancelColumn.Name = "CancelColumn";
+            CancelColumn.Text = "Cancel";
+            CancelColumn.UseColumnTextForButtonValue = true;
             // 
             // managelbl
             // 
@@ -405,7 +391,6 @@
             Controls.Add(flowLayoutPanelmain);
             Name = "Bookappointmentform";
             Text = "Bookappoinmentform";
-            Load += Bookappointmentform_Load;
             flowLayoutPanelmain.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -413,7 +398,7 @@
             panel5.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)appointmentdatagrid).EndInit();
             ResumeLayout(false);
         }
 
@@ -428,30 +413,28 @@
         private Panel panel5;
         private Label managelbl;
         private Label appoinmentslbl;
-        private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn Column6;
-        private DataGridViewTextBoxColumn Column7;
+        private DataGridView appointmentdatagrid;
         private Button logoutbtn;
         private Button profilebtn;
         private Button historybtn;
         private Button prescrbtn;
         private Panel panel2;
         private Label label1;
-        private Label label2;
-        private TextBox txtpatientname;
-        private TextBox timepick;
+        private TextBox timepickform;
         private Label label5;
-        private TextBox datepick;
         private Label label4;
         private ComboBox combodoctor;
         private Label label3;
         private TextBox notestxt;
         private Label label6;
         private Button bookappobtn;
+        private DateTimePicker dateTimePickerform;
+        private DataGridViewTextBoxColumn DoctorNameColumn;
+        private DataGridViewTextBoxColumn TimeColumn;
+        private DataGridViewTextBoxColumn DateColumn;
+        private DataGridViewTextBoxColumn ConsultaionColumn;
+        private DataGridViewTextBoxColumn StatusColumn;
+        private DataGridViewButtonColumn ResheduleColumn;
+        private DataGridViewButtonColumn CancelColumn;
     }
 }
