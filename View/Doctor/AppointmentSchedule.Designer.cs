@@ -41,7 +41,7 @@
             Date = new DataGridViewTextBoxColumn();
             Time = new DataGridViewTextBoxColumn();
             Status = new DataGridViewTextBoxColumn();
-            Details = new DataGridViewTextBoxColumn();
+            Consultation = new DataGridViewTextBoxColumn();
             Cancel = new DataGridViewButtonColumn();
             vScrollBar1 = new VScrollBar();
             appointmentschedulelabel = new Label();
@@ -118,6 +118,7 @@
             navappointment.TabIndex = 1;
             navappointment.Text = "My Appointment";
             navappointment.UseVisualStyleBackColor = false;
+            navappointment.Click += navappointment_Click;
             // 
             // navpatient
             // 
@@ -133,12 +134,13 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { AppointmentID, PatientName, Date, Time, Status, Details, Cancel });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { AppointmentID, PatientName, Date, Time, Status, Consultation, Cancel });
             dataGridView1.Location = new Point(294, 203);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.Size = new Size(1136, 371);
             dataGridView1.TabIndex = 3;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // AppointmentID
             // 
@@ -177,13 +179,13 @@
             Status.Name = "Status";
             Status.Width = 150;
             // 
-            // Details
+            // Consultation
             // 
-            Details.HeaderText = "Details";
-            Details.MinimumWidth = 8;
-            Details.Name = "Details";
-            Details.ReadOnly = true;
-            Details.Width = 150;
+            Consultation.HeaderText = "Consultation";
+            Consultation.MinimumWidth = 8;
+            Consultation.Name = "Consultation";
+            Consultation.ReadOnly = true;
+            Consultation.Width = 150;
             // 
             // Cancel
             // 
@@ -221,6 +223,7 @@
             Controls.Add(sidenav);
             Name = "AppointmentSchedule";
             Text = "AppointmentSchedule";
+            Load += AppointmentSchedule_Load;
             sidenav.ResumeLayout(false);
             sidenav.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -245,7 +248,7 @@
         private DataGridViewTextBoxColumn Date;
         private DataGridViewTextBoxColumn Time;
         private DataGridViewTextBoxColumn Status;
-        private DataGridViewTextBoxColumn Details;
+        private DataGridViewTextBoxColumn Consultation;
         private DataGridViewButtonColumn Cancel;
     }
 }
