@@ -46,6 +46,8 @@
             pictureBox3 = new PictureBox();
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
+            lblNotification = new Label();
+            lblNoNotif = new Label();
             sidenav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -67,7 +69,7 @@
             sidenav.Dock = DockStyle.Left;
             sidenav.Location = new Point(0, 0);
             sidenav.Name = "sidenav";
-            sidenav.Size = new Size(274, 720);
+            sidenav.Size = new Size(274, 764);
             sidenav.TabIndex = 0;
             // 
             // navmedicalhistory
@@ -261,6 +263,8 @@
             // 
             panel1.BackgroundImage = Properties.Resources.dashboard_bg;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(lblNotification);
+            panel1.Controls.Add(lblNoNotif);
             panel1.Controls.Add(dash_medicalhistory);
             panel1.Controls.Add(dash_upcomingappointments);
             panel1.Controls.Add(dash_prescriptions);
@@ -272,14 +276,37 @@
             panel1.Controls.Add(welcome_msg);
             panel1.Location = new Point(272, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1056, 721);
+            panel1.Size = new Size(1118, 764);
             panel1.TabIndex = 21;
+            // 
+            // lblNotification
+            // 
+            lblNotification.AutoSize = true;
+            lblNotification.BackColor = Color.Transparent;
+            lblNotification.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
+            lblNotification.Location = new Point(485, 155);
+            lblNotification.Name = "lblNotification";
+            lblNotification.Size = new Size(18, 25);
+            lblNotification.TabIndex = 22;
+            lblNotification.Text = ".";
+            // 
+            // lblNoNotif
+            // 
+            lblNoNotif.AutoSize = true;
+            lblNoNotif.BackColor = Color.Transparent;
+            lblNoNotif.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblNoNotif.Location = new Point(639, 95);
+            lblNoNotif.Name = "lblNoNotif";
+            lblNoNotif.Size = new Size(292, 25);
+            lblNoNotif.TabIndex = 21;
+            lblNoNotif.Text = "🎉 No Upcoming Appointments!";
+            lblNoNotif.Visible = false;
             // 
             // PatientDashboard
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1328, 720);
+            ClientSize = new Size(1388, 764);
             Controls.Add(panel1);
             Controls.Add(sidenav);
             Name = "PatientDashboard";
@@ -315,5 +342,7 @@
         private PictureBox pictureBox1;
         private Label label2;
         private Panel panel1;
+        private Label lblNoNotif;
+        private Label lblNotification;
     }
 }

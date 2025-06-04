@@ -1,11 +1,12 @@
-﻿using CMS.Model;
-using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CMS.Model;
+using CMS.Utils;
+using MySql.Data.MySqlClient;
 
 namespace CMS.Controller
 {
@@ -139,5 +140,55 @@ namespace CMS.Controller
         //{
         //    // Call repo to save appointment (your data access)
         //}
+
+
+        //Notification - method to retrieves the next appointment for a patient, ordered by date and time.
+        public static Appointment GetNextAppointmentForPatient(int patientId)
+        {
+            Appointment appt = null;
+
+            try
+            {
+                using (MySqlConnection conn = DBHelper.GetConnection())
+                {
+                    conn.Open();
+                    string query = @"
+                SELECT a.*, d.full_name AS DoctorName
+                FROM appointments a
+                JOIN doctors d ON a.doctor_id = d.doctor_id
+                WHERE a.patient_id = @patientId AND a.appointment_date >= CURDATE()
+                ORDER BY a.appointment_date ASC, a.appointment_time ASC
+                LIMIT 1";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@patientId", patientId);
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                appt = new Appointment
+                                {
+                                    AppointmentId = reader.GetInt32("appointment_id"),
+                                    Date = reader.GetDateTime("appointment_date"),
+                                    Time = reader.GetTimeSpan("appointment_time"),
+                                    Status = reader.GetString("status"),
+                                    PatientId = reader.GetInt32("patient_id"),
+                                    DoctorId = reader.GetInt32("doctor_id"),
+                                    DoctorName = reader["DoctorName"].ToString()
+                                };
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error fetching appointment: " + ex.Message);
+            }
+
+            return appt;
+        }
+        
     }
 }
