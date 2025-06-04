@@ -29,14 +29,12 @@
         private void InitializeComponent()
         {
             sidenav = new Panel();
-            label3 = new Label();
-            label2 = new Label();
+            panel1 = new Panel();
             navprofile = new Button();
             logout = new Button();
             navappointment = new Button();
             navpatient = new Button();
             navdoc = new Button();
-            label1 = new Label();
             welcome_msg = new Label();
             dash_appointmenttrends = new LinkLabel();
             dash_upcomingappointments = new LinkLabel();
@@ -46,8 +44,8 @@
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
             pictureBox1 = new PictureBox();
-            panel1 = new Panel();
             panel2 = new Panel();
+            label2 = new Label();
             sidenav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -59,9 +57,8 @@
             // sidenav
             // 
             sidenav.BackColor = Color.CornflowerBlue;
-            sidenav.Controls.Add(panel1);
-            sidenav.Controls.Add(label3);
             sidenav.Controls.Add(label2);
+            sidenav.Controls.Add(panel1);
             sidenav.Controls.Add(navprofile);
             sidenav.Controls.Add(logout);
             sidenav.Controls.Add(navappointment);
@@ -73,27 +70,12 @@
             sidenav.Size = new Size(274, 719);
             sidenav.TabIndex = 1;
             // 
-            // label3
+            // panel1
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Yu Gothic UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = SystemColors.ButtonHighlight;
-            label3.Location = new Point(71, 78);
-            label3.Name = "label3";
-            label3.Size = new Size(151, 28);
-            label3.TabIndex = 6;
-            label3.Text = "Admin ID-2346";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Kristen ITC", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = SystemColors.ButtonFace;
-            label2.Location = new Point(38, 39);
-            label2.Name = "label2";
-            label2.Size = new Size(160, 39);
-            label2.TabIndex = 5;
-            label2.Text = "John Doe";
+            panel1.Location = new Point(275, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1035, 719);
+            panel1.TabIndex = 7;
             // 
             // navprofile
             // 
@@ -118,7 +100,7 @@
             // navappointment
             // 
             navappointment.BackColor = Color.LightSteelBlue;
-            navappointment.Location = new Point(29, 244);
+            navappointment.Location = new Point(29, 261);
             navappointment.Name = "navappointment";
             navappointment.Size = new Size(214, 47);
             navappointment.TabIndex = 2;
@@ -128,7 +110,7 @@
             // navpatient
             // 
             navpatient.BackColor = Color.LightSteelBlue;
-            navpatient.Location = new Point(29, 192);
+            navpatient.Location = new Point(29, 210);
             navpatient.Name = "navpatient";
             navpatient.Size = new Size(214, 46);
             navpatient.TabIndex = 1;
@@ -138,31 +120,19 @@
             // navdoc
             // 
             navdoc.BackColor = Color.LightSteelBlue;
-            navdoc.Location = new Point(29, 141);
+            navdoc.Location = new Point(29, 159);
             navdoc.Name = "navdoc";
             navdoc.Size = new Size(214, 45);
             navdoc.TabIndex = 0;
             navdoc.Text = "Doctors";
             navdoc.UseVisualStyleBackColor = false;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Gill Sans Ultra Bold", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.MidnightBlue;
-            label1.Location = new Point(797, 66);
-            label1.Name = "label1";
-            label1.Size = new Size(210, 31);
-            label1.TabIndex = 3;
-            label1.Text = "MedLine Clinic";
-            // 
             // welcome_msg
             // 
             welcome_msg.AutoSize = true;
             welcome_msg.BackColor = Color.Transparent;
             welcome_msg.Font = new Font("Lucida Bright", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            welcome_msg.Location = new Point(58, 62);
+            welcome_msg.Location = new Point(58, 64);
             welcome_msg.Name = "welcome_msg";
             welcome_msg.Size = new Size(369, 62);
             welcome_msg.TabIndex = 4;
@@ -272,13 +242,6 @@
             pictureBox1.TabIndex = 21;
             pictureBox1.TabStop = false;
             // 
-            // panel1
-            // 
-            panel1.Location = new Point(275, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1035, 719);
-            panel1.TabIndex = 7;
-            // 
             // panel2
             // 
             panel2.BackgroundImage = Properties.Resources.dashboard_bg;
@@ -292,11 +255,21 @@
             panel2.Controls.Add(pictureBox3);
             panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(welcome_msg);
-            panel2.Controls.Add(label1);
             panel2.Location = new Point(271, 0);
             panel2.Name = "panel2";
             panel2.Size = new Size(1041, 721);
             panel2.TabIndex = 29;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Kristen ITC", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.MidnightBlue;
+            label2.Location = new Point(18, 71);
+            label2.Name = "label2";
+            label2.Size = new Size(246, 39);
+            label2.TabIndex = 23;
+            label2.Text = "MedLine Clinic";
             // 
             // AdminDashboard
             // 
@@ -327,7 +300,6 @@
         private Button navappointment;
         private Button navpatient;
         private Button navdoc;
-        private Label label1;
         private Label welcome_msg;
         private LinkLabel dash_appointmenttrends;
         private LinkLabel dash_upcomingappointments;
@@ -337,9 +309,8 @@
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
         private PictureBox pictureBox1;
-        private Label label3;
-        private Label label2;
         private Panel panel1;
         private Panel panel2;
+        private Label label2;
     }
 }

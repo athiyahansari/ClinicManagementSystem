@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             sidenav = new Panel();
-            label3 = new Label();
             navmedicalhistory = new Button();
             label2 = new Label();
             navprofile = new Button();
@@ -38,7 +37,6 @@
             navappointment = new Button();
             navdoc = new Button();
             welcome_msg = new Label();
-            logoname = new Label();
             dash_medicalhistory = new LinkLabel();
             dash_upcomingappointments = new LinkLabel();
             dash_prescriptions = new LinkLabel();
@@ -59,7 +57,6 @@
             // sidenav
             // 
             sidenav.BackColor = Color.CornflowerBlue;
-            sidenav.Controls.Add(label3);
             sidenav.Controls.Add(navmedicalhistory);
             sidenav.Controls.Add(label2);
             sidenav.Controls.Add(navprofile);
@@ -73,21 +70,10 @@
             sidenav.Size = new Size(274, 720);
             sidenav.TabIndex = 0;
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Yu Gothic UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = SystemColors.ButtonHighlight;
-            label3.Location = new Point(82, 87);
-            label3.Name = "label3";
-            label3.Size = new Size(155, 28);
-            label3.TabIndex = 22;
-            label3.Text = "Patient ID-2346";
-            // 
             // navmedicalhistory
             // 
             navmedicalhistory.BackColor = Color.LightSteelBlue;
-            navmedicalhistory.Location = new Point(49, 284);
+            navmedicalhistory.Location = new Point(49, 301);
             navmedicalhistory.Name = "navmedicalhistory";
             navmedicalhistory.Size = new Size(178, 48);
             navmedicalhistory.TabIndex = 5;
@@ -98,12 +84,12 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Kristen ITC", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = SystemColors.ButtonFace;
-            label2.Location = new Point(49, 48);
+            label2.ForeColor = Color.MidnightBlue;
+            label2.Location = new Point(20, 59);
             label2.Name = "label2";
-            label2.Size = new Size(160, 39);
+            label2.Size = new Size(246, 39);
             label2.TabIndex = 21;
-            label2.Text = "John Doe";
+            label2.Text = "MedLine Clinic";
             // 
             // navprofile
             // 
@@ -128,7 +114,7 @@
             // navprescription
             // 
             navprescription.BackColor = Color.LightSteelBlue;
-            navprescription.Location = new Point(49, 231);
+            navprescription.Location = new Point(49, 248);
             navprescription.Name = "navprescription";
             navprescription.Size = new Size(178, 47);
             navprescription.TabIndex = 2;
@@ -138,7 +124,7 @@
             // navappointment
             // 
             navappointment.BackColor = Color.LightSteelBlue;
-            navappointment.Location = new Point(49, 179);
+            navappointment.Location = new Point(49, 196);
             navappointment.Name = "navappointment";
             navappointment.Size = new Size(178, 46);
             navappointment.TabIndex = 1;
@@ -148,7 +134,7 @@
             // navdoc
             // 
             navdoc.BackColor = Color.LightSteelBlue;
-            navdoc.Location = new Point(49, 130);
+            navdoc.Location = new Point(49, 147);
             navdoc.Name = "navdoc";
             navdoc.Size = new Size(178, 43);
             navdoc.TabIndex = 0;
@@ -160,23 +146,11 @@
             welcome_msg.AutoSize = true;
             welcome_msg.BackColor = Color.Transparent;
             welcome_msg.Font = new Font("Lucida Bright", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            welcome_msg.Location = new Point(57, 43);
+            welcome_msg.Location = new Point(57, 46);
             welcome_msg.Name = "welcome_msg";
             welcome_msg.Size = new Size(369, 62);
             welcome_msg.TabIndex = 1;
             welcome_msg.Text = "Welcome back, John Doe!\r\n\r\n";
-            // 
-            // logoname
-            // 
-            logoname.AutoSize = true;
-            logoname.BackColor = Color.Transparent;
-            logoname.Font = new Font("Gill Sans Ultra Bold", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            logoname.ForeColor = Color.MidnightBlue;
-            logoname.Location = new Point(797, 47);
-            logoname.Name = "logoname";
-            logoname.Size = new Size(210, 31);
-            logoname.TabIndex = 2;
-            logoname.Text = "MedLine Clinic";
             // 
             // dash_medicalhistory
             // 
@@ -295,7 +269,6 @@
             panel1.Controls.Add(pictureBox2);
             panel1.Controls.Add(pictureBox3);
             panel1.Controls.Add(pictureBox1);
-            panel1.Controls.Add(logoname);
             panel1.Controls.Add(welcome_msg);
             panel1.Location = new Point(272, 0);
             panel1.Name = "panel1";
@@ -332,7 +305,6 @@
         private Button navprofile;
         private Button navmedicalhistory;
         private Label welcome_msg;
-        private Label logoname;
         private LinkLabel dash_medicalhistory;
         private LinkLabel dash_upcomingappointments;
         private LinkLabel dash_prescriptions;
@@ -341,7 +313,6 @@
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
         private PictureBox pictureBox1;
-        private Label label3;
         private Label label2;
         private Panel panel1;
     }
