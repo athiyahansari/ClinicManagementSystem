@@ -29,14 +29,13 @@
         private void InitializeComponent()
         {
             lblTitle = new Label();
-            dataGridView1 = new DataGridView();
+            dgvPrescriptions = new DataGridView();
             PrescriptionID = new DataGridViewTextBoxColumn();
             Date = new DataGridViewTextBoxColumn();
             DoctorName = new DataGridViewTextBoxColumn();
             Diagnosis = new DataGridViewTextBoxColumn();
             Medicines = new DataGridViewTextBoxColumn();
             btnBack = new Button();
-            lblNote = new Label();
             sidenav = new Panel();
             label3 = new Label();
             navmedicalhistory = new Button();
@@ -47,7 +46,7 @@
             navappointment = new Button();
             navdoc = new Button();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvPrescriptions).BeginInit();
             sidenav.SuspendLayout();
             SuspendLayout();
             // 
@@ -62,18 +61,18 @@
             lblTitle.TabIndex = 2;
             lblTitle.Text = "Your Prescriptions";
             // 
-            // dataGridView1
+            // dgvPrescriptions
             // 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.BackgroundColor = SystemColors.ButtonHighlight;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { PrescriptionID, Date, DoctorName, Diagnosis, Medicines });
-            dataGridView1.Location = new Point(273, 104);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(918, 496);
-            dataGridView1.TabIndex = 3;
+            dgvPrescriptions.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvPrescriptions.BackgroundColor = SystemColors.ButtonHighlight;
+            dgvPrescriptions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPrescriptions.Columns.AddRange(new DataGridViewColumn[] { PrescriptionID, Date, DoctorName, Diagnosis, Medicines });
+            dgvPrescriptions.Location = new Point(273, 104);
+            dgvPrescriptions.Name = "dgvPrescriptions";
+            dgvPrescriptions.RowHeadersWidth = 51;
+            dgvPrescriptions.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvPrescriptions.Size = new Size(918, 496);
+            dgvPrescriptions.TabIndex = 3;
             // 
             // PrescriptionID
             // 
@@ -116,16 +115,6 @@
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = false;
             btnBack.Click += btnBack_Click;
-            // 
-            // lblNote
-            // 
-            lblNote.AutoSize = true;
-            lblNote.Location = new Point(902, 622);
-            lblNote.Name = "lblNote";
-            lblNote.Size = new Size(289, 23);
-            lblNote.TabIndex = 5;
-            lblNote.Text = "* Select a prescription to view details";
-            lblNote.Click += lblNote_Click;
             // 
             // sidenav
             // 
@@ -232,13 +221,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1219, 684);
             Controls.Add(sidenav);
-            Controls.Add(lblNote);
             Controls.Add(btnBack);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvPrescriptions);
             Controls.Add(lblTitle);
             Name = "ViewPrescription";
             Text = "ViewPrescription";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += ViewPrescription_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvPrescriptions).EndInit();
             sidenav.ResumeLayout(false);
             sidenav.PerformLayout();
             ResumeLayout(false);
@@ -247,9 +236,8 @@
 
         #endregion
         private Label lblTitle;
-        private DataGridView dataGridView1;
+        private DataGridView dgvPrescriptions;
         private Button btnBack;
-        private Label lblNote;
         private DataGridViewTextBoxColumn PrescriptionID;
         private DataGridViewTextBoxColumn Date;
         private DataGridViewTextBoxColumn DoctorName;
