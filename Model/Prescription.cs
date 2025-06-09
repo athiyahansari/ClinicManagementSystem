@@ -40,7 +40,6 @@ namespace CMS.Model
             PrescriptionID = prescriptionID;
         }
 
-        // Polymorphism ready for potential inheritance (e.g., SpecializedPrescription)
     }
 }
 
