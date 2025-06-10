@@ -136,7 +136,6 @@ namespace CMS.Controller
                 return "Please select a time between 9:00 AM and 5:00 PM.";
 
 
-
             if (string.IsNullOrWhiteSpace(notes) || notes.Length < 5)
                 return "Please enter consultation notes (at least 5 characters).";
 
@@ -196,4 +195,6 @@ namespace CMS.Controller
         }
 
     }
+
+
 }
