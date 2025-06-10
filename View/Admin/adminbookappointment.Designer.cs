@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             flowLayoutPanel1 = new FlowLayoutPanel();
             sidenav = new Panel();
             label3 = new Label();
@@ -39,19 +39,20 @@
             navpatient = new Button();
             navdoc = new Button();
             panel1 = new Panel();
-            dataGridView1 = new DataGridView();
+            dataGridAdminPatient = new DataGridView();
+            AppointmentIDcolumn = new DataGridViewTextBoxColumn();
+            Patientnamecolumn = new DataGridViewTextBoxColumn();
+            Doctornamecolumn = new DataGridViewTextBoxColumn();
+            DateColumn = new DataGridViewTextBoxColumn();
+            TimeColumn = new DataGridViewTextBoxColumn();
+            StatusColumn = new DataGridViewTextBoxColumn();
+            ResheduleColumn = new DataGridViewButtonColumn();
+            CancelColumn = new DataGridViewButtonColumn();
             label1 = new Label();
-            column = new DataGridViewTextBoxColumn();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewTextBoxColumn();
             flowLayoutPanel1.SuspendLayout();
             sidenav.SuspendLayout();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridAdminPatient).BeginInit();
             SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -116,7 +117,6 @@
             navprofile.TabIndex = 4;
             navprofile.Text = "MyProfile";
             navprofile.UseVisualStyleBackColor = false;
-            navprofile.Click += navprofile_Click;
             // 
             // logout
             // 
@@ -164,32 +164,81 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(dataGridView1);
+            panel1.Controls.Add(dataGridAdminPatient);
             panel1.Controls.Add(label1);
             panel1.Location = new Point(174, 0);
             panel1.Margin = new Padding(0);
             panel1.Name = "panel1";
             panel1.Size = new Size(844, 446);
             panel1.TabIndex = 3;
+            //panel1.Paint += panel1_Paint;
             // 
-            // dataGridView1
+            // dataGridAdminPatient
             // 
-            dataGridView1.BackgroundColor = SystemColors.ButtonHighlight;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = SystemColors.Control;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = Color.SteelBlue;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.ButtonHighlight;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { column, Column1, Column2, Column3, Column4, Column5, Column6 });
-            dataGridView1.Location = new Point(35, 89);
-            dataGridView1.Margin = new Padding(0);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(783, 272);
-            dataGridView1.TabIndex = 1;
+            dataGridAdminPatient.BackgroundColor = SystemColors.ButtonHighlight;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = Color.SteelBlue;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.ButtonHighlight;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridAdminPatient.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridAdminPatient.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridAdminPatient.Columns.AddRange(new DataGridViewColumn[] { AppointmentIDcolumn, Patientnamecolumn, Doctornamecolumn, DateColumn, TimeColumn, StatusColumn, ResheduleColumn, CancelColumn });
+            dataGridAdminPatient.Location = new Point(43, 91);
+            dataGridAdminPatient.Margin = new Padding(0);
+            dataGridAdminPatient.Name = "dataGridAdminPatient";
+            dataGridAdminPatient.Size = new Size(783, 272);
+            dataGridAdminPatient.TabIndex = 1;
+            dataGridAdminPatient.CellClick += dataGridAdminPatient_CellClick;
+            //dataGridAdminPatient.CellContentClick += dataGridAdminPatient_CellContentClick;
+            // 
+            // AppointmentIDcolumn
+            // 
+            AppointmentIDcolumn.HeaderText = "Appointment ID";
+            AppointmentIDcolumn.Name = "AppointmentIDcolumn";
+            // 
+            // Patientnamecolumn
+            // 
+            Patientnamecolumn.HeaderText = "Patient Name";
+            Patientnamecolumn.Name = "Patientnamecolumn";
+            Patientnamecolumn.Width = 120;
+            // 
+            // Doctornamecolumn
+            // 
+            Doctornamecolumn.HeaderText = "Doctor Name";
+            Doctornamecolumn.Name = "Doctornamecolumn";
+            Doctornamecolumn.Width = 120;
+            // 
+            // DateColumn
+            // 
+            DateColumn.HeaderText = "Date";
+            DateColumn.Name = "DateColumn";
+            // 
+            // TimeColumn
+            // 
+            TimeColumn.HeaderText = "Time";
+            TimeColumn.Name = "TimeColumn";
+            // 
+            // StatusColumn
+            // 
+            StatusColumn.HeaderText = "Status";
+            StatusColumn.Name = "StatusColumn";
+            // 
+            // ResheduleColumn
+            // 
+            ResheduleColumn.HeaderText = "Reshedule";
+            ResheduleColumn.Name = "ResheduleColumn";
+            ResheduleColumn.Text = "Reshedule";
+            ResheduleColumn.UseColumnTextForButtonValue = true;
+            // 
+            // CancelColumn
+            // 
+            CancelColumn.HeaderText = "Cancel";
+            CancelColumn.Name = "CancelColumn";
+            CancelColumn.Text = "Cancel";
+            CancelColumn.UseColumnTextForButtonValue = true;
             // 
             // label1
             // 
@@ -202,44 +251,6 @@
             label1.Size = new Size(223, 29);
             label1.TabIndex = 0;
             label1.Text = "View Patient Appointments";
-            label1.Click += label1_Click;
-            // 
-            // column
-            // 
-            column.HeaderText = "Appointment ID";
-            column.Name = "column";
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "Patient Name";
-            Column1.Name = "Column1";
-            Column1.Width = 120;
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "Doctor Name";
-            Column2.Name = "Column2";
-            Column2.Width = 120;
-            // 
-            // Column3
-            // 
-            Column3.HeaderText = "Date";
-            Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            Column4.HeaderText = "Time";
-            Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            Column5.HeaderText = "Status";
-            Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            Column6.HeaderText = "Actions";
-            Column6.Name = "Column6";
             // 
             // adminbookappointment
             // 
@@ -249,12 +260,13 @@
             Controls.Add(flowLayoutPanel1);
             Name = "adminbookappointment";
             Text = "adminbookappointment";
+            Load += adminbookappointment_Load;
             flowLayoutPanel1.ResumeLayout(false);
             sidenav.ResumeLayout(false);
             sidenav.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridAdminPatient).EndInit();
             ResumeLayout(false);
         }
 
@@ -271,13 +283,14 @@
         private Button navdoc;
         private Panel panel1;
         private Label label1;
-        private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn column;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn Column6;
+        private DataGridView dataGridAdminPatient;
+        private DataGridViewTextBoxColumn AppointmentIDcolumn;
+        private DataGridViewTextBoxColumn Patientnamecolumn;
+        private DataGridViewTextBoxColumn Doctornamecolumn;
+        private DataGridViewTextBoxColumn DateColumn;
+        private DataGridViewTextBoxColumn TimeColumn;
+        private DataGridViewTextBoxColumn StatusColumn;
+        private DataGridViewButtonColumn ResheduleColumn;
+        private DataGridViewButtonColumn CancelColumn;
     }
 }
