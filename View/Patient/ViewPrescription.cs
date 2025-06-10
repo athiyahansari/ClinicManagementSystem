@@ -8,21 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CMS.View
+namespace CMS.View.Patient
 {
-    public partial class LoginForm : Form
+    public partial class ViewPrescription : Form
     {
-        public LoginForm()
+        public ViewPrescription()
         {
             InitializeComponent();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void btnBack_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label6_Click(object sender, EventArgs e)
+        private void lblNote_Click(object sender, EventArgs e)
         {
 
         }
