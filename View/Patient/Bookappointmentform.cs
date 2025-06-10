@@ -35,7 +35,32 @@ namespace CMS
         {
             LoadAppointments();
             LoadDoctors();
+            PopulateTimeSlots(); // Populate time slots in the dropdown
         }
+        private void PopulateTimeSlots()
+        {
+            // Clear existing items
+            timepickform.Items.Clear();
+
+            // Generate time slots
+            var slots = repo.GenerateTimeSlots();
+
+            // Add slots to ComboBox
+            foreach (var slot in slots)
+            {
+                timepickform.Items.Add(slot);
+            }
+
+            // Set ComboBox to DropDownList to prevent manual editing
+            timepickform.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            // Select the first slot by default if available
+            if (timepickform.Items.Count > 0)
+            {
+                timepickform.SelectedIndex = 0;
+            }
+        }
+
         private void LoadDoctors()
         {
             using (MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString))
@@ -66,9 +91,6 @@ namespace CMS
 
             appointmentdatagrid.AutoGenerateColumns = false;
 
-            //// Map manual DataGridView columns to Appointment properties
-            //appointmentdatagrid.Columns["AppointmentIDColumn"].DataPropertyName = "AppointmentId";
-            //appointmentdatagrid.Columns["PatientNameColumn"].DataPropertyName = "PatientName";
             appointmentdatagrid.Columns["DoctorNameColumn"].DataPropertyName = "DoctorName";
             appointmentdatagrid.Columns["TimeColumn"].DataPropertyName = "Time";
             appointmentdatagrid.Columns["DateColumn"].DataPropertyName = "Date";
@@ -85,11 +107,10 @@ namespace CMS
         private void bookappobtn_Click(object sender, EventArgs e)
         {
             string validationError = repo.ValidateAppointmentInput(
-
-              Convert.ToInt32(combodoctor.SelectedValue),
-              dateTimePickerform.Value,
-              timepickform.Text,
-              notestxt.Text);
+                Convert.ToInt32(combodoctor.SelectedValue),
+                dateTimePickerform.Value,
+                timepickform.Text,
+                notestxt.Text);
 
             if (validationError != null)
             {
@@ -97,23 +118,31 @@ namespace CMS
                 return;
             }
 
-            // Create appointment object after validation passed
             Appointment newAppt = new Appointment
             {
                 PatientId = loggedInPatientId,
                 DoctorId = Convert.ToInt32(combodoctor.SelectedValue),
                 Date = dateTimePickerform.Value.Date,
                 Time = TimeSpan.Parse(timepickform.Text),
-                //Status = "Sheduled",
                 Consultation = notestxt.Text,
-
             };
 
-            repo.BookAppointment(newAppt); // Save to database
-            MessageBox.Show("Appointment booked!");
-            LoadAppointments(); // Refresh grid
-
+            try
+            {
+                repo.BookAppointment(newAppt); // Save to database
+                MessageBox.Show("Appointment booked!");
+                LoadAppointments(); // Refresh grid
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex) when (ex.Number == 1062) // Duplicate entry error
+            {
+                MessageBox.Show("This appointment slot is already booked. Please select another.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An unexpected error occurred: " + ex.Message);
+            }
         }
+
 
         private void appointmentdatagrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -182,12 +211,13 @@ namespace CMS
 
         private void appointmentbtn_Click(object sender, EventArgs e)
         {
-          
+
             Bookappointmentform apptForm = new Bookappointmentform(); //loggedinpatientID should be passed if needed
             apptForm.Show();
             this.Hide();
         }
 
+      
     }
 }
 
