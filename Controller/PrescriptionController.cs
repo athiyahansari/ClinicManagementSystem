@@ -3,9 +3,6 @@ using CMS.Utils;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CMS.Controller
 {
@@ -14,22 +11,27 @@ namespace CMS.Controller
         // Get list of prescriptions for a specific patient
         public List<Prescription> GetPrescriptionsByPatientId(int patientId)
         {
-            var prescriptions = new List<Prescription>(); // List to store results
+            var prescriptions = new List<Prescription>();
 
-            using (var conn = DBHelper.GetConnection()) // Get MySQL connection
+            using (var conn = DBHelper.GetConnection())
             {
                 conn.Open();
 
-                // SQL to join Prescriptions and Doctors to get doctor name
-                string query = @"SELECT p.PrescriptionID, p.PrescriptionDate, p.Diagnosis, p.Medicines,
-                                        d.DoctorID, d.Name AS DoctorName
-                                 FROM Prescriptions p
-                                 JOIN Doctors d ON p.DoctorID = d.DoctorID
-                                 WHERE p.PatientID = @patientId";
+                string query = @"
+                    SELECT 
+                        p.prescription_id, 
+                        p.prescription_date, 
+                        p.diagnosis, 
+                        p.medicines,
+                        d.doctor_id, 
+                        d.full_name AS doctor_name
+                    FROM prescriptions p
+                    JOIN doctors d ON p.doctor_id = d.doctor_id
+                    WHERE p.patient_id = @patientId";
 
                 using (var cmd = new MySqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@patientId", patientId); // Prevent SQL injection
+                    cmd.Parameters.AddWithValue("@patientId", patientId);
 
                     using (var reader = cmd.ExecuteReader())
                     {
@@ -37,24 +39,24 @@ namespace CMS.Controller
                         {
                             var prescription = new Prescription
                             {
-                                PrescriptionID = Convert.ToInt32(reader["PrescriptionID"]),
-                                PrescriptionDate = Convert.ToDateTime(reader["PrescriptionDate"]),
-                                Diagnosis = reader["Diagnosis"].ToString(),
-                                Medicines = reader["Medicines"].ToString(),
+                                //PrescriptionID = Convert.ToInt32(reader["prescription_id"]),
+                                PrescriptionDate = Convert.ToDateTime(reader["prescription_date"]),
+                                Diagnosis = reader["diagnosis"].ToString(),
+                                Medicines = reader["medicines"].ToString(),
                                 Doctor = new Doctor
                                 {
-                                    Id = Convert.ToInt32(reader["DoctorID"]),
-                                    Name = reader["DoctorName"].ToString()
+                                    Id = Convert.ToInt32(reader["doctor_id"]),
+                                    Name = reader["doctor_name"].ToString() // Corrected here
                                 }
                             };
 
-                            prescriptions.Add(prescription); // Add to list
+                            prescriptions.Add(prescription);
                         }
                     }
                 }
             }
 
-            return prescriptions; // Return list to caller
+            return prescriptions;
         }
     }
 }
