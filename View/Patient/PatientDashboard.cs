@@ -62,7 +62,23 @@ namespace CMS.View.Patient
 
                 if (notif != null)
                 {
-                    lblNotification.Text = $"🔔 {notif.Message}";
+                    //lblNotification.Text = $"🔔 {notif.Message}";
+                    string sentence = notif.Message;
+                    char separator = ' '; // Space character
+                    string[] words = sentence.Split(separator);
+                    int newlineum = 0;
+                    string message = "";
+                    foreach (string word in words)
+                    {
+                        message += word + " ";
+                        newlineum++;
+                        if (newlineum % 5 == 0) // Add a newline every 10 words
+                        {
+                            message += "\n";
+                        }
+                    }
+                    lblNotification.Text = $"🔔 {message}";
+
                     lblNotification.Visible = true;
                 }
                 else
