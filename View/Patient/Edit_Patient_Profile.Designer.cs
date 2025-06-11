@@ -47,6 +47,10 @@
             label7 = new Label();
             cmbGender = new ComboBox();
             label8 = new Label();
+            DateTimePicker1 = new DateTimePicker();
+            DateOfTime = new Label();
+            PhoneNumber = new Label();
+            txtPhoneNumber = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -95,7 +99,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(440, 324);
+            label5.Location = new Point(424, 345);
             label5.Name = "label5";
             label5.Size = new Size(68, 22);
             label5.TabIndex = 8;
@@ -112,7 +116,7 @@
             // txtEmail
             // 
             txtEmail.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtEmail.Location = new Point(541, 316);
+            txtEmail.Location = new Point(552, 337);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(240, 30);
             txtEmail.TabIndex = 10;
@@ -232,7 +236,7 @@
             cmbGender.DisplayMember = "2";
             cmbGender.FormattingEnabled = true;
             cmbGender.Items.AddRange(new object[] { "Male", "Female" });
-            cmbGender.Location = new Point(599, 379);
+            cmbGender.Location = new Point(608, 403);
             cmbGender.Name = "cmbGender";
             cmbGender.Size = new Size(151, 28);
             cmbGender.TabIndex = 24;
@@ -242,11 +246,46 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(433, 385);
+            label8.Location = new Point(413, 409);
             label8.Name = "label8";
             label8.Size = new Size(79, 22);
             label8.TabIndex = 25;
             label8.Text = "Gender :";
+            // 
+            // DateTimePicker1
+            // 
+            DateTimePicker1.Location = new Point(541, 239);
+            DateTimePicker1.Name = "DateTimePicker1";
+            DateTimePicker1.Size = new Size(250, 27);
+            DateTimePicker1.TabIndex = 26;
+            // 
+            // DateOfTime
+            // 
+            DateOfTime.AutoSize = true;
+            DateOfTime.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            DateOfTime.Location = new Point(401, 243);
+            DateOfTime.Name = "DateOfTime";
+            DateOfTime.Size = new Size(110, 20);
+            DateOfTime.TabIndex = 27;
+            DateOfTime.Text = "Date Of Time :";
+            // 
+            // PhoneNumber
+            // 
+            PhoneNumber.AutoSize = true;
+            PhoneNumber.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            PhoneNumber.Location = new Point(396, 286);
+            PhoneNumber.Name = "PhoneNumber";
+            PhoneNumber.Size = new Size(120, 19);
+            PhoneNumber.TabIndex = 28;
+            PhoneNumber.Text = "Phone Number :";
+            // 
+            // txtPhoneNumber
+            // 
+            txtPhoneNumber.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtPhoneNumber.Location = new Point(541, 286);
+            txtPhoneNumber.Name = "txtPhoneNumber";
+            txtPhoneNumber.Size = new Size(240, 30);
+            txtPhoneNumber.TabIndex = 29;
             // 
             // Edit_Patient_Profile
             // 
@@ -254,6 +293,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(910, 560);
+            Controls.Add(txtPhoneNumber);
+            Controls.Add(PhoneNumber);
+            Controls.Add(DateOfTime);
+            Controls.Add(DateTimePicker1);
             Controls.Add(label8);
             Controls.Add(cmbGender);
             Controls.Add(label7);
@@ -302,5 +345,9 @@
         private Label label7;
         private ComboBox cmbGender;
         private Label label8;
+        private DateTimePicker DateTimePicker1;
+        private Label DateOfTime;
+        private Label PhoneNumber;
+        private TextBox txtPhoneNumber;
     }
 }

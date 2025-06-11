@@ -11,16 +11,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace CMS.View.Admin
 {
     public partial class Manage_Patient : Form
     {
-        private PatientController controller = new PatientController();
+         PatientController controller = new PatientController();
 
         public Manage_Patient()
         {
             InitializeComponent();
             LoadPatients();
+          
+
+
         }
         private void LoadPatients()
         {
@@ -29,13 +33,13 @@ namespace CMS.View.Admin
 
             foreach (var p in patients)
             {
-                dataGridViewPatients.Rows.Add(p.Id, p.FirstName, p.LastName, p.DateOfBirth.ToShortDateString(), p.Email);
+                dataGridViewPatients.Rows.Add( p.FirstName, p.LastName, p.Email);
             }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var form = new Edit_Patient_Profile(1);
+            var form = new Edit_Patient_Profile();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 LoadPatients();
@@ -55,7 +59,7 @@ namespace CMS.View.Admin
 
             if (patient != null)
             {
-                var form = new Edit_Patient_Profile(1); // Pass patient to edit
+                var form = new Edit_Patient_Profile(); // Pass patient to edit
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     LoadPatients();
@@ -76,6 +80,7 @@ namespace CMS.View.Admin
             controller.DeletePatient(id);
             LoadPatients();
         }
+
 
 
 

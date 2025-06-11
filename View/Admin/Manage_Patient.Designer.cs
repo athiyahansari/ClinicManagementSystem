@@ -43,6 +43,7 @@
             label2 = new Label();
             label3 = new Label();
             First_Name = new DataGridViewTextBoxColumn();
+            PhoneNumber = new DataGridViewTextBoxColumn();
             Name = new DataGridViewTextBoxColumn();
             DateOfBirth = new DataGridViewTextBoxColumn();
             Column1 = new DataGridViewTextBoxColumn();
@@ -76,12 +77,12 @@
             dataGridViewPatients.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewPatients.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridViewPatients.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewPatients.Columns.AddRange(new DataGridViewColumn[] { First_Name, Name, DateOfBirth, Column1 });
+            dataGridViewPatients.Columns.AddRange(new DataGridViewColumn[] { First_Name, PhoneNumber, Name, DateOfBirth, Column1 });
             dataGridViewPatients.GridColor = SystemColors.InactiveCaptionText;
             dataGridViewPatients.Location = new Point(316, 129);
             dataGridViewPatients.Name = "dataGridViewPatients";
             dataGridViewPatients.RowHeadersWidth = 51;
-            dataGridViewPatients.Size = new Size(556, 291);
+            dataGridViewPatients.Size = new Size(605, 291);
             dataGridViewPatients.TabIndex = 2;
             dataGridViewPatients.CellContentClick += dataGridViewPatients_CellContentClick;
             // 
@@ -203,6 +204,13 @@
             First_Name.ToolTipText = "vithu";
             First_Name.Width = 125;
             // 
+            // PhoneNumber
+            // 
+            PhoneNumber.HeaderText = "PhoneNumber";
+            PhoneNumber.MinimumWidth = 6;
+            PhoneNumber.Name = "PhoneNumber";
+            PhoneNumber.Width = 125;
+            // 
             // Name
             // 
             Name.HeaderText = "Last_Name";
@@ -232,7 +240,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(933, 620);
+            ClientSize = new Size(1097, 620);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(button8);
@@ -246,7 +254,7 @@
             Controls.Add(dataGridViewPatients);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
-            //Name = "Manage_Patient";
+           // Name = "Manage_Patient";
             Text = "Manage_Patient";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPatients).EndInit();
@@ -273,5 +281,6 @@
         private DataGridViewTextBoxColumn Name;
         private DataGridViewTextBoxColumn DateOfBirth;
         private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn PhoneNumber;
     }
 }

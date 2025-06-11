@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using CMS.Model;
 using MySql.Data.MySqlClient;
 using CMS.Utils;
+using CMS.Controller;
 
 
 
@@ -12,15 +13,59 @@ namespace CMS.View.Patient
 {
     public partial class Edit_Patient_Profile : Form
     {
-        private int patientId;
-        private Patients currentPatient;
+        private PatientController _controller;
 
-        public Edit_Patient_Profile(int patientId)
+        public Edit_Patient_Profile()
         {
             InitializeComponent();
-            this.patientId = patientId;
+           // ✅ FIXED: pass the view
+            cmbGender.Items.Add("Male");
+            cmbGender.Items.Add("Female");
+            cmbGender.Items.Add("Other");
+            cmbGender.SelectedIndex = 0;
+            _controller = new PatientController(this);
 
 
+
+        }
+        // Properties to expose UI control values to the Controller
+       
+
+        public string FirstName
+        {
+            get { return txtFirstName.Text; }
+            set { txtFirstName.Text = value; }
+        }
+
+        public string LastName
+        {
+            get { return txtLastName.Text; }
+            set { txtLastName.Text = value; }
+        }
+
+        public DateTime DateOfBirth
+        {
+            get { return DateTimePicker1.Value; }
+            set { DateTimePicker1.Value = value; }
+        }
+        
+
+        public string PatientPhoneNumber
+        {
+            get { return txtPhoneNumber.Text; }
+            set { txtPhoneNumber.Text = value; }
+        }
+
+        public string Email
+        {
+            get { return txtEmail.Text; }
+            set { txtEmail.Text = value; }
+        }
+
+        public string Gender
+        {
+            get { return cmbGender.SelectedItem?.ToString(); }
+            set { cmbGender.SelectedItem = value; }
         }
 
         //public Edit_Patient_Profile()
@@ -29,91 +74,56 @@ namespace CMS.View.Patient
 
         private void Edit_Patient_Profile_Load(object sender, EventArgs e)
         {
-            LoadPatientData();
-
+          
         }
-        private void LoadPatientData()
-        {
-            using (MySqlConnection conn = DBHelper.GetConnection())
-            {
-                conn.Open();
-                string query = "SELECT * FROM patients WHERE patient_id = @id";
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@id", patientId);
-                    using (MySqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            currentPatient = new Patients
-                            {
-                                Id = patientId,
-                                FirstName = reader["first_name"].ToString(),
-                                LastName = reader["last_name"].ToString(),
-                        
-                                Email = reader["email"].ToString(),
-                                Gender = reader["gender"].ToString()
-                            };
-
-                            txtFirstName.Text = currentPatient.FirstName;
-                            txtLastName.Text = currentPatient.LastName;
-
-                            txtEmail.Text = currentPatient.Email;
-                            cmbGender.SelectedItem = currentPatient.Gender;
-                        }
-                    }
-                }
-            }
-
-        }
+       
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            currentPatient.FirstName = txtFirstName.Text.Trim();
-            currentPatient.LastName = txtLastName.Text.Trim();
 
-            currentPatient.Email = txtEmail.Text.Trim();
-            currentPatient.Gender = cmbGender.SelectedItem?.ToString();
 
-            using (MySqlConnection conn = DBHelper.GetConnection())
-            {
-                conn.Open();
-                string query = @"UPDATE patients SET 
-                                    first_name = @firstName, 
-                                    last_name = @lastName, 
-                                     
-                                    email = @email, 
-                                    gender = @gender 
-                                 WHERE patient_id = @id";
-
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@firstName", currentPatient.FirstName);
-                    cmd.Parameters.AddWithValue("@lastName", currentPatient.LastName);
-
-                    cmd.Parameters.AddWithValue("@email", currentPatient.Email);
-                    cmd.Parameters.AddWithValue("@gender", currentPatient.Gender);
-                    cmd.Parameters.AddWithValue("@id", currentPatient.Id);
-
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Patient updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
-                }
-            }
-
+            _controller.SavePatientProfile();
 
 
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            _controller.CancelEdit();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
 
         }
+
+        // Method to display messages to the user (e.g., validation errors, success)
+        public void DisplayMessage(string message, string title, MessageBoxIcon icon)
+        {
+            MessageBox.Show(message, title, MessageBoxButtons.OK, icon);
+        }
+
+        // Method to close the form
+        public void CloseForm()
+        {
+            this.Close();
+        }
+
+        // Method to load initial data into the form (called by controller)
+        public void LoadPatientData(Patients patient)
+        {
+            if (patient != null)
+            {
+              
+                FirstName = patient.FirstName;
+                LastName = patient.LastName;
+                DateOfBirth = patient.DateOfBirth;
+               
+                Email = patient.Email;
+                Gender = patient.Gender;
+            }
+        }
     }
 }
+
 
