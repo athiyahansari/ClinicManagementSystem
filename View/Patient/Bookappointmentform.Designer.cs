@@ -30,7 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             flowLayoutPanelmain = new FlowLayoutPanel();
             panel1 = new Panel();
             logoutbtn = new Button();
@@ -47,7 +47,6 @@
             bookappobtn = new Button();
             notestxt = new TextBox();
             label6 = new Label();
-            timepickform = new TextBox();
             label5 = new Label();
             label4 = new Label();
             combodoctor = new ComboBox();
@@ -63,6 +62,7 @@
             CancelColumn = new DataGridViewButtonColumn();
             managelbl = new Label();
             appoinmentslbl = new Label();
+            timepickform = new ComboBox();
             flowLayoutPanelmain.SuspendLayout();
             panel1.SuspendLayout();
             panel5.SuspendLayout();
@@ -148,7 +148,6 @@
             doctorbtn.TabIndex = 3;
             doctorbtn.Text = "Doctor";
             doctorbtn.UseVisualStyleBackColor = false;
-            //doctorbtn.Click += doctorbtn_Click;
             // 
             // appointmentbtn
             // 
@@ -195,15 +194,16 @@
             panel5.Name = "panel5";
             panel5.Size = new Size(813, 663);
             panel5.TabIndex = 3;
+            //panel5.Paint += panel5_Paint;
             // 
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(192, 192, 255);
+            panel2.Controls.Add(timepickform);
             panel2.Controls.Add(dateTimePickerform);
             panel2.Controls.Add(bookappobtn);
             panel2.Controls.Add(notestxt);
             panel2.Controls.Add(label6);
-            panel2.Controls.Add(timepickform);
             panel2.Controls.Add(label5);
             panel2.Controls.Add(label4);
             panel2.Controls.Add(combodoctor);
@@ -248,13 +248,6 @@
             label6.Size = new Size(38, 15);
             label6.TabIndex = 22;
             label6.Text = "Notes";
-            // 
-            // timepickform
-            // 
-            timepickform.Location = new Point(219, 120);
-            timepickform.Name = "timepickform";
-            timepickform.Size = new Size(97, 23);
-            timepickform.TabIndex = 21;
             // 
             // label5
             // 
@@ -305,14 +298,14 @@
             // appointmentdatagrid
             // 
             appointmentdatagrid.BackgroundColor = SystemColors.ButtonHighlight;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            appointmentdatagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            appointmentdatagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             appointmentdatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             appointmentdatagrid.Columns.AddRange(new DataGridViewColumn[] { DoctorNameColumn, TimeColumn, DateColumn, ConsultaionColumn, StatusColumn, ResheduleColumn, CancelColumn });
             appointmentdatagrid.Location = new Point(42, 87);
@@ -382,6 +375,14 @@
             appoinmentslbl.TabIndex = 0;
             appoinmentslbl.Text = "Appointments";
             // 
+            // timepickform
+            // 
+            timepickform.FormattingEnabled = true;
+            timepickform.Location = new Point(219, 120);
+            timepickform.Name = "timepickform";
+            timepickform.Size = new Size(86, 23);
+            timepickform.TabIndex = 26;
+            // 
             // Bookappointmentform
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -420,7 +421,6 @@
         private Button prescrbtn;
         private Panel panel2;
         private Label label1;
-        private TextBox timepickform;
         private Label label5;
         private Label label4;
         private ComboBox combodoctor;
@@ -436,5 +436,6 @@
         private DataGridViewTextBoxColumn StatusColumn;
         private DataGridViewButtonColumn ResheduleColumn;
         private DataGridViewButtonColumn CancelColumn;
+        private ComboBox timepickform;
     }
 }
