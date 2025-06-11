@@ -1,14 +1,9 @@
 ﻿using CMS.Controller;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using CMS.Model;
+using System;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
+
 
 namespace CMS.View.Admin
 {
@@ -23,7 +18,6 @@ namespace CMS.View.Admin
             LoadDoctors();
         }
 
-        // Load records into grid
         private void LoadDoctors()
         {
             doctorGridView.Rows.Clear();
@@ -33,61 +27,17 @@ namespace CMS.View.Admin
             }
         }
 
-        // Add new doctor
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (ValidateInputs(out CMS.Model.Doctor d))
+            if (ValidateInputs(out Model.Doctor d))
             {
                 ctrl.AddDoctor(d);
-                MessageBox.Show("Added!");
+                MessageBox.Show("Doctor added!");
                 ClearFields();
                 LoadDoctors();
             }
         }
 
-        // Update doctor details
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            if (selectedId < 0) { MessageBox.Show("Select row"); return; }
-            if (ValidateInputs(out CMS.Model.Doctor d))
-            {
-                d.DoctorID = selectedId;
-                ctrl.UpdateDoctor(d);
-                MessageBox.Show("Updated!");
-                ClearFields();
-                LoadDoctors();
-            }
-        }
-
-        // Delete doctor
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (selectedId < 0) { MessageBox.Show("Select row"); return; }
-            if (MessageBox.Show("Delete?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                ctrl.DeleteDoctor(selectedId);
-                MessageBox.Show("Deleted!");
-                ClearFields();
-                LoadDoctors();
-            }
-        }
-
-        // Clear text fields
-        private void btnClear_Click(object sender, EventArgs e) => ClearFields();
-
-        // Populate fields from selected grid row
-        private void doctorGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0) return;
-            var row = doctorGridView.Rows[e.RowIndex];
-            selectedId = Convert.ToInt32(row.Cells[0].Value);
-            txtFullName.Text = row.Cells[1].Value?.ToString();
-            txtSpeciality.Text = row.Cells[2].Value?.ToString();
-            txtEmail.Text = row.Cells[3].Value?.ToString();
-            txtNumber.Text = row.Cells[4].Value?.ToString();
-        }
-
-        // Clear all inputs
         private void ClearFields()
         {
             selectedId = -1;
@@ -98,34 +48,100 @@ namespace CMS.View.Admin
             txtNumber.Clear();
         }
 
-        // Read inputs into Doctor object
-        private bool ValidateInputs(out CMS.Model.Doctor d)
+        private bool ValidateInputs(out Model.Doctor d)
         {
             d = null;
-            if (string.IsNullOrWhiteSpace(txtFullName.Text) || string.IsNullOrWhiteSpace(txtSpeciality.Text))
+            string fullName = txtFullName.Text.Trim();
+            string speciality = txtSpeciality.Text.Trim();
+            string email = txtEmail.Text.Trim();
+            string phone = txtNumber.Text.Trim();
+
+            // Full Name validation - only letters and spaces
+            if (string.IsNullOrEmpty(fullName) || !Regex.IsMatch(fullName, @"^[a-zA-Z\s]+$"))
             {
-                MessageBox.Show("Name & Speciality required."); return false;
+                MessageBox.Show("Full Name must contain only letters and spaces.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
 
-           d= new Model.Doctor()
+            // Speciality validation - only letters and spaces
+            if (string.IsNullOrEmpty(speciality) || !Regex.IsMatch(speciality, @"^[a-zA-Z\s]+$"))
             {
-                FullName = txtFullName.Text.Trim(),
-                Speciality = txtSpeciality.Text.Trim(),
-                Email = txtEmail.Text.Trim(),
-                PhoneNo = txtNumber.Text.Trim(),
-                UserID = 1 // Replace with real user ID if needed
+                MessageBox.Show("Speciality must contain only letters and spaces.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // Email validation
+            if (string.IsNullOrEmpty(email) || !Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            {
+                MessageBox.Show("Enter a valid email address.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // Phone number validation - exactly 10 digits
+            if (string.IsNullOrEmpty(phone) || !Regex.IsMatch(phone, @"^\d{10}$"))
+            {
+                MessageBox.Show("Phone number must be exactly 10 digits.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // All checks passed, create doctor object
+            d = new Model.Doctor
+            {
+                FullName = fullName,
+                Speciality = speciality,
+                Email = email,
+                PhoneNo = phone,
+                UserID = 1 // Replace with actual logged-in UserID if needed
             };
+
             return true;
         }
 
-        // Back button logic
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        private void btnClear_Click(object sender, EventArgs e) => ClearFields();
+        private void btnBack_Click(object sender, EventArgs e) => this.Close();
 
-        // (Optional) validate email input
-        private void emailtxt_TextChanged(object sender, EventArgs e) { }
-        private void phoneNotxt_TextChanged(object sender, EventArgs e) { }
+        private void doctorGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            var column = doctorGridView.Columns[e.ColumnIndex].Name;
+            var row = doctorGridView.Rows[e.RowIndex];
+            selectedId = Convert.ToInt32(row.Cells["doctorid"].Value);
+
+            if (column == "DeleteColumn")
+            {
+                if (MessageBox.Show("Are you sure you want to delete this doctor?", "Confirm Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    ctrl.DeleteDoctor(selectedId);
+                    MessageBox.Show("Doctor deleted.");
+                    ClearFields();
+                    LoadDoctors();
+                }
+            }
+            else if (column == "UpdateColumn")
+            {
+                if (txtDocID.Text == selectedId.ToString())
+                {
+                    if (ValidateInputs(out Model.Doctor updatedDoctor))
+                    {
+                        updatedDoctor.DoctorID = selectedId;
+                        ctrl.UpdateDoctor(updatedDoctor);
+                        MessageBox.Show("Doctor updated successfully.");
+                        ClearFields();
+                        LoadDoctors();
+                    }
+                }
+                else
+                {
+                    // Populate form fields for editing
+                    txtDocID.Text = row.Cells["doctorid"].Value?.ToString();
+                    txtFullName.Text = row.Cells["name"].Value?.ToString();
+                    txtSpeciality.Text = row.Cells["docSpecialty"].Value?.ToString();
+                    txtEmail.Text = row.Cells["emailNo"].Value?.ToString();
+                    txtNumber.Text = row.Cells["phone"].Value?.ToString();
+                    MessageBox.Show("Now edit the fields and click the same Update button again to apply changes.");
+                }
+            }
+        }
     }
 }

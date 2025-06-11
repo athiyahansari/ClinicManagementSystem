@@ -48,15 +48,14 @@
             txtEmail = new TextBox();
             txtNumber = new TextBox();
             btnAdd = new Button();
-            btnUpdate = new Button();
-            btnDelete = new Button();
-            btnClear = new Button();
             doctorGridView = new DataGridView();
             doctorID = new DataGridViewTextBoxColumn();
             name = new DataGridViewTextBoxColumn();
-            docspecilaity = new DataGridViewTextBoxColumn();
+            docSpecialty = new DataGridViewTextBoxColumn();
             emailNo = new DataGridViewTextBoxColumn();
             phone = new DataGridViewTextBoxColumn();
+            UpdateColumn = new DataGridViewButtonColumn();
+            DeleteColumn = new DataGridViewButtonColumn();
             btnBack = new Button();
             sidenav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)doctorGridView).BeginInit();
@@ -233,7 +232,6 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(125, 30);
             txtEmail.TabIndex = 13;
-            txtEmail.TextChanged += emailtxt_TextChanged;
             // 
             // txtNumber
             // 
@@ -241,65 +239,31 @@
             txtNumber.Name = "txtNumber";
             txtNumber.Size = new Size(125, 30);
             txtNumber.TabIndex = 14;
-            txtNumber.TextChanged += phoneNotxt_TextChanged;
             // 
             // btnAdd
             // 
             btnAdd.BackColor = Color.DarkTurquoise;
-            btnAdd.Location = new Point(981, 96);
+            btnAdd.Location = new Point(696, 209);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(94, 29);
+            btnAdd.Size = new Size(175, 29);
             btnAdd.TabIndex = 15;
-            btnAdd.Text = "Add";
+            btnAdd.Text = "Add New Doctor";
             btnAdd.UseVisualStyleBackColor = false;
             btnAdd.Click += btnAdd_Click;
-            // 
-            // btnUpdate
-            // 
-            btnUpdate.BackColor = Color.DarkTurquoise;
-            btnUpdate.Location = new Point(981, 160);
-            btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(94, 29);
-            btnUpdate.TabIndex = 16;
-            btnUpdate.Text = "Update";
-            btnUpdate.UseVisualStyleBackColor = false;
-            btnUpdate.Click += btnUpdate_Click;
-            // 
-            // btnDelete
-            // 
-            btnDelete.BackColor = Color.DarkTurquoise;
-            btnDelete.Location = new Point(981, 224);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(94, 29);
-            btnDelete.TabIndex = 17;
-            btnDelete.Text = "Delete";
-            btnDelete.UseVisualStyleBackColor = false;
-            btnDelete.Click += btnDelete_Click;
-            // 
-            // btnClear
-            // 
-            btnClear.BackColor = Color.DarkTurquoise;
-            btnClear.Location = new Point(981, 282);
-            btnClear.Name = "btnClear";
-            btnClear.Size = new Size(94, 29);
-            btnClear.TabIndex = 18;
-            btnClear.Text = "Clear";
-            btnClear.UseVisualStyleBackColor = false;
-            btnClear.Click += btnClear_Click;
             // 
             // doctorGridView
             // 
             doctorGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             doctorGridView.BackgroundColor = SystemColors.ButtonHighlight;
             doctorGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            doctorGridView.Columns.AddRange(new DataGridViewColumn[] { doctorID, name, docspecilaity, emailNo, phone });
-            doctorGridView.Location = new Point(290, 369);
+            doctorGridView.Columns.AddRange(new DataGridViewColumn[] { doctorID, name, docSpecialty, emailNo, phone, UpdateColumn, DeleteColumn });
+            doctorGridView.Location = new Point(290, 350);
             doctorGridView.Name = "doctorGridView";
             doctorGridView.RowHeadersWidth = 51;
             doctorGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            doctorGridView.Size = new Size(843, 243);
+            doctorGridView.Size = new Size(937, 262);
             doctorGridView.TabIndex = 19;
-            doctorGridView.CellClick += doctorGridView_CellClick;
+            doctorGridView.CellContentClick += doctorGridView_CellContentClick;
             // 
             // doctorID
             // 
@@ -313,11 +277,11 @@
             name.MinimumWidth = 6;
             name.Name = "name";
             // 
-            // docspecilaity
+            // docSpecialty
             // 
-            docspecilaity.HeaderText = "Speciality";
-            docspecilaity.MinimumWidth = 6;
-            docspecilaity.Name = "docspecilaity";
+            docSpecialty.HeaderText = "Speciality";
+            docSpecialty.MinimumWidth = 6;
+            docSpecialty.Name = "docSpecialty";
             // 
             // emailNo
             // 
@@ -330,6 +294,22 @@
             phone.HeaderText = "Phone No";
             phone.MinimumWidth = 6;
             phone.Name = "phone";
+            // 
+            // UpdateColumn
+            // 
+            UpdateColumn.HeaderText = "Update";
+            UpdateColumn.MinimumWidth = 6;
+            UpdateColumn.Name = "UpdateColumn";
+            UpdateColumn.Text = "Update";
+            UpdateColumn.UseColumnTextForButtonValue = true;
+            // 
+            // DeleteColumn
+            // 
+            DeleteColumn.HeaderText = "Delete";
+            DeleteColumn.MinimumWidth = 6;
+            DeleteColumn.Name = "DeleteColumn";
+            DeleteColumn.Text = "Delete";
+            DeleteColumn.UseColumnTextForButtonValue = true;
             // 
             // btnBack
             // 
@@ -347,12 +327,9 @@
             AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1199, 686);
+            ClientSize = new Size(1347, 686);
             Controls.Add(btnBack);
             Controls.Add(doctorGridView);
-            Controls.Add(btnClear);
-            Controls.Add(btnDelete);
-            Controls.Add(btnUpdate);
             Controls.Add(btnAdd);
             Controls.Add(txtNumber);
             Controls.Add(txtEmail);
@@ -407,5 +384,8 @@
         private DataGridViewTextBoxColumn emailNo;
         private DataGridViewTextBoxColumn phone;
         private Button btnBack;
+        private DataGridViewButtonColumn UpdateColumn;
+        private DataGridViewButtonColumn DeleteColumn;
+        private DataGridViewTextBoxColumn docSpecialty;
     }
 }

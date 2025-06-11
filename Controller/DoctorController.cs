@@ -1,50 +1,41 @@
 ﻿using CMS.Model;
 using CMS.Utils;
 using MySql.Data.MySqlClient;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Mysqlx.Expect.Open.Types.Condition.Types;
 
 namespace CMS.Controller
 {
     public class DoctorController
     {
-        // Retrieve all doctors from database
         public List<Doctor> GetAllDoctors()
         {
             var list = new List<Doctor>();
             using var conn = DBHelper.GetConnection();
             conn.Open();
-
-            string query = "SELECT DoctorID, UserID, FullName, Speciality, Email, PhoneNo FROM doctors";
+            string query = "SELECT doctor_id, user_id, full_name, specialty, email, contact FROM doctors";
             using var cmd = new MySqlCommand(query, conn);
             using var reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 list.Add(new Doctor
                 {
-                    DoctorID = reader.GetInt32("DoctorID"),
-                    UserID = reader.GetInt32("UserID"),
-                    FullName = reader.GetString("FullName"),
-                    Speciality = reader.GetString("Speciality"),
-                    Email = reader.GetString("Email"),
-                    PhoneNo = reader.GetString("PhoneNo")
+                    DoctorID = reader.GetInt32("doctor_id"),
+                    UserID = reader.GetInt32("user_id"),
+                    FullName = reader.GetString("full_name"),
+                    Speciality = reader.GetString("specialty"),
+                    Email = reader.GetString("email"),
+                    PhoneNo = reader.GetString("contact")
                 });
             }
             return list;
         }
 
-        // Add a new doctor
         public void AddDoctor(Doctor doc)
         {
             using var conn = DBHelper.GetConnection();
             conn.Open();
-            var query = @"INSERT INTO doctors 
-                (UserID, FullName, Speciality, Email, PhoneNo) 
-                VALUES (@u, @f, @s, @e, @p)";
+            var query = @"INSERT INTO doctors (user_id, full_name, specialty, email, contact)
+                          VALUES (@u, @f, @s, @e, @p)";
             using var cmd = new MySqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@u", doc.UserID);
             cmd.Parameters.AddWithValue("@f", doc.FullName);
@@ -54,14 +45,11 @@ namespace CMS.Controller
             cmd.ExecuteNonQuery();
         }
 
-        // Update an existing doctor
         public void UpdateDoctor(Doctor doc)
         {
             using var conn = DBHelper.GetConnection();
             conn.Open();
-            var query = @"UPDATE doctors SET 
-                FullName=@f, Speciality=@s, Email=@e, PhoneNo=@p 
-                WHERE DoctorID=@id";
+            var query = @"UPDATE doctors SET full_name=@f, specialty=@s, email=@e, contact=@p WHERE doctor_id=@id";
             using var cmd = new MySqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@f", doc.FullName);
             cmd.Parameters.AddWithValue("@s", doc.Speciality);
@@ -71,15 +59,28 @@ namespace CMS.Controller
             cmd.ExecuteNonQuery();
         }
 
-        // Delete a doctor by ID
         public void DeleteDoctor(int id)
         {
-            using var conn = DBHelper.GetConnection();
-            conn.Open();
-            var query = "DELETE FROM doctors WHERE DoctorID=@id";
-            using var cmd = new MySqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@id", id);
-            cmd.ExecuteNonQuery();
+            try
+            {
+                using var conn = DBHelper.GetConnection();
+                conn.Open();
+                var query = "DELETE FROM doctors WHERE doctor_id=@id";
+                using var cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                if (ex.Number == 1451) // Foreign key constraint error
+                {
+                    MessageBox.Show("Cannot delete this doctor because they have existing appointments.", "Delete Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
