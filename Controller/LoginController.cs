@@ -17,7 +17,7 @@ namespace CMS.Controller
             using (MySqlConnection conn = DBHelper.GetConnection())
             {
                 conn.Open();
-                string query = "SELECT username, password, role FROM users WHERE BINARY username = @username AND BINARY password = @password";
+                string query = "SELECT user_id, username, password, role FROM users WHERE BINARY username = @username AND BINARY password = @password";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
@@ -30,6 +30,7 @@ namespace CMS.Controller
                         {
                             return new User
                             {
+                                UserId = Convert.ToInt32(reader["user_id"]),
                                 Username = reader["username"].ToString(),
                                 Password = reader["password"].ToString(),
                                 Role = reader["role"].ToString()
@@ -38,8 +39,8 @@ namespace CMS.Controller
                     }
                 }
             }
+
             return null;
         }
-
     }
 }

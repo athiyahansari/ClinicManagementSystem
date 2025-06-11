@@ -41,8 +41,8 @@ namespace CMS.View
 
         private void btnAdminLogin_Click(object sender, EventArgs e)
         {
-            string username = txtAdminUsername.Text.Trim();
-            string password = txtAdminPassword.Text.Trim();
+            string username = txtAdminUsername.Text;
+            string password = txtAdminPassword.Text;
 
             var user = loginController.Login(username, password);
 
@@ -53,7 +53,7 @@ namespace CMS.View
             }
             else
             {
-                MessageBox.Show("Invalid Admin login.");
+                MessageBox.Show("Invalid Admin credentials.");
             }
         }
 
