@@ -57,11 +57,12 @@ namespace CMS.View.Admin
             string phone = txtNumber.Text.Trim();
 
             // Full Name validation - only letters and spaces
-            if (string.IsNullOrEmpty(fullName) || !Regex.IsMatch(fullName, @"^[a-zA-Z\s]+$"))
+            if (string.IsNullOrEmpty(fullName) || !Regex.IsMatch(fullName, @"^[a-zA-Z.\s]+$"))
             {
-                MessageBox.Show("Full Name must contain only letters and spaces.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Full Name must contain only letters, spaces and periods.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
+
 
             // Speciality validation - only letters and spaces
             if (string.IsNullOrEmpty(speciality) || !Regex.IsMatch(speciality, @"^[a-zA-Z\s]+$"))
