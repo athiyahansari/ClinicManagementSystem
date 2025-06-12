@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CMS.View.Doctor
 {
-    public class ViewDoctor : Form
+    public partial class ViewDoctor : Form
     {
         public ViewDoctor()
         {
@@ -28,6 +28,11 @@ namespace CMS.View.Doctor
         }
 
         private void dataGridView1_CellContentClick_2(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void ViewDoctor_Load(object sender, EventArgs e)
         {
 
         }
