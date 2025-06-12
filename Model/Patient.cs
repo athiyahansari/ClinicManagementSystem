@@ -1,4 +1,4 @@
-﻿namespace ClinicalManagementSystem.Models
+﻿namespace CMS.Model
 {
     public class Patient
     {

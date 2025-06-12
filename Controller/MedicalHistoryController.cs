@@ -1,57 +1,64 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using CMS.Model;
+using CMS.Utils;
 using MySql.Data.MySqlClient;
-using ClinicManagementSystem.Models;
-using System.Windows.Forms;
-using CMS.Model;
+using System;
+using System.Collections.Generic;
 
-namespace ClinicManagementSystem.Controllers
+namespace CMS.Controller
 {
     public class MedicalHistoryController
     {
-        // Connect to DB using app.config connection string
-        private string connectionString = System.Configuration.ConfigurationManager
-            .ConnectionStrings["MySqlConnection"].ConnectionString;
+        public List<Patient> GetAllPatients()
+        {
+            List<Patient> patients = new List<Patient>();
+            string query = "SELECT * FROM patients";
 
+            using (MySqlConnection conn = DBHelper.GetConnection())
+            {
+                try
+                {
+                    conn.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Patient patient = new Patient
+                            {
+                                PatientId = Convert.ToInt32(reader["patient_id"]),
+                                UserId = Convert.ToInt32(reader["user_id"]),
+                                FirstName = reader["first_name"].ToString(),
+                                LastName = reader["last_name"].ToString(),
+                                Gender = reader["gender"].ToString(),
+                                DateOfBirth = Convert.ToDateTime(reader["date_of_birth"]),
+                                Email = reader["email"].ToString(),
+                                CreatedAt = Convert.ToDateTime(reader["created_at"]),
+                                UpdatedAt = reader["updated_at"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["updated_at"])
+                            };
+                            patients.Add(patient);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("❌ Failed to fetch patients: " + ex.Message);
+                }
+            }
 
-        //get medical history by patient name
+            return patients;
+        }
 
-
-
-
-
-        public List<MedicalHistory> GetMedicalHistoryByPatientName(string fullName)
+        public List<MedicalHistory> GetMedicalHistoryByPatientId(int patientId)
         {
             List<MedicalHistory> historyList = new List<MedicalHistory>();
+            string query = "SELECT * FROM medical_history WHERE patient_id = @patientId";
 
-            try
+            using (MySqlConnection conn = DBHelper.GetConnection())
             {
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                try
                 {
-                    connection.Open();
-
-                    // Step 1: Get patient_id from full name
-                    string patientIdQuery = "SELECT patient_id FROM patients WHERE CONCAT(first_name, ' ', last_name) = @fullName";
-                    int foundpatientId = -1;
-
-                    string query = @"
-            SELECT mh.history_id, mh.visit_date, mh.diagnosis, mh.prescription, mh.notes,
-                   d.full_name AS doctor_full_name
-            FROM medical_history mh
-            INNER JOIN doctors d ON mh.doctor_id = d.doctor_id
-            WHERE mh.patient_id = @patientId
-            ORDER BY mh.visit_date DESC;
-";
-
-
-
-                    //Get patient ID from that name
-                    string getIdQuery = "SELECT patient_id FROM patients WHERE CONCAT(first_name, ' ', last_name) = @fullName";
-                    int patientId = -1;
-
-
-
-                    using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                    conn.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@patientId", patientId);
 
@@ -59,33 +66,28 @@ namespace ClinicManagementSystem.Controllers
                         {
                             while (reader.Read())
                             {
-                                string doctorFirstName = reader.GetString("doctor_first_name");
-                                string doctorLastName = reader.GetString("doctor_last_name");
-                                string doctorFullName = doctorFirstName + " " + doctorLastName;
-
-                                historyList.Add(new MedicalHistory
+                                MedicalHistory history = new MedicalHistory
                                 {
-                                    HistoryID = reader.GetInt32("history_id"),
-                                    PatientID = patientId,
-                                    PatientName = fullName,
-                                    Date = reader.GetDateTime("visit_date"),
-                                    Diagnosis = reader.GetString("diagnosis"),
-                                    Prescription = reader.GetString("prescription"),
-                                    Notes = reader.IsDBNull(reader.GetOrdinal("notes")) ? "" : reader.GetString("notes"),
-                                    DoctorName = doctorFullName
-                                });
+                                    HistoryId = Convert.ToInt32(reader["history_id"]),
+                                    PatientId = Convert.ToInt32(reader["patient_id"]),
+                                    DoctorId = Convert.ToInt32(reader["doctor_id"]),
+                                    VisitDate = Convert.ToDateTime(reader["visit_date"]),
+                                    Diagnosis = reader["diagnosis"].ToString(),
+                                    Prescription = reader["prescription"].ToString(),
+                                    Notes = reader["notes"].ToString()
+                                };
+                                historyList.Add(history);
                             }
                         }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error retrieving medical history: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (Exception ex)
+                {
+                    Console.WriteLine("❌ Failed to fetch medical history: " + ex.Message);
+                }
             }
 
             return historyList;
-
         }
     }
 }
