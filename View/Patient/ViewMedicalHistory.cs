@@ -20,7 +20,7 @@ namespace ClinicManagementSystem.Views.Patients
 
         private void ViewMedicalHistory_Load(object sender, EventArgs e)
         {
-            // Optional: any initialization on form load
+            
         }
 
         // Button click event - just calls the load method
