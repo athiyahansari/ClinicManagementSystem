@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             sidenav = new Panel();
-            label3 = new Label();
+            button1 = new Button();
             navprofile = new Button();
             label2 = new Label();
             logout = new Button();
@@ -43,17 +43,17 @@
             lblMedicines = new Label();
             txtMedicines = new TextBox();
             btnAdd = new Button();
-            btnUpdate = new Button();
-            btnDelete = new Button();
-            btnClear = new Button();
             dtpDate = new DateTimePicker();
             dgvPrescriptions = new DataGridView();
-            btnBack = new Button();
-            PrescriptionID = new DataGridViewTextBoxColumn();
             date = new DataGridViewTextBoxColumn();
             ptID = new DataGridViewTextBoxColumn();
+            PtName = new DataGridViewTextBoxColumn();
             disease = new DataGridViewTextBoxColumn();
             medicine = new DataGridViewTextBoxColumn();
+            UpdateColumn = new DataGridViewButtonColumn();
+            btnBack = new Button();
+            lblPatientName = new Label();
+            txtPatientName = new TextBox();
             sidenav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPrescriptions).BeginInit();
             SuspendLayout();
@@ -61,7 +61,7 @@
             // sidenav
             // 
             sidenav.BackColor = Color.CornflowerBlue;
-            sidenav.Controls.Add(label3);
+            sidenav.Controls.Add(button1);
             sidenav.Controls.Add(navprofile);
             sidenav.Controls.Add(label2);
             sidenav.Controls.Add(logout);
@@ -73,16 +73,16 @@
             sidenav.Size = new Size(247, 735);
             sidenav.TabIndex = 2;
             // 
-            // label3
+            // button1
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Yu Gothic UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = SystemColors.ButtonHighlight;
-            label3.Location = new Point(71, 75);
-            label3.Name = "label3";
-            label3.Size = new Size(128, 23);
-            label3.TabIndex = 24;
-            label3.Text = "Doctor ID-2346";
+            button1.BackColor = Color.LightSteelBlue;
+            button1.Font = new Font("Segoe UI", 9F);
+            button1.Location = new Point(42, 223);
+            button1.Name = "button1";
+            button1.Size = new Size(159, 47);
+            button1.TabIndex = 24;
+            button1.Text = "Prescriptions";
+            button1.UseVisualStyleBackColor = false;
             // 
             // navprofile
             // 
@@ -100,11 +100,11 @@
             label2.AutoSize = true;
             label2.Font = new Font("Kristen ITC", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ButtonFace;
-            label2.Location = new Point(41, 40);
+            label2.Location = new Point(23, 41);
             label2.Name = "label2";
-            label2.Size = new Size(139, 33);
+            label2.Size = new Size(209, 33);
             label2.TabIndex = 23;
-            label2.Text = "John Doe";
+            label2.Text = "MedLine Clinic";
             // 
             // logout
             // 
@@ -149,7 +149,6 @@
             lblTitle.Size = new Size(324, 41);
             lblTitle.TabIndex = 3;
             lblTitle.Text = "Manage Prescriptions";
-          
             // 
             // lblPatientID
             // 
@@ -163,7 +162,7 @@
             // lblDiagnosis
             // 
             lblDiagnosis.AutoSize = true;
-            lblDiagnosis.Location = new Point(316, 192);
+            lblDiagnosis.Location = new Point(317, 220);
             lblDiagnosis.Name = "lblDiagnosis";
             lblDiagnosis.Size = new Size(92, 23);
             lblDiagnosis.TabIndex = 5;
@@ -171,17 +170,18 @@
             // 
             // txtPatientID
             // 
-            txtPatientID.Location = new Point(429, 120);
+            txtPatientID.Location = new Point(455, 120);
             txtPatientID.Name = "txtPatientID";
             txtPatientID.Size = new Size(125, 30);
             txtPatientID.TabIndex = 6;
             // 
             // txtDiagnosis
             // 
-            txtDiagnosis.Location = new Point(429, 192);
+            txtDiagnosis.Location = new Point(455, 213);
             txtDiagnosis.Name = "txtDiagnosis";
-            txtDiagnosis.Size = new Size(125, 30);
+            txtDiagnosis.Size = new Size(197, 30);
             txtDiagnosis.TabIndex = 7;
+            txtDiagnosis.TextChanged += txtDiagnosis_TextChanged;
             // 
             // lblMedicines
             // 
@@ -191,58 +191,24 @@
             lblMedicines.Size = new Size(95, 23);
             lblMedicines.TabIndex = 8;
             lblMedicines.Text = "Medicines :";
-        
             // 
             // txtMedicines
             // 
-            txtMedicines.Location = new Point(429, 265);
+            txtMedicines.Location = new Point(455, 261);
             txtMedicines.Name = "txtMedicines";
-            txtMedicines.Size = new Size(125, 30);
+            txtMedicines.Size = new Size(208, 30);
             txtMedicines.TabIndex = 9;
             // 
             // btnAdd
             // 
             btnAdd.BackColor = Color.DarkTurquoise;
-            btnAdd.Location = new Point(1019, 103);
+            btnAdd.Location = new Point(857, 103);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(94, 29);
+            btnAdd.Size = new Size(256, 29);
             btnAdd.TabIndex = 10;
-            btnAdd.Text = "Add";
+            btnAdd.Text = "Add New Prescription Details";
             btnAdd.UseVisualStyleBackColor = false;
             btnAdd.Click += btnAdd_Click;
-            // 
-            // btnUpdate
-            // 
-            btnUpdate.BackColor = Color.DarkTurquoise;
-            btnUpdate.Location = new Point(1019, 180);
-            btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(94, 29);
-            btnUpdate.TabIndex = 11;
-            btnUpdate.Text = "Update";
-            btnUpdate.UseVisualStyleBackColor = false;
-            btnUpdate.Click += btnUpdate_Click;
-            // 
-            // btnDelete
-            // 
-            btnDelete.BackColor = Color.DarkTurquoise;
-            btnDelete.Location = new Point(1019, 254);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(94, 29);
-            btnDelete.TabIndex = 12;
-            btnDelete.Text = "Delete";
-            btnDelete.UseVisualStyleBackColor = false;
-            btnDelete.Click += btnDelete_Click;
-            // 
-            // btnClear
-            // 
-            btnClear.BackColor = Color.DarkTurquoise;
-            btnClear.Location = new Point(1019, 322);
-            btnClear.Name = "btnClear";
-            btnClear.Size = new Size(94, 29);
-            btnClear.TabIndex = 13;
-            btnClear.Text = "Clear";
-            btnClear.UseVisualStyleBackColor = false;
-            btnClear.Click += btnClear_Click;
             // 
             // dtpDate
             // 
@@ -256,32 +222,14 @@
             dgvPrescriptions.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvPrescriptions.BackgroundColor = SystemColors.ButtonHighlight;
             dgvPrescriptions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPrescriptions.Columns.AddRange(new DataGridViewColumn[] { PrescriptionID, date, ptID, disease, medicine });
+            dgvPrescriptions.Columns.AddRange(new DataGridViewColumn[] { date, ptID, PtName, disease, medicine, UpdateColumn });
             dgvPrescriptions.Location = new Point(283, 405);
             dgvPrescriptions.Name = "dgvPrescriptions";
             dgvPrescriptions.RowHeadersWidth = 51;
             dgvPrescriptions.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPrescriptions.Size = new Size(864, 268);
+            dgvPrescriptions.Size = new Size(890, 268);
             dgvPrescriptions.TabIndex = 15;
             dgvPrescriptions.CellClick += dgvPrescriptions_CellClick;
-            // 
-            // btnBack
-            // 
-            btnBack.BackColor = Color.LightSkyBlue;
-            btnBack.Location = new Point(283, 694);
-            btnBack.Name = "btnBack";
-            btnBack.Size = new Size(94, 29);
-            btnBack.TabIndex = 16;
-            btnBack.Text = "Back";
-            btnBack.UseVisualStyleBackColor = false;
-            btnBack.Click += btnBack_Click;
-            // 
-            // PrescriptionID
-            // 
-            PrescriptionID.HeaderText = "Prescription ID";
-            PrescriptionID.MinimumWidth = 6;
-            PrescriptionID.Name = "PrescriptionID";
-            PrescriptionID.Visible = false;
             // 
             // date
             // 
@@ -295,6 +243,12 @@
             ptID.MinimumWidth = 6;
             ptID.Name = "ptID";
             // 
+            // PtName
+            // 
+            PtName.HeaderText = "Patient Name";
+            PtName.MinimumWidth = 6;
+            PtName.Name = "PtName";
+            // 
             // disease
             // 
             disease.HeaderText = "Diagnosis";
@@ -307,17 +261,52 @@
             medicine.MinimumWidth = 6;
             medicine.Name = "medicine";
             // 
+            // UpdateColumn
+            // 
+            UpdateColumn.HeaderText = "Update";
+            UpdateColumn.MinimumWidth = 6;
+            UpdateColumn.Name = "UpdateColumn";
+            UpdateColumn.Resizable = DataGridViewTriState.True;
+            UpdateColumn.SortMode = DataGridViewColumnSortMode.Automatic;
+            UpdateColumn.Text = "Update";
+            UpdateColumn.UseColumnTextForButtonValue = true;
+            // 
+            // btnBack
+            // 
+            btnBack.BackColor = Color.LightSkyBlue;
+            btnBack.Location = new Point(283, 694);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(94, 29);
+            btnBack.TabIndex = 16;
+            btnBack.Text = "Back";
+            btnBack.UseVisualStyleBackColor = false;
+            // 
+            // lblPatientName
+            // 
+            lblPatientName.AutoSize = true;
+            lblPatientName.Location = new Point(317, 173);
+            lblPatientName.Name = "lblPatientName";
+            lblPatientName.Size = new Size(123, 23);
+            lblPatientName.TabIndex = 17;
+            lblPatientName.Text = "Patient Name :";
+            // 
+            // txtPatientName
+            // 
+            txtPatientName.Location = new Point(455, 170);
+            txtPatientName.Name = "txtPatientName";
+            txtPatientName.Size = new Size(197, 30);
+            txtPatientName.TabIndex = 18;
+            // 
             // CreatePrescription
             // 
             AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1198, 735);
+            Controls.Add(txtPatientName);
+            Controls.Add(lblPatientName);
             Controls.Add(btnBack);
             Controls.Add(dgvPrescriptions);
             Controls.Add(dtpDate);
-            Controls.Add(btnClear);
-            Controls.Add(btnDelete);
-            Controls.Add(btnUpdate);
             Controls.Add(btnAdd);
             Controls.Add(txtMedicines);
             Controls.Add(lblMedicines);
@@ -340,7 +329,6 @@
         #endregion
 
         private Panel sidenav;
-        private Label label3;
         private Button navprofile;
         private Label label2;
         private Button logout;
@@ -354,16 +342,17 @@
         private Label lblMedicines;
         private TextBox txtMedicines;
         private Button btnAdd;
-        private Button btnUpdate;
-        private Button btnDelete;
-        private Button btnClear;
         private DateTimePicker dtpDate;
         private DataGridView dgvPrescriptions;
         private Button btnBack;
-        private DataGridViewTextBoxColumn PrescriptionID;
+        private Label lblPatientName;
+        private TextBox txtPatientName;
+        private Button button1;
         private DataGridViewTextBoxColumn date;
         private DataGridViewTextBoxColumn ptID;
+        private DataGridViewTextBoxColumn PtName;
         private DataGridViewTextBoxColumn disease;
         private DataGridViewTextBoxColumn medicine;
+        private DataGridViewButtonColumn UpdateColumn;
     }
 }

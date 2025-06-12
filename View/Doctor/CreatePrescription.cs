@@ -1,199 +1,161 @@
-﻿using CMS.Utils;
-using MySql.Data.MySqlClient;
+﻿using CMS.Controllers;
+using CMS.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CMS.View.Doctor
 {
     public partial class CreatePrescription : Form
     {
+        private int currentPrescriptionID = -1;
+        private int doctorID = 1; // Default doctor ID for testing
+
         public CreatePrescription()
         {
             InitializeComponent();
         }
 
-        //  Load event: called when the form is first shown
         private void CreatePrescription_Load(object sender, EventArgs e)
         {
-            LoadPrescriptionData(); // Populate the DataGridView
+            LoadPrescriptionData();
         }
 
-        //  Load all prescriptions from DB and fill into DataGridView
         private void LoadPrescriptionData()
         {
-            try
-            {
-                using (var conn = DBHelper.GetConnection())
-                {
-                    conn.Open();
-                    string query = "SELECT PrescriptionID, PrescriptionDate, PatientID, Diagnosis, Medicines FROM prescriptions";
-                    using (var cmd = new MySqlCommand(query, conn))
-                    using (var adapter = new MySqlDataAdapter(cmd))
-                    {
-                        DataTable dt = new DataTable();
-                        adapter.Fill(dt);
-                        dgvPrescriptions.Rows.Clear();
+            dgvPrescriptions.Rows.Clear();
 
-                        foreach (DataRow row in dt.Rows)
-                        {
-                            dgvPrescriptions.Rows.Add(
-                                row["PrescriptionID"],
-                                Convert.ToDateTime(row["PrescriptionDate"]).ToString("yyyy-MM-dd"),
-                                row["PatientID"],
-                                row["Diagnosis"],
-                                row["Medicines"]
-                            );
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
+            DataTable dt = PrescriptionController.GetPrescriptionWithPatientName(doctorID);
+            foreach (DataRow row in dt.Rows)
             {
-                MessageBox.Show("Error loading prescriptions: " + ex.Message);
+                dgvPrescriptions.Rows.Add(
+                    Convert.ToDateTime(row["prescription_date"]).ToString("yyyy-MM-dd"),
+                    row["patient_id"].ToString(),
+                    row["patient_name"].ToString(),
+                    row["diagnosis"].ToString(),
+                    row["medicines"].ToString(),
+                    "Update"
+                );
             }
         }
 
-        //  Add a new prescription
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            try
-            {
-                using (var conn = DBHelper.GetConnection())
-                {
-                    conn.Open();
-                    string query = "INSERT INTO prescriptions (PatientID, DoctorID, Diagnosis, Medicines, PrescriptionDate) VALUES (@pid, @did, @diag, @meds, @date)";
-                    using (var cmd = new MySqlCommand(query, conn))
-                    {
-                        // Replace with actual doctor ID from session/user context
-                        cmd.Parameters.AddWithValue("@pid", txtPatientID.Text);
-                        cmd.Parameters.AddWithValue("@did", 2346);
-                        cmd.Parameters.AddWithValue("@diag", txtDiagnosis.Text);
-                        cmd.Parameters.AddWithValue("@meds", txtMedicines.Text);
-                        cmd.Parameters.AddWithValue("@date", dtpDate.Value);
+            var patientId = int.Parse(txtPatientID.Text);
 
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Prescription added successfully!");
-                        LoadPrescriptionData();
-                        ClearForm();
-                    }
-                }
-            }
-            catch (Exception ex)
+            if (!PrescriptionController.PatientExists(patientId))
             {
-                MessageBox.Show("Error adding prescription: " + ex.Message);
+                MessageBox.Show("Patient ID does not exist.");
+                return;
             }
+
+            var newPrescription = new Prescription(
+                0,
+                patientId,
+                doctorID,
+                txtDiagnosis.Text.Trim(),
+                txtMedicines.Text.Trim(),
+                dtpDate.Value
+            );
+
+            PrescriptionController.AddPrescription(newPrescription);
+            MessageBox.Show("Prescription added successfully.");
+            LoadPrescriptionData();
+            ClearForm();
         }
 
-        //  Update an existing prescription
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (dgvPrescriptions.SelectedRows.Count == 0)
+            if (currentPrescriptionID == -1)
             {
-                MessageBox.Show("Please select a row to update.");
+                MessageBox.Show("Please select a prescription to update.");
                 return;
             }
 
             try
             {
-                string id = dgvPrescriptions.SelectedRows[0].Cells["PrescriptionID"].Value.ToString();
+                var updatedPrescription = new Prescription(
+                    currentPrescriptionID,
+                    int.Parse(txtPatientID.Text),
+                    doctorID,
+                    txtDiagnosis.Text.Trim(),
+                    txtMedicines.Text.Trim(),
+                    dtpDate.Value
+                );
 
-                using (var conn = DBHelper.GetConnection())
-                {
-                    conn.Open();
-                    string query = "UPDATE prescriptions SET PatientID=@pid, Diagnosis=@diag, Medicines=@meds, PrescriptionDate=@date WHERE PrescriptionID=@id";
-                    using (var cmd = new MySqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@pid", txtPatientID.Text);
-                        cmd.Parameters.AddWithValue("@diag", txtDiagnosis.Text);
-                        cmd.Parameters.AddWithValue("@meds", txtMedicines.Text);
-                        cmd.Parameters.AddWithValue("@date", dtpDate.Value);
-                        cmd.Parameters.AddWithValue("@id", id);
-
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Prescription updated successfully!");
-                        LoadPrescriptionData();
-                        ClearForm();
-                    }
-                }
+                PrescriptionController.UpdatePrescription(updatedPrescription);
+                MessageBox.Show("Prescription updated successfully.");
+                LoadPrescriptionData();
+                ClearForm();
+                btnAdd.Enabled = true;
+                currentPrescriptionID = -1;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error updating prescription: " + ex.Message);
+                MessageBox.Show("Error while updating prescription: " + ex.Message);
             }
         }
 
-        //  Delete selected prescription
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (dgvPrescriptions.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Please select a row to delete.");
-                return;
-            }
-
-            try
-            {
-                string id = dgvPrescriptions.SelectedRows[0].Cells["PrescriptionID"].Value.ToString();
-
-                using (var conn = DBHelper.GetConnection())
-                {
-                    conn.Open();
-                    string query = "DELETE FROM prescriptions WHERE PrescriptionID=@id";
-                    using (var cmd = new MySqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@id", id);
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Prescription deleted successfully!");
-                        LoadPrescriptionData();
-                        ClearForm();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error deleting prescription: " + ex.Message);
-            }
-        }
-
-        //  Clear all input fields
         private void btnClear_Click(object sender, EventArgs e)
         {
             ClearForm();
         }
 
-        // Reset input fields
         private void ClearForm()
         {
             txtPatientID.Clear();
             txtDiagnosis.Clear();
             txtMedicines.Clear();
+            txtPatientName.Clear();
             dtpDate.Value = DateTime.Today;
+            btnAdd.Enabled = true;
+            currentPrescriptionID = -1;
         }
 
-        //  Populate input fields when a row is clicked
         private void dgvPrescriptions_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && dgvPrescriptions.Rows[e.RowIndex].Cells["PrescriptionID"].Value != null)
+            if (e.RowIndex >= 0 && dgvPrescriptions.Columns[e.ColumnIndex].Name == "UpdateColumn")
             {
                 DataGridViewRow row = dgvPrescriptions.Rows[e.RowIndex];
-                txtPatientID.Text = row.Cells["ptID"].Value.ToString();
-                txtDiagnosis.Text = row.Cells["disease"].Value.ToString();
-                txtMedicines.Text = row.Cells["medicine"].Value.ToString();
-                dtpDate.Value = DateTime.Parse(row.Cells["date"].Value.ToString());
+
+                // Extract data from row
+                int patientId = int.Parse(row.Cells["ptID"].Value.ToString());
+                string patientName = row.Cells["PtName"].Value.ToString();
+                string diagnosis = row.Cells["disease"].Value.ToString();
+                string medicines = row.Cells["medicine"].Value.ToString();
+                DateTime date = Convert.ToDateTime(row.Cells["date"].Value);
+
+                // Fetch the prescription ID
+                int prescriptionId = PrescriptionController.GetPrescriptionID(doctorID, patientId, date);
+                if (prescriptionId == -1)
+                {
+                    MessageBox.Show("Prescription ID not found.");
+                    return;
+                }
+
+                // Open dialog
+                using (var updateForm = new UpdatePrescription(
+                    prescriptionId,
+                    patientId,
+                    patientName,
+                    diagnosis,
+                    medicines,
+                    date,
+                    doctorID
+                ))
+                {
+                    if (updateForm.ShowDialog() == DialogResult.OK)
+                    {
+                        LoadPrescriptionData();
+                    }
+                }
             }
         }
 
-        //  Go back (navigate to previous screen)
-        private void btnBack_Click(object sender, EventArgs e)
+
+        private void txtDiagnosis_TextChanged(object sender, EventArgs e)
         {
-            this.Close(); // or navigate to previous form
+            // Optional logic can go here if needed
         }
     }
 }

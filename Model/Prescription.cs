@@ -21,25 +21,27 @@ namespace CMS.Model
         // Composition: A prescription must be associated with a patient and doctor
 
         // Default constructor
-        public Prescription() { }
+        //public Prescription() { }
 
         // Constructor without ID (for new prescriptions)
-        public Prescription(int patientID, int doctorID, string diagnosis, string medicines, DateTime date)
+        public Prescription(int prescriptionID, int patientID, int doctorID, string diagnosis, string medicines, DateTime prescriptionDate)
         {
+            PrescriptionID = prescriptionID;
             PatientID = patientID;
             DoctorID = doctorID;
             Diagnosis = diagnosis;
             Medicines = medicines;
-            PrescriptionDate = date;
+            PrescriptionDate = prescriptionDate;
         }
 
-        // Constructor with ID (for existing prescriptions)
-        public Prescription(int prescriptionID, int patientID, int doctorID, string diagnosis, string medicines, DateTime date)
-            : this(patientID, doctorID, diagnosis, medicines, date)
-        {
-            PrescriptionID = prescriptionID;
-        }
+        //// Constructor with ID (for existing prescriptions)
+        //public Prescription(int prescriptionID, int patientID, int doctorID, string diagnosis, string medicines, DateTime date)
+        //    : this(patientID, doctorID, diagnosis, medicines, date)
+        //{
+        //    PrescriptionID = prescriptionID;
+        //}
 
+        public Prescription() { }
     }
 }
 
