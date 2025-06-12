@@ -39,6 +39,7 @@
             navdoc = new Button();
             sidenav = new Panel();
             panel1 = new Panel();
+            txtPatientName = new TextBox();
             btnLoad = new Button();
             textBox1 = new TextBox();
             dvgMedicalHistory = new DataGridView();
@@ -48,7 +49,7 @@
             Column4 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
             Column5 = new DataGridViewTextBoxColumn();
-            txtPatientName = new TextBox();
+            label1 = new Label();
             sidenav.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dvgMedicalHistory).BeginInit();
@@ -165,22 +166,32 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.GradientInactiveCaption;
+            panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Controls.Add(label1);
             panel1.Controls.Add(txtPatientName);
             panel1.Controls.Add(btnLoad);
             panel1.Controls.Add(textBox1);
             panel1.Controls.Add(dvgMedicalHistory);
             panel1.Dock = DockStyle.Fill;
+            panel1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             panel1.Location = new Point(192, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(709, 460);
             panel1.TabIndex = 22;
-            //panel1.Paint += panel1_Paint;
+            panel1.Paint += panel1_Paint;
+            // 
+            // txtPatientName
+            // 
+            txtPatientName.Location = new Point(60, 188);
+            txtPatientName.Name = "txtPatientName";
+            txtPatientName.Size = new Size(100, 23);
+            txtPatientName.TabIndex = 4;
             // 
             // btnLoad
             // 
             btnLoad.BackColor = Color.LightBlue;
             btnLoad.BackgroundImageLayout = ImageLayout.None;
-            btnLoad.Location = new Point(60, 208);
+            btnLoad.Location = new Point(60, 229);
             btnLoad.Name = "btnLoad";
             btnLoad.Size = new Size(125, 30);
             btnLoad.TabIndex = 3;
@@ -207,6 +218,7 @@
             dvgMedicalHistory.Name = "dvgMedicalHistory";
             dvgMedicalHistory.Size = new Size(636, 150);
             dvgMedicalHistory.TabIndex = 2;
+            dvgMedicalHistory.CellContentClick += dvgMedicalHistory_CellContentClick;
             // 
             // Column6
             // 
@@ -238,13 +250,18 @@
             Column5.HeaderText = "Notes";
             Column5.Name = "Column5";
             // 
-            // txtPatientName
+            // label1
             // 
-            txtPatientName.Location = new Point(60, 157);
-            txtPatientName.Name = "txtPatientName";
-            txtPatientName.Size = new Size(100, 23);
-            txtPatientName.TabIndex = 4;
-            txtPatientName.Text = "Search name";
+            label1.AutoSize = true;
+            label1.BackColor = Color.DarkGray;
+            label1.BorderStyle = BorderStyle.FixedSingle;
+            label1.Font = new Font("Segoe UI", 10F);
+            label1.Location = new Point(59, 151);
+            label1.Name = "label1";
+            label1.Padding = new Padding(4);
+            label1.Size = new Size(138, 29);
+            label1.TabIndex = 5;
+            label1.Text = "Enter Patient Name";
             // 
             // ViewMedicalHistory
             // 
@@ -286,5 +303,6 @@
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column5;
         private TextBox txtPatientName;
+        private Label label1;
     }
 }

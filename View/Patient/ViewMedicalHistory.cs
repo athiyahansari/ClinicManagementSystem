@@ -26,7 +26,7 @@ namespace ClinicManagementSystem.Views.Patients
         // Button click event - just calls the load method
         private void BtnLoad_Click(object sender, EventArgs e)
         {
-            LoadMedicalHistory();
+            LoadMedicalHistory();//good practice
         }
 
         // Method to load medical history into the DataGridView
@@ -38,16 +38,42 @@ namespace ClinicManagementSystem.Views.Patients
             // Get patient name from textbox
             string patientName = txtPatientName.Text.Trim();
 
-            // Dummy data - replace this with actual DB query and data loading logic
-            if (patientName.Equals("John Doe", StringComparison.OrdinalIgnoreCase))
+            // Extracting Data from DB
+
+            if (string.IsNullOrEmpty(patientName))
             {
-                dvgMedicalHistory.Rows.Add("John Doe", "2025-01-10", "Flu", "Dr. Smith", "Tamiflu", "Rest and hydrate");
-                dvgMedicalHistory.Rows.Add("John Doe", "2025-02-15", "Cold", "Dr. Brown", "Paracetamol", "Stay warm");
+                MessageBox.Show("Please enter a patient name.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            else
+
+            var historyList = controller.GetMedicalHistoryByPatientName(patientName);
+
+            if (historyList.Count == 0)
             {
                 MessageBox.Show($"No medical history found for: {patientName}", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
+
+            foreach (var history in historyList)
+            {
+                dvgMedicalHistory.Rows.Add(
+                    history.PatientName,
+                    history.Date.ToString("yyyy-MM-dd"),
+                    history.Diagnosis,
+                    history.Prescription,
+                    history.Notes
+                );
+            }
+        }
+
+        private void dvgMedicalHistory_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
