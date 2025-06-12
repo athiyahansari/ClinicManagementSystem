@@ -18,38 +18,188 @@
 
         private void InitializeComponent()
         {
-            this.dgvDoctors = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDoctors)).BeginInit();
-            this.SuspendLayout();
+            dgvDoctors = new DataGridView();
+            sidenav = new Panel();
+            label3 = new Label();
+            navmedicalhistory = new Button();
+            label2 = new Label();
+            navprofile = new Button();
+            logout = new Button();
+            navprescription = new Button();
+            navappointment = new Button();
+            navdoc = new Button();
+            label1 = new Label();
+            ((System.ComponentModel.ISupportInitialize)dgvDoctors).BeginInit();
+            sidenav.SuspendLayout();
+            SuspendLayout();
             // 
             // dgvDoctors
             // 
-            this.dgvDoctors.AllowUserToAddRows = false;
-            this.dgvDoctors.AllowUserToDeleteRows = false;
-            this.dgvDoctors.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvDoctors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDoctors.Location = new System.Drawing.Point(20, 20);
-            this.dgvDoctors.Name = "dgvDoctors";
-            this.dgvDoctors.ReadOnly = true;
-            this.dgvDoctors.RowHeadersWidth = 51;
-            this.dgvDoctors.RowTemplate.Height = 29;
-            this.dgvDoctors.Size = new System.Drawing.Size(1160, 520);
-            this.dgvDoctors.TabIndex = 0;
+            dgvDoctors.AllowUserToAddRows = false;
+            dgvDoctors.AllowUserToDeleteRows = false;
+            dgvDoctors.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvDoctors.BackgroundColor = SystemColors.ActiveCaption;
+            dgvDoctors.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDoctors.Location = new Point(206, 107);
+            dgvDoctors.Margin = new Padding(3, 2, 3, 2);
+            dgvDoctors.Name = "dgvDoctors";
+            dgvDoctors.ReadOnly = true;
+            dgvDoctors.RowHeadersWidth = 51;
+            dgvDoctors.RowTemplate.Height = 29;
+            dgvDoctors.Size = new Size(604, 159);
+            dgvDoctors.TabIndex = 0;
             // 
-            // ViewDoctor
+            // sidenav
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 600);
-            this.Controls.Add(this.dgvDoctors);
-            this.Name = "ViewDoctor";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Doctor List";
-            this.Load += new System.EventHandler(this.ViewDoctor_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDoctors)).EndInit();
-            this.ResumeLayout(false);
+            sidenav.BackColor = Color.CornflowerBlue;
+            sidenav.Controls.Add(label3);
+            sidenav.Controls.Add(navmedicalhistory);
+            sidenav.Controls.Add(label2);
+            sidenav.Controls.Add(navprofile);
+            sidenav.Controls.Add(logout);
+            sidenav.Controls.Add(navprescription);
+            sidenav.Controls.Add(navappointment);
+            sidenav.Controls.Add(navdoc);
+            sidenav.Dock = DockStyle.Left;
+            sidenav.Location = new Point(0, 0);
+            sidenav.Margin = new Padding(2);
+            sidenav.Name = "sidenav";
+            sidenav.Size = new Size(201, 386);
+            sidenav.TabIndex = 22;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Yu Gothic UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = SystemColors.ButtonHighlight;
+            label3.Location = new Point(57, 52);
+            label3.Margin = new Padding(2, 0, 2, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(109, 19);
+            label3.TabIndex = 22;
+            label3.Text = "Patient ID-2346";
+            // 
+            // navmedicalhistory
+            // 
+            navmedicalhistory.BackColor = Color.LightSteelBlue;
+            navmedicalhistory.Location = new Point(34, 170);
+            navmedicalhistory.Margin = new Padding(2);
+            navmedicalhistory.Name = "navmedicalhistory";
+            navmedicalhistory.Size = new Size(125, 29);
+            navmedicalhistory.TabIndex = 5;
+            navmedicalhistory.Text = "Medical History";
+            navmedicalhistory.UseVisualStyleBackColor = false;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Kristen ITC", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = SystemColors.ButtonFace;
+            label2.Location = new Point(34, 29);
+            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(113, 27);
+            label2.TabIndex = 21;
+            label2.Text = "John Doe";
+            // 
+            // navprofile
+            // 
+            navprofile.BackColor = Color.LightSteelBlue;
+            navprofile.Location = new Point(34, 291);
+            navprofile.Margin = new Padding(2);
+            navprofile.Name = "navprofile";
+            navprofile.Size = new Size(125, 29);
+            navprofile.TabIndex = 4;
+            navprofile.Text = "MyProfile";
+            navprofile.UseVisualStyleBackColor = false;
+            // 
+            // logout
+            // 
+            logout.BackColor = Color.LightSteelBlue;
+            logout.Location = new Point(34, 335);
+            logout.Margin = new Padding(2);
+            logout.Name = "logout";
+            logout.Size = new Size(125, 28);
+            logout.TabIndex = 3;
+            logout.Text = "LogOut";
+            logout.UseVisualStyleBackColor = false;
+            // 
+            // navprescription
+            // 
+            navprescription.BackColor = Color.LightSteelBlue;
+            navprescription.Location = new Point(34, 139);
+            navprescription.Margin = new Padding(2);
+            navprescription.Name = "navprescription";
+            navprescription.Size = new Size(125, 28);
+            navprescription.TabIndex = 2;
+            navprescription.Text = "Prescriptions";
+            navprescription.UseVisualStyleBackColor = false;
+            // 
+            // navappointment
+            // 
+            navappointment.BackColor = Color.LightSteelBlue;
+            navappointment.Location = new Point(34, 107);
+            navappointment.Margin = new Padding(2);
+            navappointment.Name = "navappointment";
+            navappointment.Size = new Size(125, 28);
+            navappointment.TabIndex = 1;
+            navappointment.Text = "Appointment";
+            navappointment.UseVisualStyleBackColor = false;
+            // 
+            // navdoc
+            // 
+            navdoc.BackColor = Color.LightSteelBlue;
+            navdoc.Location = new Point(34, 78);
+            navdoc.Margin = new Padding(2);
+            navdoc.Name = "navdoc";
+            navdoc.Size = new Size(125, 26);
+            navdoc.TabIndex = 0;
+            navdoc.Text = "Doctor";
+            navdoc.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = SystemColors.ActiveCaption;
+            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(440, 25);
+            label1.Name = "label1";
+            label1.Size = new Size(143, 30);
+            label1.TabIndex = 23;
+            label1.Text = "View Doctors";
+            label1.Click += label1_Click;
+            // 
+            // ViewDoctors
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(814, 386);
+            Controls.Add(label1);
+            Controls.Add(sidenav);
+            Controls.Add(dgvDoctors);
+            Margin = new Padding(3, 2, 3, 2);
+            Name = "ViewDoctors";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Doctor List";
+            Load += ViewDoctor_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvDoctors).EndInit();
+            sidenav.ResumeLayout(false);
+            sidenav.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Panel sidenav;
+        private Label label3;
+        private Button navmedicalhistory;
+        private Label label2;
+        private Button navprofile;
+        private Button logout;
+        private Button navprescription;
+        private Button navappointment;
+        private Button navdoc;
+        private Label label1;
     }
 }

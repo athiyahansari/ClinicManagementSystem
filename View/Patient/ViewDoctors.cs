@@ -36,5 +36,10 @@ namespace CMS.View.Patient
             List<Model.Doctor> doctors = doctorController.GetAllDoctors();
             dgvDoctors.DataSource = doctors;
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
