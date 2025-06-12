@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CMS.Controller
 {
@@ -114,10 +115,8 @@ namespace CMS.Controller
             }
         }
 
-        public string ValidateAppointmentInput( int doctorId, DateTime date, string time, string notes)
+        public string ValidateAppointmentInput(int doctorId, DateTime date, string time, string notes)
         {
-            //if (string.IsNullOrWhiteSpace(patientName))
-            //    return "Please enter patient name.";
 
             if (doctorId <= 0)
                 return "Please select a doctor.";
@@ -125,8 +124,16 @@ namespace CMS.Controller
             if (date.Date < DateTime.Today)
                 return "Please select a valid appointment date.";
 
-            if (!TimeSpan.TryParseExact(time, "hh\\:mm", null, out _))
-                return "Please enter time in HH:mm format (e.g., 14:30)";
+            if (string.IsNullOrWhiteSpace(time))
+                return "Please select a time slot.";
+
+            // Declare parsedTime variable and try to parse
+            if (!TimeSpan.TryParse(time, out TimeSpan parsedTime))
+                return "Invalid time format selected.";
+
+            // Check if time is within business hours (9 AM to 5 PM)
+            if (parsedTime < new TimeSpan(9, 0, 0) || parsedTime >= new TimeSpan(17, 0, 0))
+                return "Please select a time between 9:00 AM and 5:00 PM.";
 
 
             if (string.IsNullOrWhiteSpace(notes) || notes.Length < 5)
@@ -139,5 +146,55 @@ namespace CMS.Controller
         //{
         //    // Call repo to save appointment (your data access)
         //}
+        public bool IsSlotAvailable(int doctorId, DateTime date, TimeSpan time)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = @"SELECT COUNT(*) FROM appointments 
+                         WHERE doctor_id = @doctorId 
+                           AND appointment_date = @date 
+                           AND appointment_time = @time 
+                           AND status != 'Cancelled'";  // Exclude cancelled appointments
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@doctorId", doctorId);
+                cmd.Parameters.AddWithValue("@date", date.Date); // Date part only
+                cmd.Parameters.AddWithValue("@time", time);
+
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                return count == 0;  // True if no conflicting appointment
+            }
+        }
+
+
+        public List<string> GenerateTimeSlots()
+        {
+            var slots = new List<string>();
+
+            // 10:00 - 13:30
+            for (int hour = 10; hour <= 13; hour++)
+            {
+                slots.Add($"{hour:D2}:00");
+                if (hour < 13)
+                    slots.Add($"{hour:D2}:30");
+            }
+
+            // Skip 14:00 to 14:30 (no slots here)
+
+            // 15:00 - 16:30
+            for (int hour = 15; hour <= 16; hour++)
+            {
+                slots.Add($"{hour:D2}:00");
+                if (hour < 16)
+                    slots.Add($"{hour:D2}:30");
+            }
+
+            return slots;
+        }
+
     }
+
+
 }

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             flowLayoutPanel1 = new FlowLayoutPanel();
             panel1 = new Panel();
             label3 = new Label();
@@ -40,32 +40,35 @@
             navpatientbtn = new Button();
             navdocbtn = new Button();
             panel2 = new Panel();
-            dataGridView2 = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            patienttodatepick = new TextBox();
-            patientdatepick = new TextBox();
+            generateDoctorShedule = new Button();
+            patienttrenddateto = new DateTimePicker();
+            patienttrenddatefrom = new DateTimePicker();
+            doctorsheduledateto = new DateTimePicker();
+            doctorsheduledatefrom = new DateTimePicker();
+            dataGridViewpatienttrend = new DataGridView();
             label10 = new Label();
             label11 = new Label();
             label8 = new Label();
             label7 = new Label();
-            combodoctor = new ComboBox();
-            todatepick = new TextBox();
-            datepick = new TextBox();
+            combodoctorshedule = new ComboBox();
             label6 = new Label();
             label5 = new Label();
             label4 = new Label();
-            dataGridView1 = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
+            dataGriddoctorshedule = new DataGridView();
+            patientcolumnshedule = new DataGridViewTextBoxColumn();
+            appointmentdatecolumnshedule = new DataGridViewTextBoxColumn();
+            appointmenttimecolumnshedule = new DataGridViewTextBoxColumn();
+            statuscolumnshedule = new DataGridViewTextBoxColumn();
             label1 = new Label();
+            generatepatienttrendsbtn = new Button();
+            PatientNameColumn = new DataGridViewTextBoxColumn();
+            Totalappointmentscolumn = new DataGridViewTextBoxColumn();
+            Lastappointmentcolumn = new DataGridViewTextBoxColumn();
             flowLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewpatienttrend).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGriddoctorshedule).BeginInit();
             SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -96,7 +99,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(166, 653);
             panel1.TabIndex = 0;
-            panel1.Paint += panel1_Paint_1;
             // 
             // label3
             // 
@@ -179,80 +181,86 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(dataGridView2);
-            panel2.Controls.Add(patienttodatepick);
-            panel2.Controls.Add(patientdatepick);
+            panel2.Controls.Add(generatepatienttrendsbtn);
+            panel2.Controls.Add(generateDoctorShedule);
+            panel2.Controls.Add(patienttrenddateto);
+            panel2.Controls.Add(patienttrenddatefrom);
+            panel2.Controls.Add(doctorsheduledateto);
+            panel2.Controls.Add(doctorsheduledatefrom);
+            panel2.Controls.Add(dataGridViewpatienttrend);
             panel2.Controls.Add(label10);
             panel2.Controls.Add(label11);
             panel2.Controls.Add(label8);
             panel2.Controls.Add(label7);
-            panel2.Controls.Add(combodoctor);
-            panel2.Controls.Add(todatepick);
-            panel2.Controls.Add(datepick);
+            panel2.Controls.Add(combodoctorshedule);
             panel2.Controls.Add(label6);
             panel2.Controls.Add(label5);
             panel2.Controls.Add(label4);
-            panel2.Controls.Add(dataGridView1);
+            panel2.Controls.Add(dataGriddoctorshedule);
             panel2.Controls.Add(label1);
             panel2.Location = new Point(166, 0);
             panel2.Margin = new Padding(0);
             panel2.Name = "panel2";
             panel2.Size = new Size(665, 653);
             panel2.TabIndex = 1;
-            panel2.Paint += panel2_Paint_1;
             // 
-            // dataGridView2
+            // generateDoctorShedule
             // 
-            dataGridView2.BackgroundColor = SystemColors.ButtonHighlight;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3 });
-            dataGridView2.Location = new Point(56, 429);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(543, 178);
-            dataGridView2.TabIndex = 17;
+            generateDoctorShedule.Location = new Point(543, 65);
+            generateDoctorShedule.Name = "generateDoctorShedule";
+            generateDoctorShedule.Size = new Size(75, 23);
+            generateDoctorShedule.TabIndex = 22;
+            generateDoctorShedule.Text = "Generate ";
+            generateDoctorShedule.UseVisualStyleBackColor = true;
+            generateDoctorShedule.Click += generateDoctorShedule_Click;
             // 
-            // dataGridViewTextBoxColumn1
+            // patienttrenddateto
             // 
-            dataGridViewTextBoxColumn1.HeaderText = "Patient Name";
-            dataGridViewTextBoxColumn1.MinimumWidth = 10;
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.Width = 120;
+            patienttrenddateto.Location = new Point(279, 393);
+            patienttrenddateto.Name = "patienttrenddateto";
+            patienttrenddateto.Size = new Size(196, 23);
+            patienttrenddateto.TabIndex = 21;
+            patienttrenddateto.ValueChanged += patienttrenddateto_ValueChanged;
             // 
-            // dataGridViewTextBoxColumn2
+            // patienttrenddatefrom
             // 
-            dataGridViewTextBoxColumn2.HeaderText = "Total Appointments";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.Width = 200;
+            patienttrenddatefrom.Location = new Point(56, 393);
+            patienttrenddatefrom.Name = "patienttrenddatefrom";
+            patienttrenddatefrom.Size = new Size(196, 23);
+            patienttrenddatefrom.TabIndex = 20;
+            patienttrenddatefrom.ValueChanged += patienttrenddatefrom_ValueChanged;
             // 
-            // dataGridViewTextBoxColumn3
+            // doctorsheduledateto
             // 
-            dataGridViewTextBoxColumn3.HeaderText = "Last Appointment Date";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.Width = 180;
+            doctorsheduledateto.Location = new Point(422, 108);
+            doctorsheduledateto.Name = "doctorsheduledateto";
+            doctorsheduledateto.Size = new Size(196, 23);
+            doctorsheduledateto.TabIndex = 19;
             // 
-            // patienttodatepick
+            // doctorsheduledatefrom
             // 
-            patienttodatepick.BackColor = SystemColors.InactiveBorder;
-            patienttodatepick.Location = new Point(251, 388);
-            patienttodatepick.Name = "patienttodatepick";
-            patienttodatepick.Size = new Size(100, 23);
-            patienttodatepick.TabIndex = 15;
+            doctorsheduledatefrom.Location = new Point(211, 108);
+            doctorsheduledatefrom.Name = "doctorsheduledatefrom";
+            doctorsheduledatefrom.Size = new Size(196, 23);
+            doctorsheduledatefrom.TabIndex = 18;
             // 
-            // patientdatepick
+            // dataGridViewpatienttrend
             // 
-            patientdatepick.BackColor = SystemColors.InactiveBorder;
-            patientdatepick.Location = new Point(67, 388);
-            patientdatepick.Name = "patientdatepick";
-            patientdatepick.Size = new Size(95, 23);
-            patientdatepick.TabIndex = 14;
+            dataGridViewpatienttrend.BackgroundColor = SystemColors.ButtonHighlight;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = SystemColors.Control;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridViewpatienttrend.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewpatienttrend.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewpatienttrend.Columns.AddRange(new DataGridViewColumn[] { PatientNameColumn, Totalappointmentscolumn, Lastappointmentcolumn });
+            dataGridViewpatienttrend.Location = new Point(56, 429);
+            dataGridViewpatienttrend.Name = "dataGridViewpatienttrend";
+            dataGridViewpatienttrend.Size = new Size(543, 178);
+            dataGridViewpatienttrend.TabIndex = 17;
             // 
             // label10
             // 
@@ -266,7 +274,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(291, 370);
+            label11.Location = new Point(312, 370);
             label11.Name = "label11";
             label11.Size = new Size(19, 15);
             label11.TabIndex = 12;
@@ -294,35 +302,19 @@
             label7.TabIndex = 8;
             label7.Text = "View Doctor Shedule";
             // 
-            // combodoctor
+            // combodoctorshedule
             // 
-            combodoctor.BackColor = SystemColors.InactiveBorder;
-            combodoctor.FormattingEnabled = true;
-            combodoctor.Location = new Point(67, 107);
-            combodoctor.Name = "combodoctor";
-            combodoctor.Size = new Size(116, 23);
-            combodoctor.TabIndex = 7;
-            // 
-            // todatepick
-            // 
-            todatepick.BackColor = SystemColors.InactiveBorder;
-            todatepick.Location = new Point(451, 107);
-            todatepick.Name = "todatepick";
-            todatepick.Size = new Size(100, 23);
-            todatepick.TabIndex = 6;
-            // 
-            // datepick
-            // 
-            datepick.BackColor = SystemColors.InactiveBorder;
-            datepick.Location = new Point(267, 107);
-            datepick.Name = "datepick";
-            datepick.Size = new Size(95, 23);
-            datepick.TabIndex = 5;
+            combodoctorshedule.BackColor = SystemColors.InactiveBorder;
+            combodoctorshedule.FormattingEnabled = true;
+            combodoctorshedule.Location = new Point(46, 108);
+            combodoctorshedule.Name = "combodoctorshedule";
+            combodoctorshedule.Size = new Size(116, 23);
+            combodoctorshedule.TabIndex = 7;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(296, 89);
+            label6.Location = new Point(275, 90);
             label6.Name = "label6";
             label6.Size = new Size(35, 15);
             label6.TabIndex = 4;
@@ -331,7 +323,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(491, 89);
+            label5.Location = new Point(470, 90);
             label5.Name = "label5";
             label5.Size = new Size(19, 15);
             label5.TabIndex = 3;
@@ -340,48 +332,54 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(82, 89);
+            label4.Location = new Point(61, 90);
             label4.Name = "label4";
             label4.Size = new Size(77, 15);
             label4.TabIndex = 2;
             label4.Text = "Select Doctor";
             // 
-            // dataGridView1
+            // dataGriddoctorshedule
             // 
-            dataGridView1.BackgroundColor = SystemColors.ButtonHighlight;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3 });
-            dataGridView1.Location = new Point(67, 149);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(513, 178);
-            dataGridView1.TabIndex = 1;
+            dataGriddoctorshedule.BackgroundColor = SystemColors.ButtonHighlight;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = SystemColors.Control;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dataGriddoctorshedule.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGriddoctorshedule.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGriddoctorshedule.Columns.AddRange(new DataGridViewColumn[] { patientcolumnshedule, appointmentdatecolumnshedule, appointmenttimecolumnshedule, statuscolumnshedule });
+            dataGriddoctorshedule.Location = new Point(56, 149);
+            dataGriddoctorshedule.Name = "dataGriddoctorshedule";
+            dataGriddoctorshedule.Size = new Size(583, 178);
+            dataGriddoctorshedule.TabIndex = 1;
             // 
-            // Column1
+            // patientcolumnshedule
             // 
-            Column1.HeaderText = "Patient Name";
-            Column1.MinimumWidth = 10;
-            Column1.Name = "Column1";
-            Column1.Width = 120;
+            patientcolumnshedule.HeaderText = "Patient Name";
+            patientcolumnshedule.MinimumWidth = 10;
+            patientcolumnshedule.Name = "patientcolumnshedule";
+            patientcolumnshedule.Width = 130;
             // 
-            // Column2
+            // appointmentdatecolumnshedule
             // 
-            Column2.HeaderText = "Appointment Date & Time";
-            Column2.Name = "Column2";
-            Column2.Width = 200;
+            appointmentdatecolumnshedule.HeaderText = "Appointment Date ";
+            appointmentdatecolumnshedule.Name = "appointmentdatecolumnshedule";
+            appointmentdatecolumnshedule.Width = 140;
             // 
-            // Column3
+            // appointmenttimecolumnshedule
             // 
-            Column3.HeaderText = "Status";
-            Column3.Name = "Column3";
-            Column3.Width = 150;
+            appointmenttimecolumnshedule.HeaderText = "Appointment Time";
+            appointmenttimecolumnshedule.Name = "appointmenttimecolumnshedule";
+            appointmenttimecolumnshedule.Width = 140;
+            // 
+            // statuscolumnshedule
+            // 
+            statuscolumnshedule.HeaderText = "Status";
+            statuscolumnshedule.Name = "statuscolumnshedule";
+            statuscolumnshedule.Width = 130;
             // 
             // label1
             // 
@@ -393,6 +391,35 @@
             label1.TabIndex = 0;
             label1.Text = "Generate reports";
             // 
+            // generatepatienttrendsbtn
+            // 
+            generatepatienttrendsbtn.Location = new Point(524, 393);
+            generatepatienttrendsbtn.Name = "generatepatienttrendsbtn";
+            generatepatienttrendsbtn.Size = new Size(75, 23);
+            generatepatienttrendsbtn.TabIndex = 23;
+            generatepatienttrendsbtn.Text = "Generate";
+            generatepatienttrendsbtn.UseVisualStyleBackColor = true;
+            generatepatienttrendsbtn.Click += generatepatienttrendsbtn_Click;
+            // 
+            // PatientNameColumn
+            // 
+            PatientNameColumn.HeaderText = "Patient Name";
+            PatientNameColumn.MinimumWidth = 10;
+            PatientNameColumn.Name = "PatientNameColumn";
+            PatientNameColumn.Width = 120;
+            // 
+            // Totalappointmentscolumn
+            // 
+            Totalappointmentscolumn.HeaderText = "Total Appointments";
+            Totalappointmentscolumn.Name = "Totalappointmentscolumn";
+            Totalappointmentscolumn.Width = 200;
+            // 
+            // Lastappointmentcolumn
+            // 
+            Lastappointmentcolumn.HeaderText = "Last Appointment Date";
+            Lastappointmentcolumn.Name = "Lastappointmentcolumn";
+            Lastappointmentcolumn.Width = 180;
+            // 
             // Reportadmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -401,14 +428,14 @@
             Controls.Add(flowLayoutPanel1);
             Name = "Reportadmin";
             Text = "reportadmin";
-            Load += Reportadmin_Load_1;
+            Load += Reportadmin_Load;
             flowLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewpatienttrend).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGriddoctorshedule).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -426,25 +453,28 @@
         private Button navdocbtn;
         private Panel panel2;
         private Label label1;
-        private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private ComboBox combodoctor;
-        private TextBox todatepick;
-        private TextBox datepick;
+        private DataGridView dataGriddoctorshedule;
+        private ComboBox combodoctorshedule;
         private Label label6;
         private Label label5;
         private Label label4;
         private Label label8;
         private Label label7;
-        private TextBox patienttodatepick;
-        private TextBox patientdatepick;
         private Label label10;
         private Label label11;
-        private DataGridView dataGridView2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridView dataGridViewpatienttrend;
+        private DateTimePicker doctorsheduledateto;
+        private DateTimePicker doctorsheduledatefrom;
+        private DateTimePicker patienttrenddatefrom;
+        private DateTimePicker patienttrenddateto;
+        private DataGridViewTextBoxColumn patientcolumnshedule;
+        private DataGridViewTextBoxColumn appointmentdatecolumnshedule;
+        private DataGridViewTextBoxColumn appointmenttimecolumnshedule;
+        private DataGridViewTextBoxColumn statuscolumnshedule;
+        private Button generateDoctorShedule;
+        private Button generatepatienttrendsbtn;
+        private DataGridViewTextBoxColumn PatientNameColumn;
+        private DataGridViewTextBoxColumn Totalappointmentscolumn;
+        private DataGridViewTextBoxColumn Lastappointmentcolumn;
     }
 }
