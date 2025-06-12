@@ -1,17 +1,13 @@
-﻿namespace ClinicManagementSystem.Models
+﻿namespace ClinicalManagementSystem.Models
 {
     public class MedicalHistory
     {
-        public int HistoryID { get; set; }
-        public int PatientID { get; set; }
-        public string PatientName { get; set; }
-        public DateTime Date { get; set; }
+        public int HistoryId { get; set; }
+        public int PatientId { get; set; }
+        public int DoctorId { get; set; }
+        public DateTime VisitDate { get; set; }
         public string Diagnosis { get; set; }
-        public string Prescription { get; set; }    // ✅ Add this
-        public string Notes { get; set; }          // ✅ Add this
-        public string DoctorName { get; set; }
-
-
-
+        public string Prescription { get; set; }
+        public string Notes { get; set; }
     }
 }
