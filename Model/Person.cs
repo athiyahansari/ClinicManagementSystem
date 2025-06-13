@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace CMS.Model
 {
-    // Base class with shared attributes
+    // Base class Person to apply inheritance
     public class Person
     {
+        public int Id { get; set; } // Unique ID
+        public string Name { get; set; } // Name of the person
         public int ID { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }
