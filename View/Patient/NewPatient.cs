@@ -58,11 +58,7 @@ namespace CMS.View.Patient
                 }
 
                 // Prepare user and patient models
-                User newUser = new User
-                {
-                    Username = txtEmail.Text.Trim(),
-                    Password = txtPassword.Text.Trim()
-                };
+              ;
 
                 Patients newPatient = new Patients
                 {
@@ -72,7 +68,15 @@ namespace CMS.View.Patient
                     DateOfBirth = DateTimeDOB.Value,
                     Email = txtEmail.Text.Trim(),
                     PhoneNumber = txtPhoneNumber.Text.Trim()
+
                 };
+                User newUser = new User
+                {
+                    Username = txtEmail.Text.Trim(),
+                    Password = txtPassword.Text.Trim(),
+                    Role = "Patient" // 🔥 add this line
+                };
+
 
                 // Pass to controller
                 RegisterController controller = new RegisterController();
@@ -100,6 +104,11 @@ namespace CMS.View.Patient
 
             LoginForm login = new LoginForm(); // Create an instance of the login form
             login.Show(); // Show the login form
+        }
+
+        private void txtFirstName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

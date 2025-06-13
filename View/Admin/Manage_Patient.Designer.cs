@@ -42,7 +42,7 @@
             button8 = new Button();
             label2 = new Label();
             label3 = new Label();
-            First_Name = new DataGridViewTextBoxColumn();
+            Patient_Id = new DataGridViewTextBoxColumn();
             PhoneNumber = new DataGridViewTextBoxColumn();
             Name = new DataGridViewTextBoxColumn();
             DateOfBirth = new DataGridViewTextBoxColumn();
@@ -77,12 +77,12 @@
             dataGridViewPatients.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewPatients.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridViewPatients.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewPatients.Columns.AddRange(new DataGridViewColumn[] { First_Name, PhoneNumber, Name, DateOfBirth, Column1 });
+            dataGridViewPatients.Columns.AddRange(new DataGridViewColumn[] { Patient_Id, PhoneNumber, Name, DateOfBirth, Column1 });
             dataGridViewPatients.GridColor = SystemColors.InactiveCaptionText;
-            dataGridViewPatients.Location = new Point(316, 129);
+            dataGridViewPatients.Location = new Point(291, 119);
             dataGridViewPatients.Name = "dataGridViewPatients";
             dataGridViewPatients.RowHeadersWidth = 51;
-            dataGridViewPatients.Size = new Size(605, 291);
+            dataGridViewPatients.Size = new Size(681, 291);
             dataGridViewPatients.TabIndex = 2;
             dataGridViewPatients.CellContentClick += dataGridViewPatients_CellContentClick;
             // 
@@ -196,17 +196,16 @@
             label3.TabIndex = 12;
             label3.Text = "Admin-ID 2346";
             // 
-            // First_Name
+            // Patient_Id
             // 
-            First_Name.HeaderText = "First_Name";
-            First_Name.MinimumWidth = 6;
-            First_Name.Name = "First_Name";
-            First_Name.ToolTipText = "vithu";
-            First_Name.Width = 125;
+            Patient_Id.HeaderText = "Patient_Id";
+            Patient_Id.MinimumWidth = 6;
+            Patient_Id.Name = "Patient_Id";
+            Patient_Id.Width = 125;
             // 
             // PhoneNumber
             // 
-            PhoneNumber.HeaderText = "PhoneNumber";
+            PhoneNumber.HeaderText = "First_Name";
             PhoneNumber.MinimumWidth = 6;
             PhoneNumber.Name = "PhoneNumber";
             PhoneNumber.Width = 125;
@@ -221,18 +220,18 @@
             // 
             // DateOfBirth
             // 
-            DateOfBirth.HeaderText = "DateOfBirth";
+            DateOfBirth.HeaderText = "Email";
             DateOfBirth.MinimumWidth = 6;
             DateOfBirth.Name = "DateOfBirth";
-            DateOfBirth.ToolTipText = "2003.05.07";
+            DateOfBirth.ToolTipText = "vithu@email.com";
             DateOfBirth.Width = 125;
             // 
             // Column1
             // 
-            Column1.HeaderText = "Email";
+            Column1.HeaderText = "Dateof Birth";
             Column1.MinimumWidth = 6;
             Column1.Name = "Column1";
-            Column1.ToolTipText = "kamal@gmail.com";
+            Column1.ToolTipText = "2005.12.24";
             Column1.Width = 125;
             // 
             // Manage_Patient
@@ -277,10 +276,10 @@
         private Button button8;
         private Label label2;
         private Label label3;
-        private DataGridViewTextBoxColumn First_Name;
+        private DataGridViewTextBoxColumn Patient_Id;
+        private DataGridViewTextBoxColumn PhoneNumber;
         private DataGridViewTextBoxColumn Name;
         private DataGridViewTextBoxColumn DateOfBirth;
         private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn PhoneNumber;
     }
 }

@@ -128,6 +128,7 @@
             txtFirstName.Name = "txtFirstName";
             txtFirstName.Size = new Size(196, 27);
             txtFirstName.TabIndex = 6;
+            txtFirstName.TextChanged += txtFirstName_TextChanged;
             // 
             // txtPhoneNumber
             // 

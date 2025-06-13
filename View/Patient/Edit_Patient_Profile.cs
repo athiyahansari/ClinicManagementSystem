@@ -14,22 +14,17 @@ namespace CMS.View.Patient
     public partial class Edit_Patient_Profile : Form
     {
         private PatientController _controller;
-
         public Edit_Patient_Profile()
         {
             InitializeComponent();
-           // ✅ FIXED: pass the view
-            cmbGender.Items.Add("Male");
-            cmbGender.Items.Add("Female");
-            cmbGender.Items.Add("Other");
-            cmbGender.SelectedIndex = 0;
-            _controller = new PatientController(this);
+            _controller = new PatientController(this); // ✅ FIXED: pass the view
+           
 
 
 
         }
         // Properties to expose UI control values to the Controller
-       
+
 
         public string FirstName
         {
@@ -42,13 +37,17 @@ namespace CMS.View.Patient
             get { return txtLastName.Text; }
             set { txtLastName.Text = value; }
         }
-
-        public DateTime DateOfBirth
+        public DateTime PatientDateOfBirth
         {
-            get { return DateTimePicker1.Value; }
-            set { DateTimePicker1.Value = value; }
+            get { return txtDateOfBirth.Value; }
         }
-        
+
+
+        public string PatientId { get; set; } // ✅ needed for updating the same row
+        private Patients _patientToEdit;
+
+
+
 
         public string PatientPhoneNumber
         {
@@ -72,11 +71,27 @@ namespace CMS.View.Patient
         //{
         //}
 
-        private void Edit_Patient_Profile_Load(object sender, EventArgs e)
+        public Edit_Patient_Profile(Patients patientToEdit)
         {
-          
+            InitializeComponent();
+
+            _controller = new PatientController(this);
+
+         
+
+            _patientToEdit = patientToEdit; // save patient for later
         }
-       
+
+
+        public void Edit_Patient_Profile_Load(object sender, EventArgs e )
+        {
+            if (_patientToEdit != null)
+            {
+                _controller.LoadInitialPatientProfile(_patientToEdit);
+            }
+
+        }
+
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -114,14 +129,34 @@ namespace CMS.View.Patient
         {
             if (patient != null)
             {
-              
+                PatientId = patient.PatientId;
                 FirstName = patient.FirstName;
                 LastName = patient.LastName;
-                DateOfBirth = patient.DateOfBirth;
-               
                 Email = patient.Email;
                 Gender = patient.Gender;
+                PatientPhoneNumber = patient.PhoneNumber;
+
+                // ✅ One solid guard against invalid DOB
+                if (patient.DateOfBirth > txtDateOfBirth.MinDate &&
+                    patient.DateOfBirth < txtDateOfBirth.MaxDate)
+                {
+                    txtDateOfBirth.Value = patient.DateOfBirth;
+                }
+                else
+                {
+                    txtDateOfBirth.Value = DateTime.Today; // fallback if null/invalid
+                }
             }
+        }
+
+        private void txtDateOfBirth_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtFirstName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

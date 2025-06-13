@@ -25,25 +25,29 @@ namespace CMS.Controller
         }
 
         // Constructor for Edit_Patient_Profile
+        public PatientController(Edit_Patient_Profile view, Patients patient)
+        {
+            _view = view;
+            _model = new Patients();
+            LoadInitialPatientProfile(patient);
+        }
         public PatientController(Edit_Patient_Profile view)
         {
             _view = view;
             _model = new Patients();
-            LoadInitialPatientProfile();
         }
 
-        private void LoadInitialPatientProfile()
-        {
-            _model = new Patients(
-                "P001",
-                "Jane",
-                "Smith",
-                new DateTime(1985, 10, 20),
-                "987-654-3210",
-                "jane.smith@example.com",
-                "Female"
-            );
 
+        public void LoadInitialPatientProfile(Patients patient)
+        {
+            if (patient == null || string.IsNullOrEmpty(patient.PatientId))
+            {
+                _view.DisplayMessage("No patient selected for editing!", "Error", MessageBoxIcon.Error);
+                _view.CloseForm();
+                return;
+            }
+
+            _model = patient;
             _view.LoadPatientData(_model);
         }
 
@@ -51,7 +55,7 @@ namespace CMS.Controller
         {
             _model.FirstName = _view.FirstName;
             _model.LastName = _view.LastName;
-            _model.DateOfBirth = _view.DateOfBirth;
+            _model.DateOfBirth = _view.PatientDateOfBirth;
             _model.PhoneNumber = _view.PatientPhoneNumber;
             _model.Email = _view.Email;
             _model.Gender = _view.Gender;
@@ -60,16 +64,12 @@ namespace CMS.Controller
             {
                 try
                 {
-                    if (string.IsNullOrWhiteSpace(_model.PatientId))
+                    if (string.IsNullOrEmpty(_model.PatientId))
                     {
-                        _model.PatientId = Guid.NewGuid().ToString();
-                        AddPatient(_model);
+                        _view.DisplayMessage("Not Allowed\nThis screen is only for editing an existing patient. Cannot create a new one here.", "Warning", MessageBoxIcon.Warning);
+                        return;
                     }
-                    else
-                    {
-                        UpdatePatient(_model);
-                    }
-
+                    UpdatePatient(_model);
                     _view.DisplayMessage("Patient profile saved successfully!", "Success", MessageBoxIcon.Information);
                     _view.CloseForm();
                 }
@@ -103,15 +103,21 @@ namespace CMS.Controller
                 {
                     Patients p = new Patients
                     {
-                        // Assuming your Patients class has an Id field!
                         PatientId = reader["patient_id"].ToString(),
+                        UserId = Convert.ToInt32(reader["user_id"]), // ✅ add this line
                         FirstName = reader["first_name"].ToString(),
                         LastName = reader["last_name"].ToString(),
                         Email = reader["email"].ToString(),
                         Gender = reader["gender"].ToString(),
-                        DateOfBirth = Convert.ToDateTime(reader["date_of_birth"]),
-                        PhoneNumber = reader["phonenumber"].ToString()
+                        PhoneNumber = reader["phonenumber"].ToString(),
+                       // ✅ optional: load DOB
+
+
+                        DateOfBirth = reader["date_of_birth"] != DBNull.Value
+                    ? Convert.ToDateTime(reader["date_of_birth"])
+                    : DateTime.Today
                     };
+
                     patients.Add(p);
                 }
             }
@@ -123,8 +129,11 @@ namespace CMS.Controller
             using (MySqlConnection con = DBHelper.GetConnection())
             {
                 string query = @"INSERT INTO patients 
-                (patient_id, first_name, last_name, email, gender, date_of_birth, phonenumber) 
-                VALUES (@id, @first, @last, @email, @gender, @dob, @phone)";
+    (patient_id, first_name, last_name, email, gender, date_of_birth, phonenumber) 
+    VALUES (@id, @first, @last, @email, @gender, @dob, @phone)";
+
+               
+
                 MySqlCommand cmd = new MySqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@id", p.PatientId);
                 cmd.Parameters.AddWithValue("@first", p.FirstName);
@@ -132,6 +141,7 @@ namespace CMS.Controller
                 cmd.Parameters.AddWithValue("@email", p.Email);
                 cmd.Parameters.AddWithValue("@gender", p.Gender);
                 cmd.Parameters.AddWithValue("@dob", p.DateOfBirth);
+
                 cmd.Parameters.AddWithValue("@phone", p.PhoneNumber);
                 con.Open();
                 cmd.ExecuteNonQuery();
@@ -147,7 +157,7 @@ namespace CMS.Controller
                 last_name = @last, 
                 email = @email, 
                 gender = @gender, 
-                date_of_birth = @dob,
+                   date_of_birth = @dob,
                 phonenumber = @phone
                 WHERE patient_id = @id";
                 MySqlCommand cmd = new MySqlCommand(query, con);

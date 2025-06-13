@@ -47,7 +47,7 @@
             label7 = new Label();
             cmbGender = new ComboBox();
             label8 = new Label();
-            DateTimePicker1 = new DateTimePicker();
+            txtDateOfBirth = new DateTimePicker();
             DateOfTime = new Label();
             PhoneNumber = new Label();
             txtPhoneNumber = new TextBox();
@@ -112,6 +112,7 @@
             txtFirstName.Name = "txtFirstName";
             txtFirstName.Size = new Size(240, 30);
             txtFirstName.TabIndex = 9;
+            txtFirstName.TextChanged += txtFirstName_TextChanged;
             // 
             // txtEmail
             // 
@@ -252,12 +253,13 @@
             label8.TabIndex = 25;
             label8.Text = "Gender :";
             // 
-            // DateTimePicker1
+            // txtDateOfBirth
             // 
-            DateTimePicker1.Location = new Point(541, 239);
-            DateTimePicker1.Name = "DateTimePicker1";
-            DateTimePicker1.Size = new Size(250, 27);
-            DateTimePicker1.TabIndex = 26;
+            txtDateOfBirth.Location = new Point(541, 239);
+            txtDateOfBirth.Name = "txtDateOfBirth";
+            txtDateOfBirth.Size = new Size(250, 27);
+            txtDateOfBirth.TabIndex = 26;
+            txtDateOfBirth.ValueChanged += txtDateOfBirth_ValueChanged;
             // 
             // DateOfTime
             // 
@@ -296,7 +298,7 @@
             Controls.Add(txtPhoneNumber);
             Controls.Add(PhoneNumber);
             Controls.Add(DateOfTime);
-            Controls.Add(DateTimePicker1);
+            Controls.Add(txtDateOfBirth);
             Controls.Add(label8);
             Controls.Add(cmbGender);
             Controls.Add(label7);
@@ -345,7 +347,7 @@
         private Label label7;
         private ComboBox cmbGender;
         private Label label8;
-        private DateTimePicker DateTimePicker1;
+        private DateTimePicker txtDateOfBirth;
         private Label DateOfTime;
         private Label PhoneNumber;
         private TextBox txtPhoneNumber;

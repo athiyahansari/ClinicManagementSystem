@@ -9,9 +9,8 @@ using System.Threading.Tasks;
 
 namespace CMS.Controller
 {
-    internal class RegisterController
+    public class RegisterController
     {
-
         public string Register(User user, Patients patient)
         {
             using (MySqlConnection conn = DBHelper.GetConnection())
@@ -21,7 +20,7 @@ namespace CMS.Controller
                     conn.Open();
 
                     // Check if user already exists
-                    string checkQuery = "SELECT COUNT(*) FROM user WHERE username = @username";
+                    string checkQuery = "SELECT COUNT(*) FROM users WHERE username = @username";
                     MySqlCommand checkCmd = new MySqlCommand(checkQuery, conn);
                     checkCmd.Parameters.AddWithValue("@username", user.Username);
 
@@ -33,19 +32,20 @@ namespace CMS.Controller
 
                     MySqlTransaction transaction = conn.BeginTransaction();
 
-                    // Insert into user table
-                    string insertUserQuery = "INSERT INTO user (username, password, role) VALUES (@username, @password, @role)";
+                    // Insert into users table
+                    string insertUserQuery = "INSERT INTO users (username, password, role) VALUES (@username, @password, @role)";
                     MySqlCommand cmdUser = new MySqlCommand(insertUserQuery, conn, transaction);
                     cmdUser.Parameters.AddWithValue("@username", user.Username);
                     cmdUser.Parameters.AddWithValue("@password", user.Password);
-                    cmdUser.Parameters.AddWithValue("@role", user.Role);
+                    cmdUser.Parameters.AddWithValue("@role", user.Role ?? "Patient"); // default to "Patient" if role is null
                     cmdUser.ExecuteNonQuery();
 
                     int userId = (int)cmdUser.LastInsertedId;
 
-                    // Insert into patient table
-                    string insertPatientQuery = @"INSERT INTO patient (user_id, first_name, last_name, gender, date_of_birth, email, phonenumber) 
-                                                  VALUES (@user_id, @first_name, @last_name, @gender, @dob, @email, @phone)";
+                    // Insert into patients table
+                    string insertPatientQuery = @"INSERT INTO patients 
+                        (user_id, first_name, last_name, gender, date_of_birth, email, phonenumber) 
+                        VALUES (@user_id, @first_name, @last_name, @gender, @dob, @email, @phone)";
                     MySqlCommand cmdPatient = new MySqlCommand(insertPatientQuery, conn, transaction);
                     cmdPatient.Parameters.AddWithValue("@user_id", userId);
                     cmdPatient.Parameters.AddWithValue("@first_name", patient.FirstName);
@@ -66,4 +66,6 @@ namespace CMS.Controller
             }
         }
     }
+
 }
+
