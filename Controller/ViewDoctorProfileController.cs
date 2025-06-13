@@ -15,7 +15,13 @@ namespace CMS.Controller
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
-                string query = "SELECT * FROM doctor_profiles WHERE doctor_id = @doctorId LIMIT 1";
+                string query = @"
+            SELECT dp.*, d.full_name 
+            FROM doctor_profiles dp
+            JOIN doctors d ON dp.doctor_id = d.doctor_id
+            WHERE dp.doctor_id = @doctorId
+            LIMIT 1";
+
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@doctorId", doctorId);
 
@@ -31,7 +37,8 @@ namespace CMS.Controller
                             Description = reader["description"].ToString(),
                             Speciality = reader["speciality"].ToString(),
                             Email = reader["email"].ToString(),
-                            Contact = reader["contact"].ToString()
+                            Contact = reader["contact"].ToString(),
+                            DoctorName = reader["full_name"].ToString() // New field
                         };
                     }
                 }
@@ -39,34 +46,6 @@ namespace CMS.Controller
 
             return profile;
         }
-
-
-        public string GetDoctorName(int doctorId)
-        {
-            string name = null;
-
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
-            {
-                string query = "SELECT name FROM doctors WHERE doctor_id = @doctorId LIMIT 1";
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@doctorId", doctorId);
-
-                conn.Open();
-                using (MySqlDataReader reader = cmd.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        name = reader["name"].ToString();
-                    }
-                }
-            }
-
-            return name;
-        }
-
-
-
-
     }
 }
 

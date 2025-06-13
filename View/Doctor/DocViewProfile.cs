@@ -25,26 +25,6 @@ namespace CMS.View.Doctor
             this.Load += DocViewProfile_Load;  // Step 3: hook up load event
         }
 
-
-
-        //private void LoadDoctorProfile()
-        //{
-        //    DoctorProfile profile = controller.GetDoctorProfile(_doctorId);
-
-        //    if (profile != null)
-        //    {
-        //        txtDescription.Text = profile.Description;
-        //        txtSpeciality.Text = profile.Speciality;
-        //        txtEmail.Text = profile.Email;
-        //        txtContact.Text = profile.Contact;
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("No profile found for this doctor.");
-        //    }
-        //}
-
-
         private void DocViewProfile_Load(object sender, EventArgs e)
         {
             DoctorProfile profile = controller.GetDoctorProfile(_doctorId);
@@ -56,19 +36,17 @@ namespace CMS.View.Doctor
                 txtEmail.Text = profile.Email;
                 txtContact.Text = profile.Contact;
 
-                //loading doctor info
-                string doctorName = controller.GetDoctorName(_doctorId);
-                if (doctorName != null)
-                    DocName.Text = doctorName;
-                else
-                    DocName.Text = "Name not found";
-
+                // Load doctor name from the same profile object
+                DocName.Text = !string.IsNullOrEmpty(profile.DoctorName)
+                    ? profile.DoctorName
+                    : "Name not found";
             }
             else
             {
                 MessageBox.Show("Doctor profile not found.");
             }
         }
+
 
         private void DocViewProfile_Load_1(object sender, EventArgs e)
         {
