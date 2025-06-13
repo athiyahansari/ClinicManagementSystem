@@ -30,12 +30,13 @@ namespace CMS.Model
             Status = "Scheduled"; // Default status
         }
 
-        public Appointment(int appointmentId, DateTime date, TimeSpan time, string status, int patientId, int doctorId)
+        public Appointment(int appointmentId, DateTime date, TimeSpan time, string status, string Consultation, int patientId, int doctorId)
         {
             this.AppointmentId = appointmentId;
             this.Date = date;
             this.Time = time;
             this.Status = status;
+            this.Consultation = Consultation;
             this.PatientId = patientId;
             this.DoctorId = doctorId;
 
