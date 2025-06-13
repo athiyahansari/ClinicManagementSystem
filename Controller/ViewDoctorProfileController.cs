@@ -8,6 +8,7 @@ namespace CMS.Controller
     {
         private readonly string connectionString = "server=localhost;user id=root;password=;database=clinic_db";
 
+        //one method
         public DoctorProfile GetDoctorProfile(int doctorId)
         {
             DoctorProfile profile = null;
@@ -38,5 +39,34 @@ namespace CMS.Controller
 
             return profile;
         }
+
+
+        public string GetDoctorName(int doctorId)
+        {
+            string name = null;
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                string query = "SELECT name FROM doctors WHERE doctor_id = @doctorId LIMIT 1";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@doctorId", doctorId);
+
+                conn.Open();
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        name = reader["name"].ToString();
+                    }
+                }
+            }
+
+            return name;
+        }
+
+
+
+
     }
 }
+

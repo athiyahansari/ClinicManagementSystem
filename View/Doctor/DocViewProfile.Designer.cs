@@ -82,6 +82,10 @@ namespace CMS.View.Doctor
 
         #region Windows Form Designer generated code
 
+        //declare the field
+        private System.Windows.Forms.TextBox DocName;
+
+
         private void InitializeComponent()
         {
             panel1 = new Panel();
@@ -119,6 +123,7 @@ namespace CMS.View.Doctor
             button4 = new Button();
             button5 = new Button();
             button6 = new Button();
+            DocName = new TextBox();
             panel1.SuspendLayout();
             sidenav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -447,9 +452,17 @@ namespace CMS.View.Doctor
             button6.Text = "Doctor";
             button6.UseVisualStyleBackColor = false;
             // 
+            // DocName
+            // 
+            DocName.Location = new Point(432, 88);
+            DocName.Name = "DocName";
+            DocName.Size = new Size(100, 23);
+            DocName.TabIndex = 23;
+            // 
             // DocViewProfile
             // 
             ClientSize = new Size(792, 404);
+            Controls.Add(DocName);
             Controls.Add(panel3);
             Controls.Add(txtContact);
             Controls.Add(txtEmail);
@@ -488,5 +501,20 @@ namespace CMS.View.Doctor
         private Button button4;
         private Button button5;
         private Button button6;
+
+        ////Doctor name text box
+        //this.private TextBox DocName;
+
+        //txtDoctorName = new System.Windows.Forms.TextBox();
+        //this.Controls.Add(this.txtDoctorName);
+
+        //// 
+        //// txtDoctorName
+        //// 
+        //this.txtDoctorName.Location = new System.Drawing.Point(50, 30); // adjust position as needed
+        //this.txtDoctorName.Name = "txtDoctorName";
+        //this.txtDoctorName.Size = new System.Drawing.Size(200, 22);
+        //this.txtDoctorName.ReadOnly = true;
+
     }
 }

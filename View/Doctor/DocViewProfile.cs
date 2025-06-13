@@ -55,6 +55,14 @@ namespace CMS.View.Doctor
                 txtSpeciality.Text = profile.Speciality;
                 txtEmail.Text = profile.Email;
                 txtContact.Text = profile.Contact;
+
+                //loading doctor info
+                string doctorName = controller.GetDoctorName(_doctorId);
+                if (doctorName != null)
+                    DocName.Text = doctorName;
+                else
+                    DocName.Text = "Name not found";
+
             }
             else
             {
