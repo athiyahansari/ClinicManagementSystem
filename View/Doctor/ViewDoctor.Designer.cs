@@ -234,7 +234,6 @@
             Controls.Add(flowLayoutPanel1);
             Name = "ViewDoctor";
             Text = "ViewDoctor";
-            Load += ViewDoctor_Load;
             flowLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             sidenav.ResumeLayout(false);
