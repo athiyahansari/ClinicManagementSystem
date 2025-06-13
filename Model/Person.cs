@@ -11,5 +11,9 @@ namespace CMS.Model
     {
         public int Id { get; set; } // Unique ID
         public string Name { get; set; } // Name of the person
+        public int ID { get; set; }
+        public string FullName { get; set; }
+        public string Email { get; set; }
+        public string PhoneNo { get; set; }
     }
 }
