@@ -25,7 +25,7 @@ namespace CMS.View.Doctor
         {
             dgvPrescriptions.Rows.Clear();
 
-            DataTable dt = PrescriptionController.GetPrescriptionWithPatientName(doctorID);
+            DataTable dt = PrescriptionsController.GetPrescriptionWithPatientName(doctorID);
             foreach (DataRow row in dt.Rows)
             {
                 dgvPrescriptions.Rows.Add(
@@ -43,13 +43,13 @@ namespace CMS.View.Doctor
         {
             var patientId = int.Parse(txtPatientID.Text);
 
-            if (!PrescriptionController.PatientExists(patientId))
+            if (!PrescriptionsController.PatientExists(patientId))
             {
                 MessageBox.Show("Patient ID does not exist.");
                 return;
             }
 
-            var newPrescription = new Prescription(
+            var newPrescription = new Prescriptions(
                 0,
                 patientId,
                 doctorID,
@@ -58,7 +58,7 @@ namespace CMS.View.Doctor
                 dtpDate.Value
             );
 
-            PrescriptionController.AddPrescription(newPrescription);
+            PrescriptionsController.AddPrescription(newPrescription);
             MessageBox.Show("Prescription added successfully.");
             LoadPrescriptionData();
             ClearForm();
@@ -74,7 +74,7 @@ namespace CMS.View.Doctor
 
             try
             {
-                var updatedPrescription = new Prescription(
+                var updatedPrescription = new Prescriptions(
                     currentPrescriptionID,
                     int.Parse(txtPatientID.Text),
                     doctorID,
@@ -83,7 +83,7 @@ namespace CMS.View.Doctor
                     dtpDate.Value
                 );
 
-                PrescriptionController.UpdatePrescription(updatedPrescription);
+                PrescriptionsController.UpdatePrescription(updatedPrescription);
                 MessageBox.Show("Prescription updated successfully.");
                 LoadPrescriptionData();
                 ClearForm();
@@ -126,7 +126,7 @@ namespace CMS.View.Doctor
                 DateTime date = Convert.ToDateTime(row.Cells["date"].Value);
 
                 // Fetch the prescription ID
-                int prescriptionId = PrescriptionController.GetPrescriptionID(doctorID, patientId, date);
+                int prescriptionId = PrescriptionsController.GetPrescriptionID(doctorID, patientId, date);
                 if (prescriptionId == -1)
                 {
                     MessageBox.Show("Prescription ID not found.");

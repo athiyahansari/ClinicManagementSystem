@@ -27,7 +27,7 @@ namespace CMS.View.Doctor
         {
             try
             {
-                var updatedPrescription = new Prescription(
+                var updatedPrescription = new Prescriptions(
                     prescriptionId,
                     int.Parse(txtPatientID.Text),
                     doctorId,
@@ -36,7 +36,7 @@ namespace CMS.View.Doctor
                     dtpDate.Value
                 );
 
-                PrescriptionController.UpdatePrescription(updatedPrescription);
+                PrescriptionsController.UpdatePrescription(updatedPrescription);
                 MessageBox.Show("Prescription updated successfully.");
                 this.DialogResult = DialogResult.OK;
                 this.Close();

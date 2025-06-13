@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace CMS.Model
 {
     // Model class for Prescription - encapsulation with public properties
-    public class Prescription
+    public class Prescriptions
     {
         public int PrescriptionID { get; set; }
         public int PatientID { get; set; }
@@ -24,7 +24,7 @@ namespace CMS.Model
         //public Prescription() { }
 
         // Constructor without ID (for new prescriptions)
-        public Prescription(int prescriptionID, int patientID, int doctorID, string diagnosis, string medicines, DateTime prescriptionDate)
+        public Prescriptions(int prescriptionID, int patientID, int doctorID, string diagnosis, string medicines, DateTime prescriptionDate)
         {
             PrescriptionID = prescriptionID;
             PatientID = patientID;
@@ -41,7 +41,7 @@ namespace CMS.Model
         //    PrescriptionID = prescriptionID;
         //}
 
-        public Prescription() { }
+        public Prescriptions() { }
     }
 }
 

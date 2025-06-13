@@ -8,11 +8,11 @@ using System.Data;
 
 namespace CMS.Controllers
 {
-    public class PrescriptionController
+    public class PrescriptionsController
     {
-        public static List<Prescription> GetPrescriptionsByDoctor(int doctorId)
+        public static List<Prescriptions> GetPrescriptionsByDoctor(int doctorId)
         {
-            List<Prescription> prescriptions = new List<Prescription>();
+            List<Prescriptions> prescriptions = new List<Prescriptions>();
             using (var conn = DBHelper.GetConnection())
             {
                 conn.Open();
@@ -27,7 +27,7 @@ namespace CMS.Controllers
                     {
                         while (reader.Read())
                         {
-                            prescriptions.Add(new Prescription(
+                            prescriptions.Add(new Prescriptions(
                                 reader.GetInt32("prescription_id"),
                                 reader.GetInt32("patient_id"),
                                 doctorId,
@@ -66,7 +66,7 @@ namespace CMS.Controllers
             }
         }
 
-        public static void AddPrescription(Prescription p)
+        public static void AddPrescription(Prescriptions p)
         {
             using (var conn = DBHelper.GetConnection())
             {
@@ -85,7 +85,7 @@ namespace CMS.Controllers
             }
         }
 
-        public static void UpdatePrescription(Prescription p)
+        public static void UpdatePrescription(Prescriptions p)
         {
             using (var conn = DBHelper.GetConnection())
             {
