@@ -39,6 +39,7 @@
             navdoc = new Button();
             sidenav = new Panel();
             panel1 = new Panel();
+            label1 = new Label();
             txtPatientName = new TextBox();
             btnLoad = new Button();
             textBox1 = new TextBox();
@@ -49,7 +50,6 @@
             Column4 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
             Column5 = new DataGridViewTextBoxColumn();
-            label1 = new Label();
             sidenav.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dvgMedicalHistory).BeginInit();
@@ -100,6 +100,7 @@
             navprofile.TabIndex = 4;
             navprofile.Text = "MyProfile";
             navprofile.UseVisualStyleBackColor = false;
+            navprofile.Click += navprofile_Click;
             // 
             // logout
             // 
@@ -180,6 +181,19 @@
             panel1.TabIndex = 22;
             panel1.Paint += panel1_Paint;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.DarkGray;
+            label1.BorderStyle = BorderStyle.FixedSingle;
+            label1.Font = new Font("Segoe UI", 10F);
+            label1.Location = new Point(59, 151);
+            label1.Name = "label1";
+            label1.Padding = new Padding(4);
+            label1.Size = new Size(138, 29);
+            label1.TabIndex = 5;
+            label1.Text = "Enter Patient Name";
+            // 
             // txtPatientName
             // 
             txtPatientName.Location = new Point(60, 188);
@@ -249,19 +263,6 @@
             // 
             Column5.HeaderText = "Notes";
             Column5.Name = "Column5";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.DarkGray;
-            label1.BorderStyle = BorderStyle.FixedSingle;
-            label1.Font = new Font("Segoe UI", 10F);
-            label1.Location = new Point(59, 151);
-            label1.Name = "label1";
-            label1.Padding = new Padding(4);
-            label1.Size = new Size(138, 29);
-            label1.TabIndex = 5;
-            label1.Text = "Enter Patient Name";
             // 
             // ViewMedicalHistory
             // 

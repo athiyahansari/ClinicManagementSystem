@@ -20,7 +20,7 @@ namespace ClinicManagementSystem.Views.Patients
 
         private void ViewMedicalHistory_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         // Button click event - just calls the load method
@@ -32,7 +32,7 @@ namespace ClinicManagementSystem.Views.Patients
         // Method to load medical history into the DataGridView
         private void LoadMedicalHistory()
         {
-            
+
         }
 
         private void dvgMedicalHistory_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -44,5 +44,15 @@ namespace ClinicManagementSystem.Views.Patients
         {
 
         }
+
+
+        //DOCTOR VIEW PROFILE BTN
+        private void navprofile_Click(object sender, EventArgs e)
+        {
+            int doctorId = 1; // Replace this with actual dynamic doctorId when available
+            CMS.View.Doctor.DocViewProfile profileForm = new CMS.View.Doctor.DocViewProfile(doctorId);
+            profileForm.ShowDialog();
+        }
+
     }
 }
