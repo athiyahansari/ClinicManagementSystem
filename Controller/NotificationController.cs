@@ -9,11 +9,19 @@ using MySql.Data.MySqlClient;
 
 namespace CMS.Controller
 {
+    /// <summary>
+    /// Handles fetching and formatting notifications for the view.
+    /// </summary>
     internal class NotificationController
     {
-        public static Notification GetLatestUnreadNotificationForPatient(int patientId)
+        /// <summary>
+        /// Retrieves the most recent unread notification for a patient.
+        /// Formatting (line breaks every 5 words) is handled here.
+        /// </summary>
+        public Notification GetLatestNotificationForPatient(int patientId, out string formattedMessage)
         {
             Notification notif = null;
+            formattedMessage = string.Empty;
 
             try
             {
@@ -42,6 +50,9 @@ namespace CMS.Controller
                                     reader.GetDateTime("created_at"),
                                     reader.GetBoolean("is_read")
                                 );
+
+                                // Prepare formatted string for the view
+                                formattedMessage = ApplyLineBreaks(notif.Message, 5);
                             }
                         }
                     }
@@ -53,6 +64,27 @@ namespace CMS.Controller
             }
 
             return notif;
+        }
+
+        /// <summary>
+        /// Inserts a newline every N words.
+        /// </summary>
+        private static string ApplyLineBreaks(string text, int wordsPerLine)
+        {
+            if (string.IsNullOrEmpty(text))
+                return text;
+
+            var words = text.Split(' ');
+            var sb = new System.Text.StringBuilder();
+
+            for (int i = 0; i < words.Length; i++)
+            {
+                sb.Append(words[i]).Append(' ');
+                if ((i + 1) % wordsPerLine == 0)
+                    sb.AppendLine();
+            }
+
+            return sb.ToString().TrimEnd();
         }
     }
 }

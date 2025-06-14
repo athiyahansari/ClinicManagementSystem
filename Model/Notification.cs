@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace CMS.Model
 {
+    /// <summary>
+    /// Represents a notification record from the database.
+    /// </summary>
     internal class Notification
     {
         public int NotificationId { get; set; } // PK
