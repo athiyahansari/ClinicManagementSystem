@@ -26,7 +26,7 @@ namespace CMS.Controller
                     JOIN 
                         doctors d ON mh.doctor_id = d.doctor_id
                     WHERE 
-                        CONCAT(p.first_name, ' ', p.last_name) = @fullName";
+                        CONCAT(p.first_name, ' ', p.last_name) = @fullName";//database case insensitive, match to full name of databse.
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@fullName", fullName);

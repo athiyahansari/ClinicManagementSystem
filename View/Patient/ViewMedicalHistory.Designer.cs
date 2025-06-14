@@ -227,7 +227,7 @@
             navdoc.Name = "navdoc";
             navdoc.Size = new Size(125, 26);
             navdoc.TabIndex = 0;
-            navdoc.Text = "Doctor";
+            navdoc.Text = "View Doctor";
             navdoc.UseVisualStyleBackColor = false;
             // 
             // ViewMedicalHistory
