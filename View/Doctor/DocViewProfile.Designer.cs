@@ -437,7 +437,7 @@ namespace CMS.View.Doctor
             button6.Name = "button6";
             button6.Size = new Size(125, 26);
             button6.TabIndex = 0;
-            button6.Text = "Doctor";
+            button6.Text = "View Doctor";
             button6.UseVisualStyleBackColor = false;
             // 
             // DocName
