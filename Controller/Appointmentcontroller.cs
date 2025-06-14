@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CMS.Model;
 using CMS.Utils;
+using CMS.Controller;
 using MySql.Data.MySqlClient;
 
 namespace CMS.Controller
@@ -15,6 +16,8 @@ namespace CMS.Controller
 
         private string connectionString = ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
         //method to get all appointments for a patient to fll datagridview or listview
+
+        private readonly NotificationController notificationController = new NotificationController();
         public List<Appointment> GetAppointmentsByPatientId(int patientId)
         { //get appointments from db for a specifc patient 
 
@@ -86,6 +89,14 @@ namespace CMS.Controller
 
                 cmd.ExecuteNonQuery(); //execute the insert command
                                        //save a new appointment to the database
+
+                // Get the last inserted appointment ID
+                long insertedId = cmd.LastInsertedId;
+                //  Create a notification message
+                string message = $"Your appointment with Dr. {appt.DoctorName} is booked for {appt.Date.ToShortDateString()} at {appt.Time:hh\\:mm}.";
+                // Create notification in DB
+                notificationController.CreateNotification((int)insertedId, message);
+
             } //links a variable to the placeholder in ur sql query @patientId, @date, etc..addwithvalue is used to replace the placeholder with the actual value
         }
 

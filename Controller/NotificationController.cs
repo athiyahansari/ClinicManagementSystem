@@ -5,15 +5,49 @@ using System.Text;
 using System.Threading.Tasks;
 using CMS.Model;
 using CMS.Utils;
+using CMS.Controller;
 using MySql.Data.MySqlClient;
 
 namespace CMS.Controller
 {
+    /// <summary>
+    /// Handles fetching and formatting notifications for the view.
+    /// </summary>
     internal class NotificationController
     {
-        public static Notification GetLatestUnreadNotificationForPatient(int patientId)
+        public void CreateNotification(int appointmentId, string message)
+        {
+            try
+            {
+                using (MySqlConnection conn = DBHelper.GetConnection())
+                {
+                    conn.Open();
+                    string query = @"
+                INSERT INTO notifications (appointment_id, message, created_at, is_read)
+                VALUES (@appointmentId, @message, @createdAt, @isRead)";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@appointmentId", appointmentId);
+                        cmd.Parameters.AddWithValue("@message", message);
+                        cmd.Parameters.AddWithValue("@createdAt", DateTime.Now);
+                        cmd.Parameters.AddWithValue("@isRead", false); // New notifications are unread by default
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error creating notification: " + ex.Message);
+            }
+        }
+
+        public Notification GetLatestNotificationForPatient(int patientId, out string formattedMessage)
         {
             Notification notif = null;
+            formattedMessage = string.Empty;
+
 
             try
             {
@@ -42,6 +76,9 @@ namespace CMS.Controller
                                     reader.GetDateTime("created_at"),
                                     reader.GetBoolean("is_read")
                                 );
+
+                                // Prepare formatted string for the view
+                                formattedMessage = ApplyLineBreaks(notif.Message, 5);
                             }
                         }
                     }
@@ -54,5 +91,27 @@ namespace CMS.Controller
 
             return notif;
         }
+
+        /// <summary>
+        /// Inserts a newline every N words.
+        /// </summary>
+        private static string ApplyLineBreaks(string text, int wordsPerLine)
+        {
+            if (string.IsNullOrEmpty(text))
+                return text;
+
+            var words = text.Split(' ');
+            var sb = new System.Text.StringBuilder();
+
+            for (int i = 0; i < words.Length; i++)
+            {
+                sb.Append(words[i]).Append(' ');
+                if ((i + 1) % wordsPerLine == 0)
+                    sb.AppendLine();
+            }
+
+            return sb.ToString().TrimEnd();
+        }
+
     }
 }

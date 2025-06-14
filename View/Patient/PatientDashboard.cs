@@ -14,12 +14,14 @@ namespace CMS.View.Patient
 {
     public partial class PatientDashboard : Form
     {
-        private int currentPatientId; // This will be passed in when the form is created
+        private readonly int patientId;
+        private readonly NotificationController notificationController; 
 
         public PatientDashboard(int patientId)
         {
             InitializeComponent();
-            currentPatientId = patientId;
+            notificationController = new NotificationController();
+
 
             // Form Load Event
             this.Load += PatientDashboard_Load;
@@ -35,17 +37,20 @@ namespace CMS.View.Patient
         {
             try
             {
-                Appointment nextAppt = Appointmentcontroller.GetNextAppointmentForPatient(currentPatientId);
+                Appointment nextAppt = Appointmentcontroller.GetNextAppointmentForPatient(patientId);
+                lblNotification.Visible = false;
 
                 if (nextAppt != null)
                 {
-                    lblNotification.Text = $"Next Appointment:\n📅 {nextAppt.Date.ToShortDateString()} ⏰ {nextAppt.Time:hh\\:mm}\n👨‍⚕️ Dr. {nextAppt.DoctorName}";
+                    lblNotification.Text =
+                        $"Next Appointment:\n📅 {nextAppt.Date.ToShortDateString()} ⏰ {nextAppt.Time:hh\\:mm}\n👨‍⚕️ Dr. {nextAppt.DoctorName}";
                     lblNotification.Visible = true;
                 }
                 else
                 {
-                    lblNoNotif.Text = "🎉 No Upcoming Appointments!";
-                    lblNoNotif.Visible = true;
+                    // If an error occurs, you might want to clear the label or show an error message there too
+                    lblNotification.Text = "Error loading appointments.";
+                    lblNotification.Visible = true;
                 }
             }
             catch (Exception ex)
@@ -58,38 +63,28 @@ namespace CMS.View.Patient
         {
             try
             {
-                Notification notif = NotificationController.GetLatestUnreadNotificationForPatient(currentPatientId);
+                string formattedText;
+                Notification notif = notificationController.GetLatestNotificationForPatient(patientId, out formattedText);
+
+                lblNotification.Visible = false;
 
                 if (notif != null)
                 {
-                    //lblNotification.Text = $"🔔 {notif.Message}";
-                    string sentence = notif.Message;
-                    char separator = ' '; // Space character
-                    string[] words = sentence.Split(separator);
-                    int newlineum = 0;
-                    string message = "";
-                    foreach (string word in words)
-                    {
-                        message += word + " ";
-                        newlineum++;
-                        if (newlineum % 5 == 0) // Add a newline every 10 words
-                        {
-                            message += "\n";
-                        }
-                    }
-                    lblNotification.Text = $"🔔 {message}";
-
+                    lblNotification.Text = "🔔 " + formattedText;
                     lblNotification.Visible = true;
                 }
                 else
                 {
-                    lblNoNotif.Text = "📭 No new notifications.";
-                    lblNoNotif.Visible = true;
+                    lblNotification.Text = "📭 No new notifications.";
+                    lblNotification.Visible = true;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Failed to load notifications: " + ex.Message);
+                // If an error occurs, you might want to clear the label or show an error message there too
+                lblNotification.Text = "Error loading notifications.";
+                lblNotification.Visible = true;
             }
         }
     }

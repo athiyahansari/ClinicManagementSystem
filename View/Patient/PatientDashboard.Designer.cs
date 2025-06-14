@@ -47,7 +47,6 @@
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
             lblNotification = new Label();
-            lblNoNotif = new Label();
             sidenav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -150,9 +149,9 @@
             welcome_msg.Font = new Font("Lucida Bright", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             welcome_msg.Location = new Point(57, 46);
             welcome_msg.Name = "welcome_msg";
-            welcome_msg.Size = new Size(369, 62);
+            welcome_msg.Size = new Size(223, 31);
             welcome_msg.TabIndex = 1;
-            welcome_msg.Text = "Welcome back, John Doe!\r\n\r\n";
+            welcome_msg.Text = "Welcome back!";
             // 
             // dash_medicalhistory
             // 
@@ -162,7 +161,7 @@
             dash_medicalhistory.Font = new Font("Yu Gothic UI", 10F);
             dash_medicalhistory.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_medicalhistory.LinkColor = Color.Black;
-            dash_medicalhistory.Location = new Point(639, 432);
+            dash_medicalhistory.Location = new Point(639, 494);
             dash_medicalhistory.Name = "dash_medicalhistory";
             dash_medicalhistory.Size = new Size(182, 28);
             dash_medicalhistory.TabIndex = 20;
@@ -177,7 +176,7 @@
             dash_upcomingappointments.Font = new Font("Yu Gothic UI", 10F);
             dash_upcomingappointments.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_upcomingappointments.LinkColor = Color.Black;
-            dash_upcomingappointments.Location = new Point(639, 324);
+            dash_upcomingappointments.Location = new Point(639, 386);
             dash_upcomingappointments.Name = "dash_upcomingappointments";
             dash_upcomingappointments.Size = new Size(234, 28);
             dash_upcomingappointments.TabIndex = 19;
@@ -192,7 +191,7 @@
             dash_prescriptions.Font = new Font("Yu Gothic UI", 10F);
             dash_prescriptions.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_prescriptions.LinkColor = Color.Black;
-            dash_prescriptions.Location = new Point(213, 432);
+            dash_prescriptions.Location = new Point(213, 494);
             dash_prescriptions.Name = "dash_prescriptions";
             dash_prescriptions.Size = new Size(157, 28);
             dash_prescriptions.TabIndex = 18;
@@ -207,7 +206,7 @@
             dash_newdoctors.Font = new Font("Yu Gothic UI", 10F);
             dash_newdoctors.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_newdoctors.LinkColor = Color.Black;
-            dash_newdoctors.Location = new Point(213, 324);
+            dash_newdoctors.Location = new Point(213, 386);
             dash_newdoctors.Name = "dash_newdoctors";
             dash_newdoctors.Size = new Size(151, 28);
             dash_newdoctors.TabIndex = 17;
@@ -218,7 +217,7 @@
             // 
             pictureBox4.BackColor = Color.Transparent;
             pictureBox4.Image = Properties.Resources.medical_history_icon;
-            pictureBox4.Location = new Point(552, 418);
+            pictureBox4.Location = new Point(552, 480);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(72, 62);
             pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
@@ -229,7 +228,7 @@
             // 
             pictureBox2.BackColor = Color.Transparent;
             pictureBox2.Image = Properties.Resources.upcomingappointments_icon;
-            pictureBox2.Location = new Point(552, 307);
+            pictureBox2.Location = new Point(552, 369);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(72, 62);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
@@ -240,7 +239,7 @@
             // 
             pictureBox3.BackColor = Color.Transparent;
             pictureBox3.Image = Properties.Resources.prescription_icon;
-            pictureBox3.Location = new Point(124, 418);
+            pictureBox3.Location = new Point(124, 480);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(72, 62);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
@@ -252,7 +251,7 @@
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox1.Image = Properties.Resources.doctor_icon;
-            pictureBox1.Location = new Point(124, 307);
+            pictureBox1.Location = new Point(124, 369);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(72, 62);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -264,7 +263,6 @@
             panel1.BackgroundImage = Properties.Resources.dashboard_bg;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
             panel1.Controls.Add(lblNotification);
-            panel1.Controls.Add(lblNoNotif);
             panel1.Controls.Add(dash_medicalhistory);
             panel1.Controls.Add(dash_upcomingappointments);
             panel1.Controls.Add(dash_prescriptions);
@@ -284,23 +282,11 @@
             lblNotification.AutoSize = true;
             lblNotification.BackColor = Color.Transparent;
             lblNotification.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
-            lblNotification.Location = new Point(485, 155);
+            lblNotification.Location = new Point(661, 110);
             lblNotification.Name = "lblNotification";
             lblNotification.Size = new Size(18, 25);
             lblNotification.TabIndex = 22;
             lblNotification.Text = ".";
-            // 
-            // lblNoNotif
-            // 
-            lblNoNotif.AutoSize = true;
-            lblNoNotif.BackColor = Color.Transparent;
-            lblNoNotif.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblNoNotif.Location = new Point(639, 95);
-            lblNoNotif.Name = "lblNoNotif";
-            lblNoNotif.Size = new Size(292, 25);
-            lblNoNotif.TabIndex = 21;
-            lblNoNotif.Text = "🎉 No Upcoming Appointments!";
-            lblNoNotif.Visible = false;
             // 
             // PatientDashboard
             // 
@@ -342,7 +328,6 @@
         private PictureBox pictureBox1;
         private Label label2;
         private Panel panel1;
-        private Label lblNoNotif;
         private Label lblNotification;
     }
 }
