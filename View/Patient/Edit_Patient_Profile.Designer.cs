@@ -38,11 +38,11 @@
             txtLastName = new TextBox();
             label6 = new Label();
             btnSave = new Button();
-            button2 = new Button();
+            btnPatient = new Button();
             btnCancel = new Button();
             btnLogOut = new Button();
-            button6 = new Button();
-            button7 = new Button();
+            btnDoctor = new Button();
+            btnAppointment = new Button();
             label7 = new Label();
             cmbGender = new ComboBox();
             label8 = new Label();
@@ -154,16 +154,17 @@
             btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += btnSave_Click;
             // 
-            // button2
+            // btnPatient
             // 
-            button2.BackColor = Color.LightSteelBlue;
-            button2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(39, 239);
-            button2.Name = "button2";
-            button2.Size = new Size(153, 37);
-            button2.TabIndex = 15;
-            button2.Text = "Patient";
-            button2.UseVisualStyleBackColor = false;
+            btnPatient.BackColor = Color.LightSteelBlue;
+            btnPatient.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnPatient.Location = new Point(39, 239);
+            btnPatient.Name = "btnPatient";
+            btnPatient.Size = new Size(153, 37);
+            btnPatient.TabIndex = 15;
+            btnPatient.Text = "Patient";
+            btnPatient.UseVisualStyleBackColor = false;
+            btnPatient.Click += btnPatient_Click;
             // 
             // btnCancel
             // 
@@ -187,29 +188,31 @@
             btnLogOut.TabIndex = 18;
             btnLogOut.Text = "Log Out";
             btnLogOut.UseVisualStyleBackColor = false;
+            btnLogOut.Click += btnLogOut_Click;
             // 
-            // button6
+            // btnDoctor
             // 
-            button6.BackColor = Color.LightSteelBlue;
-            button6.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button6.Location = new Point(39, 191);
-            button6.Name = "button6";
-            button6.Size = new Size(153, 42);
-            button6.TabIndex = 21;
-            button6.Text = "Doctors";
-            button6.UseVisualStyleBackColor = false;
+            btnDoctor.BackColor = Color.LightSteelBlue;
+            btnDoctor.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDoctor.Location = new Point(39, 191);
+            btnDoctor.Name = "btnDoctor";
+            btnDoctor.Size = new Size(153, 42);
+            btnDoctor.TabIndex = 21;
+            btnDoctor.Text = "Doctors";
+            btnDoctor.UseVisualStyleBackColor = false;
+            btnDoctor.Click += btnDoctor_Click;
             // 
-            // button7
+            // btnAppointment
             // 
-            button7.BackColor = Color.LightSteelBlue;
-            button7.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button7.Location = new Point(39, 144);
-            button7.Name = "button7";
-            button7.Size = new Size(153, 41);
-            button7.TabIndex = 22;
-            button7.Text = "Appointments";
-            button7.UseVisualStyleBackColor = false;
-            button7.Click += button7_Click;
+            btnAppointment.BackColor = Color.LightSteelBlue;
+            btnAppointment.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAppointment.Location = new Point(39, 144);
+            btnAppointment.Name = "btnAppointment";
+            btnAppointment.Size = new Size(153, 41);
+            btnAppointment.TabIndex = 22;
+            btnAppointment.Text = "Appointments";
+            btnAppointment.UseVisualStyleBackColor = false;
+            btnAppointment.Click += button7_Click;
             // 
             // label7
             // 
@@ -303,12 +306,12 @@
             Controls.Add(label8);
             Controls.Add(cmbGender);
             Controls.Add(label7);
-            Controls.Add(button7);
-            Controls.Add(button6);
+            Controls.Add(btnAppointment);
+            Controls.Add(btnDoctor);
             Controls.Add(btnLogOut);
             Controls.Add(btnMyProfiles);
             Controls.Add(btnCancel);
-            Controls.Add(button2);
+            Controls.Add(btnPatient);
             Controls.Add(btnSave);
             Controls.Add(label6);
             Controls.Add(txtLastName);
@@ -339,12 +342,12 @@
         private TextBox txtLastName;
         private Label label6;
         private Button btnSave;
-        private Button button2;
+        private Button btnPatient;
         private Button btnCancel;
         private Button btnMyProfiles;
         private Button btnLogOut;
-        private Button button6;
-        private Button button7;
+        private Button btnDoctor;
+        private Button btnAppointment;
         private Label label7;
         private ComboBox cmbGender;
         private Label label8;

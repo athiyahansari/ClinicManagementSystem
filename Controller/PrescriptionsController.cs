@@ -2,9 +2,11 @@
 
 using CMS.Utils;
 using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CMS.Controllers
 {
@@ -27,6 +29,7 @@ namespace CMS.Controllers
                     {
                         while (reader.Read())
                         {
+                            // Create a Prescriptions object and add to list
                             prescriptions.Add(new Prescriptions(
                                 reader.GetInt32("prescription_id"),
                                 reader.GetInt32("patient_id"),
@@ -59,13 +62,14 @@ namespace CMS.Controllers
                     using (var adapter = new MySqlDataAdapter(cmd))
                     {
                         DataTable dt = new DataTable();
-                        adapter.Fill(dt);
+                        adapter.Fill(dt);  // Fill DataTable with query result
                         return dt;
                     }
                 }
             }
         }
 
+        // Adds a new prescription record to the database.
         public static void AddPrescription(Prescriptions p)
         {
             using (var conn = DBHelper.GetConnection())
@@ -85,6 +89,7 @@ namespace CMS.Controllers
             }
         }
 
+        // Updates an existing prescription in the database.
         public static void UpdatePrescription(Prescriptions p)
         {
             using (var conn = DBHelper.GetConnection())
@@ -108,6 +113,7 @@ namespace CMS.Controllers
             }
         }
 
+        //Gets the prescription ID for a specific doctor, patient, and date.
         public static int GetPrescriptionID(int doctorID, int patientID, DateTime date)
         {
             using (var conn = DBHelper.GetConnection())
@@ -128,8 +134,9 @@ namespace CMS.Controllers
                 }
             }
         }
-    
-    public static bool PatientExists(int patientId)
+
+        //Checks if a patient with the given ID exists in the database.
+        public static bool PatientExists(int patientId)
         {
             using (var conn = DBHelper.GetConnection())
             {

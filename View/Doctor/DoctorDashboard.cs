@@ -16,5 +16,10 @@ namespace CMS.View.Doctor
         {
             InitializeComponent();
         }
+
+        private void dash_pastpatient_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
     }
 }
