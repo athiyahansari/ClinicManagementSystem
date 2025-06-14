@@ -78,7 +78,7 @@
             // 
             // txtPatientID
             // 
-            txtPatientID.Location = new Point(140, 27);
+            txtPatientID.Location = new Point(153, 30);
             txtPatientID.Name = "txtPatientID";
             txtPatientID.ReadOnly = true;
             txtPatientID.Size = new Size(250, 30);
@@ -86,7 +86,7 @@
             // 
             // txtPatientName
             // 
-            txtPatientName.Location = new Point(140, 67);
+            txtPatientName.Location = new Point(153, 67);
             txtPatientName.Name = "txtPatientName";
             txtPatientName.ReadOnly = true;
             txtPatientName.Size = new Size(250, 30);
@@ -94,21 +94,21 @@
             // 
             // txtDiagnosis
             // 
-            txtDiagnosis.Location = new Point(140, 107);
+            txtDiagnosis.Location = new Point(153, 110);
             txtDiagnosis.Name = "txtDiagnosis";
             txtDiagnosis.Size = new Size(250, 30);
             txtDiagnosis.TabIndex = 5;
             // 
             // txtMedicines
             // 
-            txtMedicines.Location = new Point(140, 147);
+            txtMedicines.Location = new Point(153, 151);
             txtMedicines.Name = "txtMedicines";
             txtMedicines.Size = new Size(250, 30);
             txtMedicines.TabIndex = 7;
             // 
             // dtpDate
             // 
-            dtpDate.Location = new Point(140, 187);
+            dtpDate.Location = new Point(153, 190);
             dtpDate.Name = "dtpDate";
             dtpDate.Size = new Size(250, 30);
             dtpDate.TabIndex = 9;
@@ -125,7 +125,7 @@
             // btnSave
             // 
             btnSave.BackColor = Color.DarkTurquoise;
-            btnSave.Location = new Point(140, 240);
+            btnSave.Location = new Point(173, 240);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(90, 32);
             btnSave.TabIndex = 10;

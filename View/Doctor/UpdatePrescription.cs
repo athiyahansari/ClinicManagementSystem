@@ -4,7 +4,8 @@ using System;
 using System.Windows.Forms;
 
 namespace CMS.View.Doctor
-{
+{   
+    // The popup (dialog message) that appears on the main form CreatePrescription , to update the details.
     public partial class UpdatePrescription : Form
     {
         private int prescriptionId;
@@ -23,6 +24,7 @@ namespace CMS.View.Doctor
             dtpDate.Value = prescriptionDate;
         }
 
+        // Save Button
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -47,6 +49,7 @@ namespace CMS.View.Doctor
             }
         }
 
+        // Cancel Button
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();

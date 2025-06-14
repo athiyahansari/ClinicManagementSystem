@@ -29,12 +29,11 @@
         private void InitializeComponent()
         {
             sidenav = new Panel();
-            button1 = new Button();
-            navprofile = new Button();
+            btnPrescriptions = new Button();
+            btnMyProfile = new Button();
             label2 = new Label();
-            logout = new Button();
-            navappointment = new Button();
-            navpatient = new Button();
+            btnLogout = new Button();
+            btnMyAppointments = new Button();
             lblTitle = new Label();
             lblPatientID = new Label();
             lblDiagnosis = new Label();
@@ -51,7 +50,6 @@
             disease = new DataGridViewTextBoxColumn();
             medicine = new DataGridViewTextBoxColumn();
             UpdateColumn = new DataGridViewButtonColumn();
-            btnBack = new Button();
             lblPatientName = new Label();
             txtPatientName = new TextBox();
             sidenav.SuspendLayout();
@@ -61,90 +59,78 @@
             // sidenav
             // 
             sidenav.BackColor = Color.CornflowerBlue;
-            sidenav.Controls.Add(button1);
-            sidenav.Controls.Add(navprofile);
+            sidenav.Controls.Add(btnPrescriptions);
+            sidenav.Controls.Add(btnMyProfile);
             sidenav.Controls.Add(label2);
-            sidenav.Controls.Add(logout);
-            sidenav.Controls.Add(navappointment);
-            sidenav.Controls.Add(navpatient);
+            sidenav.Controls.Add(btnLogout);
+            sidenav.Controls.Add(btnMyAppointments);
             sidenav.Dock = DockStyle.Left;
             sidenav.Location = new Point(0, 0);
             sidenav.Name = "sidenav";
             sidenav.Size = new Size(247, 735);
             sidenav.TabIndex = 2;
             // 
-            // button1
+            // btnPrescriptions
             // 
-            button1.BackColor = Color.LightSteelBlue;
-            button1.Font = new Font("Segoe UI", 9F);
-            button1.Location = new Point(42, 223);
-            button1.Name = "button1";
-            button1.Size = new Size(159, 47);
-            button1.TabIndex = 24;
-            button1.Text = "Prescriptions";
-            button1.UseVisualStyleBackColor = false;
+            btnPrescriptions.BackColor = Color.LightSteelBlue;
+            btnPrescriptions.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnPrescriptions.Location = new Point(41, 180);
+            btnPrescriptions.Name = "btnPrescriptions";
+            btnPrescriptions.Size = new Size(159, 47);
+            btnPrescriptions.TabIndex = 24;
+            btnPrescriptions.Text = "Prescriptions";
+            btnPrescriptions.UseVisualStyleBackColor = false;
             // 
-            // navprofile
+            // btnMyProfile
             // 
-            navprofile.BackColor = Color.LightSteelBlue;
-            navprofile.Font = new Font("Segoe UI", 9F);
-            navprofile.Location = new Point(41, 446);
-            navprofile.Name = "navprofile";
-            navprofile.Size = new Size(159, 45);
-            navprofile.TabIndex = 4;
-            navprofile.Text = "MyProfile";
-            navprofile.UseVisualStyleBackColor = false;
+            btnMyProfile.BackColor = Color.LightSteelBlue;
+            btnMyProfile.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnMyProfile.Location = new Point(41, 559);
+            btnMyProfile.Name = "btnMyProfile";
+            btnMyProfile.Size = new Size(159, 45);
+            btnMyProfile.TabIndex = 4;
+            btnMyProfile.Text = "MyProfile";
+            btnMyProfile.UseVisualStyleBackColor = false;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Kristen ITC", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = SystemColors.ButtonFace;
+            label2.ForeColor = Color.LightCyan;
             label2.Location = new Point(23, 41);
             label2.Name = "label2";
             label2.Size = new Size(209, 33);
             label2.TabIndex = 23;
             label2.Text = "MedLine Clinic";
             // 
-            // logout
+            // btnLogout
             // 
-            logout.BackColor = Color.LightSteelBlue;
-            logout.Font = new Font("Segoe UI", 9F);
-            logout.Location = new Point(41, 497);
-            logout.Name = "logout";
-            logout.Size = new Size(159, 42);
-            logout.TabIndex = 3;
-            logout.Text = "LogOut";
-            logout.UseVisualStyleBackColor = false;
+            btnLogout.BackColor = Color.LightSteelBlue;
+            btnLogout.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnLogout.Location = new Point(41, 610);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(159, 42);
+            btnLogout.TabIndex = 3;
+            btnLogout.Text = "LogOut";
+            btnLogout.UseVisualStyleBackColor = false;
             // 
-            // navappointment
+            // btnMyAppointments
             // 
-            navappointment.BackColor = Color.LightSteelBlue;
-            navappointment.Font = new Font("Segoe UI", 9F);
-            navappointment.Location = new Point(41, 172);
-            navappointment.Name = "navappointment";
-            navappointment.Size = new Size(159, 47);
-            navappointment.TabIndex = 1;
-            navappointment.Text = "My Appointment";
-            navappointment.UseVisualStyleBackColor = false;
-            // 
-            // navpatient
-            // 
-            navpatient.BackColor = Color.LightSteelBlue;
-            navpatient.Font = new Font("Segoe UI", 9F);
-            navpatient.Location = new Point(41, 120);
-            navpatient.Name = "navpatient";
-            navpatient.Size = new Size(159, 47);
-            navpatient.TabIndex = 0;
-            navpatient.Text = "My Patients";
-            navpatient.UseVisualStyleBackColor = false;
+            btnMyAppointments.BackColor = Color.LightSteelBlue;
+            btnMyAppointments.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnMyAppointments.Location = new Point(41, 127);
+            btnMyAppointments.Name = "btnMyAppointments";
+            btnMyAppointments.Size = new Size(159, 47);
+            btnMyAppointments.TabIndex = 1;
+            btnMyAppointments.Text = "My Appointment";
+            btnMyAppointments.UseVisualStyleBackColor = false;
             // 
             // lblTitle
             // 
             lblTitle.AutoSize = true;
             lblTitle.BackColor = SystemColors.GradientActiveCaption;
             lblTitle.Font = new Font("Segoe UI Symbol", 18F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblTitle.Location = new Point(554, 32);
+            lblTitle.Location = new Point(597, 33);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(324, 41);
             lblTitle.TabIndex = 3;
@@ -153,7 +139,7 @@
             // lblPatientID
             // 
             lblPatientID.AutoSize = true;
-            lblPatientID.Location = new Point(317, 120);
+            lblPatientID.Location = new Point(318, 127);
             lblPatientID.Name = "lblPatientID";
             lblPatientID.Size = new Size(94, 23);
             lblPatientID.TabIndex = 4;
@@ -172,14 +158,14 @@
             // 
             txtPatientID.Location = new Point(455, 120);
             txtPatientID.Name = "txtPatientID";
-            txtPatientID.Size = new Size(125, 30);
+            txtPatientID.Size = new Size(307, 30);
             txtPatientID.TabIndex = 6;
             // 
             // txtDiagnosis
             // 
             txtDiagnosis.Location = new Point(455, 213);
             txtDiagnosis.Name = "txtDiagnosis";
-            txtDiagnosis.Size = new Size(197, 30);
+            txtDiagnosis.Size = new Size(307, 30);
             txtDiagnosis.TabIndex = 7;
             txtDiagnosis.TextChanged += txtDiagnosis_TextChanged;
             // 
@@ -196,13 +182,13 @@
             // 
             txtMedicines.Location = new Point(455, 261);
             txtMedicines.Name = "txtMedicines";
-            txtMedicines.Size = new Size(208, 30);
+            txtMedicines.Size = new Size(307, 30);
             txtMedicines.TabIndex = 9;
             // 
             // btnAdd
             // 
             btnAdd.BackColor = Color.DarkTurquoise;
-            btnAdd.Location = new Point(857, 103);
+            btnAdd.Location = new Point(685, 315);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(256, 29);
             btnAdd.TabIndex = 10;
@@ -212,7 +198,7 @@
             // 
             // dtpDate
             // 
-            dtpDate.Location = new Point(317, 336);
+            dtpDate.Location = new Point(317, 315);
             dtpDate.Name = "dtpDate";
             dtpDate.Size = new Size(306, 30);
             dtpDate.TabIndex = 14;
@@ -223,7 +209,7 @@
             dgvPrescriptions.BackgroundColor = SystemColors.ButtonHighlight;
             dgvPrescriptions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPrescriptions.Columns.AddRange(new DataGridViewColumn[] { date, ptID, PtName, disease, medicine, UpdateColumn });
-            dgvPrescriptions.Location = new Point(283, 405);
+            dgvPrescriptions.Location = new Point(282, 416);
             dgvPrescriptions.Name = "dgvPrescriptions";
             dgvPrescriptions.RowHeadersWidth = 51;
             dgvPrescriptions.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -271,20 +257,10 @@
             UpdateColumn.Text = "Update";
             UpdateColumn.UseColumnTextForButtonValue = true;
             // 
-            // btnBack
-            // 
-            btnBack.BackColor = Color.LightSkyBlue;
-            btnBack.Location = new Point(283, 694);
-            btnBack.Name = "btnBack";
-            btnBack.Size = new Size(94, 29);
-            btnBack.TabIndex = 16;
-            btnBack.Text = "Back";
-            btnBack.UseVisualStyleBackColor = false;
-            // 
             // lblPatientName
             // 
             lblPatientName.AutoSize = true;
-            lblPatientName.Location = new Point(317, 173);
+            lblPatientName.Location = new Point(317, 172);
             lblPatientName.Name = "lblPatientName";
             lblPatientName.Size = new Size(123, 23);
             lblPatientName.TabIndex = 17;
@@ -294,7 +270,7 @@
             // 
             txtPatientName.Location = new Point(455, 170);
             txtPatientName.Name = "txtPatientName";
-            txtPatientName.Size = new Size(197, 30);
+            txtPatientName.Size = new Size(307, 30);
             txtPatientName.TabIndex = 18;
             // 
             // CreatePrescription
@@ -304,7 +280,6 @@
             ClientSize = new Size(1198, 735);
             Controls.Add(txtPatientName);
             Controls.Add(lblPatientName);
-            Controls.Add(btnBack);
             Controls.Add(dgvPrescriptions);
             Controls.Add(dtpDate);
             Controls.Add(btnAdd);
@@ -329,11 +304,10 @@
         #endregion
 
         private Panel sidenav;
-        private Button navprofile;
+        private Button btnMyProfile;
         private Label label2;
-        private Button logout;
-        private Button navappointment;
-        private Button navpatient;
+        private Button btnLogout;
+        private Button btnMyAppointments;
         private Label lblTitle;
         private Label lblPatientID;
         private Label lblDiagnosis;
@@ -344,10 +318,9 @@
         private Button btnAdd;
         private DateTimePicker dtpDate;
         private DataGridView dgvPrescriptions;
-        private Button btnBack;
         private Label lblPatientName;
         private TextBox txtPatientName;
-        private Button button1;
+        private Button btnPrescriptions;
         private DataGridViewTextBoxColumn date;
         private DataGridViewTextBoxColumn ptID;
         private DataGridViewTextBoxColumn PtName;
