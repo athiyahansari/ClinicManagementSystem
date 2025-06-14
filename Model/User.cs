@@ -8,16 +8,6 @@ using System.Security.Cryptography;
 
 namespace CMS.Model
 {
-    // Represents associated user account
-   // public class User
-    //{
-   //     public int UserID { get; set; }
-       // public string Username { get; set; }
-
-
-        // Add properties like Password, Role if needed
-   // }
-
     public  class User
     {
         public int UserId { get; set; }

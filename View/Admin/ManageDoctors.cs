@@ -4,7 +4,6 @@ using System;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-
 namespace CMS.View.Admin
 {
     public partial class ManageDoctors : Form
@@ -23,7 +22,7 @@ namespace CMS.View.Admin
             doctorGridView.Rows.Clear();
             foreach (var d in ctrl.GetAllDoctors())
             {
-                doctorGridView.Rows.Add(d.DoctorID, d.FullName, d.Speciality, d.Email, d.PhoneNo);
+                doctorGridView.Rows.Add(d.DoctorID, $"{d.FirstName} {d.LastName}".Trim(), d.Speciality, d.Email, d.PhoneNumber);
             }
         }
 
@@ -37,6 +36,9 @@ namespace CMS.View.Admin
                 LoadDoctors();
             }
         }
+
+        private void btnClear_Click(object sender, EventArgs e) => ClearFields();
+        private void btnBack_Click(object sender, EventArgs e) => this.Close();
 
         private void ClearFields()
         {
@@ -56,50 +58,55 @@ namespace CMS.View.Admin
             string email = txtEmail.Text.Trim();
             string phone = txtNumber.Text.Trim();
 
-            // Full Name validation - only letters and spaces
             if (string.IsNullOrEmpty(fullName) || !Regex.IsMatch(fullName, @"^[a-zA-Z.\s]+$"))
             {
-                MessageBox.Show("Full Name must contain only letters, spaces and periods.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Full Name must contain only letters, spaces, and periods.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
+            var nameParts = fullName.Split(new[] { ' ' }, 2, StringSplitOptions.RemoveEmptyEntries);
+            string firstName = nameParts.Length > 0 ? nameParts[0] : "";
+            string lastName = nameParts.Length > 1 ? nameParts[1] : "";
 
-            // Speciality validation - only letters and spaces
+            if (string.IsNullOrEmpty(firstName))
+            {
+                MessageBox.Show("Please provide at least a first name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
             if (string.IsNullOrEmpty(speciality) || !Regex.IsMatch(speciality, @"^[a-zA-Z\s]+$"))
             {
                 MessageBox.Show("Speciality must contain only letters and spaces.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
-            // Email validation
             if (string.IsNullOrEmpty(email) || !Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
             {
                 MessageBox.Show("Enter a valid email address.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
-            // Phone number validation - exactly 10 digits
             if (string.IsNullOrEmpty(phone) || !Regex.IsMatch(phone, @"^\d{10}$"))
             {
                 MessageBox.Show("Phone number must be exactly 10 digits.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
-            // All checks passed, create doctor object
             d = new Model.Doctor
             {
-                FullName = fullName,
+                FirstName = firstName,
+                LastName = lastName,
                 Speciality = speciality,
                 Email = email,
-                PhoneNo = phone,
-                UserID = 1 // Replace with actual logged-in UserID if needed
+                PhoneNumber = phone,
+                UserID = 1 // Example: set appropriate user ID
             };
+
+            if (selectedId != -1)
+                d.DoctorID = selectedId;
 
             return true;
         }
-
-        private void btnClear_Click(object sender, EventArgs e) => ClearFields();
-        private void btnBack_Click(object sender, EventArgs e) => this.Close();
 
         private void doctorGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -134,7 +141,6 @@ namespace CMS.View.Admin
                 }
                 else
                 {
-                    // Populate form fields for editing
                     txtDocID.Text = row.Cells["doctorid"].Value?.ToString();
                     txtFullName.Text = row.Cells["name"].Value?.ToString();
                     txtSpeciality.Text = row.Cells["docSpecialty"].Value?.ToString();
@@ -146,3 +152,4 @@ namespace CMS.View.Admin
         }
     }
 }
+

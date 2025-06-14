@@ -49,6 +49,7 @@
             txtNumber = new TextBox();
             btnAdd = new Button();
             doctorGridView = new DataGridView();
+            btnBack = new Button();
             doctorID = new DataGridViewTextBoxColumn();
             name = new DataGridViewTextBoxColumn();
             docSpecialty = new DataGridViewTextBoxColumn();
@@ -56,7 +57,6 @@
             phone = new DataGridViewTextBoxColumn();
             UpdateColumn = new DataGridViewButtonColumn();
             DeleteColumn = new DataGridViewButtonColumn();
-            btnBack = new Button();
             sidenav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)doctorGridView).BeginInit();
             SuspendLayout();
@@ -265,6 +265,17 @@
             doctorGridView.TabIndex = 19;
             doctorGridView.CellContentClick += doctorGridView_CellContentClick;
             // 
+            // btnBack
+            // 
+            btnBack.BackColor = Color.LightSkyBlue;
+            btnBack.Location = new Point(290, 633);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(94, 29);
+            btnBack.TabIndex = 20;
+            btnBack.Text = "Back";
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
+            // 
             // doctorID
             // 
             doctorID.HeaderText = "Doctor ID";
@@ -310,17 +321,6 @@
             DeleteColumn.Name = "DeleteColumn";
             DeleteColumn.Text = "Delete";
             DeleteColumn.UseColumnTextForButtonValue = true;
-            // 
-            // btnBack
-            // 
-            btnBack.BackColor = Color.LightSkyBlue;
-            btnBack.Location = new Point(290, 633);
-            btnBack.Name = "btnBack";
-            btnBack.Size = new Size(94, 29);
-            btnBack.TabIndex = 20;
-            btnBack.Text = "Back";
-            btnBack.UseVisualStyleBackColor = false;
-            btnBack.Click += btnBack_Click;
             // 
             // ManageDoctors
             // 
@@ -378,14 +378,14 @@
         private Button btnDelete;
         private Button btnClear;
         private DataGridView doctorGridView;
+        private DataGridViewTextBoxColumn docspecilaity;
+        private Button btnBack;
         private DataGridViewTextBoxColumn doctorID;
         private DataGridViewTextBoxColumn name;
-        private DataGridViewTextBoxColumn docspecilaity;
+        private DataGridViewTextBoxColumn docSpecialty;
         private DataGridViewTextBoxColumn emailNo;
         private DataGridViewTextBoxColumn phone;
-        private Button btnBack;
         private DataGridViewButtonColumn UpdateColumn;
         private DataGridViewButtonColumn DeleteColumn;
-        private DataGridViewTextBoxColumn docSpecialty;
     }
 }

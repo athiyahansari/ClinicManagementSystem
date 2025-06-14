@@ -25,10 +25,7 @@ namespace CMS.View.Patient
         // Form Load Event
         private void ViewPrescription_Load(object sender, EventArgs e)
         {
-            // Make sure DataGridView is not auto-generating columns
             dgvPrescriptions.AutoGenerateColumns = false;
-
-            // Load prescriptions for the patient
             LoadPrescriptions(_patientId);
         }
 
@@ -38,26 +35,24 @@ namespace CMS.View.Patient
             var controller = new PrescriptionController();
             var prescriptions = controller.GetPrescriptionsByPatientId(patientId);
 
-            // Clear previous rows
             dgvPrescriptions.Rows.Clear();
 
-            // Add each prescription as a new row
             foreach (var p in prescriptions)
             {
+                string doctorFullName = $"{p.Doctor.FirstName} {p.Doctor.LastName}";
                 dgvPrescriptions.Rows.Add(
-     p.PrescriptionDate.ToShortDateString(),
-     p.Doctor.Name,
-     p.Diagnosis,
-     p.Medicines
- );
-
+                    p.PrescriptionDate.ToShortDateString(),
+                    doctorFullName,
+                    p.Diagnosis,
+                    p.Medicines
+                );
             }
         }
 
-        // Handle Back button click
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Close();
         }
     }
 }
+

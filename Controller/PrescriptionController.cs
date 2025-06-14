@@ -24,7 +24,8 @@ namespace CMS.Controller
                         p.diagnosis, 
                         p.medicines,
                         d.doctor_id, 
-                        d.full_name AS doctor_name
+                        d.first_name, 
+                        d.last_name
                     FROM prescriptions p
                     JOIN doctors d ON p.doctor_id = d.doctor_id
                     WHERE p.patient_id = @patientId";
@@ -39,14 +40,15 @@ namespace CMS.Controller
                         {
                             var prescription = new Prescription
                             {
-                                //PrescriptionID = Convert.ToInt32(reader["prescription_id"]),
+                                PrescriptionID = Convert.ToInt32(reader["prescription_id"]),
                                 PrescriptionDate = Convert.ToDateTime(reader["prescription_date"]),
                                 Diagnosis = reader["diagnosis"].ToString(),
                                 Medicines = reader["medicines"].ToString(),
                                 Doctor = new Doctor
                                 {
-                                    Id = Convert.ToInt32(reader["doctor_id"]),
-                                    Name = reader["doctor_name"].ToString() // Corrected here
+                                    DoctorID = Convert.ToInt32(reader["doctor_id"]),
+                                    FirstName = reader["first_name"].ToString(),
+                                    LastName = reader["last_name"].ToString()
                                 }
                             };
 
@@ -60,3 +62,4 @@ namespace CMS.Controller
         }
     }
 }
+
