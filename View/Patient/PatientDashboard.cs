@@ -7,19 +7,85 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CMS.Controller;
+using CMS.Model;
 
 namespace CMS.View.Patient
 {
     public partial class PatientDashboard : Form
     {
-        public PatientDashboard()
+        private readonly int patientId;
+        private readonly NotificationController notificationController; 
+
+        public PatientDashboard(int patientId)
         {
             InitializeComponent();
+            notificationController = new NotificationController();
+
+
+            // Form Load Event
+            this.Load += PatientDashboard_Load;
         }
 
         private void PatientDashboard_Load(object sender, EventArgs e)
         {
+            ShowNextAppointment();
+            ShowLatestNotification();
+        }
 
+        private void ShowNextAppointment()
+        {
+            try
+            {
+                Appointment nextAppt = Appointmentcontroller.GetNextAppointmentForPatient(patientId);
+                lblNotification.Visible = false;
+
+                if (nextAppt != null)
+                {
+                    lblNotification.Text =
+                        $"Next Appointment:\n📅 {nextAppt.Date.ToShortDateString()} ⏰ {nextAppt.Time:hh\\:mm}\n👨‍⚕️ Dr. {nextAppt.DoctorName}";
+                    lblNotification.Visible = true;
+                }
+                else
+                {
+                    // If an error occurs, you might want to clear the label or show an error message there too
+                    lblNotification.Text = "Error loading appointments.";
+                    lblNotification.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to load appointment: " + ex.Message);
+            }
+        }
+
+        private void ShowLatestNotification()
+        {
+            try
+            {
+                string formattedText;
+                Notification notif = notificationController.GetLatestNotificationForPatient(patientId, out formattedText);
+
+                lblNotification.Visible = false;
+
+                if (notif != null)
+                {
+                    lblNotification.Text = "🔔 " + formattedText;
+                    lblNotification.Visible = true;
+                }
+                else
+                {
+                    lblNotification.Text = "📭 No new notifications.";
+                    lblNotification.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to load notifications: " + ex.Message);
+                // If an error occurs, you might want to clear the label or show an error message there too
+                lblNotification.Text = "Error loading notifications.";
+                lblNotification.Visible = true;
+            }
         }
     }
 }
