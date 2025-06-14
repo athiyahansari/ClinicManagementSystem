@@ -3,19 +3,19 @@ using CMS.Model;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using CMS.View.Admin;
 
 namespace CMS.View.Admin
 {
+    // Admin Report Form - responsible for UI interactions and triggering controller methods
     public partial class Reportadmin : Form
     {
+        // Instantiate the controller to separate logic from UI
+        private readonly AdminReportController controller = new AdminReportController();
+
         public Reportadmin()
         {
             InitializeComponent();
@@ -23,128 +23,156 @@ namespace CMS.View.Admin
 
         private void Reportadmin_Load(object sender, EventArgs e)
         {
-            LoadDoctors();
-            SetupDataGridColumns(); // Assign model properties to each designer column
+            LoadDoctors();             // Populate doctor combo box
+            SetupDataGridColumns();    // Link model properties to DataGridView columns
         }
 
+        // Configure DataGridView to use specific property names from the AdminReport model
         private void SetupDataGridColumns()
         {
             dataGriddoctorshedule.AutoGenerateColumns = false;
 
-            // Bind your 4 designer-created columns to the correct model properties
+            // Map model properties to grid columns
             patientcolumnshedule.DataPropertyName = "PatientName";
             appointmentdatecolumnshedule.DataPropertyName = "Date";
             appointmenttimecolumnshedule.DataPropertyName = "TimeFormatted";
             statuscolumnshedule.DataPropertyName = "Status";
         }
 
+        // Load list of doctors from the database into the ComboBox
         private void LoadDoctors()
         {
             using (MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString))
             {
                 conn.Open();
                 string query = "SELECT doctor_id, full_name FROM doctors";
+
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                 DataTable table = new DataTable();
                 adapter.Fill(table);
 
+                // Handle empty result
                 if (table.Rows.Count == 0)
                 {
                     MessageBox.Show("No doctors found.");
                     return;
                 }
 
+                // Bind data to combo box
                 combodoctorshedule.DataSource = table;
                 combodoctorshedule.DisplayMember = "full_name";
                 combodoctorshedule.ValueMember = "doctor_id";
-                combodoctorshedule.SelectedIndex = -1;
+                combodoctorshedule.SelectedIndex = -1; // Reset selection
             }
         }
 
+        // Generate button click handler for Doctor Schedule Report
         private void generateDoctorShedule_Click(object sender, EventArgs e)
         {
-            GenerateDoctorScheduleReport();
-        }
-
-        private void GenerateDoctorScheduleReport()
-        {
+            // Check if doctor is selected
             if (combodoctorshedule.SelectedIndex == -1)
             {
                 MessageBox.Show("Please select a doctor.");
                 return;
             }
 
-            if (doctorsheduledatefrom.Value > doctorsheduledateto.Value)
-            {
-                MessageBox.Show("From date cannot be after To date.");
-                return;
-            }
-
+            // Get selected doctor and date range
             int doctorId = Convert.ToInt32(combodoctorshedule.SelectedValue);
-            DateTime fromDate = doctorsheduledatefrom.Value.Date;
-            DateTime toDate = doctorsheduledateto.Value.Date;
+            DateTime from = doctorsheduledatefrom.Value.Date;
+            DateTime to = doctorsheduledateto.Value.Date;
 
-            AdminReportController controller = new AdminReportController();
-            List<AdminReport> reports = controller.GetAppointmentsByDoctorAndDate(doctorId, fromDate, toDate);
+            string error;
 
-            if (reports.Count == 0)
+            // Call controller to get data with validation
+            var reports = controller.GetDoctorScheduleReport(doctorId, from, to, out error);
+
+            // Show error or bind results
+            if (!string.IsNullOrEmpty(error))
             {
-                MessageBox.Show("No appointments found for the selected doctor and date range.");
+                MessageBox.Show(error);
                 dataGriddoctorshedule.DataSource = null;
                 return;
             }
 
-            dataGriddoctorshedule.DataSource = null;
+            // Bind result to grid
             dataGriddoctorshedule.DataSource = reports;
         }
 
-        private void patienttrenddatefrom_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void patienttrenddateto_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        // Generate button click handler for Patient Trends Report
         private void generatepatienttrendsbtn_Click(object sender, EventArgs e)
         {
-            GeneratePatientTrendReport();
-        }
+            DateTime from = patienttrenddatefrom.Value.Date;
+            DateTime to = patienttrenddateto.Value.Date;
 
-        private void GeneratePatientTrendReport()
-        {
-            DateTime fromDate = patienttrenddatefrom.Value.Date;
-            DateTime toDate = patienttrenddateto.Value.Date;
+            string error;
 
-            if (fromDate > toDate)
+            // Fetch trends from controller with date validation
+            var trends = controller.GetPatientTrends(from, to, out error);
+
+            // Show error or bind results
+            if (!string.IsNullOrEmpty(error))
             {
-                MessageBox.Show("From date cannot be after To date.");
-                return;
-            }
-
-            AdminReportController controller = new AdminReportController();
-            List<PatientTrend> trends = controller.GetPatientTrendsByDateRange(fromDate, toDate);
-
-            if (trends.Count == 0)
-            {
-                MessageBox.Show("No trends found for the selected date range.");
+                MessageBox.Show(error);
                 dataGridViewpatienttrend.DataSource = null;
                 return;
             }
 
-            // Map designer-added columns to the model (once ideally)
+            // Map model properties to grid columns
             dataGridViewpatienttrend.AutoGenerateColumns = false;
             PatientNameColumn.DataPropertyName = "PatientName";
             Totalappointmentscolumn.DataPropertyName = "TotalAppointments";
             Lastappointmentcolumn.DataPropertyName = "LastAppointmentDate";
 
-            dataGridViewpatienttrend.DataSource = null;
+            // Bind trend data to grid
             dataGridViewpatienttrend.DataSource = trends;
         }
 
+        private void navdocbtn_Click(object sender, EventArgs e)
+        {
+            ManageDoctors manageDoctorForm = new ManageDoctors();
+
+            // Show the ManageDoctor form
+            manageDoctorForm.Show();
+
+            // Optionally hide the current Reportadmin form
+            this.Hide();
+
+        }
+
+        private void navappointmentbtn_Click(object sender, EventArgs e)
+        {
+            adminbookappointment appointmentForm = new adminbookappointment();
+
+            // Show the AdminBookAppointment form
+            appointmentForm.Show();
+
+            // Optionally hide the current Reportadmin form
+            this.Hide();
+
+        }
+
+        private void navprofilebtn_Click(object sender, EventArgs e)
+        {
+            AdminDashboard dashboardForm = new AdminDashboard();
+
+            // Show the AdminDashboard form
+            dashboardForm.Show();
+
+            // Optionally hide the current Reportadmin form
+            this.Hide();
+
+        }
+
+        private void logoutbtn_Click(object sender, EventArgs e)
+        {
+            //LoginForm loginForm = new LoginForm();
+
+            //// Show the login form
+            //loginForm.Show();
+
+            //// Close or hide the current form (e.g., Reportadmin)
+            //this.Close(); 
+        }
     }
 }
-
