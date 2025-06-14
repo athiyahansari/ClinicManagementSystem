@@ -27,8 +27,7 @@ namespace CMS.Controller
                             p.diagnosis, 
                             p.medicines,
                             d.doctor_id, 
-                            d.first_name, 
-                            d.last_name
+                            d.full_name
                         FROM prescriptions p
                         JOIN doctors d ON p.doctor_id = d.doctor_id
                         WHERE p.patient_id = @patientId";
@@ -41,6 +40,17 @@ namespace CMS.Controller
                         {
                             while (reader.Read())
                             {
+                                var doctorFullName = reader["full_name"].ToString();
+                                string firstName = "";
+                                string lastName = "";
+
+                                if (!string.IsNullOrWhiteSpace(doctorFullName))
+                                {
+                                    var names = doctorFullName.Split(' ');
+                                    firstName = names[0];
+                                    lastName = names.Length > 1 ? string.Join(" ", names, 1, names.Length - 1) : "";
+                                }
+
                                 var prescription = new Prescription
                                 {
                                     PrescriptionID = Convert.ToInt32(reader["prescription_id"]),
@@ -50,8 +60,8 @@ namespace CMS.Controller
                                     Doctor = new Doctor
                                     {
                                         DoctorID = Convert.ToInt32(reader["doctor_id"]),
-                                        FirstName = reader["first_name"].ToString(),
-                                        LastName = reader["last_name"].ToString()
+                                        FirstName = firstName,
+                                        LastName = lastName
                                     }
                                 };
 
