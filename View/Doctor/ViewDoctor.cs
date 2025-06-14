@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CMS.View.Doctor
 {
-    public class ViewDoctor : Form
+    public partial class ViewDoctor : Form
     {
         public ViewDoctor()
         {

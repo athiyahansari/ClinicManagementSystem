@@ -51,7 +51,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // sidenav
@@ -130,7 +129,6 @@
             // welcome_msg
             // 
             welcome_msg.AutoSize = true;
-            welcome_msg.BackColor = Color.Transparent;
             welcome_msg.Font = new Font("Lucida Bright", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             welcome_msg.Location = new Point(58, 64);
             welcome_msg.Name = "welcome_msg";
@@ -142,11 +140,10 @@
             // 
             dash_appointmenttrends.ActiveLinkColor = SystemColors.ActiveCaptionText;
             dash_appointmenttrends.AutoSize = true;
-            dash_appointmenttrends.BackColor = Color.Transparent;
             dash_appointmenttrends.Font = new Font("Yu Gothic UI", 10F);
             dash_appointmenttrends.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_appointmenttrends.LinkColor = Color.Black;
-            dash_appointmenttrends.Location = new Point(650, 481);
+            dash_appointmenttrends.Location = new Point(921, 481);
             dash_appointmenttrends.Name = "dash_appointmenttrends";
             dash_appointmenttrends.Size = new Size(190, 28);
             dash_appointmenttrends.TabIndex = 28;
@@ -157,11 +154,10 @@
             // 
             dash_upcomingappointments.ActiveLinkColor = SystemColors.ActiveCaptionText;
             dash_upcomingappointments.AutoSize = true;
-            dash_upcomingappointments.BackColor = Color.Transparent;
             dash_upcomingappointments.Font = new Font("Yu Gothic UI", 10F);
             dash_upcomingappointments.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_upcomingappointments.LinkColor = Color.Black;
-            dash_upcomingappointments.Location = new Point(650, 373);
+            dash_upcomingappointments.Location = new Point(921, 373);
             dash_upcomingappointments.Name = "dash_upcomingappointments";
             dash_upcomingappointments.Size = new Size(234, 28);
             dash_upcomingappointments.TabIndex = 27;
@@ -172,11 +168,10 @@
             // 
             dash_patientedit.ActiveLinkColor = SystemColors.ActiveCaptionText;
             dash_patientedit.AutoSize = true;
-            dash_patientedit.BackColor = Color.Transparent;
             dash_patientedit.Font = new Font("Yu Gothic UI", 10F);
             dash_patientedit.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_patientedit.LinkColor = Color.Black;
-            dash_patientedit.Location = new Point(224, 481);
+            dash_patientedit.Location = new Point(495, 481);
             dash_patientedit.Name = "dash_patientedit";
             dash_patientedit.Size = new Size(137, 28);
             dash_patientedit.TabIndex = 26;
@@ -187,11 +182,10 @@
             // 
             dash_newdoctors.ActiveLinkColor = SystemColors.ActiveCaptionText;
             dash_newdoctors.AutoSize = true;
-            dash_newdoctors.BackColor = Color.Transparent;
             dash_newdoctors.Font = new Font("Yu Gothic UI", 10F);
             dash_newdoctors.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_newdoctors.LinkColor = Color.Black;
-            dash_newdoctors.Location = new Point(224, 373);
+            dash_newdoctors.Location = new Point(495, 373);
             dash_newdoctors.Name = "dash_newdoctors";
             dash_newdoctors.Size = new Size(157, 28);
             dash_newdoctors.TabIndex = 25;
@@ -200,45 +194,33 @@
             // 
             // pictureBox4
             // 
-            pictureBox4.BackColor = Color.Transparent;
-            pictureBox4.Image = Properties.Resources.appointmenttrends_icon;
-            pictureBox4.Location = new Point(563, 467);
+            pictureBox4.Location = new Point(834, 467);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(72, 62);
-            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox4.TabIndex = 24;
             pictureBox4.TabStop = false;
             // 
             // pictureBox2
             // 
-            pictureBox2.BackColor = Color.Transparent;
-            pictureBox2.Image = Properties.Resources.upcomingappointments_icon;
-            pictureBox2.Location = new Point(563, 356);
+            pictureBox2.Location = new Point(834, 356);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(72, 62);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 23;
             pictureBox2.TabStop = false;
             // 
             // pictureBox3
             // 
-            pictureBox3.BackColor = Color.Transparent;
-            pictureBox3.Image = Properties.Resources.patient_icon;
-            pictureBox3.Location = new Point(135, 467);
+            pictureBox3.Location = new Point(406, 467);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(72, 62);
-            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.TabIndex = 22;
             pictureBox3.TabStop = false;
             // 
             // pictureBox1
             // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.Image = Properties.Resources.doctor_icon;
-            pictureBox1.Location = new Point(135, 356);
+            pictureBox1.Location = new Point(406, 356);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(72, 62);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 21;
             pictureBox1.TabStop = false;
             // 
@@ -277,7 +259,16 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Window;
             ClientSize = new Size(1310, 719);
-            Controls.Add(panel2);
+            Controls.Add(dash_appointmenttrends);
+            Controls.Add(dash_upcomingappointments);
+            Controls.Add(dash_patientedit);
+            Controls.Add(dash_newdoctors);
+            Controls.Add(pictureBox4);
+            Controls.Add(pictureBox2);
+            Controls.Add(pictureBox3);
+            Controls.Add(pictureBox1);
+            Controls.Add(welcome_msg);
+            Controls.Add(label1);
             Controls.Add(sidenav);
             Name = "AdminDashboard";
             Text = "AdminDashboard";
@@ -287,9 +278,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

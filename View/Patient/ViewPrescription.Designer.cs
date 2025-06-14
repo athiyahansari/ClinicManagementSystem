@@ -29,14 +29,8 @@
         private void InitializeComponent()
         {
             lblTitle = new Label();
-            dataGridView1 = new DataGridView();
-            PrescriptionID = new DataGridViewTextBoxColumn();
-            Date = new DataGridViewTextBoxColumn();
-            DoctorName = new DataGridViewTextBoxColumn();
-            Diagnosis = new DataGridViewTextBoxColumn();
-            Medicines = new DataGridViewTextBoxColumn();
+            dgvPrescriptions = new DataGridView();
             btnBack = new Button();
-            lblNote = new Label();
             sidenav = new Panel();
             label3 = new Label();
             navmedicalhistory = new Button();
@@ -46,7 +40,6 @@
             navprescription = new Button();
             navappointment = new Button();
             navdoc = new Button();
-            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             sidenav.SuspendLayout();
             SuspendLayout();
@@ -62,16 +55,15 @@
             lblTitle.TabIndex = 2;
             lblTitle.Text = "Your Prescriptions";
             // 
-            // dataGridView1
+            // dgvPrescriptions
             // 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { PrescriptionID, Date, DoctorName, Diagnosis, Medicines });
-            dataGridView1.Location = new Point(273, 104);
+            dataGridView1.Location = new Point(273, 98);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(918, 496);
             dataGridView1.TabIndex = 3;
             // 
@@ -96,16 +88,6 @@
             // 
             // Diagnosis
             // 
-            Diagnosis.HeaderText = "Diagnosis";
-            Diagnosis.MinimumWidth = 6;
-            Diagnosis.Name = "Diagnosis";
-            // 
-            // Medicines
-            // 
-            Medicines.HeaderText = "Medicines";
-            Medicines.MinimumWidth = 6;
-            Medicines.Name = "Medicines";
-            // 
             // btnBack
             // 
             btnBack.BackColor = Color.LightSkyBlue;
@@ -116,16 +98,6 @@
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = false;
             btnBack.Click += btnBack_Click;
-            // 
-            // lblNote
-            // 
-            lblNote.AutoSize = true;
-            lblNote.Location = new Point(902, 622);
-            lblNote.Name = "lblNote";
-            lblNote.Size = new Size(289, 23);
-            lblNote.TabIndex = 5;
-            lblNote.Text = "* Select a prescription to view details";
-            lblNote.Click += lblNote_Click;
             // 
             // sidenav
             // 
@@ -226,19 +198,43 @@
             navdoc.Text = "Doctor";
             navdoc.UseVisualStyleBackColor = false;
             // 
+            // Date
+            // 
+            Date.HeaderText = "Date";
+            Date.MinimumWidth = 6;
+            Date.Name = "Date";
+            // 
+            // DoctorName
+            // 
+            DoctorName.HeaderText = "Doctor Name";
+            DoctorName.MinimumWidth = 6;
+            DoctorName.Name = "DoctorName";
+            // 
+            // Diagnosis
+            // 
+            Diagnosis.HeaderText = "Diagnosis";
+            Diagnosis.MinimumWidth = 6;
+            Diagnosis.Name = "Diagnosis";
+            // 
+            // Medicines
+            // 
+            Medicines.HeaderText = "Medicines";
+            Medicines.MinimumWidth = 6;
+            Medicines.Name = "Medicines";
+            // 
             // ViewPrescription
             // 
             AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1219, 684);
             Controls.Add(sidenav);
-            Controls.Add(lblNote);
             Controls.Add(btnBack);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvPrescriptions);
             Controls.Add(lblTitle);
             Name = "ViewPrescription";
             Text = "ViewPrescription";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += ViewPrescription_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvPrescriptions).EndInit();
             sidenav.ResumeLayout(false);
             sidenav.PerformLayout();
             ResumeLayout(false);
@@ -247,14 +243,8 @@
 
         #endregion
         private Label lblTitle;
-        private DataGridView dataGridView1;
+        private DataGridView dgvPrescriptions;
         private Button btnBack;
-        private Label lblNote;
-        private DataGridViewTextBoxColumn PrescriptionID;
-        private DataGridViewTextBoxColumn Date;
-        private DataGridViewTextBoxColumn DoctorName;
-        private DataGridViewTextBoxColumn Diagnosis;
-        private DataGridViewTextBoxColumn Medicines;
         private Panel sidenav;
         private Label label3;
         private Button navmedicalhistory;
@@ -264,6 +254,5 @@
         private Button navprescription;
         private Button navappointment;
         private Button navdoc;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

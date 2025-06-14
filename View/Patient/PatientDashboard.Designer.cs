@@ -30,7 +30,6 @@
         {
             sidenav = new Panel();
             navmedicalhistory = new Button();
-            label2 = new Label();
             navprofile = new Button();
             logout = new Button();
             navprescription = new Button();
@@ -52,7 +51,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // sidenav
@@ -70,6 +68,7 @@
             sidenav.Name = "sidenav";
             sidenav.Size = new Size(274, 764);
             sidenav.TabIndex = 0;
+            //sidenav.Paint += sidenav_Paint;
             // 
             // navmedicalhistory
             // 
@@ -141,11 +140,11 @@
             navdoc.TabIndex = 0;
             navdoc.Text = "Doctor";
             navdoc.UseVisualStyleBackColor = false;
+            //navdoc.Click += navdoc_Click;
             // 
             // welcome_msg
             // 
             welcome_msg.AutoSize = true;
-            welcome_msg.BackColor = Color.Transparent;
             welcome_msg.Font = new Font("Lucida Bright", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             welcome_msg.Location = new Point(57, 46);
             welcome_msg.Name = "welcome_msg";
@@ -157,7 +156,6 @@
             // 
             dash_medicalhistory.ActiveLinkColor = SystemColors.ActiveCaptionText;
             dash_medicalhistory.AutoSize = true;
-            dash_medicalhistory.BackColor = Color.Transparent;
             dash_medicalhistory.Font = new Font("Yu Gothic UI", 10F);
             dash_medicalhistory.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_medicalhistory.LinkColor = Color.Black;
@@ -172,7 +170,6 @@
             // 
             dash_upcomingappointments.ActiveLinkColor = SystemColors.ActiveCaptionText;
             dash_upcomingappointments.AutoSize = true;
-            dash_upcomingappointments.BackColor = Color.Transparent;
             dash_upcomingappointments.Font = new Font("Yu Gothic UI", 10F);
             dash_upcomingappointments.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_upcomingappointments.LinkColor = Color.Black;
@@ -187,7 +184,6 @@
             // 
             dash_prescriptions.ActiveLinkColor = SystemColors.ActiveCaptionText;
             dash_prescriptions.AutoSize = true;
-            dash_prescriptions.BackColor = Color.Transparent;
             dash_prescriptions.Font = new Font("Yu Gothic UI", 10F);
             dash_prescriptions.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_prescriptions.LinkColor = Color.Black;
@@ -202,7 +198,6 @@
             // 
             dash_newdoctors.ActiveLinkColor = SystemColors.ActiveCaptionText;
             dash_newdoctors.AutoSize = true;
-            dash_newdoctors.BackColor = Color.Transparent;
             dash_newdoctors.Font = new Font("Yu Gothic UI", 10F);
             dash_newdoctors.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_newdoctors.LinkColor = Color.Black;
@@ -220,7 +215,6 @@
             pictureBox4.Location = new Point(552, 480);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(72, 62);
-            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox4.TabIndex = 16;
             pictureBox4.TabStop = false;
             // 
@@ -231,7 +225,6 @@
             pictureBox2.Location = new Point(552, 369);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(72, 62);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 15;
             pictureBox2.TabStop = false;
             // 
@@ -242,7 +235,6 @@
             pictureBox3.Location = new Point(124, 480);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(72, 62);
-            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.TabIndex = 14;
             pictureBox3.TabStop = false;
             // 
@@ -254,11 +246,21 @@
             pictureBox1.Location = new Point(124, 369);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(72, 62);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 13;
             pictureBox1.TabStop = false;
             // 
-            // panel1
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Yu Gothic UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = SystemColors.ButtonHighlight;
+            label3.Location = new Point(82, 87);
+            label3.Name = "label3";
+            label3.Size = new Size(155, 28);
+            label3.TabIndex = 22;
+            label3.Text = "Patient ID-2346";
+            // 
+            // label2
             // 
             panel1.BackgroundImage = Properties.Resources.dashboard_bg;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
@@ -297,15 +299,15 @@
             Controls.Add(sidenav);
             Name = "PatientDashboard";
             Text = "PatientDashboard";
+            //Load += PatientDashboard_Load_1;
             sidenav.ResumeLayout(false);
             sidenav.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

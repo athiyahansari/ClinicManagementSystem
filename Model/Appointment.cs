@@ -15,7 +15,7 @@ namespace CMS.Model
         public int PatientId { get; set; }  //FK
         public int DoctorId { get; set; }  //FK TO CONNECT TO THE Proper database
         // Navigation properties
-        public virtual Patient Patient { get; set; } // You can populate this via a JOIN in your query
+        public virtual Patients Patient { get; set; } // You can populate this via a JOIN in your query
         //public virtual Doctor Doctor { get; set; } //allows u to access patient.Fullname etc 
         public string DoctorName { get; set; } // You can populate this via a JOIN in your query
         public string Consultation { get; set; } // Add if needed
@@ -30,12 +30,13 @@ namespace CMS.Model
             Status = "Scheduled"; // Default status
         }
 
-        public Appointment(int appointmentId, DateTime date, TimeSpan time, string status, int patientId, int doctorId)
+        public Appointment(int appointmentId, DateTime date, TimeSpan time, string status, string Consultation, int patientId, int doctorId)
         {
             this.AppointmentId = appointmentId;
             this.Date = date;
             this.Time = time;
             this.Status = status;
+            this.Consultation = Consultation;
             this.PatientId = patientId;
             this.DoctorId = doctorId;
 
