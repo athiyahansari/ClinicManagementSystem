@@ -68,5 +68,15 @@ namespace ClinicManagementSystem.Views.Patients
             viewDoctors.Show();
             this.Hide(); // Hide the current form   
         }
+
+
+        //DOCTOR VIEW PROFILE BTN
+        private void navprofile_Click(object sender, EventArgs e)
+        {
+            int doctorId = 1; // Replace this with actual dynamic doctorId when available
+            CMS.View.Doctor.DocViewProfile profileForm = new CMS.View.Doctor.DocViewProfile(doctorId);
+            profileForm.ShowDialog();
+        }
+
     }
 }
