@@ -124,6 +124,8 @@ namespace CMS.View.Doctor
             button5 = new Button();
             button6 = new Button();
             DocName = new TextBox();
+            label6 = new Label();
+            label11 = new Label();
             panel1.SuspendLayout();
             sidenav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -456,12 +458,37 @@ namespace CMS.View.Doctor
             // 
             DocName.Location = new Point(432, 88);
             DocName.Name = "DocName";
-            DocName.Size = new Size(100, 23);
+            DocName.Size = new Size(188, 23);
             DocName.TabIndex = 23;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = SystemColors.ActiveCaption;
+            label6.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Location = new Point(326, 89);
+            label6.Name = "label6";
+            label6.Size = new Size(99, 20);
+            label6.TabIndex = 24;
+            label6.Text = "Doctor Name";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.BackColor = SystemColors.GradientActiveCaption;
+            label11.BorderStyle = BorderStyle.Fixed3D;
+            label11.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label11.Location = new Point(401, 24);
+            label11.Name = "label11";
+            label11.Size = new Size(137, 32);
+            label11.TabIndex = 25;
+            label11.Text = "View Doctors";
             // 
             // DocViewProfile
             // 
             ClientSize = new Size(792, 404);
+            Controls.Add(label11);
+            Controls.Add(label6);
             Controls.Add(DocName);
             Controls.Add(panel3);
             Controls.Add(txtContact);
@@ -501,6 +528,8 @@ namespace CMS.View.Doctor
         private Button button4;
         private Button button5;
         private Button button6;
+        private Label label6;
+        private Label label11;
 
         ////Doctor name text box
         //this.private TextBox DocName;
