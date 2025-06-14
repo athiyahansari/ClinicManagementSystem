@@ -45,10 +45,10 @@ namespace CMS.View.Patient
             foreach (var p in prescriptions)
             {
                 dgvPrescriptions.Rows.Add(
-     p.PrescriptionDate.ToShortDateString(),
-     p.Doctor.Name,
-     p.Diagnosis,
-     p.Medicines
+             p.PrescriptionDate.ToShortDateString(),
+             p.Doctor.FullName,
+            p.Diagnosis,
+            p.Medicines
  );
 
             }

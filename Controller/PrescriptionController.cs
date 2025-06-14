@@ -45,9 +45,10 @@ namespace CMS.Controller
                                 Medicines = reader["medicines"].ToString(),
                                 Doctor = new Doctor
                                 {
-                                    Id = Convert.ToInt32(reader["doctor_id"]),
-                                    Name = reader["doctor_name"].ToString() // Corrected here
+                                    DoctorID = Convert.ToInt32(reader["doctor_id"]),
+                                    FirstName = reader["doctor_name"].ToString() // ✅ OR parse to FirstName/LastName if needed
                                 }
+
                             };
 
                             prescriptions.Add(prescription);
