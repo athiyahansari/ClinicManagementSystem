@@ -46,18 +46,20 @@
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
             lblNotification = new Label();
+            label1 = new Label();
             sidenav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // sidenav
             // 
             sidenav.BackColor = Color.CornflowerBlue;
+            sidenav.Controls.Add(label1);
             sidenav.Controls.Add(navmedicalhistory);
-            sidenav.Controls.Add(label2);
             sidenav.Controls.Add(navprofile);
             sidenav.Controls.Add(logout);
             sidenav.Controls.Add(navprescription);
@@ -68,7 +70,6 @@
             sidenav.Name = "sidenav";
             sidenav.Size = new Size(274, 764);
             sidenav.TabIndex = 0;
-            //sidenav.Paint += sidenav_Paint;
             // 
             // navmedicalhistory
             // 
@@ -79,17 +80,6 @@
             navmedicalhistory.TabIndex = 5;
             navmedicalhistory.Text = "Medical History";
             navmedicalhistory.UseVisualStyleBackColor = false;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Kristen ITC", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.MidnightBlue;
-            label2.Location = new Point(20, 59);
-            label2.Name = "label2";
-            label2.Size = new Size(246, 39);
-            label2.TabIndex = 21;
-            label2.Text = "MedLine Clinic";
             // 
             // navprofile
             // 
@@ -140,11 +130,11 @@
             navdoc.TabIndex = 0;
             navdoc.Text = "Doctor";
             navdoc.UseVisualStyleBackColor = false;
-            //navdoc.Click += navdoc_Click;
             // 
             // welcome_msg
             // 
             welcome_msg.AutoSize = true;
+            welcome_msg.BackColor = Color.Transparent;
             welcome_msg.Font = new Font("Lucida Bright", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             welcome_msg.Location = new Point(57, 46);
             welcome_msg.Name = "welcome_msg";
@@ -156,6 +146,7 @@
             // 
             dash_medicalhistory.ActiveLinkColor = SystemColors.ActiveCaptionText;
             dash_medicalhistory.AutoSize = true;
+            dash_medicalhistory.BackColor = Color.Transparent;
             dash_medicalhistory.Font = new Font("Yu Gothic UI", 10F);
             dash_medicalhistory.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_medicalhistory.LinkColor = Color.Black;
@@ -170,6 +161,7 @@
             // 
             dash_upcomingappointments.ActiveLinkColor = SystemColors.ActiveCaptionText;
             dash_upcomingappointments.AutoSize = true;
+            dash_upcomingappointments.BackColor = Color.Transparent;
             dash_upcomingappointments.Font = new Font("Yu Gothic UI", 10F);
             dash_upcomingappointments.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_upcomingappointments.LinkColor = Color.Black;
@@ -184,6 +176,7 @@
             // 
             dash_prescriptions.ActiveLinkColor = SystemColors.ActiveCaptionText;
             dash_prescriptions.AutoSize = true;
+            dash_prescriptions.BackColor = Color.Transparent;
             dash_prescriptions.Font = new Font("Yu Gothic UI", 10F);
             dash_prescriptions.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_prescriptions.LinkColor = Color.Black;
@@ -198,6 +191,7 @@
             // 
             dash_newdoctors.ActiveLinkColor = SystemColors.ActiveCaptionText;
             dash_newdoctors.AutoSize = true;
+            dash_newdoctors.BackColor = Color.Transparent;
             dash_newdoctors.Font = new Font("Yu Gothic UI", 10F);
             dash_newdoctors.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_newdoctors.LinkColor = Color.Black;
@@ -211,7 +205,8 @@
             // pictureBox4
             // 
             pictureBox4.BackColor = Color.Transparent;
-            pictureBox4.Image = Properties.Resources.medical_history_icon;
+            pictureBox4.BackgroundImage = Properties.Resources.medical_history_icon;
+            pictureBox4.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox4.Location = new Point(552, 480);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(72, 62);
@@ -221,7 +216,8 @@
             // pictureBox2
             // 
             pictureBox2.BackColor = Color.Transparent;
-            pictureBox2.Image = Properties.Resources.upcomingappointments_icon;
+            pictureBox2.BackgroundImage = Properties.Resources.upcomingappointments_icon;
+            pictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox2.Location = new Point(552, 369);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(72, 62);
@@ -231,36 +227,27 @@
             // pictureBox3
             // 
             pictureBox3.BackColor = Color.Transparent;
-            pictureBox3.Image = Properties.Resources.prescription_icon;
+            pictureBox3.BackgroundImage = Properties.Resources.prescription_icon;
+            pictureBox3.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox3.Location = new Point(124, 480);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(72, 62);
+            pictureBox3.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox3.TabIndex = 14;
             pictureBox3.TabStop = false;
             // 
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.BackgroundImage = Properties.Resources.doctor_icon;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Image = Properties.Resources.doctor_icon;
             pictureBox1.Location = new Point(124, 369);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(72, 62);
             pictureBox1.TabIndex = 13;
             pictureBox1.TabStop = false;
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Yu Gothic UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = SystemColors.ButtonHighlight;
-            label3.Location = new Point(82, 87);
-            label3.Name = "label3";
-            label3.Size = new Size(155, 28);
-            label3.TabIndex = 22;
-            label3.Text = "Patient ID-2346";
-            // 
-            // label2
+            // panel1
             // 
             panel1.BackgroundImage = Properties.Resources.dashboard_bg;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
@@ -284,11 +271,22 @@
             lblNotification.AutoSize = true;
             lblNotification.BackColor = Color.Transparent;
             lblNotification.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
-            lblNotification.Location = new Point(661, 110);
+            lblNotification.Location = new Point(681, 98);
             lblNotification.Name = "lblNotification";
             lblNotification.Size = new Size(18, 25);
             lblNotification.TabIndex = 22;
             lblNotification.Text = ".";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Kristen ITC", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.MidnightBlue;
+            label1.Location = new Point(15, 41);
+            label1.Name = "label1";
+            label1.Size = new Size(246, 39);
+            label1.TabIndex = 6;
+            label1.Text = "MedLine Clinic";
             // 
             // PatientDashboard
             // 
@@ -299,15 +297,15 @@
             Controls.Add(sidenav);
             Name = "PatientDashboard";
             Text = "PatientDashboard";
-            //Load += PatientDashboard_Load_1;
             sidenav.ResumeLayout(false);
             sidenav.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -331,5 +329,6 @@
         private Label label2;
         private Panel panel1;
         private Label lblNotification;
+        private Label label1;
     }
 }
