@@ -115,7 +115,6 @@ namespace CMS.View.Doctor
             txtEmail = new TextBox();
             txtContact = new TextBox();
             panel3 = new Panel();
-            label9 = new Label();
             button1 = new Button();
             label10 = new Label();
             button2 = new Button();
@@ -349,7 +348,6 @@ namespace CMS.View.Doctor
             // panel3
             // 
             panel3.BackColor = Color.CornflowerBlue;
-            panel3.Controls.Add(label9);
             panel3.Controls.Add(button1);
             panel3.Controls.Add(label10);
             panel3.Controls.Add(button2);
@@ -363,18 +361,6 @@ namespace CMS.View.Doctor
             panel3.Name = "panel3";
             panel3.Size = new Size(192, 404);
             panel3.TabIndex = 22;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Yu Gothic UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.ForeColor = SystemColors.ButtonHighlight;
-            label9.Location = new Point(57, 52);
-            label9.Margin = new Padding(2, 0, 2, 0);
-            label9.Name = "label9";
-            label9.Size = new Size(109, 19);
-            label9.TabIndex = 22;
-            label9.Text = "Patient ID-2346";
             // 
             // button1
             // 
@@ -392,12 +378,12 @@ namespace CMS.View.Doctor
             label10.AutoSize = true;
             label10.Font = new Font("Kristen ITC", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label10.ForeColor = SystemColors.ButtonFace;
-            label10.Location = new Point(34, 29);
+            label10.Location = new Point(60, 29);
             label10.Margin = new Padding(2, 0, 2, 0);
             label10.Name = "label10";
-            label10.Size = new Size(113, 27);
+            label10.Size = new Size(63, 27);
             label10.TabIndex = 21;
-            label10.Text = "John Doe";
+            label10.Text = "CMS";
             // 
             // button2
             // 
@@ -520,7 +506,6 @@ namespace CMS.View.Doctor
         private TextBox txtEmail;
         private TextBox txtContact;
         private Panel panel3;
-        private Label label9;
         private Button button1;
         private Label label10;
         private Button button2;
