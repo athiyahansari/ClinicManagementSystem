@@ -1,5 +1,9 @@
-﻿using CMS.Model;
+﻿using CMS.Controller; 
+using CMS.Model;
 using CMS.Utils; // Replace with actual namespace
+using CMS.View; // or whatever the correct namespace is
+using CMS.View.Doctor;
+using CMS.View.Patient;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -11,213 +15,244 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CMS.Controller; // Replace with actual namespace for Appointmentcontroller
 
-//using CMS.View.Doctor; // Replace with actual namespace for ViewDoctor
 
 namespace CMS
 {
     public partial class Bookappointmentform : Form
     {
-        private int loggedInPatientId = 1; // Simulate logged-in user
+        private int loggedInPatientId = 2;
+
+        // Controller instance to handle database operations related to appointments
         Appointmentcontroller repo = new Appointmentcontroller();
-        //repo variable is an instance of Appointmentcontroller class which handles all database related operations
+
+        // Holds the appointment ID when rescheduling (null means new booking)
+        private int? reschedulingAppointmentId = null;
+
+        // Constructor - initialize the form and attach event handlers
         public Bookappointmentform()
         {
             InitializeComponent();
-            this.Load += Bookappointmentform_Load; //run when the form loads
-            appointmentdatagrid.CellClick += appointmentdatagrid_CellClick; // Handle cell clicks for reschedule/cancel
-            appointmentdatagrid.CellFormatting += appointmentdatagrid_CellFormatting;
 
+            // Event fired when form loads
+            this.Load += Bookappointmentform_Load;
+
+            // Event fired when a cell is clicked in the appointments data grid
+            appointmentdatagrid.CellClick += appointmentdatagrid_CellClick;
+
+            // Event fired when a cell needs formatting (to format time display)
+            appointmentdatagrid.CellFormatting += appointmentdatagrid_CellFormatting;
         }
 
+        // Form Load event handler - load initial data for the form
         private void Bookappointmentform_Load(object sender, EventArgs e)
         {
-            LoadAppointments();
-            LoadDoctors();
-            PopulateTimeSlots(); // Populate time slots in the dropdown
+            LoadAppointments(); // Load appointments of the logged-in patient into the grid
+            LoadDoctors(); // Load all doctors into the doctor selection ComboBox
+            PopulateTimeSlots(); // Load available time slots into the time ComboBox
         }
+
+        // Load available time slots into timepickform ComboBox
         private void PopulateTimeSlots()
         {
-            // Clear existing items
             timepickform.Items.Clear();
+            var slots = repo.GenerateTimeSlots(); // Get predefined time slots from controller
 
-            // Generate time slots
-            var slots = repo.GenerateTimeSlots();
-
-            // Add slots to ComboBox
             foreach (var slot in slots)
             {
-                timepickform.Items.Add(slot);
+                timepickform.Items.Add(slot); // Add each time slot to ComboBox
             }
 
-            // Set ComboBox to DropDownList to prevent manual editing
+            // Make ComboBox readonly (user can't type arbitrary text)
             timepickform.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            // Select the first slot by default if available
+            // Select the first time slot by default, if available
             if (timepickform.Items.Count > 0)
-            {
                 timepickform.SelectedIndex = 0;
-            }
         }
 
+        // Load all doctors into the doctor selection ComboBox
         private void LoadDoctors()
         {
-            using (MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString))
+            var table = repo.GetAllDoctors(); // Get doctors as DataTable from controller
+
+            if (table.Rows.Count == 0)
             {
-                conn.Open();
-                string query = "SELECT doctor_id, full_name FROM doctors";
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
-                DataTable table = new DataTable();
-                adapter.Fill(table);
-
-                if (table.Rows.Count == 0)
-                {
-                    MessageBox.Show("No doctors found.");
-                    return;
-                }
-
-                combodoctor.DataSource = table;
-                combodoctor.DisplayMember = "full_name";
-                combodoctor.ValueMember = "doctor_id";
-                combodoctor.SelectedIndex = -1;
+                MessageBox.Show("No doctors found.");
+                return;
             }
+
+            // Bind DataTable to ComboBox for doctor selection
+            combodoctor.DataSource = table;
+            combodoctor.DisplayMember = "full_name"; // Display doctor names
+            combodoctor.ValueMember = "doctor_id"; // Store doctor IDs as value
+            combodoctor.SelectedIndex = -1; // No doctor selected initially
         }
 
+        // Load the logged-in patient's appointments into the DataGridView
         private void LoadAppointments()
         {
-            var list = repo.GetAppointmentsByPatientId(loggedInPatientId);
+            var list = repo.GetAppointmentsForPatient(loggedInPatientId); // Fetch appointments
 
-            appointmentdatagrid.AutoGenerateColumns = false;
+            appointmentdatagrid.AutoGenerateColumns = false; // Use predefined columns
 
+            // Map model properties to respective DataGridView columns
             appointmentdatagrid.Columns["DoctorNameColumn"].DataPropertyName = "DoctorName";
             appointmentdatagrid.Columns["TimeColumn"].DataPropertyName = "Time";
             appointmentdatagrid.Columns["DateColumn"].DataPropertyName = "Date";
-            appointmentdatagrid.Columns["ConsultaionColumn"].DataPropertyName = "Consultation"; // spelling as in designer
+            appointmentdatagrid.Columns["ConsultaionColumn"].DataPropertyName = "Consultation";
             appointmentdatagrid.Columns["StatusColumn"].DataPropertyName = "Status";
-            // You can map ResheduleColumn and CancelColumn if needed
 
-            appointmentdatagrid.DataSource = list;
-            appointmentdatagrid.ReadOnly = true;
-
+            appointmentdatagrid.DataSource = list; // Bind appointments list to the grid
+            appointmentdatagrid.ReadOnly = true; // Make grid readonly to prevent direct editing
         }
 
-
+        // Click event handler for the book/reschedule button
         private void bookappobtn_Click(object sender, EventArgs e)
         {
-            string validationError = repo.ValidateAppointmentInput(
-                Convert.ToInt32(combodoctor.SelectedValue),
-                dateTimePickerform.Value,
-                timepickform.Text,
-                notestxt.Text);
+            // Call controller method to either book or reschedule an appointment,
+            // depending on whether reschedulingAppointmentId has a value
+            var result = repo.TryBookOrRescheduleAppointment(
+                patientId: loggedInPatientId,
+                doctorId: Convert.ToInt32(combodoctor.SelectedValue),
+                date: dateTimePickerform.Value,
+                timeText: timepickform.Text,
+                notes: notestxt.Text,
+                rescheduleId: reschedulingAppointmentId);
 
-            if (validationError != null)
-            {
-                MessageBox.Show(validationError);
-                return;
-            }
+            // Show the result message (success or error)
+            MessageBox.Show(result.message);
 
-            Appointment newAppt = new Appointment
+            if (result.success)
             {
-                PatientId = loggedInPatientId,
-                DoctorId = Convert.ToInt32(combodoctor.SelectedValue),
-                Date = dateTimePickerform.Value.Date,
-                Time = TimeSpan.Parse(timepickform.Text),
-                Consultation = notestxt.Text,
-            };
-
-            try
-            {
-                repo.BookAppointment(newAppt); // Save to database
-                MessageBox.Show("Appointment booked!");
-                LoadAppointments(); // Refresh grid
-            }
-            catch (MySql.Data.MySqlClient.MySqlException ex) when (ex.Number == 1062) // Duplicate entry error
-            {
-                MessageBox.Show("This appointment slot is already booked. Please select another.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An unexpected error occurred: " + ex.Message);
+                LoadAppointments(); // Refresh the appointments grid to reflect changes
+                ClearFormFields(); // Reset form inputs for next operation
             }
         }
 
-
+        // Handle clicks on cells inside the appointments grid (cancel/reschedule buttons)
         private void appointmentdatagrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            // Ignore header clicks or invalid indexes
             if (e.RowIndex < 0 || e.ColumnIndex < 0)
                 return;
 
-            var selectedAppointment = appointmentdatagrid.Rows[e.RowIndex].DataBoundItem as Appointment;
-            if (selectedAppointment == null)
-                return;
+            // Get the selected appointment object from the row clicked
+            var selected = appointmentdatagrid.Rows[e.RowIndex].DataBoundItem as Appointment;
+            if (selected == null) return;
 
-            int appointmentId = selectedAppointment.AppointmentId;
+            // Prevent modification of past appointments
+            if (selected.Date < DateTime.Today)
+            {
+                MessageBox.Show("You cannot modify past appointments.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            int appointmentId = selected.AppointmentId;
             string columnName = appointmentdatagrid.Columns[e.ColumnIndex].Name;
 
+            // If Cancel button clicked
             if (columnName == "CancelColumn")
             {
-                var confirm = MessageBox.Show("Do you want to cancel this appointment?", "Confirm Cancel", MessageBoxButtons.YesNo);
+                var confirm = MessageBox.Show("Do you want to cancel this appointment?", "Confirm", MessageBoxButtons.YesNo);
                 if (confirm == DialogResult.Yes)
                 {
-                    repo.CancelAppointment(appointmentId);
-                    LoadAppointments(); // Refresh the grid
-                    MessageBox.Show("Appointment cancelled.");
+                    repo.CancelAppointmentWithConfirmation(appointmentId); // Cancel via controller
+                    LoadAppointments(); // Reload appointments grid
+                    MessageBox.Show("Cancelled successfully.");
                 }
             }
+            // If Reschedule button clicked
             else if (columnName == "ResheduleColumn")
             {
-                var confirm = MessageBox.Show("Do you want to reschedule this appointment?", "Confirm Reschedule", MessageBoxButtons.YesNo);
+                var confirm = MessageBox.Show("Do you want to reschedule this appointment?", "Confirm", MessageBoxButtons.YesNo);
                 if (confirm == DialogResult.Yes)
                 {
-                    // Ask for new date
-                    string newDateInput = Microsoft.VisualBasic.Interaction.InputBox("Enter new date (yyyy-MM-dd):", "Reschedule Date", DateTime.Today.ToString("yyyy-MM-dd"));
-                    if (!DateTime.TryParse(newDateInput, out DateTime newDate))
-                    {
-                        MessageBox.Show("Invalid date format. Please use yyyy-MM-dd.");
-                        return;
-                    }
+                    // Load selected appointment data into the form fields for editing
+                    var resched = repo.PrepareAppointmentForReschedule(selected);
+                    combodoctor.SelectedValue = resched.DoctorId;
+                    dateTimePickerform.Value = resched.Date;
+                    timepickform.SelectedItem = resched.Time.ToString(@"hh\:mm");
+                    notestxt.Text = resched.Consultation;
 
-                    // Ask for new time
-                    string newTimeString = Microsoft.VisualBasic.Interaction.InputBox("Enter new time (HH:mm):", "Reschedule Time", "10:00");
-                    if (!TimeSpan.TryParse(newTimeString, out TimeSpan newTime))
-                    {
-                        MessageBox.Show("Invalid time format. Please enter time as HH:mm.");
-                        return;
-                    }
+                    // Track the appointment ID being rescheduled
+                    reschedulingAppointmentId = resched.AppointmentId;
 
-                    // Perform reschedule
-                    repo.RescheduleAppointment(appointmentId, newDate, newTime);
-                    MessageBox.Show("Appointment rescheduled.");
-                    LoadAppointments(); // Refresh the grid
+                    // Change button text to indicate rescheduling mode
+                    bookappobtn.Text = "Reschedule Appointment";
                 }
             }
         }
 
+        // Format the display of the Time column in the DataGridView
         private void appointmentdatagrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            if (appointmentdatagrid.Columns[e.ColumnIndex].Name == "TimeColumn")
             {
-                if (appointmentdatagrid.Columns[e.ColumnIndex].Name == "TimeColumn")
+                if (e.Value is TimeSpan time)
                 {
-                    if (e.Value is TimeSpan time)
-                    {
-                        e.Value = time.ToString(@"hh\:mm"); // Format as HH:mm:ss
-                        e.FormattingApplied = true;
-                    }
+                    e.Value = time.ToString(@"hh\:mm"); // Format TimeSpan as HH:mm
+                    e.FormattingApplied = true; // Mark formatting as done
                 }
             }
         }
 
-        private void appointmentbtn_Click(object sender, EventArgs e)
+        // Clear form input fields and reset state after booking/rescheduling
+        private void ClearFormFields()
         {
+            combodoctor.SelectedIndex = -1; // Deselect doctor
+            if (timepickform.Items.Count > 0)
+                timepickform.SelectedIndex = 0; // Reset time slot selection to first item
 
-            Bookappointmentform apptForm = new Bookappointmentform(); //loggedinpatientID should be passed if needed
-            apptForm.Show();
-            this.Hide();
+            dateTimePickerform.Value = DateTime.Today; // Reset date picker to today
+            notestxt.Clear(); // Clear consultation notes
+
+            reschedulingAppointmentId = null; // Reset reschedule mode
+            bookappobtn.Text = "Book Appointment"; // Reset button text
         }
 
-      
+
+        private void doctorbtn_Click(object sender, EventArgs e)
+        {
+            //ViewDoctor viewDoctorForm = new ViewDoctor();
+            //viewDoctorForm.Show();
+
+            //// Hide the current form
+            //this.Hide();
+
+        }
+
+        private void prescrbtn_Click(object sender, EventArgs e)
+        {
+            //ViewPrescription prescriptionForm = new ViewPrescription(); // create instance
+            //prescriptionForm.Show();
+            //this.Hide(); 
+
+        }
+
+        private void historybtn_Click(object sender, EventArgs e)
+        {
+            //ViewMedicalHistory historyForm = new ViewMedicalHistory();
+            //historyForm.Show(); 
+            //this.Hide(); 
+
+        }
+
+        private void profilebtn_Click(object sender, EventArgs e)
+        {
+            //PatientDashboard dashboardForm = new PatientDashboard(); 
+            //dashboardForm.Show(); 
+            //this.Hide();
+        }
+
+        private void logoutbtn_Click(object sender, EventArgs e)
+        {
+          //LoginForm loginForm = new LoginForm();
+          //  loginForm.Show();
+          //  this.Close(); 
+        }
+
+
     }
 }
 

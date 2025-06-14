@@ -10,24 +10,24 @@ using System.Windows.Forms;
 
 namespace CMS.View.Doctor
 {
-    public partial class Reportdoctor : Form
+    public partial class ViewDoctor : Form
     {
-        public Reportdoctor()
+        public ViewDoctor()
         {
             InitializeComponent();
         }
 
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
-        private void Reportdoctor_Load(object sender, EventArgs e)
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        private void dataGridView1_CellContentClick_2(object sender, DataGridViewCellEventArgs e)
         {
 
         }

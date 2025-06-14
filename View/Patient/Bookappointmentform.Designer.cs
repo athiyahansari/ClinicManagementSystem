@@ -30,7 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             flowLayoutPanelmain = new FlowLayoutPanel();
             panel1 = new Panel();
             logoutbtn = new Button();
@@ -39,10 +39,9 @@
             prescrbtn = new Button();
             doctorbtn = new Button();
             appointmentbtn = new Button();
-            lablid = new Label();
-            lablpatient1 = new Label();
             panel5 = new Panel();
             panel2 = new Panel();
+            timepickform = new ComboBox();
             dateTimePickerform = new DateTimePicker();
             bookappobtn = new Button();
             notestxt = new TextBox();
@@ -62,7 +61,6 @@
             CancelColumn = new DataGridViewButtonColumn();
             managelbl = new Label();
             appoinmentslbl = new Label();
-            timepickform = new ComboBox();
             flowLayoutPanelmain.SuspendLayout();
             panel1.SuspendLayout();
             panel5.SuspendLayout();
@@ -91,8 +89,6 @@
             panel1.Controls.Add(prescrbtn);
             panel1.Controls.Add(doctorbtn);
             panel1.Controls.Add(appointmentbtn);
-            panel1.Controls.Add(lablid);
-            panel1.Controls.Add(lablpatient1);
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(0);
             panel1.Name = "panel1";
@@ -102,85 +98,68 @@
             // logoutbtn
             // 
             logoutbtn.BackColor = Color.LightSteelBlue;
-            logoutbtn.Location = new Point(21, 394);
+            logoutbtn.Location = new Point(21, 361);
             logoutbtn.Name = "logoutbtn";
             logoutbtn.Size = new Size(113, 26);
             logoutbtn.TabIndex = 7;
             logoutbtn.Text = "Log Out";
             logoutbtn.UseVisualStyleBackColor = false;
+            logoutbtn.Click += logoutbtn_Click;
             // 
             // profilebtn
             // 
             profilebtn.BackColor = Color.LightSteelBlue;
-            profilebtn.Location = new Point(21, 362);
+            profilebtn.Location = new Point(21, 329);
             profilebtn.Name = "profilebtn";
             profilebtn.Size = new Size(113, 26);
             profilebtn.TabIndex = 6;
             profilebtn.Text = "My Profile";
             profilebtn.UseVisualStyleBackColor = false;
+            profilebtn.Click += profilebtn_Click;
             // 
             // historybtn
             // 
             historybtn.BackColor = Color.LightSteelBlue;
-            historybtn.Location = new Point(21, 202);
+            historybtn.Location = new Point(21, 169);
             historybtn.Name = "historybtn";
             historybtn.Size = new Size(113, 26);
             historybtn.TabIndex = 5;
             historybtn.Text = "Medical History";
             historybtn.UseVisualStyleBackColor = false;
+            historybtn.Click += historybtn_Click;
             // 
             // prescrbtn
             // 
             prescrbtn.BackColor = Color.LightSteelBlue;
-            prescrbtn.Location = new Point(21, 170);
+            prescrbtn.Location = new Point(21, 137);
             prescrbtn.Name = "prescrbtn";
             prescrbtn.Size = new Size(113, 26);
             prescrbtn.TabIndex = 4;
             prescrbtn.Text = "Prescriptions";
             prescrbtn.UseVisualStyleBackColor = false;
+            prescrbtn.Click += prescrbtn_Click;
             // 
             // doctorbtn
             // 
             doctorbtn.BackColor = Color.LightSteelBlue;
-            doctorbtn.Location = new Point(21, 105);
+            doctorbtn.Location = new Point(21, 72);
             doctorbtn.Name = "doctorbtn";
             doctorbtn.Size = new Size(113, 28);
             doctorbtn.TabIndex = 3;
             doctorbtn.Text = "Doctor";
             doctorbtn.UseVisualStyleBackColor = false;
+            doctorbtn.Click += doctorbtn_Click;
             // 
             // appointmentbtn
             // 
             appointmentbtn.BackColor = Color.LightSteelBlue;
-            appointmentbtn.Location = new Point(21, 138);
+            appointmentbtn.Location = new Point(21, 105);
             appointmentbtn.Name = "appointmentbtn";
             appointmentbtn.Size = new Size(113, 26);
             appointmentbtn.TabIndex = 2;
             appointmentbtn.Text = "Appointments";
             appointmentbtn.UseVisualStyleBackColor = false;
-            appointmentbtn.Click += appointmentbtn_Click;
-            // 
-            // lablid
-            // 
-            lablid.AutoSize = true;
-            lablid.Font = new Font("Yu Gothic UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lablid.ForeColor = SystemColors.ButtonHighlight;
-            lablid.Location = new Point(39, 50);
-            lablid.Name = "lablid";
-            lablid.Size = new Size(105, 17);
-            lablid.TabIndex = 1;
-            lablid.Text = "Patient ID -2356";
-            // 
-            // lablpatient1
-            // 
-            lablpatient1.AutoSize = true;
-            lablpatient1.Font = new Font("Kristen ITC", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lablpatient1.ForeColor = SystemColors.ControlLightLight;
-            lablpatient1.Location = new Point(21, 23);
-            lablpatient1.Name = "lablpatient1";
-            lablpatient1.Size = new Size(113, 27);
-            lablpatient1.TabIndex = 0;
-            lablpatient1.Text = "John Doe";
+            //appointmentbtn.Click += appointmentbtn_Click;
             // 
             // panel5
             // 
@@ -194,7 +173,6 @@
             panel5.Name = "panel5";
             panel5.Size = new Size(813, 663);
             panel5.TabIndex = 3;
-            //panel5.Paint += panel5_Paint;
             // 
             // panel2
             // 
@@ -213,6 +191,14 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(329, 284);
             panel2.TabIndex = 13;
+            // 
+            // timepickform
+            // 
+            timepickform.FormattingEnabled = true;
+            timepickform.Location = new Point(219, 120);
+            timepickform.Name = "timepickform";
+            timepickform.Size = new Size(86, 23);
+            timepickform.TabIndex = 26;
             // 
             // dateTimePickerform
             // 
@@ -298,14 +284,14 @@
             // appointmentdatagrid
             // 
             appointmentdatagrid.BackgroundColor = SystemColors.ButtonHighlight;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            appointmentdatagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            appointmentdatagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             appointmentdatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             appointmentdatagrid.Columns.AddRange(new DataGridViewColumn[] { DoctorNameColumn, TimeColumn, DateColumn, ConsultaionColumn, StatusColumn, ResheduleColumn, CancelColumn });
             appointmentdatagrid.Location = new Point(42, 87);
@@ -375,14 +361,6 @@
             appoinmentslbl.TabIndex = 0;
             appoinmentslbl.Text = "Appointments";
             // 
-            // timepickform
-            // 
-            timepickform.FormattingEnabled = true;
-            timepickform.Location = new Point(219, 120);
-            timepickform.Name = "timepickform";
-            timepickform.Size = new Size(86, 23);
-            timepickform.TabIndex = 26;
-            // 
             // Bookappointmentform
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -394,7 +372,6 @@
             Text = "Bookappoinmentform";
             flowLayoutPanelmain.ResumeLayout(false);
             panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             panel2.ResumeLayout(false);
@@ -409,8 +386,6 @@
         private Panel panel1;
         private Button doctorbtn;
         private Button appointmentbtn;
-        private Label lablid;
-        private Label lablpatient1;
         private Panel panel5;
         private Label managelbl;
         private Label appoinmentslbl;

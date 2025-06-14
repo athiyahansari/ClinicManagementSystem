@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using CMS.Controller;
-using CMS.View.Patient;
+using CMS.Model;
+using System.Collections.Generic;
 
 namespace ClinicManagementSystem.Views.Patients
 {
@@ -13,30 +14,45 @@ namespace ClinicManagementSystem.Views.Patients
         {
             InitializeComponent();
             controller = new MedicalHistoryController();
-
-            // Attach the event handler for the Load button
             btnLoad.Click += BtnLoad_Click;
-            this.Load += ViewMedicalHistory_Load;
+        }
+
+        private void BtnLoad_Click(object sender, EventArgs e)
+        {
+            string patientName = txtPatientName.Text.Trim();
+            if (string.IsNullOrEmpty(patientName))
+            {
+                MessageBox.Show("Please enter a patient name.");
+                return;
+            }
+
+            LoadMedicalHistory(patientName);
+        }
+
+        private void LoadMedicalHistory(string patientName)
+        {
+            dgvHistory.Rows.Clear();
+            List<(MedicalHistory, string doctorName)> history = controller.GetMedicalHistoryByPatientName(patientName);
+
+            if (history.Count == 0)
+            {
+                MessageBox.Show("No medical history found for this patient.");
+                return;
+            }
+
+            foreach (var (record, doctorName) in history)
+            {
+                dgvHistory.Rows.Add(
+                    record.VisitDate.ToString("yyyy-MM-dd"),
+                    record.Diagnosis,
+                    record.Prescription,
+                    record.Notes,
+                    doctorName
+                );
+            }
         }
 
         private void ViewMedicalHistory_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        // Button click event - just calls the load method
-        private void BtnLoad_Click(object sender, EventArgs e)
-        {
-            LoadMedicalHistory();//good practice
-        }
-
-        // Method to load medical history into the DataGridView
-        private void LoadMedicalHistory()
-        {
-
-        }
-
-        private void dvgMedicalHistory_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
