@@ -187,5 +187,13 @@ namespace CMS.View.Admin
             profileForm.ShowDialog();
             this.Show(); // Show again after profile closes
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Hide();  // Hide the current form
+            LoginForm profileForm = new LoginForm();
+            profileForm.ShowDialog();
+            this.Show(); // Show again after profile closes
+        }
     }
 }

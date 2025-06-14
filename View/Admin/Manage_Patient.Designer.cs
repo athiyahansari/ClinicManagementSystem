@@ -44,7 +44,7 @@
             button5 = new Button();
             button6 = new Button();
             btnMyprofile = new Button();
-            button8 = new Button();
+            btnLogout = new Button();
             label2 = new Label();
             label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -202,16 +202,17 @@
             btnMyprofile.UseVisualStyleBackColor = false;
             btnMyprofile.Click += btnMyprofile_Click;
             // 
-            // button8
+            // btnLogout
             // 
-            button8.BackColor = Color.LightSteelBlue;
-            button8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button8.Location = new Point(35, 501);
-            button8.Name = "button8";
-            button8.Size = new Size(168, 37);
-            button8.TabIndex = 10;
-            button8.Text = "Log Out";
-            button8.UseVisualStyleBackColor = false;
+            btnLogout.BackColor = Color.LightSteelBlue;
+            btnLogout.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnLogout.Location = new Point(35, 501);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(168, 37);
+            btnLogout.TabIndex = 10;
+            btnLogout.Text = "Log Out";
+            btnLogout.UseVisualStyleBackColor = false;
+            btnLogout.Click += btnLogout_Click;
             // 
             // label2
             // 
@@ -243,7 +244,7 @@
             ClientSize = new Size(1097, 620);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(button8);
+            Controls.Add(btnLogout);
             Controls.Add(btnMyprofile);
             Controls.Add(button6);
             Controls.Add(button5);
@@ -274,7 +275,7 @@
         private Button button5;
         private Button button6;
         private Button btnMyprofile;
-        private Button button8;
+        private Button btnLogout;
         private Label label2;
         private Label label3;
         private DataGridViewTextBoxColumn Patient_Id;
