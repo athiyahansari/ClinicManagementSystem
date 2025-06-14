@@ -77,7 +77,7 @@
             flowLayoutPanelmain.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanelmain.Location = new Point(0, 0);
             flowLayoutPanelmain.Name = "flowLayoutPanelmain";
-            flowLayoutPanelmain.Size = new Size(968, 663);
+            flowLayoutPanelmain.Size = new Size(923, 499);
             flowLayoutPanelmain.TabIndex = 0;
             // 
             // panel1

@@ -229,6 +229,7 @@
             navdoc.TabIndex = 0;
             navdoc.Text = "View Doctor";
             navdoc.UseVisualStyleBackColor = false;
+            navdoc.Click += navdoc_Click;
             // 
             // ViewMedicalHistory
             // 

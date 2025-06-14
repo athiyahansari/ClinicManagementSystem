@@ -61,5 +61,12 @@ namespace ClinicManagementSystem.Views.Patients
         {
 
         }
+
+        private void navdoc_Click(object sender, EventArgs e)
+        {
+            ViewDoctors viewDoctors = new ViewDoctors();
+            viewDoctors.Show();
+            this.Hide(); // Hide the current form   
+        }
     }
 }
