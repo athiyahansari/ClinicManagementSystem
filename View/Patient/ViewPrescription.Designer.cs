@@ -40,12 +40,7 @@
             navprescription = new Button();
             navappointment = new Button();
             navdoc = new Button();
-            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            Date = new DataGridViewTextBoxColumn();
-            DoctorName = new DataGridViewTextBoxColumn();
-            Diagnosis = new DataGridViewTextBoxColumn();
-            Medicines = new DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)dgvPrescriptions).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             sidenav.SuspendLayout();
             SuspendLayout();
             // 
@@ -62,16 +57,36 @@
             // 
             // dgvPrescriptions
             // 
-            dgvPrescriptions.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvPrescriptions.BackgroundColor = SystemColors.ButtonHighlight;
-            dgvPrescriptions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPrescriptions.Columns.AddRange(new DataGridViewColumn[] { Date, DoctorName, Diagnosis, Medicines });
-            dgvPrescriptions.Location = new Point(273, 104);
-            dgvPrescriptions.Name = "dgvPrescriptions";
-            dgvPrescriptions.RowHeadersWidth = 51;
-            dgvPrescriptions.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPrescriptions.Size = new Size(918, 496);
-            dgvPrescriptions.TabIndex = 3;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.BackgroundColor = SystemColors.ButtonHighlight;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { PrescriptionID, Date, DoctorName, Diagnosis, Medicines });
+            dataGridView1.Location = new Point(273, 98);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(918, 496);
+            dataGridView1.TabIndex = 3;
+            // 
+            // PrescriptionID
+            // 
+            PrescriptionID.HeaderText = "Prescription ID";
+            PrescriptionID.MinimumWidth = 6;
+            PrescriptionID.Name = "PrescriptionID";
+            PrescriptionID.Visible = false;
+            // 
+            // Date
+            // 
+            Date.HeaderText = "Date";
+            Date.MinimumWidth = 6;
+            Date.Name = "Date";
+            // 
+            // DoctorName
+            // 
+            DoctorName.HeaderText = "Doctor Name";
+            DoctorName.MinimumWidth = 6;
+            DoctorName.Name = "DoctorName";
+            // 
+            // Diagnosis
             // 
             // btnBack
             // 
@@ -239,10 +254,5 @@
         private Button navprescription;
         private Button navappointment;
         private Button navdoc;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private DataGridViewTextBoxColumn Date;
-        private DataGridViewTextBoxColumn DoctorName;
-        private DataGridViewTextBoxColumn Diagnosis;
-        private DataGridViewTextBoxColumn Medicines;
     }
 }

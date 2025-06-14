@@ -1,6 +1,4 @@
-using CMS.View;
-using CMS.View.Admin;
-using CMS.View.Patient;
+using CMS.View.Doctor;
 
 namespace CMS
 {
