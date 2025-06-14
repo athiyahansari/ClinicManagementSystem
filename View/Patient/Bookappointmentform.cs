@@ -1,4 +1,5 @@
-﻿using CMS.Controller; 
+﻿using ClinicManagementSystem.Views.Patients;
+using CMS.Controller; 
 using CMS.Model;
 using CMS.Utils; // Replace with actual namespace
 using CMS.View; // or whatever the correct namespace is
@@ -214,42 +215,48 @@ namespace CMS
 
         private void doctorbtn_Click(object sender, EventArgs e)
         {
-            //ViewDoctor viewDoctorForm = new ViewDoctor();
-            //viewDoctorForm.Show();
+            ViewDoctor viewDoctorForm = new ViewDoctor();
+            viewDoctorForm.Show();
 
-            //// Hide the current form
-            //this.Hide();
+            // Hide the current form
+            this.Hide();
 
         }
 
         private void prescrbtn_Click(object sender, EventArgs e)
         {
-            //ViewPrescription prescriptionForm = new ViewPrescription(); // create instance
-            //prescriptionForm.Show();
-            //this.Hide(); 
+            ViewPrescription prescriptionForm = new ViewPrescription(); // create instance
+            prescriptionForm.Show();
+            this.Hide();
 
         }
 
         private void historybtn_Click(object sender, EventArgs e)
         {
-            //ViewMedicalHistory historyForm = new ViewMedicalHistory();
-            //historyForm.Show(); 
-            //this.Hide(); 
+          
+            ViewMedicalHistory historyform = new ViewMedicalHistory(); // Pass the patient ID to the history form
+            historyform.Show(); // Show the medical history form
+            this.Hide();
+
 
         }
 
         private void profilebtn_Click(object sender, EventArgs e)
         {
-            //PatientDashboard dashboardForm = new PatientDashboard(); 
-            //dashboardForm.Show(); 
+            //PatientDashboard dashboardForm = new PatientDashboard();
+            //dashboardForm.Show();
             //this.Hide();
+            //PatientDashboard dashboardForm = new PatientDashboard(); // Pass the patient
+            //dashboardForm.Show();
+            //this.Hide(); // Hide the current form
+
         }
 
         private void logoutbtn_Click(object sender, EventArgs e)
         {
-          //LoginForm loginForm = new LoginForm();
-          //  loginForm.Show();
-          //  this.Close(); 
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+            this.Close();
         }
 
 
