@@ -41,5 +41,16 @@ namespace CMS.View.Patient
         {
 
         }
+
+        private void navdoc_Click(object sender, EventArgs e)
+        {
+            LoadDoctorList(); // From navdoc button
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
+

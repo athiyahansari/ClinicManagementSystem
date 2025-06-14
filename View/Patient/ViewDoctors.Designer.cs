@@ -18,10 +18,8 @@
 
         private void InitializeComponent()
         {
-
             dgvDoctors = new DataGridView();
             sidenav = new Panel();
-            label3 = new Label();
             navmedicalhistory = new Button();
             label2 = new Label();
             navprofile = new Button();
@@ -53,7 +51,6 @@
             // sidenav
             // 
             sidenav.BackColor = Color.CornflowerBlue;
-            sidenav.Controls.Add(label3);
             sidenav.Controls.Add(navmedicalhistory);
             sidenav.Controls.Add(label2);
             sidenav.Controls.Add(navprofile);
@@ -67,18 +64,6 @@
             sidenav.Name = "sidenav";
             sidenav.Size = new Size(201, 386);
             sidenav.TabIndex = 22;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Yu Gothic UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = SystemColors.ButtonHighlight;
-            label3.Location = new Point(57, 52);
-            label3.Margin = new Padding(2, 0, 2, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(109, 19);
-            label3.TabIndex = 22;
-            label3.Text = "Patient ID-2346";
             // 
             // navmedicalhistory
             // 
@@ -96,12 +81,13 @@
             label2.AutoSize = true;
             label2.Font = new Font("Kristen ITC", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ButtonFace;
-            label2.Location = new Point(34, 29);
+            label2.Location = new Point(59, 29);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(113, 27);
+            label2.Size = new Size(63, 27);
             label2.TabIndex = 21;
-            label2.Text = "John Doe";
+            label2.Text = "CMS";
+            label2.Click += label2_Click;
             // 
             // navprofile
             // 
@@ -155,8 +141,9 @@
             navdoc.Name = "navdoc";
             navdoc.Size = new Size(125, 26);
             navdoc.TabIndex = 0;
-            navdoc.Text = "Doctor";
+            navdoc.Text = "View Doctor";
             navdoc.UseVisualStyleBackColor = false;
+            navdoc.Click += navdoc_Click;
             // 
             // label1
             // 
@@ -193,7 +180,6 @@
         #endregion
 
         private Panel sidenav;
-        private Label label3;
         private Button navmedicalhistory;
         private Label label2;
         private Button navprofile;
