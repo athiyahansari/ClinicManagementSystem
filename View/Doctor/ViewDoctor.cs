@@ -31,10 +31,5 @@ namespace CMS.View.Doctor
         {
 
         }
-
-        private void ViewDoctor_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
