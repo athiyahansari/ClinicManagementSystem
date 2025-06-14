@@ -18,6 +18,7 @@
 
         private void InitializeComponent()
         {
+
             dgvDoctors = new DataGridView();
             sidenav = new Panel();
             label3 = new Label();

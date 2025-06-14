@@ -74,7 +74,7 @@ namespace CMS.Controller
             }
             catch (Exception ex)
             {
-                Console.WriteLine("❌ Failed to fetch doctor profile: " + ex.Message);
+                Console.WriteLine(" Failed to fetch doctor profile: " + ex.Message); //Incase the database name, columns dont exist or has been changed.
             }
 
             return profile;
