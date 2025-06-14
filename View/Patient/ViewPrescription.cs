@@ -1,6 +1,7 @@
 ﻿using ClinicManagementSystem.Views.Patients;
 using CMS.Controller;
 using CMS.Model;
+using CMS.View.Patient;
 using System;
 using System.Windows.Forms;
 
@@ -85,47 +86,47 @@ namespace CMS.View.Patient
         // Navigate to Doctor form
         private void BtnDoctor_Click(object sender, EventArgs e)
         {
-           // ViewDoctors doctorForm = new ViewDoctors();     // Pass patient ID if needed (_patientId)
-           // doctorForm.Show();
-           // this.Hide(); // Hide current form
+            // ViewDoctors doctorForm = new ViewDoctors();     // Pass patient ID if needed (_patientId)
+            // doctorForm.Show();
+            // this.Hide(); // Hide current form
         }
 
         // Navigate to Appointment form
         private void BtnAppointment_Click(object sender, EventArgs e)
         {
-           // Bookappointmentform appointmentForm = new Bookappointmentform();
-           // appointmentForm.Show();
-           // this.Hide();
+            // Bookappointmentform appointmentForm = new Bookappointmentform();
+            // appointmentForm.Show();
+            // this.Hide();
         }
 
         // Already on Prescription view - optionally refresh prescriptions
         private void BtnPrescriptions_Click(object sender, EventArgs e)
         {
-           // LoadPrescriptions(_patientId); // Refresh data
+            // LoadPrescriptions(_patientId); // Refresh data
         }
 
         // Navigate to Medical History form
         private void BtnMedicalHistory_Click(object sender, EventArgs e)
         {
-           // ViewMedicalHistory historyForm = new ViewMedicalHistory();
-           // historyForm.Show();
-           // this.Hide();
+            // ViewMedicalHistory historyForm = new ViewMedicalHistory();
+            // historyForm.Show();
+            // this.Hide();
         }
 
         // Navigate to My Profile form
         private void BtnMyProfile_Click(object sender, EventArgs e)
         {
-           // Edit_Patient_Profile profileForm = new Edit_Patient_Profile();
-           // profileForm.Show();
-           // this.Hide();
+            // Edit_Patient_Profile profileForm = new Edit_Patient_Profile();
+            // profileForm.Show();
+            // this.Hide();
         }
 
         // Log out and go back to Login form
         private void BtnLogout_Click(object sender, EventArgs e)
         {
-           // LoginForm loginForm = new LoginForm();
-           // loginForm.Show();
-           // this.Close(); // Close current form
+            // LoginForm loginForm = new LoginForm();
+            // loginForm.Show();
+            // this.Close(); // Close current form
         }
 
     }
