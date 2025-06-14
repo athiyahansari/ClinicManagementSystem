@@ -15,13 +15,13 @@ namespace CMS.View.Patient
     public partial class ViewDoctors : Form
 
     {
-        private readonly DoctorController doctorController;
+        private readonly DoctorsController doctorController;
 
         public ViewDoctors()
 
         {
             InitializeComponent();
-            doctorController = new DoctorController();
+            doctorController = new DoctorsController();
         }
 
         private void ViewDoctor_Load(object sender, EventArgs e)
@@ -33,7 +33,7 @@ namespace CMS.View.Patient
         private void LoadDoctorList()
 
         {
-            List<Model.Doctor> doctors = doctorController.GetAllDoctors();
+            List<Model.Doctors> doctors = doctorController.GetAllDoctors();
             dgvDoctors.DataSource = doctors;
         }
 

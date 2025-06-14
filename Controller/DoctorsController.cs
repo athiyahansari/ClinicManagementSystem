@@ -8,18 +8,18 @@ using System.Data;
 
 namespace CMS.Controller
 {
-    public class DoctorController
+    public class DoctorsController
     {
         private readonly Database db;
 
-        public DoctorController()
+        public DoctorsController()
         {
             db = new Database();
         }
 
-        public List<Doctor> GetAllDoctors()
+        public List<Doctors> GetAllDoctors()
         {
-            List<Doctor> doctors = new List<Doctor>();
+            List<Doctors> doctors = new List<Doctors>();
             string query = "SELECT * FROM doctors";
 
             try
@@ -27,7 +27,7 @@ namespace CMS.Controller
                 DataTable dt = db.ExecuteQuery(query);
                 foreach (DataRow row in dt.Rows)
                 {
-                    Doctor doctor = new Doctor
+                    Doctors doctor = new Doctors
                     {
                         DoctorId = Convert.ToInt32(row["doctor_id"]),
                         UserId = Convert.ToInt32(row["user_id"]),
