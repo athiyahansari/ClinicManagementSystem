@@ -40,8 +40,8 @@
             btnAdd = new Button();
             btnRemove = new Button();
             btnEdit = new Button();
-            button4 = new Button();
-            button5 = new Button();
+            btnDoctors = new Button();
+            btnPatients = new Button();
             button6 = new Button();
             btnMyprofile = new Button();
             btnLogout = new Button();
@@ -157,27 +157,29 @@
             btnEdit.UseVisualStyleBackColor = true;
             btnEdit.Click += btnEdit_Click;
             // 
-            // button4
+            // btnDoctors
             // 
-            button4.BackColor = Color.LightSteelBlue;
-            button4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button4.Location = new Point(35, 164);
-            button4.Name = "button4";
-            button4.Size = new Size(179, 39);
-            button4.TabIndex = 6;
-            button4.Text = "Doctors";
-            button4.UseVisualStyleBackColor = false;
+            btnDoctors.BackColor = Color.LightSteelBlue;
+            btnDoctors.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDoctors.Location = new Point(35, 164);
+            btnDoctors.Name = "btnDoctors";
+            btnDoctors.Size = new Size(179, 39);
+            btnDoctors.TabIndex = 6;
+            btnDoctors.Text = "Doctors";
+            btnDoctors.UseVisualStyleBackColor = false;
+            btnDoctors.Click += btnDoctors_Click;
             // 
-            // button5
+            // btnPatients
             // 
-            button5.BackColor = Color.LightSteelBlue;
-            button5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.Location = new Point(35, 209);
-            button5.Name = "button5";
-            button5.Size = new Size(179, 41);
-            button5.TabIndex = 7;
-            button5.Text = "Patient";
-            button5.UseVisualStyleBackColor = false;
+            btnPatients.BackColor = Color.LightSteelBlue;
+            btnPatients.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnPatients.Location = new Point(35, 209);
+            btnPatients.Name = "btnPatients";
+            btnPatients.Size = new Size(179, 41);
+            btnPatients.TabIndex = 7;
+            btnPatients.Text = "Patient";
+            btnPatients.UseVisualStyleBackColor = false;
+            btnPatients.Click += btnPatients_Click;
             // 
             // button6
             // 
@@ -189,6 +191,7 @@
             button6.TabIndex = 8;
             button6.Text = "Appointments";
             button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
             // 
             // btnMyprofile
             // 
@@ -247,15 +250,15 @@
             Controls.Add(btnLogout);
             Controls.Add(btnMyprofile);
             Controls.Add(button6);
-            Controls.Add(button5);
-            Controls.Add(button4);
+            Controls.Add(btnPatients);
+            Controls.Add(btnDoctors);
             Controls.Add(btnEdit);
             Controls.Add(btnRemove);
             Controls.Add(btnAdd);
             Controls.Add(dataGridViewPatients);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
-           // Name = "Manage_Patient";
+            //Name = "Manage_Patient";
             Text = "Manage_Patient";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPatients).EndInit();
@@ -271,8 +274,8 @@
         private Button btnAdd;
         private Button btnRemove;
         private Button btnEdit;
-        private Button button4;
-        private Button button5;
+        private Button btnDoctors;
+        private Button btnPatients;
         private Button button6;
         private Button btnMyprofile;
         private Button btnLogout;

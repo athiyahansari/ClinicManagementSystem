@@ -4,6 +4,7 @@ using CMS.Model;
 using MySql.Data.MySqlClient;
 using CMS.Utils;
 using CMS.Controller;
+using CMS.View.Admin;
 
 
 
@@ -109,7 +110,10 @@ namespace CMS.View.Patient
 
         private void button7_Click(object sender, EventArgs e)
         {
-
+            this.Hide();  // Hide the current form
+            Bookappointmentform profileForm = new Bookappointmentform();
+            profileForm.ShowDialog();
+            this.Show(); // Show again after profile closes
         }
 
         // Method to display messages to the user (e.g., validation errors, success)
@@ -161,8 +165,36 @@ namespace CMS.View.Patient
 
         private void button4_Click(object sender, EventArgs e)
         {
-            
+            this.Hide();  // Hide the current form
+            Edit_Patient_Profile profileForm = new Edit_Patient_Profile();
+            profileForm.ShowDialog();
+            this.Show(); // Show again after profile closes
 
+        }
+
+        private void btnDoctor_Click(object sender, EventArgs e)
+        {
+            this.Hide();  // Hide the current form
+            ViewDoctors profileForm = new ViewDoctors();
+            profileForm.ShowDialog();
+            this.Show(); // Show again after profile closes
+        }
+
+        private void btnPatient_Click(object sender, EventArgs e)
+        {
+            this.Hide();  // Hide the current form
+            Edit_Patient_Profile profileForm = new Edit_Patient_Profile();
+            profileForm.ShowDialog();
+            this.Show(); // Show again after profile closes
+
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();  // Hide the current form
+            LoginForm profileForm = new LoginForm();
+            profileForm.ShowDialog();
+            this.Show(); // Show again after profile closes
         }
     }
 }

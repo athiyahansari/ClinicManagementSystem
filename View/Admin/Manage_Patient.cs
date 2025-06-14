@@ -195,5 +195,30 @@ namespace CMS.View.Admin
             profileForm.ShowDialog();
             this.Show(); // Show again after profile closes
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.Hide();  // Hide the current form
+            adminbookappointment profileForm = new adminbookappointment();
+            profileForm.ShowDialog();
+            this.Show(); // Show again after profile closes
+        }
+
+        private void btnDoctors_Click(object sender, EventArgs e)
+        {
+            this.Hide();  // Hide the current form
+            ViewDoctors profileForm = new ViewDoctors();
+            profileForm.ShowDialog();
+            this.Show(); // Show again after profile closes
+
+        }
+
+        private void btnPatients_Click(object sender, EventArgs e)
+        {
+            this.Hide();  // Hide the current form
+            Manage_Patient profileForm = new Manage_Patient();
+            profileForm.ShowDialog();
+            this.Show(); // Show again after profile closes
+        }
     }
 }
