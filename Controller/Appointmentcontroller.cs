@@ -1,9 +1,13 @@
-﻿using CMS.Model;
-using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using CMS.Model;
+using CMS.Utils;
+using CMS.Controller;
+using MySql.Data.MySqlClient;
 
 namespace CMS.Controller
 {
@@ -11,6 +15,11 @@ namespace CMS.Controller
     {
         // Connection string to connect to MySQL database, loaded from config file
         private string connectionString = ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
+        //method to get all appointments for a patient to fll datagridview or listview
+
+        private readonly NotificationController notificationController = new NotificationController();
+        public List<Appointment> GetAppointmentsByPatientId(int patientId)
+        { //get appointments from db for a specifc patient 
 
         // Retrieves all appointments for a specific patient by patientId
         public List<Appointment> GetAppointmentsByPatientId(int patientId)
@@ -124,10 +133,17 @@ namespace CMS.Controller
                 cmd.Parameters.AddWithValue("@date", date.Date); // Use only the date part
                 cmd.Parameters.AddWithValue("@time", time);
 
-                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                cmd.ExecuteNonQuery(); //execute the insert command
+                                       //save a new appointment to the database
 
-                return count == 0;  // True if no conflicts found
-            }
+                // Get the last inserted appointment ID
+                long insertedId = cmd.LastInsertedId;
+                //  Create a notification message
+                string message = $"Your appointment with Dr. {appt.DoctorName} is booked for {appt.Date.ToShortDateString()} at {appt.Time:hh\\:mm}.";
+                // Create notification in DB
+                notificationController.CreateNotification((int)insertedId, message);
+
+            } //links a variable to the placeholder in ur sql query @patientId, @date, etc..addwithvalue is used to replace the placeholder with the actual value
         }
 
         // Generates a list of available time slots for booking appointments
@@ -278,5 +294,60 @@ namespace CMS.Controller
                 return (false, "Unexpected error: " + ex.Message);
             }
         }
+
+        //public void BookAppointment(Appointment appt)
+        //{
+        //    // Call repo to save appointment (your data access)
+        //}
+
+
+        //Notification - method to retrieves the next appointment for a patient, ordered by date and time.
+        public static Appointment GetNextAppointmentForPatient(int patientId)
+        {
+            Appointment appt = null;
+
+            try
+            {
+                using (MySqlConnection conn = DBHelper.GetConnection())
+                {
+                    conn.Open();
+                    string query = @"
+                SELECT a.*, d.full_name AS DoctorName
+                FROM appointments a
+                JOIN doctors d ON a.doctor_id = d.doctor_id
+                WHERE a.patient_id = @patientId AND a.appointment_date >= CURDATE()
+                ORDER BY a.appointment_date ASC, a.appointment_time ASC
+                LIMIT 1";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@patientId", patientId);
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                appt = new Appointment
+                                {
+                                    AppointmentId = reader.GetInt32("appointment_id"),
+                                    Date = reader.GetDateTime("appointment_date"),
+                                    Time = reader.GetTimeSpan("appointment_time"),
+                                    Status = reader.GetString("status"),
+                                    PatientId = reader.GetInt32("patient_id"),
+                                    DoctorId = reader.GetInt32("doctor_id"),
+                                    DoctorName = reader["DoctorName"].ToString()
+                                };
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error fetching appointment: " + ex.Message);
+            }
+
+            return appt;
+        }
+        
     }
 }
