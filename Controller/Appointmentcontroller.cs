@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,16 +18,14 @@ namespace CMS.Controller
         private string connectionString = ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
         //method to get all appointments for a patient to fll datagridview or listview
 
+        //ADDED: NotificationController instance to handle notifications related to appointments
         private readonly NotificationController notificationController = new NotificationController();
-        public List<Appointment> GetAppointmentsByPatientId(int patientId)
-        { //get appointments from db for a specifc patient 
 
         // Retrieves all appointments for a specific patient by patientId
+        // Ensure single definition of GetAppointmentsByPatientId
         public List<Appointment> GetAppointmentsByPatientId(int patientId)
         {
             var appointments = new List<Appointment>();
-
-            // SQL query joins appointments with patients and doctors tables to get detailed info
             string query = @"
                 SELECT 
                     a.appointment_id, 
@@ -46,7 +45,7 @@ namespace CMS.Controller
             using (var connection = new MySqlConnection(connectionString))
             using (var cmd = new MySqlCommand(query, connection))
             {
-                cmd.Parameters.AddWithValue("@patientId", patientId); // prevent SQL injection
+                cmd.Parameters.AddWithValue("@patientId", patientId);
 
                 connection.Open();
 
@@ -54,7 +53,6 @@ namespace CMS.Controller
                 {
                     while (reader.Read())
                     {
-                        // Map each database row to an Appointment model object
                         var appointment = new Appointment
                         {
                             AppointmentId = reader.GetInt32("appointment_id"),
@@ -136,14 +134,8 @@ namespace CMS.Controller
                 cmd.ExecuteNonQuery(); //execute the insert command
                                        //save a new appointment to the database
 
-                // Get the last inserted appointment ID
-                long insertedId = cmd.LastInsertedId;
-                //  Create a notification message
-                string message = $"Your appointment with Dr. {appt.DoctorName} is booked for {appt.Date.ToShortDateString()} at {appt.Time:hh\\:mm}.";
-                // Create notification in DB
-                notificationController.CreateNotification((int)insertedId, message);
-
             } //links a variable to the placeholder in ur sql query @patientId, @date, etc..addwithvalue is used to replace the placeholder with the actual value
+            return false;
         }
 
         // Generates a list of available time slots for booking appointments
@@ -283,6 +275,26 @@ namespace CMS.Controller
             {
                 // Book or reschedule appointment in DB
                 BookOrReschedule(appointment, rescheduleId.HasValue);
+
+                // !!!create a notification - addition
+                if (!rescheduleId.HasValue)
+                {
+                    // 1) get the new appointment_id
+                    int newApptId;
+                    using (var conn = DBHelper.GetConnection())
+                    {
+                        conn.Open();
+                        using (var cmd = new MySqlCommand("SELECT LAST_INSERT_ID()", conn))
+                        {
+                            newApptId = Convert.ToInt32(cmd.ExecuteScalar());
+                        }
+                    }
+                    // 2) compose the message
+                    string msg = $"Your appointment with Dr. {appointment.DoctorId} is booked for {appointment.Date:yyyy-MM-dd} at {appointment.Time:hh\\:mm}.";
+                    // 3) insert it
+                    notificationController.CreateNotification(newApptId, msg);
+                }
+
                 return (true, rescheduleId.HasValue ? "Appointment rescheduled." : "Appointment booked!");
             }
             catch (MySqlException ex) when (ex.Number == 1062) // Duplicate entry (e.g., slot already booked)
