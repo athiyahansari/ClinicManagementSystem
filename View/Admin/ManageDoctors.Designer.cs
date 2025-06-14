@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             sidenav = new Panel();
-            label3 = new Label();
             label2 = new Label();
-            navprofile = new Button();
-            logout = new Button();
-            navappointment = new Button();
-            navpatient = new Button();
-            navdoc = new Button();
+            btnGenerateReport = new Button();
+            btnLogout = new Button();
+            btnAppointmentSchedule = new Button();
+            btnPatients = new Button();
+            btnDoctors = new Button();
             lblTitle = new Label();
             lblDocID = new Label();
             lblFullName = new Label();
@@ -49,7 +48,6 @@
             txtNumber = new TextBox();
             btnAdd = new Button();
             doctorGridView = new DataGridView();
-            btnBack = new Button();
             doctorID = new DataGridViewTextBoxColumn();
             name = new DataGridViewTextBoxColumn();
             docSpecialty = new DataGridViewTextBoxColumn();
@@ -64,97 +62,85 @@
             // sidenav
             // 
             sidenav.BackColor = Color.CornflowerBlue;
-            sidenav.Controls.Add(label3);
             sidenav.Controls.Add(label2);
-            sidenav.Controls.Add(navprofile);
-            sidenav.Controls.Add(logout);
-            sidenav.Controls.Add(navappointment);
-            sidenav.Controls.Add(navpatient);
-            sidenav.Controls.Add(navdoc);
+            sidenav.Controls.Add(btnGenerateReport);
+            sidenav.Controls.Add(btnLogout);
+            sidenav.Controls.Add(btnAppointmentSchedule);
+            sidenav.Controls.Add(btnPatients);
+            sidenav.Controls.Add(btnDoctors);
             sidenav.Dock = DockStyle.Left;
             sidenav.Location = new Point(0, 0);
             sidenav.Name = "sidenav";
-            sidenav.Size = new Size(247, 686);
+            sidenav.Size = new Size(247, 716);
             sidenav.TabIndex = 2;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Yu Gothic UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = SystemColors.ButtonHighlight;
-            label3.Location = new Point(64, 72);
-            label3.Name = "label3";
-            label3.Size = new Size(126, 23);
-            label3.TabIndex = 6;
-            label3.Text = "Admin ID-2346";
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Kristen ITC", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = SystemColors.ButtonFace;
-            label2.Location = new Point(34, 36);
+            label2.ForeColor = Color.LightCyan;
+            label2.Location = new Point(12, 49);
             label2.Name = "label2";
-            label2.Size = new Size(139, 33);
+            label2.Size = new Size(209, 33);
             label2.TabIndex = 5;
-            label2.Text = "John Doe";
+            label2.Text = "MedLine Clinic";
             // 
-            // navprofile
+            // btnGenerateReport
             // 
-            navprofile.BackColor = Color.LightSteelBlue;
-            navprofile.Location = new Point(26, 510);
-            navprofile.Name = "navprofile";
-            navprofile.Size = new Size(193, 39);
-            navprofile.TabIndex = 4;
-            navprofile.Text = "MyProfile";
-            navprofile.UseVisualStyleBackColor = false;
+            btnGenerateReport.BackColor = Color.LightSteelBlue;
+            btnGenerateReport.Location = new Point(26, 510);
+            btnGenerateReport.Name = "btnGenerateReport";
+            btnGenerateReport.Size = new Size(193, 39);
+            btnGenerateReport.TabIndex = 4;
+            btnGenerateReport.Text = "Generate Report";
+            btnGenerateReport.UseVisualStyleBackColor = false;
             // 
-            // logout
+            // btnLogout
             // 
-            logout.BackColor = Color.LightSteelBlue;
-            logout.Location = new Point(26, 554);
-            logout.Name = "logout";
-            logout.Size = new Size(193, 40);
-            logout.TabIndex = 3;
-            logout.Text = "LogOut";
-            logout.UseVisualStyleBackColor = false;
+            btnLogout.BackColor = Color.LightSteelBlue;
+            btnLogout.Location = new Point(26, 554);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(193, 40);
+            btnLogout.TabIndex = 3;
+            btnLogout.Text = "LogOut";
+            btnLogout.UseVisualStyleBackColor = false;
             // 
-            // navappointment
+            // btnAppointmentSchedule
             // 
-            navappointment.BackColor = Color.LightSteelBlue;
-            navappointment.Location = new Point(26, 224);
-            navappointment.Name = "navappointment";
-            navappointment.Size = new Size(193, 43);
-            navappointment.TabIndex = 2;
-            navappointment.Text = "Appointment Schedules";
-            navappointment.UseVisualStyleBackColor = false;
+            btnAppointmentSchedule.BackColor = Color.LightSteelBlue;
+            btnAppointmentSchedule.Location = new Point(26, 224);
+            btnAppointmentSchedule.Name = "btnAppointmentSchedule";
+            btnAppointmentSchedule.Size = new Size(193, 43);
+            btnAppointmentSchedule.TabIndex = 2;
+            btnAppointmentSchedule.Text = "Appointment Schedule";
+            btnAppointmentSchedule.UseVisualStyleBackColor = false;
             // 
-            // navpatient
+            // btnPatients
             // 
-            navpatient.BackColor = Color.LightSteelBlue;
-            navpatient.Location = new Point(26, 177);
-            navpatient.Name = "navpatient";
-            navpatient.Size = new Size(193, 42);
-            navpatient.TabIndex = 1;
-            navpatient.Text = "Patients";
-            navpatient.UseVisualStyleBackColor = false;
+            btnPatients.BackColor = Color.LightSteelBlue;
+            btnPatients.Location = new Point(26, 177);
+            btnPatients.Name = "btnPatients";
+            btnPatients.Size = new Size(193, 42);
+            btnPatients.TabIndex = 1;
+            btnPatients.Text = "Patients";
+            btnPatients.UseVisualStyleBackColor = false;
             // 
-            // navdoc
+            // btnDoctors
             // 
-            navdoc.BackColor = Color.LightSteelBlue;
-            navdoc.Location = new Point(26, 130);
-            navdoc.Name = "navdoc";
-            navdoc.Size = new Size(193, 41);
-            navdoc.TabIndex = 0;
-            navdoc.Text = "Doctors";
-            navdoc.UseVisualStyleBackColor = false;
+            btnDoctors.BackColor = Color.LightSteelBlue;
+            btnDoctors.Location = new Point(26, 130);
+            btnDoctors.Name = "btnDoctors";
+            btnDoctors.Size = new Size(193, 41);
+            btnDoctors.TabIndex = 0;
+            btnDoctors.Text = "Doctors";
+            btnDoctors.UseVisualStyleBackColor = false;
             // 
             // lblTitle
             // 
             lblTitle.AutoSize = true;
             lblTitle.BackColor = SystemColors.GradientActiveCaption;
             lblTitle.Font = new Font("Segoe UI Symbol", 18F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblTitle.Location = new Point(588, 26);
+            lblTitle.Location = new Point(668, 28);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(252, 41);
             lblTitle.TabIndex = 4;
@@ -209,41 +195,41 @@
             // 
             txtDocID.Location = new Point(439, 102);
             txtDocID.Name = "txtDocID";
-            txtDocID.Size = new Size(125, 30);
+            txtDocID.Size = new Size(331, 30);
             txtDocID.TabIndex = 10;
             // 
             // txtFullName
             // 
             txtFullName.Location = new Point(439, 148);
             txtFullName.Name = "txtFullName";
-            txtFullName.Size = new Size(125, 30);
+            txtFullName.Size = new Size(331, 30);
             txtFullName.TabIndex = 11;
             // 
             // txtSpeciality
             // 
             txtSpeciality.Location = new Point(439, 196);
             txtSpeciality.Name = "txtSpeciality";
-            txtSpeciality.Size = new Size(125, 30);
+            txtSpeciality.Size = new Size(331, 30);
             txtSpeciality.TabIndex = 12;
             // 
             // txtEmail
             // 
             txtEmail.Location = new Point(439, 251);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(125, 30);
+            txtEmail.Size = new Size(331, 30);
             txtEmail.TabIndex = 13;
             // 
             // txtNumber
             // 
             txtNumber.Location = new Point(439, 298);
             txtNumber.Name = "txtNumber";
-            txtNumber.Size = new Size(125, 30);
+            txtNumber.Size = new Size(331, 30);
             txtNumber.TabIndex = 14;
             // 
             // btnAdd
             // 
             btnAdd.BackColor = Color.DarkTurquoise;
-            btnAdd.Location = new Point(696, 209);
+            btnAdd.Location = new Point(439, 357);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(175, 29);
             btnAdd.TabIndex = 15;
@@ -257,24 +243,13 @@
             doctorGridView.BackgroundColor = SystemColors.ButtonHighlight;
             doctorGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             doctorGridView.Columns.AddRange(new DataGridViewColumn[] { doctorID, name, docSpecialty, emailNo, phone, UpdateColumn, DeleteColumn });
-            doctorGridView.Location = new Point(290, 350);
+            doctorGridView.Location = new Point(311, 424);
             doctorGridView.Name = "doctorGridView";
             doctorGridView.RowHeadersWidth = 51;
             doctorGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             doctorGridView.Size = new Size(937, 262);
             doctorGridView.TabIndex = 19;
             doctorGridView.CellContentClick += doctorGridView_CellContentClick;
-            // 
-            // btnBack
-            // 
-            btnBack.BackColor = Color.LightSkyBlue;
-            btnBack.Location = new Point(290, 633);
-            btnBack.Name = "btnBack";
-            btnBack.Size = new Size(94, 29);
-            btnBack.TabIndex = 20;
-            btnBack.Text = "Back";
-            btnBack.UseVisualStyleBackColor = false;
-            btnBack.Click += btnBack_Click;
             // 
             // doctorID
             // 
@@ -327,8 +302,7 @@
             AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1347, 686);
-            Controls.Add(btnBack);
+            ClientSize = new Size(1301, 716);
             Controls.Add(doctorGridView);
             Controls.Add(btnAdd);
             Controls.Add(txtNumber);
@@ -355,13 +329,12 @@
         #endregion
 
         private Panel sidenav;
-        private Label label3;
         private Label label2;
-        private Button navprofile;
-        private Button logout;
-        private Button navappointment;
-        private Button navpatient;
-        private Button navdoc;
+        private Button btnGenerateReport;
+        private Button btnLogout;
+        private Button btnAppointmentSchedule;
+        private Button btnPatients;
+        private Button btnDoctors;
         private Label lblTitle;
         private Label lblDocID;
         private Label lblFullName;
@@ -379,7 +352,6 @@
         private Button btnClear;
         private DataGridView doctorGridView;
         private DataGridViewTextBoxColumn docspecilaity;
-        private Button btnBack;
         private DataGridViewTextBoxColumn doctorID;
         private DataGridViewTextBoxColumn name;
         private DataGridViewTextBoxColumn docSpecialty;

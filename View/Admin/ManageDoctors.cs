@@ -15,6 +15,7 @@ namespace CMS.View.Admin
         {
             InitializeComponent();
             LoadDoctors();
+            AttachNavButtonEvents(); // Attach button click events at runtime
         }
 
         private void LoadDoctors()
@@ -26,6 +27,7 @@ namespace CMS.View.Admin
             }
         }
 
+        // Add New Doctor Button
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (ValidateInputs(out Model.Doctor d))
@@ -37,9 +39,6 @@ namespace CMS.View.Admin
             }
         }
 
-        private void btnClear_Click(object sender, EventArgs e) => ClearFields();
-        private void btnBack_Click(object sender, EventArgs e) => this.Close();
-
         private void ClearFields()
         {
             selectedId = -1;
@@ -50,6 +49,7 @@ namespace CMS.View.Admin
             txtNumber.Clear();
         }
 
+        // Validations for the fields
         private bool ValidateInputs(out Model.Doctor d)
         {
             d = null;
@@ -108,6 +108,7 @@ namespace CMS.View.Admin
             return true;
         }
 
+        // Updating and Deleting the information
         private void doctorGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -150,6 +151,57 @@ namespace CMS.View.Admin
                 }
             }
         }
+
+        // Attach event handlers to side navigation buttons
+        private void AttachNavButtonEvents()
+        {
+            btnDoctors.Click += BtnDoctor_Click;
+            btnPatients.Click += BtnPatients_Click;
+            btnAppointmentSchedule.Click += BtnAppointmentSchedule_Click;
+            btnGenerateReport.Click += BtnGenerateReport_Click;
+            btnLogout.Click += BtnLogout_Click;
+        }
+
+        // Already on Manage Doctor form- optionally refresh form
+        private void BtnDoctor_Click(object sender, EventArgs e)
+        {
+           // LoadDoctors();
+        }
+
+        // Navigate to Patient form
+        private void BtnPatients_Click(object sender, EventArgs e)
+        {
+            //Manage_Patient patientForm = new Manage_Patient();
+            //patientForm.Show();
+            //this.Hide();
+        }
+
+        // Navigate to Appointment Schedule Form
+        private void BtnAppointmentSchedule_Click(object sender, EventArgs e)
+        {
+            //adminbookappointment appointmentForm = new adminbookappointment();
+            //appointmentForm.Show();
+            //this.Hide();
+        }
+
+        // Navigate to Generate Reports
+        private void BtnGenerateReport_Click(object sender, EventArgs e)
+        {
+            //Reportadmin reportForm = new Reportadmin();
+            //reportForm.Show();
+            //this.Hide();
+        }
+
+        // Log out and go back to Login form
+        private void BtnLogout_Click(object sender, EventArgs e)
+        {
+             //LoginForm loginForm = new LoginForm();
+             //loginForm.Show();
+             //this.Close(); // Close current form
+        }
+
     }
 }
+
+    
 

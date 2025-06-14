@@ -22,12 +22,14 @@ namespace CMS.Controller
                 string firstName = "";
                 string lastName = "";
 
+                // Split full name into first and last name
                 var nameParts = fullName.Split(new[] { ' ' }, 2, System.StringSplitOptions.RemoveEmptyEntries);
                 if (nameParts.Length > 0)
                     firstName = nameParts[0];
                 if (nameParts.Length > 1)
                     lastName = nameParts[1];
 
+                // Add the doctor to the list
                 list.Add(new Doctor
                 {
                     DoctorID = reader.GetInt32("doctor_id"),
@@ -42,6 +44,7 @@ namespace CMS.Controller
             return list;
         }
 
+        // Adds a new doctor to the database.
         public void AddDoctor(Doctor doc)
         {
             using var conn = DBHelper.GetConnection();
@@ -57,6 +60,7 @@ namespace CMS.Controller
             cmd.ExecuteNonQuery();
         }
 
+        // Updates an existing doctor's information in the database.
         public void UpdateDoctor(Doctor doc)
         {
             using var conn = DBHelper.GetConnection();
@@ -71,6 +75,7 @@ namespace CMS.Controller
             cmd.ExecuteNonQuery();
         }
 
+        // Deletes a doctor from the database.
         public void DeleteDoctor(int id)
         {
             try
@@ -84,6 +89,7 @@ namespace CMS.Controller
             }
             catch (MySqlException ex)
             {
+                // Handle foreign key constraint violation (doctor linked to appointments)
                 if (ex.Number == 1451)
                 {
                     MessageBox.Show("Cannot delete this doctor because they have existing appointments.", "Delete Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
