@@ -110,9 +110,9 @@ namespace CMS.View.Admin
 
                 //Date Picker
                 Label lblDate = new Label() { Text = "Select Date:", Location = new Point(15, 20), AutoSize = true };
-                datePicker = new DateTimePicker() 
-                { 
-                    Location = new Point(125, 15), 
+                datePicker = new DateTimePicker()
+                {
+                    Location = new Point(125, 15),
                     Format = DateTimePickerFormat.Short,
                     Width = 200
                 };
@@ -150,6 +150,29 @@ namespace CMS.View.Admin
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
+        }
+
+
+        private void navdoc_Click(object sender, EventArgs e)
+        {
+            ManageDoctors manageDoctor = new ManageDoctors();
+            manageDoctor.Show();
+            this.Hide();
+
+        }
+
+        private void navpatient_Click(object sender, EventArgs e)
+        {
+            Manage_Patient manage_Patient = new Manage_Patient();
+            manage_Patient.Show();
+            this.Hide();
+        }
+
+        private void navreports_Click(object sender, EventArgs e)
+        {
+            Reportadmin reportAdmin = new Reportadmin();
+            reportAdmin.Show();
+            this.Hide();
         }
     }
 }
