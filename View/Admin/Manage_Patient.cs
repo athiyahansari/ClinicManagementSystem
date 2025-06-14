@@ -18,14 +18,14 @@ namespace CMS.View.Admin
 {
     public partial class Manage_Patient : Form
     {
-         PatientController controller = new PatientController();
+        PatientController controller = new PatientController();
 
         public Manage_Patient()
         {
             InitializeComponent();
             LoadPatientsIntoGrid();
             LoadPatients();
-          
+
 
 
         }
@@ -58,7 +58,7 @@ namespace CMS.View.Admin
         private void btnAdd_Click(object sender, EventArgs e)
         {
             var form = new Edit_Patient_Profile();
-          
+
             if (form.ShowDialog() == DialogResult.OK)
             {
                 LoadPatientsIntoGrid(); // ✅ instead of LoadPatients()
@@ -180,5 +180,12 @@ namespace CMS.View.Admin
 
         }
 
+        private void btnMyprofile_Click(object sender, EventArgs e)
+        {
+            this.Hide();  // Hide the current form
+            Edit_Patient_Profile profileForm = new Edit_Patient_Profile();
+            profileForm.ShowDialog();
+            this.Show(); // Show again after profile closes
+        }
     }
 }

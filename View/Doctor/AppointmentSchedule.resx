@@ -151,7 +151,6 @@
     <value>True</value>
   </metadata>
   <metadata name="Cancel.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
->>>>>>>> 0776b7aa452e13bae9cff6de3e5779967aa708ff:View/Doctor/AppointmentSchedule.resx
     <value>True</value>
   </metadata>
 </root>

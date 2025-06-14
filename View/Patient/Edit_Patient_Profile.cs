@@ -17,8 +17,8 @@ namespace CMS.View.Patient
         public Edit_Patient_Profile()
         {
             InitializeComponent();
-            _controller = new PatientController(this); // ✅ FIXED: pass the view
-           
+            _controller = new PatientController(); // ✅ FIXED: pass the view
+
 
 
 
@@ -75,15 +75,15 @@ namespace CMS.View.Patient
         {
             InitializeComponent();
 
-            _controller = new PatientController(this);
+            _controller = new PatientController();
 
-         
+
 
             _patientToEdit = patientToEdit; // save patient for later
         }
 
 
-        public void Edit_Patient_Profile_Load(object sender, EventArgs e )
+        public void Edit_Patient_Profile_Load(object sender, EventArgs e)
         {
             if (_patientToEdit != null)
             {
@@ -156,6 +156,12 @@ namespace CMS.View.Patient
 
         private void txtFirstName_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            
 
         }
     }

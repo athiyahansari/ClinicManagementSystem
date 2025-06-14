@@ -7,42 +7,53 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CMS.Controller;
+using CMS.Model;
 
 namespace CMS.View.Doctor
 {
     public partial class DocViewProfile : Form
     {
-        public DocViewProfile()
+        private int _doctorId;
+        private DoctorProfileController controller;
+
+        public DocViewProfile(int doctorId) // constructor accepts doctor
         {
             InitializeComponent();
+            controller = new DoctorProfileController();
+            _doctorId = doctorId; // store the doctorId
+            this.Load += DocViewProfile_Load;  // Step 3: hook up load event
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void DocViewProfile_Load(object sender, EventArgs e)
+        {
+            DoctorProfile profile = controller.GetDoctorProfile(_doctorId);
+
+            if (profile != null)
+            {
+                txtDescription.Text = profile.Description;
+                txtSpeciality.Text = profile.Speciality;
+                txtEmail.Text = profile.Email;
+                txtContact.Text = profile.Contact;
+
+                // Load doctor name from the same profile object
+                DocName.Text = !string.IsNullOrEmpty(profile.DoctorName)
+                    ? profile.DoctorName
+                    : "Name not found";
+            }
+            else
+            {
+                MessageBox.Show("Doctor profile not found.");
+            }
+        }
+
+
+        private void DocViewProfile_Load_1(object sender, EventArgs e)
         {
 
         }
 
-        private void panel1_Paint_1(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
+        private void DocName_TextChanged(object sender, EventArgs e)
         {
 
         }

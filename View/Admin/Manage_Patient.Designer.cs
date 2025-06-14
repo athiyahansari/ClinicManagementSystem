@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             pictureBox1 = new PictureBox();
             label1 = new Label();
             dataGridViewPatients = new DataGridView();
+            Patient_Id = new DataGridViewTextBoxColumn();
+            PhoneNumber = new DataGridViewTextBoxColumn();
+            Name = new DataGridViewTextBoxColumn();
+            DateOfBirth = new DataGridViewTextBoxColumn();
+            Column1 = new DataGridViewTextBoxColumn();
             btnAdd = new Button();
             btnRemove = new Button();
             btnEdit = new Button();
             button4 = new Button();
             button5 = new Button();
             button6 = new Button();
-            button7 = new Button();
+            btnMyprofile = new Button();
             button8 = new Button();
             label2 = new Label();
             label3 = new Label();
-            Patient_Id = new DataGridViewTextBoxColumn();
-            PhoneNumber = new DataGridViewTextBoxColumn();
-            Name = new DataGridViewTextBoxColumn();
-            DateOfBirth = new DataGridViewTextBoxColumn();
-            Column1 = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPatients).BeginInit();
             SuspendLayout();
@@ -73,8 +73,8 @@
             // dataGridViewPatients
             // 
             dataGridViewPatients.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.NullValue = "Vithu";
-            dataGridViewPatients.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.NullValue = "Vithu";
+            dataGridViewPatients.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewPatients.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridViewPatients.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewPatients.Columns.AddRange(new DataGridViewColumn[] { Patient_Id, PhoneNumber, Name, DateOfBirth, Column1 });
@@ -85,6 +85,44 @@
             dataGridViewPatients.Size = new Size(681, 291);
             dataGridViewPatients.TabIndex = 2;
             dataGridViewPatients.CellContentClick += dataGridViewPatients_CellContentClick;
+            // 
+            // Patient_Id
+            // 
+            Patient_Id.HeaderText = "Patient_Id";
+            Patient_Id.MinimumWidth = 6;
+            Patient_Id.Name = "Patient_Id";
+            Patient_Id.Width = 125;
+            // 
+            // PhoneNumber
+            // 
+            PhoneNumber.HeaderText = "First_Name";
+            PhoneNumber.MinimumWidth = 6;
+            PhoneNumber.Name = "PhoneNumber";
+            PhoneNumber.Width = 125;
+            // 
+            // Name
+            // 
+            Name.HeaderText = "Last_Name";
+            Name.MinimumWidth = 6;
+            Name.Name = "Name";
+            Name.ToolTipText = "kamal";
+            Name.Width = 125;
+            // 
+            // DateOfBirth
+            // 
+            DateOfBirth.HeaderText = "Email";
+            DateOfBirth.MinimumWidth = 6;
+            DateOfBirth.Name = "DateOfBirth";
+            DateOfBirth.ToolTipText = "vithu@email.com";
+            DateOfBirth.Width = 125;
+            // 
+            // Column1
+            // 
+            Column1.HeaderText = "Dateof Birth";
+            Column1.MinimumWidth = 6;
+            Column1.Name = "Column1";
+            Column1.ToolTipText = "2005.12.24";
+            Column1.Width = 125;
             // 
             // btnAdd
             // 
@@ -152,16 +190,17 @@
             button6.Text = "Appointments";
             button6.UseVisualStyleBackColor = false;
             // 
-            // button7
+            // btnMyprofile
             // 
-            button7.BackColor = Color.LightSteelBlue;
-            button7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button7.Location = new Point(35, 454);
-            button7.Name = "button7";
-            button7.Size = new Size(168, 41);
-            button7.TabIndex = 9;
-            button7.Text = "My Profile";
-            button7.UseVisualStyleBackColor = false;
+            btnMyprofile.BackColor = Color.LightSteelBlue;
+            btnMyprofile.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnMyprofile.Location = new Point(35, 454);
+            btnMyprofile.Name = "btnMyprofile";
+            btnMyprofile.Size = new Size(168, 41);
+            btnMyprofile.TabIndex = 9;
+            btnMyprofile.Text = "My Profile";
+            btnMyprofile.UseVisualStyleBackColor = false;
+            btnMyprofile.Click += btnMyprofile_Click;
             // 
             // button8
             // 
@@ -196,44 +235,6 @@
             label3.TabIndex = 12;
             label3.Text = "Admin-ID 2346";
             // 
-            // Patient_Id
-            // 
-            Patient_Id.HeaderText = "Patient_Id";
-            Patient_Id.MinimumWidth = 6;
-            Patient_Id.Name = "Patient_Id";
-            Patient_Id.Width = 125;
-            // 
-            // PhoneNumber
-            // 
-            PhoneNumber.HeaderText = "First_Name";
-            PhoneNumber.MinimumWidth = 6;
-            PhoneNumber.Name = "PhoneNumber";
-            PhoneNumber.Width = 125;
-            // 
-            // Name
-            // 
-            Name.HeaderText = "Last_Name";
-            Name.MinimumWidth = 6;
-            Name.Name = "Name";
-            Name.ToolTipText = "kamal";
-            Name.Width = 125;
-            // 
-            // DateOfBirth
-            // 
-            DateOfBirth.HeaderText = "Email";
-            DateOfBirth.MinimumWidth = 6;
-            DateOfBirth.Name = "DateOfBirth";
-            DateOfBirth.ToolTipText = "vithu@email.com";
-            DateOfBirth.Width = 125;
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "Dateof Birth";
-            Column1.MinimumWidth = 6;
-            Column1.Name = "Column1";
-            Column1.ToolTipText = "2005.12.24";
-            Column1.Width = 125;
-            // 
             // Manage_Patient
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -243,7 +244,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(button8);
-            Controls.Add(button7);
+            Controls.Add(btnMyprofile);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(button4);
@@ -272,7 +273,7 @@
         private Button button4;
         private Button button5;
         private Button button6;
-        private Button button7;
+        private Button btnMyprofile;
         private Button button8;
         private Label label2;
         private Label label3;
