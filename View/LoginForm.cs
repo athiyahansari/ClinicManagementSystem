@@ -48,8 +48,10 @@ namespace CMS.View
 
             if (user != null && user.Role.Equals("Admin", StringComparison.OrdinalIgnoreCase))
             {
+                MessageBox.Show("Successfully logged in AdminDashBoard.");
                 new AdminDashboard().Show();
                 this.Hide();
+                
             }
             else
             {
@@ -72,6 +74,7 @@ namespace CMS.View
 
             if (user != null && user.Role.Equals("Doctor", StringComparison.OrdinalIgnoreCase))
             {
+                MessageBox.Show("Successfully logged in DoctorDashBoard.");
                 new DoctorDashboard().Show();
                 this.Hide();
             }
@@ -90,6 +93,7 @@ namespace CMS.View
 
             if (user != null && user.Role.Equals("Patient", StringComparison.OrdinalIgnoreCase))
             {
+                MessageBox.Show("Successfully logged in PatientDashBoard.");
                 new PatientDashboard().Show();
                 this.Hide();
             }

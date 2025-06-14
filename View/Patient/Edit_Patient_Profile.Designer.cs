@@ -40,8 +40,7 @@
             btnSave = new Button();
             button2 = new Button();
             btnCancel = new Button();
-            button4 = new Button();
-            button5 = new Button();
+            btnLogOut = new Button();
             button6 = new Button();
             button7 = new Button();
             label7 = new Label();
@@ -51,6 +50,7 @@
             DateOfTime = new Label();
             PhoneNumber = new Label();
             txtPhoneNumber = new TextBox();
+            btnMyProfiles = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -177,27 +177,16 @@
             btnCancel.UseVisualStyleBackColor = false;
             btnCancel.Click += btnCancel_Click;
             // 
-            // button4
+            // btnLogOut
             // 
-            button4.BackColor = Color.LightSteelBlue;
-            button4.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button4.Location = new Point(39, 419);
-            button4.Name = "button4";
-            button4.Size = new Size(153, 38);
-            button4.TabIndex = 17;
-            button4.Text = "My Profile";
-            button4.UseVisualStyleBackColor = false;
-            // 
-            // button5
-            // 
-            button5.BackColor = Color.LightSteelBlue;
-            button5.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button5.Location = new Point(39, 463);
-            button5.Name = "button5";
-            button5.Size = new Size(153, 39);
-            button5.TabIndex = 18;
-            button5.Text = "Log Out";
-            button5.UseVisualStyleBackColor = false;
+            btnLogOut.BackColor = Color.LightSteelBlue;
+            btnLogOut.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLogOut.Location = new Point(39, 463);
+            btnLogOut.Name = "btnLogOut";
+            btnLogOut.Size = new Size(153, 39);
+            btnLogOut.TabIndex = 18;
+            btnLogOut.Text = "Log Out";
+            btnLogOut.UseVisualStyleBackColor = false;
             // 
             // button6
             // 
@@ -289,6 +278,18 @@
             txtPhoneNumber.Size = new Size(240, 30);
             txtPhoneNumber.TabIndex = 29;
             // 
+            // btnMyProfiles
+            // 
+            btnMyProfiles.BackColor = Color.LightSteelBlue;
+            btnMyProfiles.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnMyProfiles.Location = new Point(39, 419);
+            btnMyProfiles.Name = "btnMyProfiles";
+            btnMyProfiles.Size = new Size(153, 38);
+            btnMyProfiles.TabIndex = 17;
+            btnMyProfiles.Text = "My Profile";
+            btnMyProfiles.UseVisualStyleBackColor = false;
+            btnMyProfiles.Click += button4_Click;
+            // 
             // Edit_Patient_Profile
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -304,8 +305,8 @@
             Controls.Add(label7);
             Controls.Add(button7);
             Controls.Add(button6);
-            Controls.Add(button5);
-            Controls.Add(button4);
+            Controls.Add(btnLogOut);
+            Controls.Add(btnMyProfiles);
             Controls.Add(btnCancel);
             Controls.Add(button2);
             Controls.Add(btnSave);
@@ -340,8 +341,8 @@
         private Button btnSave;
         private Button button2;
         private Button btnCancel;
-        private Button button4;
-        private Button button5;
+        private Button btnMyProfiles;
+        private Button btnLogOut;
         private Button button6;
         private Button button7;
         private Label label7;
@@ -351,5 +352,6 @@
         private Label DateOfTime;
         private Label PhoneNumber;
         private TextBox txtPhoneNumber;
+        //private Button btnMyProfiles;
     }
 }

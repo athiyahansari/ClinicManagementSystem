@@ -64,9 +64,7 @@ namespace ClinicManagementSystem.Views.Patients
 
         private void navdoc_Click(object sender, EventArgs e)
         {
-            ViewDoctors viewDoctors = new ViewDoctors();
-            viewDoctors.Show();
-            this.Hide(); // Hide the current form   
+              
         }
 
 
@@ -78,5 +76,9 @@ namespace ClinicManagementSystem.Views.Patients
             profileForm.ShowDialog();
         }
 
+        private void dgvHistory_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

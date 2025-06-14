@@ -52,5 +52,10 @@ namespace CMS.View.Doctor
         {
 
         }
+
+        private void DocName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

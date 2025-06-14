@@ -1,4 +1,6 @@
-﻿namespace CMS.View.Patient
+﻿using CMS.Model;
+
+namespace CMS.View.Patient
 {
     partial class ViewPrescription
     {
@@ -57,6 +59,12 @@
             lblTitle.Size = new Size(276, 41);
             lblTitle.TabIndex = 2;
             lblTitle.Text = "Your Prescriptions";
+
+            DataGridViewTextBoxColumn PrescriptionID = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn Date = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn DoctorName = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn Diagnosis = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn Medicines = new DataGridViewTextBoxColumn();
             // 
             // dgvPrescriptions
             // 

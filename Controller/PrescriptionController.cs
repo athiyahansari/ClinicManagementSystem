@@ -1,4 +1,5 @@
-﻿using CMS.Model;
+﻿using CMS.Controller;
+using CMS.Model;
 using CMS.Utils;
 using MySql.Data.MySqlClient;
 using System;
@@ -70,4 +71,5 @@ namespace CMS.Controller
         }
     }
 }
+
 
