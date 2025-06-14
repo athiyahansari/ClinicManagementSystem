@@ -480,9 +480,9 @@ namespace CMS.View.Doctor
             label11.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label11.Location = new Point(401, 24);
             label11.Name = "label11";
-            label11.Size = new Size(137, 32);
+            label11.Size = new Size(193, 32);
             label11.TabIndex = 25;
-            label11.Text = "View Doctors";
+            label11.Text = "View Doctor Profile";
             // 
             // DocViewProfile
             // 
