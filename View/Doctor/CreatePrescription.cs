@@ -19,7 +19,12 @@ namespace CMS.View.Doctor
 
         private void CreatePrescription_Load(object sender, EventArgs e)
         {
-            LoadPrescriptionData();
+            // Delay execution to avoid DataGridView auto-size conflict
+            this.BeginInvoke(new MethodInvoker(() =>
+            {
+                LoadPrescriptionData();
+            }));
+
         }
 
         private void LoadPrescriptionData()
