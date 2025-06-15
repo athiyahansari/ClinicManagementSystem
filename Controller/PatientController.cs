@@ -104,13 +104,13 @@ namespace CMS.Controller
                     Patients p = new Patients
                     {
                         PatientId = reader["patient_id"].ToString(),
-                        UserId = Convert.ToInt32(reader["user_id"]), // ✅ add this line
+                        UserId = Convert.ToInt32(reader["user_id"]),
                         FirstName = reader["first_name"].ToString(),
                         LastName = reader["last_name"].ToString(),
                         Email = reader["email"].ToString(),
                         Gender = reader["gender"].ToString(),
                         PhoneNumber = reader["phonenumber"].ToString(),
-                       // ✅ optional: load DOB
+                      
 
 
                         DateOfBirth = reader["date_of_birth"] != DBNull.Value
