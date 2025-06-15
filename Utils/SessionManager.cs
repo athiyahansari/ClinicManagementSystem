@@ -8,7 +8,10 @@ namespace CMS.Utils
 {
     internal class SessionManager
     {
-        // Will hold whichever user ID just logged in
+        // Will hold whichever user ID patient logged in from
         public static int CurrentUserId { get; set; }
+
+        // Will hold whichever doctor ID doctor logged in from
+        public static int CurrentDoctorId { get; set; }
     }
 }

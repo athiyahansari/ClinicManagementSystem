@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using CMS.View.Doctor;
 using CMS.Controller;
 using CMS.Model;
+using CMS.Utils;
 
 namespace CMS.View.Doctor
 {

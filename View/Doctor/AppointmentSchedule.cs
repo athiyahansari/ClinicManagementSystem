@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CMS.Controller;
+using CMS.Utils;
 
 namespace CMS.View.Doctor
 {
@@ -16,7 +17,7 @@ namespace CMS.View.Doctor
         private int doctorId;
         private DocAppointmentController controller;
 
-        public AppointmentSchedule() : this(1) { } // default for now
+        public AppointmentSchedule() : this(SessionManager.CurrentDoctorId) { }
 
         public AppointmentSchedule(int docId)
         {

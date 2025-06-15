@@ -77,6 +77,7 @@ namespace CMS.View
             if (user != null && user.Role.Equals("Doctor", StringComparison.OrdinalIgnoreCase))
             {
                 MessageBox.Show("Successfully logged in DoctorDashBoard.");
+                SessionManager.CurrentDoctorId = user.UserId;
                 new DoctorDashboard().Show();
                 this.Hide();
             }

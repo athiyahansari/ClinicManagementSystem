@@ -3,13 +3,14 @@ using CMS.Model;
 using System;
 using System.Data;
 using System.Windows.Forms;
+using CMS.Utils;
 
 namespace CMS.View.Doctor
 {
     public partial class CreatePrescription : Form
     {
         private int currentPrescriptionID = -1;
-        private int doctorID = 1; // Default doctor ID for testing
+        private int doctorID = SessionManager.CurrentDoctorId;
 
         public CreatePrescription()
         {

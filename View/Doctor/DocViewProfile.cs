@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CMS.Controller;
 using CMS.Model;
+using CMS.Utils;
 using CMS.View.Doctor;
 using CMS.View.Patient;
 using MySqlX.XDevAPI;
@@ -22,38 +23,7 @@ namespace CMS.View.Doctor
         private int _doctorId;
         private DoctorProfileController controller;
 
-        //public DocViewProfile(int doctorId) // constructor accepts doctor
-        //{
-        //    InitializeComponent();
-        //    controller = new DoctorProfileController();
-        //    _doctorId = doctorId; // store the doctorId
-        //    this.Load += DocViewProfile_Load;  // Step 3: hook up load event
-        //}
-
-        //private void DocViewProfile_Load(object sender, EventArgs e)
-        //{
-        //    DoctorProfile profile = controller.GetDoctorProfile(_doctorId);
-
-        //    if (profile != null)
-        //    {
-        //        txtDescription.Text = profile.Description;
-        //        txtSpeciality.Text = profile.Speciality;
-        //        txtEmail.Text = profile.Email;
-        //        txtContact.Text = profile.Contact;
-
-        //        // Load doctor name from the same profile object
-        //        DocName.Text = !string.IsNullOrEmpty(profile.DoctorName)
-        //            ? profile.DoctorName
-        //            : "Name not found";
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Doctor profile not found.");
-        //    }
-
-
-
-        public DocViewProfile() : this(1) { }  // default doctorId = 1 for now
+        public DocViewProfile() : this(SessionManager.CurrentDoctorId) {}
 
         public DocViewProfile(int docId)
         {
