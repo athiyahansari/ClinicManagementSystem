@@ -222,9 +222,9 @@ namespace CMS.View.Doctor
         // Navigate to My Profile form
         private void BtnMyProfile_Click(object sender, EventArgs e)
         {
-            //DocViewProfile profileForm = new DocViewProfile();
-            // profileForm.Show();
-            // this.Hide();
+            DocViewProfile profileForm = new DocViewProfile();
+            profileForm.Show();
+            this.Hide();
         }
 
         // Log out and go back to Login form
