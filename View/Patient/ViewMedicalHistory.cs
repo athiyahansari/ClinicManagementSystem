@@ -5,6 +5,8 @@ using CMS.Model;
 using System.Collections.Generic;
 using CMS.View.Doctor;
 using CMS.View.Patient;
+using CMS;
+using CMS.View;
 
 namespace ClinicManagementSystem.Views.Patients
 {
@@ -89,40 +91,40 @@ namespace ClinicManagementSystem.Views.Patients
         private void navmedicalhistory_Click(object sender, EventArgs e)//Medical History
 
         {
-            //ViewMedicalHistory historyForm = new ViewMedicalHistory();
-            //historyForm.Show();
-            //this.Hide(); // Hide the current form
+            ViewMedicalHistory historyForm = new ViewMedicalHistory();
+            historyForm.Show();
+            this.Hide(); // Hide the current form
 
         }
 
         private void navappointment_Click(object sender, EventArgs e)// Appointments
         {
-            //Bookappointments appointmentForm = new Bookappointments();
-            //appointmentForm.Show();
-            //this.Hide(); // Hide the current form
+            Bookappointmentform appointmentForm = new Bookappointmentform();
+            appointmentForm.Show();
+            this.Hide(); // Hide the current form
         }
 
         private void navprescription_Click(object sender, EventArgs e)// Prescription
         {
-            //ViewPrescription prescriptionForm = new ViewPrescription();
-            //prescriptionForm.Show();
-            //this.Hide(); // Hide the current form
+            ViewPrescription prescriptionForm = new ViewPrescription();
+            prescriptionForm.Show();
+            this.Hide(); // Hide the current form
 
         }
 
         private void navprofile_Click(object sender, EventArgs e) //My profile
         {
-            //Edit_Patient_Profile profileForm = new Edit_Patient_Profile();
-            //profileForm.Show();
-            //this.Hide(); // Hide the current form
+            Edit_Patient_Profile profileForm = new Edit_Patient_Profile();
+            profileForm.Show();
+            this.Hide(); // Hide the current form
 
         }
 
         private void logout_Click(object sender, EventArgs e)// Logout
         {
-            //LoginForm loginForm = new LoginForm();
-            //loginForm.Show();
-            //this.Hide(); // Hide the current form
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+            this.Hide(); // Hide the current form
 
         }
 

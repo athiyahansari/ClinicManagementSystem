@@ -15,7 +15,7 @@ namespace CMS
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Edit_Patient_Profile());
+            Application.Run(new LoginForm());
         }
     }
 }

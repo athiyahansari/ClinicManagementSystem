@@ -112,7 +112,7 @@ namespace CMS.View.Doctor
 
         private void navprofile_Click(object sender, EventArgs e)
         {
-            DocViewProfile profile = new DocViewProfile(doctorId);
+            DocViewProfile profile = new DocViewProfile();
             profile.Show();
             this.Hide();
         }

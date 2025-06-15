@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClinicManagementSystem.Views.Patients;
 using CMS.Controller;
 using CMS.Model;
 
@@ -94,7 +95,72 @@ namespace CMS.View.Patient
 
         private void dash_newdoctors_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            NewPatient newPatient = new NewPatient();
+            newPatient.Show();
+            this.Hide();
+        }
 
+        private void dash_upcomingappointments_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Bookappointmentform bookappointmentform = new Bookappointmentform();
+            bookappointmentform.Show();
+            this.Hide();
+        }
+
+        private void dash_prescriptions_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ViewPrescription viewPrescription = new ViewPrescription(patientId);
+            viewPrescription.Show();
+            this.Hide();
+        }
+
+        private void dash_medicalhistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ViewMedicalHistory viewMedicalHistory = new ViewMedicalHistory();
+            viewMedicalHistory.Show();
+            this.Hide();
+        }
+
+        private void navdoc_Click(object sender, EventArgs e)
+        {
+            ViewDoctors viewDoctors = new ViewDoctors();
+            viewDoctors.Show();
+            this.Hide();
+        }
+
+        private void navappointment_Click(object sender, EventArgs e)
+        {
+            Bookappointmentform bookappointmentform = new Bookappointmentform();
+            bookappointmentform.Show();
+            this.Hide();
+        }
+
+        private void navprescription_Click(object sender, EventArgs e)
+        {
+            ViewPrescription viewPrescription = new ViewPrescription(patientId);
+            viewPrescription.Show();
+            this.Hide();
+        }
+
+        private void navmedicalhistory_Click(object sender, EventArgs e)
+        {
+            ViewMedicalHistory viewMedicalHistory = new ViewMedicalHistory();
+            viewMedicalHistory.Show();
+            this.Hide();
+        }
+
+        private void navprofile_Click(object sender, EventArgs e)
+        {
+            Edit_Patient_Profile edit_Patient_Profile = new Edit_Patient_Profile();
+            edit_Patient_Profile.Show();
+            this.Hide();
+        }
+
+        private void logout_Click(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+            this.Hide();
         }
     }
 }

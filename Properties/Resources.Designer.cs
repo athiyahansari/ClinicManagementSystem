@@ -153,6 +153,16 @@ namespace CMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap prescription_icon2 {
+            get {
+                object obj = ResourceManager.GetObject("prescription-icon2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap upcomingappointments_icon {
             get {
                 object obj = ResourceManager.GetObject("upcomingappointments-icon", resourceCulture);
