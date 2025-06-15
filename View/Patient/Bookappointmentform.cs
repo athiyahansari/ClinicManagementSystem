@@ -1,12 +1,4 @@
-﻿using ClinicManagementSystem.Views.Patients;
-using CMS.Controller; 
-using CMS.Model;
-using CMS.Utils; // Replace with actual namespace
-using CMS.View; // or whatever the correct namespace is
-using CMS.View.Doctor;
-using CMS.View.Patient;
-using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -16,6 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClinicManagementSystem.Views.Patients;
+using CMS.Controller; 
+using CMS.Model;
+using CMS.Utils; // Replace with actual namespace
+using CMS.View; // or whatever the correct namespace is
+using CMS.View.Doctor;
+using CMS.View.Patient;
+using Microsoft.VisualBasic.ApplicationServices;
+using MySql.Data.MySqlClient;
 
 
 
@@ -23,7 +24,7 @@ namespace CMS
 {
     public partial class Bookappointmentform : Form
     {
-        private int loggedInPatientId = 2;
+        private int loggedInPatientId = SessionManager.CurrentUserId;
 
         // Controller instance to handle database operations related to appointments
         Appointmentcontroller repo = new Appointmentcontroller();

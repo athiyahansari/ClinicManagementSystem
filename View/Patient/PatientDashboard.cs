@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ClinicManagementSystem.Views.Patients;
 using CMS.Controller;
 using CMS.Model;
+using CMS.Utils;
 
 namespace CMS.View.Patient
 {
@@ -21,6 +22,7 @@ namespace CMS.View.Patient
         public PatientDashboard(int patientId)
         {
             InitializeComponent();
+            this.patientId = patientId;
             notificationController = new NotificationController();
 
 
@@ -28,10 +30,7 @@ namespace CMS.View.Patient
             this.Load += PatientDashboard_Load;
         }
 
-        public PatientDashboard()
-        {
-            InitializeComponent();
-        }
+        public PatientDashboard() : this(SessionManager.CurrentUserId) { }
 
         private void PatientDashboard_Load(object sender, EventArgs e)
         {

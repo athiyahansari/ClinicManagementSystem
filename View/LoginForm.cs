@@ -9,7 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CMS.Controller;
 using CMS.Model;             // Assuming your User class is here
-        // Assuming your LoginRepository is here
+using CMS.Utils;
+
+// Assuming your LoginRepository is here
 using CMS.View.Admin;
 using CMS.View.Doctor;
 using CMS.View.Patient;
@@ -94,6 +96,7 @@ namespace CMS.View
             if (user != null && user.Role.Equals("Patient", StringComparison.OrdinalIgnoreCase))
             {
                 MessageBox.Show("Successfully logged in PatientDashBoard.");
+                SessionManager.CurrentUserId = user.UserId;  // Store the current user ID in the session manager
                 new PatientDashboard().Show();
                 this.Hide();
             }
@@ -101,7 +104,6 @@ namespace CMS.View
             {
                 MessageBox.Show("Invalid Patient login.");
             }
-
         }
     }
 }

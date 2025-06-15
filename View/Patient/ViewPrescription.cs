@@ -1,15 +1,16 @@
-﻿using ClinicManagementSystem.Views.Patients;
+﻿using System;
+using System.Windows.Forms;
+using ClinicManagementSystem.Views.Patients;
 using CMS.Controller;
 using CMS.Model;
+using CMS.Utils;
 using CMS.View.Patient;
-using System;
-using System.Windows.Forms;
 
 namespace CMS.View.Patient
 {
     public partial class ViewPrescription : Form
     {
-        private int _patientId; // Holds the ID of the logged-in patient
+        private int loggedInPatientId = SessionManager.CurrentUserId;
 
         // Default constructor
         public ViewPrescription()
@@ -23,7 +24,7 @@ namespace CMS.View.Patient
         public ViewPrescription(int patientId)
         {
             InitializeComponent();
-            _patientId = patientId;
+            loggedInPatientId = patientId;
             this.Load += new System.EventHandler(this.ViewPrescription_Load);
             AttachNavButtonEvents(); // Attach button click events at runtime
         }
@@ -32,7 +33,7 @@ namespace CMS.View.Patient
         private void ViewPrescription_Load(object sender, EventArgs e)
         {
             dgvPrescriptions.AutoGenerateColumns = false; // This manually define DataGridView columns
-            LoadPrescriptions(_patientId); // Load the patient's prescriptions
+            LoadPrescriptions(loggedInPatientId); // Load the patient's prescriptions
         }
 
         // Loads prescriptions for a given patient ID
@@ -102,7 +103,7 @@ namespace CMS.View.Patient
         // Already on Prescription view - optionally refresh prescriptions
         private void BtnPrescriptions_Click(object sender, EventArgs e)
         {
-            LoadPrescriptions(_patientId); // Refresh data
+            LoadPrescriptions(loggedInPatientId); // Refresh data
         }
 
         // Navigate to Medical History form

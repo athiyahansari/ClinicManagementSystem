@@ -55,5 +55,53 @@ namespace CMS.Controller
 
             return historyList;
         }
+
+        public List<(MedicalHistory, string)> GetMedicalHistoryByPatientId(int patientId)
+        {
+            var historyList = new List<(MedicalHistory, string)>();
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                string query = @"
+                    SELECT 
+                        mh.*, d.full_name AS doctor_name
+                    FROM 
+                        medical_history mh
+                    JOIN 
+                        doctors d ON mh.doctor_id = d.doctor_id
+                    WHERE 
+                        mh.patient_id = @patientId
+                    ORDER BY
+                        mh.visit_date DESC";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@patientId", patientId);
+                    conn.Open();
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var history = new MedicalHistory
+                            {
+                                HistoryId = Convert.ToInt32(reader["history_id"]),
+                                PatientId = Convert.ToInt32(reader["patient_id"]),
+                                DoctorId = Convert.ToInt32(reader["doctor_id"]),
+                                VisitDate = Convert.ToDateTime(reader["visit_date"]),
+                                Diagnosis = reader["diagnosis"].ToString(),
+                                Prescription = reader["prescription"].ToString(),
+                                Notes = reader["notes"].ToString()
+                            };
+
+                            string doctorName = reader["doctor_name"].ToString();
+                            historyList.Add((history, doctorName));
+                        }
+                    }
+                }
+            }
+
+            return historyList;
+        }
     }
 }

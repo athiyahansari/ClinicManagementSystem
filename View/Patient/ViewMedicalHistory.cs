@@ -7,18 +7,44 @@ using CMS.View.Doctor;
 using CMS.View.Patient;
 using CMS;
 using CMS.View;
+using CMS.Utils;
 
 namespace ClinicManagementSystem.Views.Patients
 {
     public partial class ViewMedicalHistory : Form
     {
         private MedicalHistoryController controller;
+        private int patientId = SessionManager.CurrentUserId;
 
         public ViewMedicalHistory()
         {
             InitializeComponent();
             controller = new MedicalHistoryController();
-            btnLoad.Click += BtnLoad_Click;
+            this.Load += (s, e) => LoadMedicalHistoryForCurrentUser();
+        }
+
+        private void LoadMedicalHistoryForCurrentUser()
+        {
+            dgvHistory.Rows.Clear();
+
+            var history = controller.GetMedicalHistoryByPatientId(patientId);
+
+            if (history.Count == 0)
+            {
+                MessageBox.Show("No medical history found for your account.");
+                return;
+            }
+
+            foreach (var (record, doctorName) in history)
+            {
+                dgvHistory.Rows.Add(
+                    record.VisitDate.ToString("yyyy-MM-dd"),
+                    record.Diagnosis,
+                    record.Prescription,
+                    record.Notes,
+                    doctorName
+                );
+            }
         }
 
         private void BtnLoad_Click(object sender, EventArgs e)

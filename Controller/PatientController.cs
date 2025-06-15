@@ -51,6 +51,39 @@ namespace CMS.Controller
             _view.LoadPatientData(_model);
         }
 
+        public Patients GetPatientByUserId(int userId)
+        {
+            using (var con = DBHelper.GetConnection())
+            {
+                con.Open();
+                string query = "SELECT * FROM patients WHERE user_id = @userId LIMIT 1";
+                using (var cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@userId", userId);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new Patients
+                            {
+                                PatientId = reader["patient_id"].ToString(),
+                                UserId = Convert.ToInt32(reader["user_id"]),
+                                FirstName = reader["first_name"].ToString(),
+                                LastName = reader["last_name"].ToString(),
+                                Email = reader["email"].ToString(),
+                                Gender = reader["gender"].ToString(),
+                                PhoneNumber = reader["phonenumber"].ToString(),
+                                DateOfBirth = reader["date_of_birth"] != DBNull.Value
+                                                ? Convert.ToDateTime(reader["date_of_birth"])
+                                                : DateTime.Today
+                            };
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
         public void SavePatientProfile()
         {
             _model.FirstName = _view.FirstName;
@@ -185,10 +218,6 @@ namespace CMS.Controller
             }
         }
     }
-
-
-
-
 }
 
 

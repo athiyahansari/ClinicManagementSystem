@@ -20,8 +20,7 @@ namespace CMS.View.Patient
             InitializeComponent();
             _controller = new PatientController(); // ✅ FIXED: pass the view
 
-
-
+            this.Load += Edit_Patient_Profile_Load; 
 
         }
         // Properties to expose UI control values to the Controller
@@ -86,21 +85,15 @@ namespace CMS.View.Patient
 
         public void Edit_Patient_Profile_Load(object sender, EventArgs e)
         {
-            if (_patientToEdit != null)
-            {
-                _controller.LoadInitialPatientProfile(_patientToEdit);
-            }
+            var patient = _controller.GetPatientByUserId(SessionManager.CurrentUserId);
+            _controller.LoadInitialPatientProfile(patient);
 
         }
 
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
-
             _controller.SavePatientProfile();
-
-
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
