@@ -33,7 +33,6 @@
             sidenav = new Panel();
             navreports = new Button();
             label2 = new Label();
-            navprofile = new Button();
             logout = new Button();
             navappointment = new Button();
             navpatient = new Button();
@@ -72,7 +71,6 @@
             sidenav.BackColor = Color.CornflowerBlue;
             sidenav.Controls.Add(navreports);
             sidenav.Controls.Add(label2);
-            sidenav.Controls.Add(navprofile);
             sidenav.Controls.Add(logout);
             sidenav.Controls.Add(navappointment);
             sidenav.Controls.Add(navpatient);
@@ -106,25 +104,16 @@
             label2.TabIndex = 5;
             label2.Text = "MedLine Clinic";
             // 
-            // navprofile
-            // 
-            navprofile.BackColor = Color.LightSteelBlue;
-            navprofile.Location = new Point(19, 570);
-            navprofile.Name = "navprofile";
-            navprofile.Size = new Size(207, 48);
-            navprofile.TabIndex = 4;
-            navprofile.Text = "MyProfile";
-            navprofile.UseVisualStyleBackColor = false;
-            // 
             // logout
             // 
             logout.BackColor = Color.LightSteelBlue;
-            logout.Location = new Point(19, 625);
+            logout.Location = new Point(21, 574);
             logout.Name = "logout";
             logout.Size = new Size(207, 48);
             logout.TabIndex = 3;
             logout.Text = "LogOut";
             logout.UseVisualStyleBackColor = false;
+            logout.Click += logout_Click;
             // 
             // navappointment
             // 
@@ -136,7 +125,6 @@
             navappointment.TabIndex = 2;
             navappointment.Text = "Appointment Schedules";
             navappointment.UseVisualStyleBackColor = false;
-            //navappointment.Click += navappointment_Click;
             // 
             // navpatient
             // 
@@ -288,7 +276,6 @@
         private FlowLayoutPanel flowLayoutPanel1;
         private Panel sidenav;
         private Label label2;
-        private Button navprofile;
         private Button logout;
         private Button navappointment;
         private Button navpatient;

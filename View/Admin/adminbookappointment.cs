@@ -174,6 +174,13 @@ namespace CMS.View.Admin
             reportAdmin.Show();
             this.Hide();
         }
+
+        private void logout_Click(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm(); 
+            loginForm.Show();
+            this.Hide(); // Hide the current form
+        }
     }
 }
 

@@ -89,6 +89,9 @@ namespace CMS.View.Doctor
             }
         }
 
+
+        /// NAV CODES ///
+
         // Side nav 'MyAppointments' button reload
         private void navappointment_Click(object sender, EventArgs e)
         {
@@ -97,8 +100,28 @@ namespace CMS.View.Doctor
         // Allows external forms or buttons (like the sidebar) to trigger a data refresh in this form
         public void ReloadAppointments()
         {
-            LoadAppointments(); 
+            LoadAppointments();
         }
 
+        private void navpatient_Click(object sender, EventArgs e)
+        {
+            CreatePrescription createPrescription = new CreatePrescription();
+            createPrescription.Show();
+            this.Hide();
+        }
+
+        private void navprofile_Click(object sender, EventArgs e)
+        {
+            DocViewProfile profile = new DocViewProfile(doctorId);
+            profile.Show();
+            this.Hide();
+        }
+
+        private void logout_Click(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm();  
+            loginForm.Show();
+            this.Hide(); 
+        }
     }
 }
