@@ -152,27 +152,23 @@ namespace CMS.View.Admin
 
         }
 
-        private void navprofilebtn_Click(object sender, EventArgs e)
-        {
-            AdminDashboard dashboardForm = new AdminDashboard();
-
-            // Show the AdminDashboard form
-            dashboardForm.Show();
-
-            // Optionally hide the current Reportadmin form
-            this.Hide();
-
-        }
-
         private void logoutbtn_Click(object sender, EventArgs e)
         {
-            //LoginForm loginForm = new LoginForm();
+            LoginForm loginForm = new LoginForm();
 
-            //// Show the login form
-            //loginForm.Show();
+            // Show the login form
+            loginForm.Show();
 
-            //// Close or hide the current form (e.g., Reportadmin)
-            //this.Close(); 
+            // Close or hide the current form (e.g., Reportadmin)
+            this.Close();
         }
+
+        private void navpatientbtn_Click(object sender, EventArgs e)
+        {
+            Manage_Patient manageForm = new Manage_Patient();
+            manageForm.Show();
+            this.Hide(); // Optional, hides the current form
+        }
+
     }
 }
