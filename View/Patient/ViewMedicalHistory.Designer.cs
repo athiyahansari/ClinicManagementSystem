@@ -197,7 +197,7 @@
             navprofile.TabIndex = 4;
             navprofile.Text = "MyProfile";
             navprofile.UseVisualStyleBackColor = false;
-            navprofile.Click += navprofile_Click;
+           
             // 
             // logout
             // 

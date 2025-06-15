@@ -20,7 +20,6 @@
         {
             dgvDoctors = new DataGridView();
             sidenav = new Panel();
-            navmedicalhistory = new Button();
             label2 = new Label();
             navprofile = new Button();
             logout = new Button();
@@ -28,6 +27,7 @@
             navappointment = new Button();
             navdoc = new Button();
             label1 = new Label();
+            navmedicalhistory = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvDoctors).BeginInit();
             sidenav.SuspendLayout();
             SuspendLayout();
@@ -39,11 +39,12 @@
             dgvDoctors.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvDoctors.BackgroundColor = SystemColors.ActiveCaption;
             dgvDoctors.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDoctors.Location = new Point(235, 143);
+            dgvDoctors.Location = new Point(206, 107);
+            dgvDoctors.Margin = new Padding(3, 2, 3, 2);
             dgvDoctors.Name = "dgvDoctors";
             dgvDoctors.ReadOnly = true;
             dgvDoctors.RowHeadersWidth = 51;
-            dgvDoctors.Size = new Size(690, 212);
+            dgvDoctors.Size = new Size(604, 159);
             dgvDoctors.TabIndex = 0;
             dgvDoctors.CellContentClick += dgvDoctors_CellContentClick;
             // 
@@ -59,31 +60,20 @@
             sidenav.Controls.Add(navdoc);
             sidenav.Dock = DockStyle.Left;
             sidenav.Location = new Point(0, 0);
-            sidenav.Margin = new Padding(2, 3, 2, 3);
+            sidenav.Margin = new Padding(2);
             sidenav.Name = "sidenav";
-            sidenav.Size = new Size(230, 515);
+            sidenav.Size = new Size(201, 386);
             sidenav.TabIndex = 22;
-            // 
-            // navmedicalhistory
-            // 
-            navmedicalhistory.BackColor = Color.LightSteelBlue;
-            navmedicalhistory.Location = new Point(39, 227);
-            navmedicalhistory.Margin = new Padding(2, 3, 2, 3);
-            navmedicalhistory.Name = "navmedicalhistory";
-            navmedicalhistory.Size = new Size(143, 39);
-            navmedicalhistory.TabIndex = 5;
-            navmedicalhistory.Text = "Medical History";
-            navmedicalhistory.UseVisualStyleBackColor = false;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Kristen ITC", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ButtonFace;
-            label2.Location = new Point(67, 39);
+            label2.Location = new Point(59, 29);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(79, 33);
+            label2.Size = new Size(63, 27);
             label2.TabIndex = 21;
             label2.Text = "CMS";
             label2.Click += label2_Click;
@@ -91,54 +81,58 @@
             // navprofile
             // 
             navprofile.BackColor = Color.LightSteelBlue;
-            navprofile.Location = new Point(39, 388);
-            navprofile.Margin = new Padding(2, 3, 2, 3);
+            navprofile.Location = new Point(34, 291);
+            navprofile.Margin = new Padding(2);
             navprofile.Name = "navprofile";
-            navprofile.Size = new Size(143, 39);
+            navprofile.Size = new Size(125, 29);
             navprofile.TabIndex = 4;
             navprofile.Text = "MyProfile";
             navprofile.UseVisualStyleBackColor = false;
+            navprofile.Click += navprofile_Click;
             // 
             // logout
             // 
             logout.BackColor = Color.LightSteelBlue;
-            logout.Location = new Point(39, 447);
-            logout.Margin = new Padding(2, 3, 2, 3);
+            logout.Location = new Point(34, 335);
+            logout.Margin = new Padding(2);
             logout.Name = "logout";
-            logout.Size = new Size(143, 37);
+            logout.Size = new Size(125, 28);
             logout.TabIndex = 3;
             logout.Text = "LogOut";
             logout.UseVisualStyleBackColor = false;
+            logout.Click += logout_Click;
             // 
             // navprescription
             // 
             navprescription.BackColor = Color.LightSteelBlue;
-            navprescription.Location = new Point(39, 185);
-            navprescription.Margin = new Padding(2, 3, 2, 3);
+            navprescription.Location = new Point(34, 139);
+            navprescription.Margin = new Padding(2);
             navprescription.Name = "navprescription";
-            navprescription.Size = new Size(143, 37);
+            navprescription.Size = new Size(125, 28);
             navprescription.TabIndex = 2;
             navprescription.Text = "Prescriptions";
             navprescription.UseVisualStyleBackColor = false;
+            navprescription.Click += navprescription_Click;
             // 
             // navappointment
             // 
             navappointment.BackColor = Color.LightSteelBlue;
-            navappointment.Location = new Point(39, 143);
-            navappointment.Margin = new Padding(2, 3, 2, 3);
+            navappointment.Location = new Point(34, 107);
+            navappointment.Margin = new Padding(2);
             navappointment.Name = "navappointment";
-            navappointment.Size = new Size(143, 37);
+            navappointment.Size = new Size(125, 28);
             navappointment.TabIndex = 1;
             navappointment.Text = "Appointment";
             navappointment.UseVisualStyleBackColor = false;
+            navappointment.Click += navappointment_Click;
             // 
             // navdoc
             // 
             navdoc.BackColor = Color.LightSteelBlue;
-            navdoc.Location = new Point(39, 104);
-            navdoc.Margin = new Padding(2, 3, 2, 3);
+            navdoc.Location = new Point(34, 78);
+            navdoc.Margin = new Padding(2);
             navdoc.Name = "navdoc";
-            navdoc.Size = new Size(143, 35);
+            navdoc.Size = new Size(125, 26);
             navdoc.TabIndex = 0;
             navdoc.Text = "View Doctor";
             navdoc.UseVisualStyleBackColor = false;
@@ -149,21 +143,34 @@
             label1.AutoSize = true;
             label1.BackColor = SystemColors.ActiveCaption;
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(503, 33);
+            label1.Location = new Point(440, 25);
             label1.Name = "label1";
-            label1.Size = new Size(188, 37);
+            label1.Size = new Size(143, 30);
             label1.TabIndex = 23;
             label1.Text = "View Doctors";
             label1.Click += label1_Click;
             // 
+            // navmedicalhistory
+            // 
+            navmedicalhistory.BackColor = Color.LightSteelBlue;
+            navmedicalhistory.Location = new Point(34, 170);
+            navmedicalhistory.Margin = new Padding(2);
+            navmedicalhistory.Name = "navmedicalhistory";
+            navmedicalhistory.Size = new Size(125, 29);
+            navmedicalhistory.TabIndex = 5;
+            navmedicalhistory.Text = "Medical History";
+            navmedicalhistory.UseVisualStyleBackColor = false;
+            navmedicalhistory.Click += navmedicalhistory_Click;
+            // 
             // ViewDoctors
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(930, 515);
+            ClientSize = new Size(814, 386);
             Controls.Add(label1);
             Controls.Add(sidenav);
             Controls.Add(dgvDoctors);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "ViewDoctors";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Doctor List";
@@ -178,7 +185,6 @@
         #endregion
 
         private Panel sidenav;
-        private Button navmedicalhistory;
         private Label label2;
         private Button navprofile;
         private Button logout;
@@ -186,5 +192,6 @@
         private Button navappointment;
         private Button navdoc;
         private Label label1;
+        private Button navmedicalhistory;
     }
 }

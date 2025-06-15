@@ -3,6 +3,10 @@ using System.Windows.Forms;
 using CMS.Controller;
 using CMS.Model;
 using System.Collections.Generic;
+using CMS.View.Doctor;
+using CMS.View.Patient;
+using CMS;
+using CMS.View;
 
 namespace ClinicManagementSystem.Views.Patients
 {
@@ -69,12 +73,67 @@ namespace ClinicManagementSystem.Views.Patients
 
 
         //DOCTOR VIEW PROFILE BTN
-        private void navprofile_Click(object sender, EventArgs e)
+        //private void navprofile_Click(object sender, EventArgs e)
+        //{
+        //    int doctorId = 1; // Replace this with actual dynamic doctorId later
+        //    CMS.View.Doctor.DocViewProfile profileForm = new CMS.View.Doctor.DocViewProfile(doctorId);
+        //    profileForm.ShowDialog();
+        //}
+
+
+
+
+
+    
+
+
+
+        private void navmedicalhistory_Click(object sender, EventArgs e)//Medical History
+
         {
-            int doctorId = 1; // Replace this with actual dynamic doctorId when available
-            CMS.View.Doctor.DocViewProfile profileForm = new CMS.View.Doctor.DocViewProfile(doctorId);
-            profileForm.ShowDialog();
+            ViewMedicalHistory historyForm = new ViewMedicalHistory();
+            historyForm.Show();
+            this.Hide(); // Hide the current form
+
         }
+
+        private void navappointment_Click(object sender, EventArgs e)// Appointments
+        {
+            Bookappointmentform appointmentForm = new Bookappointmentform();
+            appointmentForm.Show();
+            this.Hide(); // Hide the current form
+        }
+
+        private void navprescription_Click(object sender, EventArgs e)// Prescription
+        {
+            ViewPrescription prescriptionForm = new ViewPrescription();
+            prescriptionForm.Show();
+            this.Hide(); // Hide the current form
+
+        }
+
+        private void navprofile_Click(object sender, EventArgs e) //My profile
+        {
+            Edit_Patient_Profile profileForm = new Edit_Patient_Profile();
+            profileForm.Show();
+            this.Hide(); // Hide the current form
+
+        }
+
+        private void logout_Click(object sender, EventArgs e)// Logout
+        {
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+            this.Hide(); // Hide the current form
+
+        }
+
+
+
+
+
+
+
 
         private void dgvHistory_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CMS.Controller;
 using CMS.Model;
+using CMS.View.Doctor;
+using CMS.View.Patient;
+
+
 
 namespace CMS.View.Doctor
 {
@@ -56,6 +60,43 @@ namespace CMS.View.Doctor
         private void DocName_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)// my profile
+        {
+            DocViewProfile profileForm = new DocViewProfile(_doctorId);
+            profileForm.Show();
+            this.Hide(); // Hide the current form
+        }
+
+
+
+        private void button6_Click(object sender, EventArgs e) //view doctors code
+        {
+            //ViewDoctors viewDoctorsForm = new ViewDoctors();
+            //viewDoctorsForm.Show();
+            //this.Hide(); // Hide the current form
+        }
+
+        private void button5_Click(object sender, EventArgs e)//appointment schedule
+        {
+            AppointmentSchedule appointmentScheduleForm = new AppointmentSchedule();
+            appointmentScheduleForm.Show();
+            this.Hide(); // Hide the current form
+        }
+
+        private void button4_Click(object sender, EventArgs e) //prescription
+        {
+            CreatePrescription prescriptionForm = new CreatePrescription();
+            prescriptionForm.Show();
+            this.Hide(); // Hide the current form
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+            this.Hide(); // Hide the current form
         }
     }
 }

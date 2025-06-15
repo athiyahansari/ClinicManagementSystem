@@ -7,8 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClinicManagementSystem.Views.Patients;
 using CMS.Controller;
 using CMS.Model;
+using CMS.View.Doctor;
+using CMS.View.Patient;
+
+
+
 
 namespace CMS.View.Patient
 {
@@ -38,9 +44,11 @@ namespace CMS.View.Patient
             dgvDoctors.DataSource = doctors;
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)// View Doctor
         {
-
+            ViewDoctors viewDoctorForm = new ViewDoctors();
+            viewDoctorForm.Show();
+            this.Hide();
         }
 
         private void navdoc_Click(object sender, EventArgs e)
@@ -57,6 +65,52 @@ namespace CMS.View.Patient
         {
 
         }
+
+
+        
+
+
+
+        private void navmedicalhistory_Click(object sender, EventArgs e)//Medical History
+
+        {
+            ViewMedicalHistory historyForm = new ViewMedicalHistory();
+            historyForm.Show();
+            this.Hide(); // Hide the current form
+
+        }
+
+        private void navappointment_Click(object sender, EventArgs e)// Appointments
+        {
+            Bookappointmentform appointmentForm = new Bookappointmentform();
+            appointmentForm.Show();
+            this.Hide(); // Hide the current form
+        }
+
+        private void navprescription_Click(object sender, EventArgs e)// Prescription
+        {
+            ViewPrescription prescriptionForm = new ViewPrescription();
+            prescriptionForm.Show();
+            this.Hide(); // Hide the current form
+
+        }
+
+        private void navprofile_Click(object sender, EventArgs e) //My profile
+        {
+            Edit_Patient_Profile profileForm = new Edit_Patient_Profile();
+            profileForm.Show();
+            this.Hide(); // Hide the current form
+
+        }
+
+        private void logout_Click(object sender, EventArgs e)// Logout
+        {
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+            this.Hide(); // Hide the current form
+
+        }
     }
 }
+
 
