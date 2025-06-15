@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             pictureBox1 = new PictureBox();
             label1 = new Label();
             dataGridViewPatients = new DataGridView();
-            btnAdd = new Button();
-            btnRemove = new Button();
-            btnEdit = new Button();
-            button4 = new Button();
-            button5 = new Button();
-            button6 = new Button();
-            button7 = new Button();
-            button8 = new Button();
-            label2 = new Label();
-            label3 = new Label();
             Patient_Id = new DataGridViewTextBoxColumn();
             PhoneNumber = new DataGridViewTextBoxColumn();
             Name = new DataGridViewTextBoxColumn();
             DateOfBirth = new DataGridViewTextBoxColumn();
             Column1 = new DataGridViewTextBoxColumn();
+            btnAdd = new Button();
+            btnRemove = new Button();
+            btnEdit = new Button();
+            btnDoctors = new Button();
+            btnPatients = new Button();
+            button6 = new Button();
+            btnMyprofile = new Button();
+            btnLogout = new Button();
+            label2 = new Label();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPatients).BeginInit();
             SuspendLayout();
@@ -73,8 +73,8 @@
             // dataGridViewPatients
             // 
             dataGridViewPatients.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.NullValue = "Vithu";
-            dataGridViewPatients.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.NullValue = "Vithu";
+            dataGridViewPatients.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewPatients.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridViewPatients.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewPatients.Columns.AddRange(new DataGridViewColumn[] { Patient_Id, PhoneNumber, Name, DateOfBirth, Column1 });
@@ -85,116 +85,6 @@
             dataGridViewPatients.Size = new Size(681, 291);
             dataGridViewPatients.TabIndex = 2;
             dataGridViewPatients.CellContentClick += dataGridViewPatients_CellContentClick;
-            // 
-            // btnAdd
-            // 
-            btnAdd.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAdd.Location = new Point(391, 465);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(102, 46);
-            btnAdd.TabIndex = 3;
-            btnAdd.Text = "ADD";
-            btnAdd.UseVisualStyleBackColor = true;
-            btnAdd.Click += btnAdd_Click;
-            // 
-            // btnRemove
-            // 
-            btnRemove.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnRemove.Location = new Point(529, 465);
-            btnRemove.Name = "btnRemove";
-            btnRemove.Size = new Size(145, 46);
-            btnRemove.TabIndex = 4;
-            btnRemove.Text = "REMOVE";
-            btnRemove.UseVisualStyleBackColor = true;
-            btnRemove.Click += btnRemove_Click;
-            // 
-            // btnEdit
-            // 
-            btnEdit.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEdit.Location = new Point(721, 465);
-            btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(94, 46);
-            btnEdit.TabIndex = 5;
-            btnEdit.Text = "EDIT";
-            btnEdit.UseVisualStyleBackColor = true;
-            btnEdit.Click += btnEdit_Click;
-            // 
-            // button4
-            // 
-            button4.BackColor = Color.LightSteelBlue;
-            button4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button4.Location = new Point(35, 164);
-            button4.Name = "button4";
-            button4.Size = new Size(179, 39);
-            button4.TabIndex = 6;
-            button4.Text = "Doctors";
-            button4.UseVisualStyleBackColor = false;
-            // 
-            // button5
-            // 
-            button5.BackColor = Color.LightSteelBlue;
-            button5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.Location = new Point(35, 209);
-            button5.Name = "button5";
-            button5.Size = new Size(179, 41);
-            button5.TabIndex = 7;
-            button5.Text = "Patient";
-            button5.UseVisualStyleBackColor = false;
-            // 
-            // button6
-            // 
-            button6.BackColor = Color.LightSteelBlue;
-            button6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button6.Location = new Point(35, 256);
-            button6.Name = "button6";
-            button6.Size = new Size(179, 41);
-            button6.TabIndex = 8;
-            button6.Text = "Appointments";
-            button6.UseVisualStyleBackColor = false;
-            // 
-            // button7
-            // 
-            button7.BackColor = Color.LightSteelBlue;
-            button7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button7.Location = new Point(35, 454);
-            button7.Name = "button7";
-            button7.Size = new Size(168, 41);
-            button7.TabIndex = 9;
-            button7.Text = "My Profile";
-            button7.UseVisualStyleBackColor = false;
-            // 
-            // button8
-            // 
-            button8.BackColor = Color.LightSteelBlue;
-            button8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button8.Location = new Point(35, 501);
-            button8.Name = "button8";
-            button8.Size = new Size(168, 37);
-            button8.TabIndex = 10;
-            button8.Text = "Log Out";
-            button8.UseVisualStyleBackColor = false;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = SystemColors.ButtonFace;
-            label2.Font = new Font("Kristen ITC", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(35, 31);
-            label2.Name = "label2";
-            label2.Size = new Size(132, 30);
-            label2.TabIndex = 11;
-            label2.Text = "John Doe";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.BackColor = SystemColors.ButtonFace;
-            label3.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(102, 75);
-            label3.Name = "label3";
-            label3.Size = new Size(135, 25);
-            label3.TabIndex = 12;
-            label3.Text = "Admin-ID 2346";
             // 
             // Patient_Id
             // 
@@ -234,6 +124,121 @@
             Column1.ToolTipText = "2005.12.24";
             Column1.Width = 125;
             // 
+            // btnAdd
+            // 
+            btnAdd.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAdd.Location = new Point(391, 465);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(102, 46);
+            btnAdd.TabIndex = 3;
+            btnAdd.Text = "ADD";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
+            // 
+            // btnRemove
+            // 
+            btnRemove.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnRemove.Location = new Point(529, 465);
+            btnRemove.Name = "btnRemove";
+            btnRemove.Size = new Size(145, 46);
+            btnRemove.TabIndex = 4;
+            btnRemove.Text = "REMOVE";
+            btnRemove.UseVisualStyleBackColor = true;
+            btnRemove.Click += btnRemove_Click;
+            // 
+            // btnEdit
+            // 
+            btnEdit.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEdit.Location = new Point(721, 465);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(94, 46);
+            btnEdit.TabIndex = 5;
+            btnEdit.Text = "EDIT";
+            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
+            // 
+            // btnDoctors
+            // 
+            btnDoctors.BackColor = Color.LightSteelBlue;
+            btnDoctors.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDoctors.Location = new Point(35, 164);
+            btnDoctors.Name = "btnDoctors";
+            btnDoctors.Size = new Size(179, 39);
+            btnDoctors.TabIndex = 6;
+            btnDoctors.Text = "Doctors";
+            btnDoctors.UseVisualStyleBackColor = false;
+            btnDoctors.Click += btnDoctors_Click;
+            // 
+            // btnPatients
+            // 
+            btnPatients.BackColor = Color.LightSteelBlue;
+            btnPatients.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnPatients.Location = new Point(35, 209);
+            btnPatients.Name = "btnPatients";
+            btnPatients.Size = new Size(179, 41);
+            btnPatients.TabIndex = 7;
+            btnPatients.Text = "Patient";
+            btnPatients.UseVisualStyleBackColor = false;
+            btnPatients.Click += btnPatients_Click;
+            // 
+            // button6
+            // 
+            button6.BackColor = Color.LightSteelBlue;
+            button6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button6.Location = new Point(35, 256);
+            button6.Name = "button6";
+            button6.Size = new Size(179, 41);
+            button6.TabIndex = 8;
+            button6.Text = "Appointments";
+            button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
+            // 
+            // btnMyprofile
+            // 
+            btnMyprofile.BackColor = Color.LightSteelBlue;
+            btnMyprofile.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnMyprofile.Location = new Point(35, 454);
+            btnMyprofile.Name = "btnMyprofile";
+            btnMyprofile.Size = new Size(168, 41);
+            btnMyprofile.TabIndex = 9;
+            btnMyprofile.Text = "My Profile";
+            btnMyprofile.UseVisualStyleBackColor = false;
+            btnMyprofile.Click += btnMyprofile_Click;
+            // 
+            // btnLogout
+            // 
+            btnLogout.BackColor = Color.LightSteelBlue;
+            btnLogout.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnLogout.Location = new Point(35, 501);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(168, 37);
+            btnLogout.TabIndex = 10;
+            btnLogout.Text = "Log Out";
+            btnLogout.UseVisualStyleBackColor = false;
+            btnLogout.Click += btnLogout_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = SystemColors.ButtonFace;
+            label2.Font = new Font("Kristen ITC", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(35, 31);
+            label2.Name = "label2";
+            label2.Size = new Size(132, 30);
+            label2.TabIndex = 11;
+            label2.Text = "John Doe";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = SystemColors.ButtonFace;
+            label3.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(102, 75);
+            label3.Name = "label3";
+            label3.Size = new Size(135, 25);
+            label3.TabIndex = 12;
+            label3.Text = "Admin-ID 2346";
+            // 
             // Manage_Patient
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -242,18 +247,18 @@
             ClientSize = new Size(1097, 620);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(button8);
-            Controls.Add(button7);
+            Controls.Add(btnLogout);
+            Controls.Add(btnMyprofile);
             Controls.Add(button6);
-            Controls.Add(button5);
-            Controls.Add(button4);
+            Controls.Add(btnPatients);
+            Controls.Add(btnDoctors);
             Controls.Add(btnEdit);
             Controls.Add(btnRemove);
             Controls.Add(btnAdd);
             Controls.Add(dataGridViewPatients);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
-           // Name = "Manage_Patient";
+            //Name = "Manage_Patient";
             Text = "Manage_Patient";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPatients).EndInit();
@@ -269,11 +274,11 @@
         private Button btnAdd;
         private Button btnRemove;
         private Button btnEdit;
-        private Button button4;
-        private Button button5;
+        private Button btnDoctors;
+        private Button btnPatients;
         private Button button6;
-        private Button button7;
-        private Button button8;
+        private Button btnMyprofile;
+        private Button btnLogout;
         private Label label2;
         private Label label3;
         private DataGridViewTextBoxColumn Patient_Id;

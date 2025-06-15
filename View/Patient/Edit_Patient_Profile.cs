@@ -4,6 +4,7 @@ using CMS.Model;
 using MySql.Data.MySqlClient;
 using CMS.Utils;
 using CMS.Controller;
+using CMS.View.Admin;
 
 
 
@@ -17,8 +18,8 @@ namespace CMS.View.Patient
         public Edit_Patient_Profile()
         {
             InitializeComponent();
-            _controller = new PatientController(this); // ✅ FIXED: pass the view
-           
+            _controller = new PatientController(); // ✅ FIXED: pass the view
+
 
 
 
@@ -75,15 +76,15 @@ namespace CMS.View.Patient
         {
             InitializeComponent();
 
-            _controller = new PatientController(this);
+            _controller = new PatientController();
 
-         
+
 
             _patientToEdit = patientToEdit; // save patient for later
         }
 
 
-        public void Edit_Patient_Profile_Load(object sender, EventArgs e )
+        public void Edit_Patient_Profile_Load(object sender, EventArgs e)
         {
             if (_patientToEdit != null)
             {
@@ -109,7 +110,10 @@ namespace CMS.View.Patient
 
         private void button7_Click(object sender, EventArgs e)
         {
-
+            this.Hide();  // Hide the current form
+            Bookappointmentform profileForm = new Bookappointmentform();
+            profileForm.ShowDialog();
+            this.Show(); // Show again after profile closes
         }
 
         // Method to display messages to the user (e.g., validation errors, success)
@@ -157,6 +161,40 @@ namespace CMS.View.Patient
         private void txtFirstName_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();  // Hide the current form
+            Edit_Patient_Profile profileForm = new Edit_Patient_Profile();
+            profileForm.ShowDialog();
+            this.Show(); // Show again after profile closes
+
+        }
+
+        private void btnDoctor_Click(object sender, EventArgs e)
+        {
+            this.Hide();  // Hide the current form
+            ViewDoctors profileForm = new ViewDoctors();
+            profileForm.ShowDialog();
+            this.Show(); // Show again after profile closes
+        }
+
+        private void btnPatient_Click(object sender, EventArgs e)
+        {
+            this.Hide();  // Hide the current form
+            Edit_Patient_Profile profileForm = new Edit_Patient_Profile();
+            profileForm.ShowDialog();
+            this.Show(); // Show again after profile closes
+
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();  // Hide the current form
+            LoginForm profileForm = new LoginForm();
+            profileForm.ShowDialog();
+            this.Show(); // Show again after profile closes
         }
     }
 }

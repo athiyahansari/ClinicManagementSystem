@@ -15,5 +15,8 @@ namespace CMS.Model
         public string Email { get; set; }
         public string Contact { get; set; }
 
+        public string DoctorName { get; set; }
+
+
     }
 }

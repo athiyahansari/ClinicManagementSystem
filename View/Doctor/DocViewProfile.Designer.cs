@@ -232,21 +232,21 @@ namespace CMS.View.Doctor
             // 
             textBox4.Location = new Point(0, 0);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(100, 23);
+            textBox4.Size = new Size(100, 27);
             textBox4.TabIndex = 0;
             // 
             // textBox5
             // 
             textBox5.Location = new Point(0, 0);
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(100, 23);
+            textBox5.Size = new Size(100, 27);
             textBox5.TabIndex = 0;
             // 
             // textBox2
             // 
             textBox2.Location = new Point(0, 0);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
+            textBox2.Size = new Size(100, 27);
             textBox2.TabIndex = 0;
             // 
             // pictureBox1
@@ -261,7 +261,7 @@ namespace CMS.View.Doctor
             // 
             textBox1.Location = new Point(0, 0);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
+            textBox1.Size = new Size(100, 27);
             textBox1.TabIndex = 0;
             // 
             // label4
@@ -279,7 +279,7 @@ namespace CMS.View.Doctor
             label5.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.Location = new Point(325, 139);
             label5.Name = "label5";
-            label5.Size = new Size(87, 22);
+            label5.Size = new Size(110, 27);
             label5.TabIndex = 0;
             label5.Text = "Description";
             // 
@@ -290,7 +290,7 @@ namespace CMS.View.Doctor
             Speciality.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Speciality.Location = new Point(325, 193);
             Speciality.Name = "Speciality";
-            Speciality.Size = new Size(73, 20);
+            Speciality.Size = new Size(92, 25);
             Speciality.TabIndex = 1;
             Speciality.Text = "Speciality";
             // 
@@ -302,7 +302,7 @@ namespace CMS.View.Doctor
             label7.Location = new Point(325, 245);
             label7.Name = "label7";
             label7.RightToLeft = RightToLeft.Yes;
-            label7.Size = new Size(46, 20);
+            label7.Size = new Size(58, 25);
             label7.TabIndex = 2;
             label7.Text = "Email";
             // 
@@ -313,7 +313,7 @@ namespace CMS.View.Doctor
             label8.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label8.Location = new Point(325, 300);
             label8.Name = "label8";
-            label8.Size = new Size(60, 20);
+            label8.Size = new Size(77, 25);
             label8.TabIndex = 3;
             label8.Text = "Contact";
             // 
@@ -321,28 +321,28 @@ namespace CMS.View.Doctor
             // 
             txtDescription.Location = new Point(428, 138);
             txtDescription.Name = "txtDescription";
-            txtDescription.Size = new Size(300, 23);
+            txtDescription.Size = new Size(300, 27);
             txtDescription.TabIndex = 4;
             // 
             // txtSpeciality
             // 
             txtSpeciality.Location = new Point(428, 190);
             txtSpeciality.Name = "txtSpeciality";
-            txtSpeciality.Size = new Size(204, 23);
+            txtSpeciality.Size = new Size(204, 27);
             txtSpeciality.TabIndex = 5;
             // 
             // txtEmail
             // 
             txtEmail.Location = new Point(428, 242);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(204, 23);
+            txtEmail.Size = new Size(204, 27);
             txtEmail.TabIndex = 6;
             // 
             // txtContact
             // 
             txtContact.Location = new Point(428, 300);
             txtContact.Name = "txtContact";
-            txtContact.Size = new Size(204, 23);
+            txtContact.Size = new Size(204, 27);
             txtContact.TabIndex = 7;
             // 
             // panel3
@@ -381,7 +381,7 @@ namespace CMS.View.Doctor
             label10.Location = new Point(60, 29);
             label10.Margin = new Padding(2, 0, 2, 0);
             label10.Name = "label10";
-            label10.Size = new Size(63, 27);
+            label10.Size = new Size(79, 33);
             label10.TabIndex = 21;
             label10.Text = "CMS";
             // 
@@ -444,8 +444,9 @@ namespace CMS.View.Doctor
             // 
             DocName.Location = new Point(432, 88);
             DocName.Name = "DocName";
-            DocName.Size = new Size(188, 23);
+            DocName.Size = new Size(188, 27);
             DocName.TabIndex = 23;
+            DocName.TextChanged += DocName_TextChanged;
             // 
             // label6
             // 
@@ -454,7 +455,7 @@ namespace CMS.View.Doctor
             label6.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label6.Location = new Point(326, 89);
             label6.Name = "label6";
-            label6.Size = new Size(99, 20);
+            label6.Size = new Size(124, 25);
             label6.TabIndex = 24;
             label6.Text = "Doctor Name";
             // 
@@ -466,7 +467,7 @@ namespace CMS.View.Doctor
             label11.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label11.Location = new Point(401, 24);
             label11.Name = "label11";
-            label11.Size = new Size(193, 32);
+            label11.Size = new Size(248, 39);
             label11.TabIndex = 25;
             label11.Text = "View Doctor Profile";
             // 

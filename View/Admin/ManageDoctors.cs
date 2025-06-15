@@ -4,7 +4,6 @@ using System;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-
 namespace CMS.View.Admin
 {
     public partial class ManageDoctors : Form
@@ -16,6 +15,7 @@ namespace CMS.View.Admin
         {
             InitializeComponent();
             LoadDoctors();
+            AttachNavButtonEvents(); // Attach button click events at runtime
         }
 
         private void LoadDoctors()
@@ -23,10 +23,11 @@ namespace CMS.View.Admin
             doctorGridView.Rows.Clear();
             foreach (var d in ctrl.GetAllDoctors())
             {
-                doctorGridView.Rows.Add(d.DoctorID, d.FullName, d.Speciality, d.Email, d.PhoneNo);
+                doctorGridView.Rows.Add(d.DoctorID, $"{d.FirstName} {d.LastName}".Trim(), d.Speciality, d.Email, d.PhoneNumber);
             }
         }
 
+        // Add New Doctor Button
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (ValidateInputs(out Model.Doctor d))
@@ -48,6 +49,7 @@ namespace CMS.View.Admin
             txtNumber.Clear();
         }
 
+        // Validations for the fields
         private bool ValidateInputs(out Model.Doctor d)
         {
             d = null;
@@ -56,51 +58,57 @@ namespace CMS.View.Admin
             string email = txtEmail.Text.Trim();
             string phone = txtNumber.Text.Trim();
 
-            // Full Name validation - only letters and spaces
             if (string.IsNullOrEmpty(fullName) || !Regex.IsMatch(fullName, @"^[a-zA-Z.\s]+$"))
             {
-                MessageBox.Show("Full Name must contain only letters, spaces and periods.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Full Name must contain only letters, spaces, and periods.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
+            var nameParts = fullName.Split(new[] { ' ' }, 2, StringSplitOptions.RemoveEmptyEntries);
+            string firstName = nameParts.Length > 0 ? nameParts[0] : "";
+            string lastName = nameParts.Length > 1 ? nameParts[1] : "";
 
-            // Speciality validation - only letters and spaces
+            if (string.IsNullOrEmpty(firstName))
+            {
+                MessageBox.Show("Please provide at least a first name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
             if (string.IsNullOrEmpty(speciality) || !Regex.IsMatch(speciality, @"^[a-zA-Z\s]+$"))
             {
                 MessageBox.Show("Speciality must contain only letters and spaces.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
-            // Email validation
             if (string.IsNullOrEmpty(email) || !Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
             {
                 MessageBox.Show("Enter a valid email address.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
-            // Phone number validation - exactly 10 digits
             if (string.IsNullOrEmpty(phone) || !Regex.IsMatch(phone, @"^\d{10}$"))
             {
                 MessageBox.Show("Phone number must be exactly 10 digits.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
-            // All checks passed, create doctor object
             d = new Model.Doctor
             {
-                FullName = fullName,
+                FirstName = firstName,
+                LastName = lastName,
                 Speciality = speciality,
                 Email = email,
-                PhoneNo = phone,
-                UserID = 1 // Replace with actual logged-in UserID if needed
+                PhoneNumber = phone,
+                UserID = 1 // Example: set appropriate user ID
             };
+
+            if (selectedId != -1)
+                d.DoctorID = selectedId;
 
             return true;
         }
 
-        private void btnClear_Click(object sender, EventArgs e) => ClearFields();
-        private void btnBack_Click(object sender, EventArgs e) => this.Close();
-
+        // Updating and Deleting the information
         private void doctorGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -134,7 +142,6 @@ namespace CMS.View.Admin
                 }
                 else
                 {
-                    // Populate form fields for editing
                     txtDocID.Text = row.Cells["doctorid"].Value?.ToString();
                     txtFullName.Text = row.Cells["name"].Value?.ToString();
                     txtSpeciality.Text = row.Cells["docSpecialty"].Value?.ToString();
@@ -144,5 +151,57 @@ namespace CMS.View.Admin
                 }
             }
         }
+
+        // Attach event handlers to side navigation buttons
+        private void AttachNavButtonEvents()
+        {
+            btnDoctors.Click += BtnDoctor_Click;
+            btnPatients.Click += BtnPatients_Click;
+            btnAppointmentSchedule.Click += BtnAppointmentSchedule_Click;
+            btnGenerateReport.Click += BtnGenerateReport_Click;
+            btnLogout.Click += BtnLogout_Click;
+        }
+
+        // Already on Manage Doctor form- optionally refresh form
+        private void BtnDoctor_Click(object sender, EventArgs e)
+        {
+           // LoadDoctors();
+        }
+
+        // Navigate to Patient form
+        private void BtnPatients_Click(object sender, EventArgs e)
+        {
+            //Manage_Patient patientForm = new Manage_Patient();
+            //patientForm.Show();
+            //this.Hide();
+        }
+
+        // Navigate to Appointment Schedule Form
+        private void BtnAppointmentSchedule_Click(object sender, EventArgs e)
+        {
+            //adminbookappointment appointmentForm = new adminbookappointment();
+            //appointmentForm.Show();
+            //this.Hide();
+        }
+
+        // Navigate to Generate Reports
+        private void BtnGenerateReport_Click(object sender, EventArgs e)
+        {
+            //Reportadmin reportForm = new Reportadmin();
+            //reportForm.Show();
+            //this.Hide();
+        }
+
+        // Log out and go back to Login form
+        private void BtnLogout_Click(object sender, EventArgs e)
+        {
+             //LoginForm loginForm = new LoginForm();
+             //loginForm.Show();
+             //this.Close(); // Close current form
+        }
+
     }
 }
+
+    
+

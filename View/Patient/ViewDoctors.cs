@@ -22,6 +22,7 @@ namespace CMS.View.Patient
         {
             InitializeComponent();
             doctorController = new DoctorsController();
+
         }
 
         private void ViewDoctor_Load(object sender, EventArgs e)
@@ -48,6 +49,11 @@ namespace CMS.View.Patient
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvDoctors_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

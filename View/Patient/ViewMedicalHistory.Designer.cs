@@ -42,7 +42,7 @@
             // 
             txtPatientName.Location = new Point(214, 129);
             txtPatientName.Name = "txtPatientName";
-            txtPatientName.Size = new Size(200, 23);
+            txtPatientName.Size = new Size(200, 27);
             txtPatientName.TabIndex = 0;
             // 
             // label1
@@ -52,7 +52,7 @@
             label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.Location = new Point(214, 97);
             label1.Name = "label1";
-            label1.Size = new Size(143, 17);
+            label1.Size = new Size(190, 23);
             label1.TabIndex = 1;
             label1.Text = "Enter Patient Full Name";
             // 
@@ -77,38 +77,50 @@
             dgvHistory.Location = new Point(214, 209);
             dgvHistory.Name = "dgvHistory";
             dgvHistory.ReadOnly = true;
+            dgvHistory.RowHeadersWidth = 51;
             dgvHistory.Size = new Size(543, 84);
             dgvHistory.TabIndex = 3;
+            dgvHistory.CellContentClick += dgvHistory_CellContentClick;
             // 
             // colVisitDate
             // 
             colVisitDate.HeaderText = "Visit Date";
+            colVisitDate.MinimumWidth = 6;
             colVisitDate.Name = "colVisitDate";
             colVisitDate.ReadOnly = true;
+            colVisitDate.Width = 125;
             // 
             // colDiagnosis
             // 
             colDiagnosis.HeaderText = "Diagnosis";
+            colDiagnosis.MinimumWidth = 6;
             colDiagnosis.Name = "colDiagnosis";
             colDiagnosis.ReadOnly = true;
+            colDiagnosis.Width = 125;
             // 
             // colPrescription
             // 
             colPrescription.HeaderText = "Prescription";
+            colPrescription.MinimumWidth = 6;
             colPrescription.Name = "colPrescription";
             colPrescription.ReadOnly = true;
+            colPrescription.Width = 125;
             // 
             // colNotes
             // 
             colNotes.HeaderText = "Notes";
+            colNotes.MinimumWidth = 6;
             colNotes.Name = "colNotes";
             colNotes.ReadOnly = true;
+            colNotes.Width = 125;
             // 
             // colDoctorName
             // 
             colDoctorName.HeaderText = "Doctor";
+            colDoctorName.MinimumWidth = 6;
             colDoctorName.Name = "colDoctorName";
             colDoctorName.ReadOnly = true;
+            colDoctorName.Width = 125;
             // 
             // label2
             // 
@@ -118,7 +130,7 @@
             label2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(214, 9);
             label2.Name = "label2";
-            label2.Size = new Size(224, 32);
+            label2.Size = new Size(294, 39);
             label2.TabIndex = 4;
             label2.Text = "View Medical History";
             // 
@@ -148,7 +160,7 @@
             label3.Location = new Point(57, 52);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(109, 19);
+            label3.Size = new Size(130, 23);
             label3.TabIndex = 22;
             label3.Text = "Patient ID-2346";
             // 
@@ -171,7 +183,7 @@
             label4.Location = new Point(34, 29);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(113, 27);
+            label4.Size = new Size(139, 33);
             label4.TabIndex = 21;
             label4.Text = "John Doe";
             // 

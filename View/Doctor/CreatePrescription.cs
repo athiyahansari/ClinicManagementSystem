@@ -14,6 +14,7 @@ namespace CMS.View.Doctor
         public CreatePrescription()
         {
             InitializeComponent();
+            AttachNavButtonEvents(); // Attach button click events at runtime
         }
 
         private void CreatePrescription_Load(object sender, EventArgs e)
@@ -39,8 +40,48 @@ namespace CMS.View.Doctor
             }
         }
 
+        // Validation Checking
+        private bool ValidateForm()
+        {
+            if (string.IsNullOrWhiteSpace(txtPatientID.Text) || !int.TryParse(txtPatientID.Text, out _))
+            {
+                MessageBox.Show("Please enter a valid numeric Patient ID.");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtPatientName.Text))
+            {
+                MessageBox.Show("Patient Name cannot be empty.");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtDiagnosis.Text))
+            {
+                MessageBox.Show("Diagnosis cannot be empty.");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtMedicines.Text))
+            {
+                MessageBox.Show("Medicines field cannot be empty.");
+                return false;
+            }
+
+            if (dtpDate.Value.Date > DateTime.Today)
+            {
+                MessageBox.Show("Prescription date cannot be in the future.");
+                return false;
+            }
+
+            return true;
+        }
+
+        // Add Button
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (!ValidateForm())
+                return;
+
             var patientId = int.Parse(txtPatientID.Text);
 
             if (!PrescriptionsController.PatientExists(patientId))
@@ -64,6 +105,7 @@ namespace CMS.View.Doctor
             ClearForm();
         }
 
+        // Update Button
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (currentPrescriptionID == -1)
@@ -71,6 +113,9 @@ namespace CMS.View.Doctor
                 MessageBox.Show("Please select a prescription to update.");
                 return;
             }
+
+            if (!ValidateForm())
+                return;
 
             try
             {
@@ -96,10 +141,6 @@ namespace CMS.View.Doctor
             }
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            ClearForm();
-        }
 
         private void ClearForm()
         {
@@ -118,14 +159,12 @@ namespace CMS.View.Doctor
             {
                 DataGridViewRow row = dgvPrescriptions.Rows[e.RowIndex];
 
-                // Extract data from row
                 int patientId = int.Parse(row.Cells["ptID"].Value.ToString());
                 string patientName = row.Cells["PtName"].Value.ToString();
                 string diagnosis = row.Cells["disease"].Value.ToString();
                 string medicines = row.Cells["medicine"].Value.ToString();
                 DateTime date = Convert.ToDateTime(row.Cells["date"].Value);
 
-                // Fetch the prescription ID
                 int prescriptionId = PrescriptionsController.GetPrescriptionID(doctorID, patientId, date);
                 if (prescriptionId == -1)
                 {
@@ -133,7 +172,6 @@ namespace CMS.View.Doctor
                     return;
                 }
 
-                // Open dialog
                 using (var updateForm = new UpdatePrescription(
                     prescriptionId,
                     patientId,
@@ -152,10 +190,54 @@ namespace CMS.View.Doctor
             }
         }
 
-
         private void txtDiagnosis_TextChanged(object sender, EventArgs e)
         {
-            // Optional logic can go here if needed
+            // Optional logic
+      
         }
+
+        // Attach event handlers to side navigation buttons
+        private void AttachNavButtonEvents()
+        {
+            btnMyAppointments.Click += BtnAppointments_Click;
+            btnPrescriptions.Click += BtnPrescriptions_Click;
+            btnMyProfile.Click += BtnMyProfile_Click;
+            btnLogout.Click += BtnLogout_Click;
+        }
+
+        // Navigate to Appointments form
+        private void BtnAppointments_Click(object sender, EventArgs e)
+        {
+             //AppointmentSchedule appointmentForm = new AppointmentSchedule();   
+             //appointmentForm.Show();
+             //this.Hide(); // Hide current form
+        }
+
+        // Already on Prescription create - optionally refresh prescriptions
+        private void BtnPrescriptions_Click(object sender, EventArgs e)
+        {
+            //LoadPrescriptionData(); // Refresh data
+        }
+
+        // Navigate to My Profile form
+        private void BtnMyProfile_Click(object sender, EventArgs e)
+        {
+             //DocViewProfile profileForm = new DocViewProfile();
+             //profileForm.Show();
+             //this.Hide();
+        }
+
+        // Log out and go back to Login form
+        private void BtnLogout_Click(object sender, EventArgs e)
+        {
+             //LoginForm loginForm = new LoginForm();
+             //loginForm.Show();
+             //this.Close(); // Close current form
+        }
+
     }
 }
+
+   
+
+

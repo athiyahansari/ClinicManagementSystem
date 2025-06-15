@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
+
 namespace CMS
 {
     public partial class Bookappointmentform : Form
@@ -215,7 +216,7 @@ namespace CMS
 
         private void doctorbtn_Click(object sender, EventArgs e)
         {
-            ViewDoctor viewDoctorForm = new ViewDoctor();
+            ViewDoctors viewDoctorForm = new ViewDoctors();
             viewDoctorForm.Show();
 
             // Hide the current form
@@ -246,9 +247,9 @@ namespace CMS
             //PatientDashboard dashboardForm = new PatientDashboard();
             //dashboardForm.Show();
             //this.Hide();
-            //PatientDashboard dashboardForm = new PatientDashboard(); // Pass the patient
-            //dashboardForm.Show();
-            //this.Hide(); // Hide the current form
+            PatientDashboard dashboardForm = new PatientDashboard(); // Pass the patient
+            dashboardForm.Show();
+            this.Hide(); // Hide the current form
 
         }
 

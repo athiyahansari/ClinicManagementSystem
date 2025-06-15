@@ -15,7 +15,7 @@ namespace CMS.View.Patient
     public partial class PatientDashboard : Form
     {
         private readonly int patientId;
-        private readonly NotificationController notificationController; 
+        private readonly NotificationController notificationController;
 
         public PatientDashboard(int patientId)
         {
@@ -25,6 +25,10 @@ namespace CMS.View.Patient
 
             // Form Load Event
             this.Load += PatientDashboard_Load;
+        }
+
+        public PatientDashboard()
+        {
         }
 
         private void PatientDashboard_Load(object sender, EventArgs e)
@@ -86,6 +90,11 @@ namespace CMS.View.Patient
                 lblNotification.Text = "Error loading notifications.";
                 lblNotification.Visible = true;
             }
+        }
+
+        private void dash_newdoctors_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
         }
     }
 }

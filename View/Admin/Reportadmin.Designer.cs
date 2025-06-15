@@ -28,13 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             flowLayoutPanel1 = new FlowLayoutPanel();
             panel1 = new Panel();
-            label3 = new Label();
-            label2 = new Label();
-            navprofilebtn = new Button();
             logoutbtn = new Button();
             navappointmentbtn = new Button();
             navpatientbtn = new Button();
@@ -64,6 +61,7 @@
             appointmenttimecolumnshedule = new DataGridViewTextBoxColumn();
             statuscolumnshedule = new DataGridViewTextBoxColumn();
             label1 = new Label();
+            button1 = new Button();
             flowLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -87,9 +85,7 @@
             // panel1
             // 
             panel1.BackColor = Color.CornflowerBlue;
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(navprofilebtn);
+            panel1.Controls.Add(button1);
             panel1.Controls.Add(logoutbtn);
             panel1.Controls.Add(navappointmentbtn);
             panel1.Controls.Add(navpatientbtn);
@@ -100,46 +96,10 @@
             panel1.Size = new Size(166, 653);
             panel1.TabIndex = 0;
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Yu Gothic UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = SystemColors.ButtonHighlight;
-            label3.Location = new Point(44, 65);
-            label3.Margin = new Padding(2, 0, 2, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(106, 19);
-            label3.TabIndex = 13;
-            label3.Text = "Admin ID-2346";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Kristen ITC", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = SystemColors.ButtonFace;
-            label2.Location = new Point(21, 41);
-            label2.Margin = new Padding(2, 0, 2, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(113, 27);
-            label2.TabIndex = 12;
-            label2.Text = "John Doe";
-            // 
-            // navprofilebtn
-            // 
-            navprofilebtn.BackColor = Color.LightSteelBlue;
-            navprofilebtn.Location = new Point(21, 388);
-            navprofilebtn.Margin = new Padding(2);
-            navprofilebtn.Name = "navprofilebtn";
-            navprofilebtn.Size = new Size(113, 28);
-            navprofilebtn.TabIndex = 11;
-            navprofilebtn.Text = "MyProfile";
-            navprofilebtn.UseVisualStyleBackColor = false;
-            navprofilebtn.Click += navprofilebtn_Click;
-            // 
             // logoutbtn
             // 
             logoutbtn.BackColor = Color.LightSteelBlue;
-            logoutbtn.Location = new Point(21, 417);
+            logoutbtn.Location = new Point(24, 387);
             logoutbtn.Margin = new Padding(2);
             logoutbtn.Name = "logoutbtn";
             logoutbtn.Size = new Size(113, 28);
@@ -151,7 +111,7 @@
             // navappointmentbtn
             // 
             navappointmentbtn.BackColor = Color.LightSteelBlue;
-            navappointmentbtn.Location = new Point(21, 168);
+            navappointmentbtn.Location = new Point(24, 138);
             navappointmentbtn.Margin = new Padding(2);
             navappointmentbtn.Name = "navappointmentbtn";
             navappointmentbtn.Size = new Size(113, 28);
@@ -163,18 +123,19 @@
             // navpatientbtn
             // 
             navpatientbtn.BackColor = Color.LightSteelBlue;
-            navpatientbtn.Location = new Point(21, 137);
+            navpatientbtn.Location = new Point(24, 107);
             navpatientbtn.Margin = new Padding(2);
             navpatientbtn.Name = "navpatientbtn";
             navpatientbtn.Size = new Size(113, 28);
             navpatientbtn.TabIndex = 8;
             navpatientbtn.Text = "Patients";
             navpatientbtn.UseVisualStyleBackColor = false;
+            navpatientbtn.Click += navpatientbtn_Click;
             // 
             // navdocbtn
             // 
             navdocbtn.BackColor = Color.LightSteelBlue;
-            navdocbtn.Location = new Point(21, 107);
+            navdocbtn.Location = new Point(24, 77);
             navdocbtn.Margin = new Padding(2);
             navdocbtn.Name = "navdocbtn";
             navdocbtn.Size = new Size(113, 28);
@@ -259,14 +220,14 @@
             // dataGridViewpatienttrend
             // 
             dataGridViewpatienttrend.BackgroundColor = SystemColors.ButtonHighlight;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewpatienttrend.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = SystemColors.Control;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dataGridViewpatienttrend.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewpatienttrend.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewpatienttrend.Columns.AddRange(new DataGridViewColumn[] { PatientNameColumn, Totalappointmentscolumn, Lastappointmentcolumn });
             dataGridViewpatienttrend.Location = new Point(56, 429);
@@ -372,14 +333,14 @@
             // dataGriddoctorshedule
             // 
             dataGriddoctorshedule.BackgroundColor = SystemColors.ButtonHighlight;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGriddoctorshedule.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = SystemColors.Control;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dataGriddoctorshedule.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dataGriddoctorshedule.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGriddoctorshedule.Columns.AddRange(new DataGridViewColumn[] { patientcolumnshedule, appointmentdatecolumnshedule, appointmenttimecolumnshedule, statuscolumnshedule });
             dataGriddoctorshedule.Location = new Point(56, 149);
@@ -422,6 +383,17 @@
             label1.TabIndex = 0;
             label1.Text = "Generate reports";
             // 
+            // button1
+            // 
+            button1.BackColor = Color.LightSteelBlue;
+            button1.Location = new Point(24, 170);
+            button1.Margin = new Padding(2);
+            button1.Name = "button1";
+            button1.Size = new Size(113, 28);
+            button1.TabIndex = 11;
+            button1.Text = "Generate Reports";
+            button1.UseVisualStyleBackColor = false;
+            // 
             // Reportadmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -433,7 +405,6 @@
             Load += Reportadmin_Load;
             flowLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewpatienttrend).EndInit();
@@ -446,9 +417,6 @@
 
         private FlowLayoutPanel flowLayoutPanel1;
         private Panel panel1;
-        private Label label3;
-        private Label label2;
-        private Button navprofilebtn;
         private Button logoutbtn;
         private Button navappointmentbtn;
         private Button navpatientbtn;
@@ -478,5 +446,6 @@
         private DataGridViewTextBoxColumn PatientNameColumn;
         private DataGridViewTextBoxColumn Totalappointmentscolumn;
         private DataGridViewTextBoxColumn Lastappointmentcolumn;
+        private Button button1;
     }
 }
