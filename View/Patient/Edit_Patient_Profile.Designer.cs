@@ -46,11 +46,13 @@
             label7 = new Label();
             cmbGender = new ComboBox();
             label8 = new Label();
-            txtDateOfBirth = new DateTimePicker();
+            dtpDateOfBirth = new DateTimePicker();
             DateOfTime = new Label();
             PhoneNumber = new Label();
             txtPhoneNumber = new TextBox();
             btnMyProfiles = new Button();
+            txtPatientId = new TextBox();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -245,13 +247,13 @@
             label8.TabIndex = 25;
             label8.Text = "Gender :";
             // 
-            // txtDateOfBirth
+            // dtpDateOfBirth
             // 
-            txtDateOfBirth.Location = new Point(541, 239);
-            txtDateOfBirth.Name = "txtDateOfBirth";
-            txtDateOfBirth.Size = new Size(250, 27);
-            txtDateOfBirth.TabIndex = 26;
-            txtDateOfBirth.ValueChanged += txtDateOfBirth_ValueChanged;
+            dtpDateOfBirth.Location = new Point(541, 239);
+            dtpDateOfBirth.Name = "dtpDateOfBirth";
+            dtpDateOfBirth.Size = new Size(250, 27);
+            dtpDateOfBirth.TabIndex = 26;
+            dtpDateOfBirth.ValueChanged += txtDateOfBirth_ValueChanged;
             // 
             // DateOfTime
             // 
@@ -293,16 +295,36 @@
             btnMyProfiles.UseVisualStyleBackColor = false;
             btnMyProfiles.Click += button4_Click;
             // 
+            // txtPatientId
+            // 
+            txtPatientId.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtPatientId.Location = new Point(541, 144);
+            txtPatientId.Name = "txtPatientId";
+            txtPatientId.Size = new Size(240, 30);
+            txtPatientId.TabIndex = 30;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(401, 148);
+            label3.Name = "label3";
+            label3.Size = new Size(95, 22);
+            label3.TabIndex = 31;
+            label3.Text = "PatientID :";
+            // 
             // Edit_Patient_Profile
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(910, 560);
+            Controls.Add(label3);
+            Controls.Add(txtPatientId);
             Controls.Add(txtPhoneNumber);
             Controls.Add(PhoneNumber);
             Controls.Add(DateOfTime);
-            Controls.Add(txtDateOfBirth);
+            Controls.Add(dtpDateOfBirth);
             Controls.Add(label8);
             Controls.Add(cmbGender);
             Controls.Add(label7);
@@ -351,10 +373,12 @@
         private Label label7;
         private ComboBox cmbGender;
         private Label label8;
-        private DateTimePicker txtDateOfBirth;
+        private DateTimePicker dtpDateOfBirth;
         private Label DateOfTime;
         private Label PhoneNumber;
         private TextBox txtPhoneNumber;
+        private TextBox txtPatientId;
+        private Label label3;
         //private Button btnMyProfiles;
     }
 }
