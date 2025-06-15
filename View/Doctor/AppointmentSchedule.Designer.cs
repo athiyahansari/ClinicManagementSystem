@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             sidenav = new Panel();
-            label3 = new Label();
             navprofile = new Button();
             label2 = new Label();
             logout = new Button();
@@ -52,7 +51,6 @@
             // sidenav
             // 
             sidenav.BackColor = Color.CornflowerBlue;
-            sidenav.Controls.Add(label3);
             sidenav.Controls.Add(navprofile);
             sidenav.Controls.Add(label2);
             sidenav.Controls.Add(logout);
@@ -64,17 +62,6 @@
             sidenav.Size = new Size(274, 763);
             sidenav.TabIndex = 2;
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Yu Gothic UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = SystemColors.ButtonHighlight;
-            label3.Location = new Point(79, 82);
-            label3.Name = "label3";
-            label3.Size = new Size(152, 28);
-            label3.TabIndex = 24;
-            label3.Text = "Doctor ID-2346";
-            // 
             // navprofile
             // 
             navprofile.BackColor = Color.LightSteelBlue;
@@ -85,17 +72,18 @@
             navprofile.TabIndex = 4;
             navprofile.Text = "MyProfile";
             navprofile.UseVisualStyleBackColor = false;
+            navprofile.Click += navprofile_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Kristen ITC", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = SystemColors.ButtonFace;
-            label2.Location = new Point(46, 43);
+            label2.ForeColor = Color.MidnightBlue;
+            label2.Location = new Point(16, 45);
             label2.Name = "label2";
-            label2.Size = new Size(160, 39);
+            label2.Size = new Size(246, 39);
             label2.TabIndex = 23;
-            label2.Text = "John Doe";
+            label2.Text = "MedLine Clinic";
             // 
             // logout
             // 
@@ -107,12 +95,13 @@
             logout.TabIndex = 3;
             logout.Text = "LogOut";
             logout.UseVisualStyleBackColor = false;
+            logout.Click += logout_Click;
             // 
             // navappointment
             // 
             navappointment.BackColor = Color.LightSteelBlue;
             navappointment.Font = new Font("Segoe UI", 9F);
-            navappointment.Location = new Point(46, 187);
+            navappointment.Location = new Point(46, 176);
             navappointment.Name = "navappointment";
             navappointment.Size = new Size(177, 51);
             navappointment.TabIndex = 1;
@@ -124,12 +113,13 @@
             // 
             navpatient.BackColor = Color.LightSteelBlue;
             navpatient.Font = new Font("Segoe UI", 9F);
-            navpatient.Location = new Point(46, 130);
+            navpatient.Location = new Point(46, 230);
             navpatient.Name = "navpatient";
             navpatient.Size = new Size(177, 51);
             navpatient.TabIndex = 0;
-            navpatient.Text = "My Patients";
+            navpatient.Text = "Prescriptions";
             navpatient.UseVisualStyleBackColor = false;
+            navpatient.Click += navpatient_Click;
             // 
             // dataGridView1
             // 
@@ -234,7 +224,6 @@
         #endregion
 
         private Panel sidenav;
-        private Label label3;
         private Button navprofile;
         private Label label2;
         private Button logout;
