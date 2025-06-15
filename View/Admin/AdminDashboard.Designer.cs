@@ -31,14 +31,13 @@
             sidenav = new Panel();
             label2 = new Label();
             panel1 = new Panel();
-            navprofile = new Button();
             logout = new Button();
             navappointment = new Button();
-            navpatient = new Button();
+            navreports = new Button();
             navdoc = new Button();
             welcome_msg = new Label();
             dash_appointmenttrends = new LinkLabel();
-            dash_upcomingappointments = new LinkLabel();
+            dash_appointments = new LinkLabel();
             dash_newdoctors = new LinkLabel();
             pictureBox4 = new PictureBox();
             pictureBox2 = new PictureBox();
@@ -57,10 +56,9 @@
             sidenav.BackColor = Color.CornflowerBlue;
             sidenav.Controls.Add(label2);
             sidenav.Controls.Add(panel1);
-            sidenav.Controls.Add(navprofile);
             sidenav.Controls.Add(logout);
             sidenav.Controls.Add(navappointment);
-            sidenav.Controls.Add(navpatient);
+            sidenav.Controls.Add(navreports);
             sidenav.Controls.Add(navdoc);
             sidenav.Dock = DockStyle.Left;
             sidenav.Location = new Point(0, 0);
@@ -86,16 +84,6 @@
             panel1.Size = new Size(1035, 719);
             panel1.TabIndex = 7;
             // 
-            // navprofile
-            // 
-            navprofile.BackColor = Color.LightSteelBlue;
-            navprofile.Location = new Point(29, 554);
-            navprofile.Name = "navprofile";
-            navprofile.Size = new Size(214, 42);
-            navprofile.TabIndex = 4;
-            navprofile.Text = "MyProfile";
-            navprofile.UseVisualStyleBackColor = false;
-            // 
             // logout
             // 
             logout.BackColor = Color.LightSteelBlue;
@@ -105,6 +93,7 @@
             logout.TabIndex = 3;
             logout.Text = "LogOut";
             logout.UseVisualStyleBackColor = false;
+            logout.Click += logout_Click;
             // 
             // navappointment
             // 
@@ -116,15 +105,16 @@
             navappointment.Text = "Appointment Schedules";
             navappointment.UseVisualStyleBackColor = false;
             // 
-            // navpatient
+            // navreports
             // 
-            navpatient.BackColor = Color.LightSteelBlue;
-            navpatient.Location = new Point(29, 210);
-            navpatient.Name = "navpatient";
-            navpatient.Size = new Size(214, 46);
-            navpatient.TabIndex = 1;
-            navpatient.Text = "Patients";
-            navpatient.UseVisualStyleBackColor = false;
+            navreports.BackColor = Color.LightSteelBlue;
+            navreports.Location = new Point(29, 210);
+            navreports.Name = "navreports";
+            navreports.Size = new Size(214, 46);
+            navreports.TabIndex = 1;
+            navreports.Text = "Generate Reports";
+            navreports.UseVisualStyleBackColor = false;
+            navreports.Click += navreports_Click;
             // 
             // navdoc
             // 
@@ -135,13 +125,14 @@
             navdoc.TabIndex = 0;
             navdoc.Text = "Doctors";
             navdoc.UseVisualStyleBackColor = false;
+            navdoc.Click += navdoc_Click;
             // 
             // welcome_msg
             // 
             welcome_msg.AutoSize = true;
             welcome_msg.BackColor = Color.Transparent;
             welcome_msg.Font = new Font("Lucida Bright", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            welcome_msg.Location = new Point(36, 59);
+            welcome_msg.Location = new Point(51, 63);
             welcome_msg.Name = "welcome_msg";
             welcome_msg.Size = new Size(223, 31);
             welcome_msg.TabIndex = 4;
@@ -161,21 +152,23 @@
             dash_appointmenttrends.TabIndex = 28;
             dash_appointmenttrends.TabStop = true;
             dash_appointmenttrends.Text = "Appointment Trends";
+            dash_appointmenttrends.LinkClicked += dash_appointmenttrends_LinkClicked;
             // 
-            // dash_upcomingappointments
+            // dash_appointments
             // 
-            dash_upcomingappointments.ActiveLinkColor = SystemColors.ActiveCaptionText;
-            dash_upcomingappointments.AutoSize = true;
-            dash_upcomingappointments.BackColor = Color.Transparent;
-            dash_upcomingappointments.Font = new Font("Yu Gothic UI", 10F);
-            dash_upcomingappointments.LinkBehavior = LinkBehavior.NeverUnderline;
-            dash_upcomingappointments.LinkColor = Color.Black;
-            dash_upcomingappointments.Location = new Point(810, 389);
-            dash_upcomingappointments.Name = "dash_upcomingappointments";
-            dash_upcomingappointments.Size = new Size(234, 28);
-            dash_upcomingappointments.TabIndex = 27;
-            dash_upcomingappointments.TabStop = true;
-            dash_upcomingappointments.Text = "Upcoming Appointments";
+            dash_appointments.ActiveLinkColor = SystemColors.ActiveCaptionText;
+            dash_appointments.AutoSize = true;
+            dash_appointments.BackColor = Color.Transparent;
+            dash_appointments.Font = new Font("Yu Gothic UI", 10F);
+            dash_appointments.LinkBehavior = LinkBehavior.NeverUnderline;
+            dash_appointments.LinkColor = Color.Black;
+            dash_appointments.Location = new Point(810, 389);
+            dash_appointments.Name = "dash_appointments";
+            dash_appointments.Size = new Size(221, 28);
+            dash_appointments.TabIndex = 27;
+            dash_appointments.TabStop = true;
+            dash_appointments.Text = "Appointment Schedules";
+            dash_appointments.LinkClicked += dash_appointments_LinkClicked;
             // 
             // dash_newdoctors
             // 
@@ -191,6 +184,7 @@
             dash_newdoctors.TabIndex = 25;
             dash_newdoctors.TabStop = true;
             dash_newdoctors.Text = "Register Doctors";
+            dash_newdoctors.LinkClicked += dash_newdoctors_LinkClicked;
             // 
             // pictureBox4
             // 
@@ -239,7 +233,7 @@
             panel3.BackgroundImage = Properties.Resources.dashboard_bg;
             panel3.BackgroundImageLayout = ImageLayout.Stretch;
             panel3.Controls.Add(dash_appointmenttrends);
-            panel3.Controls.Add(dash_upcomingappointments);
+            panel3.Controls.Add(dash_appointments);
             panel3.Controls.Add(dash_newdoctors);
             panel3.Controls.Add(pictureBox4);
             panel3.Controls.Add(pictureBox2);
@@ -273,14 +267,13 @@
         #endregion
 
         private Panel sidenav;
-        private Button navprofile;
         private Button logout;
         private Button navappointment;
-        private Button navpatient;
+        private Button navreports;
         private Button navdoc;
         private Label welcome_msg;
         private LinkLabel dash_appointmenttrends;
-        private LinkLabel dash_upcomingappointments;
+        private LinkLabel dash_appointments;
         private LinkLabel dash_newdoctors;
         private PictureBox pictureBox4;
         private PictureBox pictureBox2;

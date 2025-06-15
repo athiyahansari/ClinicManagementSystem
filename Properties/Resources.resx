@@ -124,8 +124,11 @@
   <data name="doctor-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\doctor-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="medical-history-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\medical-history-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="dashboard_bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\dashboard_bg.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dashboard_bg2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\dashboard_bg.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="patient-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\patient-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,8 +139,8 @@
   <data name="appointmenttrends-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\appointmenttrends-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="dashboard_bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\dashboard_bg.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="medical-history-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\medical-history-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dashboard_bg1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\dashboard_bg.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -145,7 +148,7 @@
   <data name="upcomingappointments-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\upcomingappointments-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="dashboard_bg2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\dashboard_bg.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="prescription-icon2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\prescription-icon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
