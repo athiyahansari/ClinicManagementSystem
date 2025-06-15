@@ -130,7 +130,6 @@
             // welcome_msg
             // 
             welcome_msg.AutoSize = true;
-            welcome_msg.BackColor = Color.Transparent;
             welcome_msg.Font = new Font("Lucida Bright", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             welcome_msg.Location = new Point(51, 63);
             welcome_msg.Name = "welcome_msg";
@@ -142,7 +141,6 @@
             // 
             dash_appointmenttrends.ActiveLinkColor = SystemColors.ActiveCaptionText;
             dash_appointmenttrends.AutoSize = true;
-            dash_appointmenttrends.BackColor = Color.Transparent;
             dash_appointmenttrends.Font = new Font("Yu Gothic UI", 10F);
             dash_appointmenttrends.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_appointmenttrends.LinkColor = Color.Black;
@@ -174,7 +172,6 @@
             // 
             dash_newdoctors.ActiveLinkColor = SystemColors.ActiveCaptionText;
             dash_newdoctors.AutoSize = true;
-            dash_newdoctors.BackColor = Color.Transparent;
             dash_newdoctors.Font = new Font("Yu Gothic UI", 10F);
             dash_newdoctors.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_newdoctors.LinkColor = Color.Black;
@@ -262,6 +259,7 @@
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

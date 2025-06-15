@@ -52,7 +52,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // sidenav
@@ -71,6 +70,7 @@
             sidenav.Name = "sidenav";
             sidenav.Size = new Size(274, 764);
             sidenav.TabIndex = 0;
+            //sidenav.Paint += sidenav_Paint;
             // 
             // label1
             // 
@@ -159,7 +159,6 @@
             // welcome_msg
             // 
             welcome_msg.AutoSize = true;
-            welcome_msg.BackColor = Color.Transparent;
             welcome_msg.Font = new Font("Lucida Bright", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             welcome_msg.Location = new Point(58, 46);
             welcome_msg.Margin = new Padding(2, 0, 2, 0);
@@ -172,7 +171,6 @@
             // 
             dash_medicalhistory.ActiveLinkColor = SystemColors.ActiveCaptionText;
             dash_medicalhistory.AutoSize = true;
-            dash_medicalhistory.BackColor = Color.Transparent;
             dash_medicalhistory.Font = new Font("Yu Gothic UI", 10F);
             dash_medicalhistory.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_medicalhistory.LinkColor = Color.Black;
@@ -189,7 +187,6 @@
             // 
             dash_upcomingappointments.ActiveLinkColor = SystemColors.ActiveCaptionText;
             dash_upcomingappointments.AutoSize = true;
-            dash_upcomingappointments.BackColor = Color.Transparent;
             dash_upcomingappointments.Font = new Font("Yu Gothic UI", 10F);
             dash_upcomingappointments.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_upcomingappointments.LinkColor = Color.Black;
@@ -206,7 +203,6 @@
             // 
             dash_prescriptions.ActiveLinkColor = SystemColors.ActiveCaptionText;
             dash_prescriptions.AutoSize = true;
-            dash_prescriptions.BackColor = Color.Transparent;
             dash_prescriptions.Font = new Font("Yu Gothic UI", 10F);
             dash_prescriptions.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_prescriptions.LinkColor = Color.Black;
@@ -223,7 +219,6 @@
             // 
             dash_newdoctors.ActiveLinkColor = SystemColors.ActiveCaptionText;
             dash_newdoctors.AutoSize = true;
-            dash_newdoctors.BackColor = Color.Transparent;
             dash_newdoctors.Font = new Font("Yu Gothic UI", 10F);
             dash_newdoctors.LinkBehavior = LinkBehavior.NeverUnderline;
             dash_newdoctors.LinkColor = Color.Black;
@@ -285,7 +280,18 @@
             pictureBox1.TabIndex = 13;
             pictureBox1.TabStop = false;
             // 
-            // panel1
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Yu Gothic UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = SystemColors.ButtonHighlight;
+            label3.Location = new Point(82, 87);
+            label3.Name = "label3";
+            label3.Size = new Size(155, 28);
+            label3.TabIndex = 22;
+            label3.Text = "Patient ID-2346";
+            // 
+            // label2
             // 
             panel1.BackgroundImage = Properties.Resources.dashboard_bg;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
@@ -327,15 +333,15 @@
             Margin = new Padding(2);
             Name = "PatientDashboard";
             Text = "PatientDashboard";
+            //Load += PatientDashboard_Load_1;
             sidenav.ResumeLayout(false);
             sidenav.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
