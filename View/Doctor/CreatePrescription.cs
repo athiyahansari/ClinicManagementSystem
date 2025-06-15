@@ -208,31 +208,31 @@ namespace CMS.View.Doctor
         // Navigate to Appointments form
         private void BtnAppointments_Click(object sender, EventArgs e)
         {
-             //AppointmentSchedule appointmentForm = new AppointmentSchedule();   
-             //appointmentForm.Show();
-             //this.Hide(); // Hide current form
+             AppointmentSchedule appointmentForm = new AppointmentSchedule();   
+             appointmentForm.Show();
+             this.Hide(); // Hide current form
         }
 
         // Already on Prescription create - optionally refresh prescriptions
         private void BtnPrescriptions_Click(object sender, EventArgs e)
         {
-            //LoadPrescriptionData(); // Refresh data
+            LoadPrescriptionData(); // Refresh data
         }
 
         // Navigate to My Profile form
         private void BtnMyProfile_Click(object sender, EventArgs e)
         {
-             //DocViewProfile profileForm = new DocViewProfile();
-             //profileForm.Show();
-             //this.Hide();
+            DocViewProfile profileForm = new DocViewProfile();
+            profileForm.Show();
+            this.Hide();
         }
 
         // Log out and go back to Login form
         private void BtnLogout_Click(object sender, EventArgs e)
         {
-             //LoginForm loginForm = new LoginForm();
-             //loginForm.Show();
-             //this.Close(); // Close current form
+             LoginForm loginForm = new LoginForm();
+             loginForm.Show();
+             this.Close(); // Close current form
         }
 
     }

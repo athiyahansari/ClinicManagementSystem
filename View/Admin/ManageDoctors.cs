@@ -165,39 +165,39 @@ namespace CMS.View.Admin
         // Already on Manage Doctor form- optionally refresh form
         private void BtnDoctor_Click(object sender, EventArgs e)
         {
-           // LoadDoctors();
+            LoadDoctors();
         }
 
         // Navigate to Patient form
         private void BtnPatients_Click(object sender, EventArgs e)
         {
-            //Manage_Patient patientForm = new Manage_Patient();
-            //patientForm.Show();
-            //this.Hide();
+            Manage_Patient patientForm = new Manage_Patient();
+            patientForm.Show();
+            this.Hide();
         }
 
         // Navigate to Appointment Schedule Form
         private void BtnAppointmentSchedule_Click(object sender, EventArgs e)
         {
-            //adminbookappointment appointmentForm = new adminbookappointment();
-            //appointmentForm.Show();
-            //this.Hide();
+            adminbookappointment appointmentForm = new adminbookappointment();
+            appointmentForm.Show();
+            this.Hide();
         }
 
         // Navigate to Generate Reports
         private void BtnGenerateReport_Click(object sender, EventArgs e)
         {
-            //Reportadmin reportForm = new Reportadmin();
-            //reportForm.Show();
-            //this.Hide();
+            Reportadmin reportForm = new Reportadmin();
+            reportForm.Show();
+            this.Hide();
         }
 
         // Log out and go back to Login form
         private void BtnLogout_Click(object sender, EventArgs e)
         {
-             //LoginForm loginForm = new LoginForm();
-             //loginForm.Show();
-             //this.Close(); // Close current form
+             LoginForm loginForm = new LoginForm();
+             loginForm.Show();
+             this.Close(); // Close current form
         }
 
     }
