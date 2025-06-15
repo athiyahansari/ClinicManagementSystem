@@ -28,13 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
+<<<<<<< HEAD
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+=======
+>>>>>>> 63bf6b3de4e7ec695561107f4179636a221018c6
             flowLayoutPanelmain = new FlowLayoutPanel();
             panel1 = new Panel();
             profilebtn = new Button();
             appointmentbtn = new Button();
-            lablid = new Label();
-            lablpatient1 = new Label();
             panel5 = new Panel();
+<<<<<<< HEAD
+            panel2 = new Panel();
+            timepickform = new ComboBox();
+            dateTimePickerform = new DateTimePicker();
+            bookappobtn = new Button();
+            notestxt = new TextBox();
+            label6 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            combodoctor = new ComboBox();
+            label3 = new Label();
+            label1 = new Label();
+            appointmentdatagrid = new DataGridView();
+            DoctorNameColumn = new DataGridViewTextBoxColumn();
+            TimeColumn = new DataGridViewTextBoxColumn();
+            DateColumn = new DataGridViewTextBoxColumn();
+            ConsultaionColumn = new DataGridViewTextBoxColumn();
+            StatusColumn = new DataGridViewTextBoxColumn();
+            ResheduleColumn = new DataGridViewButtonColumn();
+            CancelColumn = new DataGridViewButtonColumn();
+=======
             totalappopanel = new Panel();
             label15 = new Label();
             label16 = new Label();
@@ -61,6 +84,7 @@
             datelbl1 = new Label();
             label36 = new Label();
             newappointbtn = new Button();
+>>>>>>> 63bf6b3de4e7ec695561107f4179636a221018c6
             managelbl = new Label();
             appoinmentslbl = new Label();
             flowLayoutPanelmain.SuspendLayout();
@@ -90,13 +114,73 @@
             panel1.BackColor = Color.SteelBlue;
             panel1.Controls.Add(profilebtn);
             panel1.Controls.Add(appointmentbtn);
-            panel1.Controls.Add(lablid);
-            panel1.Controls.Add(lablpatient1);
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(0);
             panel1.Name = "panel1";
             panel1.Size = new Size(135, 499);
             panel1.TabIndex = 2;
+<<<<<<< HEAD
+            // 
+            // logoutbtn
+            // 
+            logoutbtn.BackColor = Color.LightSteelBlue;
+            logoutbtn.Location = new Point(21, 361);
+            logoutbtn.Name = "logoutbtn";
+            logoutbtn.Size = new Size(113, 26);
+            logoutbtn.TabIndex = 7;
+            logoutbtn.Text = "Log Out";
+            logoutbtn.UseVisualStyleBackColor = false;
+            logoutbtn.Click += logoutbtn_Click;
+            // 
+            // profilebtn
+            // 
+            profilebtn.BackColor = Color.LightSteelBlue;
+            profilebtn.Location = new Point(21, 329);
+            profilebtn.Name = "profilebtn";
+            profilebtn.Size = new Size(113, 26);
+            profilebtn.TabIndex = 6;
+            profilebtn.Text = "My Profile";
+            profilebtn.UseVisualStyleBackColor = false;
+            profilebtn.Click += profilebtn_Click;
+            // 
+            // historybtn
+            // 
+            historybtn.BackColor = Color.LightSteelBlue;
+            historybtn.Location = new Point(21, 169);
+            historybtn.Name = "historybtn";
+            historybtn.Size = new Size(113, 26);
+            historybtn.TabIndex = 5;
+            historybtn.Text = "Medical History";
+            historybtn.UseVisualStyleBackColor = false;
+            historybtn.Click += historybtn_Click;
+            // 
+            // prescrbtn
+            // 
+            prescrbtn.BackColor = Color.LightSteelBlue;
+            prescrbtn.Location = new Point(21, 137);
+            prescrbtn.Name = "prescrbtn";
+            prescrbtn.Size = new Size(113, 26);
+            prescrbtn.TabIndex = 4;
+            prescrbtn.Text = "Prescriptions";
+            prescrbtn.UseVisualStyleBackColor = false;
+            prescrbtn.Click += prescrbtn_Click;
+            // 
+            // doctorbtn
+            // 
+            doctorbtn.BackColor = Color.LightSteelBlue;
+            doctorbtn.Location = new Point(21, 72);
+            doctorbtn.Name = "doctorbtn";
+            doctorbtn.Size = new Size(113, 28);
+            doctorbtn.TabIndex = 3;
+            doctorbtn.Text = "Doctor";
+            doctorbtn.UseVisualStyleBackColor = false;
+            doctorbtn.Click += doctorbtn_Click;
+            // 
+            // appointmentbtn
+            // 
+            appointmentbtn.BackColor = Color.LightSteelBlue;
+            appointmentbtn.Location = new Point(21, 105);
+=======
             panel1.Paint += panel1_Paint;
             // 
             // profilebtn
@@ -111,10 +195,15 @@
             // appointmentbtn
             // 
             appointmentbtn.Location = new Point(10, 105);
+>>>>>>> 63bf6b3de4e7ec695561107f4179636a221018c6
             appointmentbtn.Name = "appointmentbtn";
             appointmentbtn.Size = new Size(111, 26);
             appointmentbtn.TabIndex = 2;
             appointmentbtn.Text = "Appointments";
+<<<<<<< HEAD
+            appointmentbtn.UseVisualStyleBackColor = false;
+            //appointmentbtn.Click += appointmentbtn_Click;
+=======
             appointmentbtn.UseVisualStyleBackColor = true;
             // 
             // lablid
@@ -138,6 +227,7 @@
             lablpatient1.Size = new Size(113, 27);
             lablpatient1.TabIndex = 0;
             lablpatient1.Text = "John Doe";
+>>>>>>> 63bf6b3de4e7ec695561107f4179636a221018c6
             // 
             // panel5
             // 
@@ -167,7 +257,19 @@
             totalappopanel.Size = new Size(171, 35);
             totalappopanel.TabIndex = 8;
             // 
+<<<<<<< HEAD
+            // timepickform
+            // 
+            timepickform.FormattingEnabled = true;
+            timepickform.Location = new Point(219, 120);
+            timepickform.Name = "timepickform";
+            timepickform.Size = new Size(86, 23);
+            timepickform.TabIndex = 26;
+            // 
+            // dateTimePickerform
+=======
             // label15
+>>>>>>> 63bf6b3de4e7ec695561107f4179636a221018c6
             // 
             label15.AutoSize = true;
             label15.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -264,6 +366,24 @@
             // 
             // label27
             // 
+<<<<<<< HEAD
+            appointmentdatagrid.BackgroundColor = SystemColors.ButtonHighlight;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            appointmentdatagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            appointmentdatagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            appointmentdatagrid.Columns.AddRange(new DataGridViewColumn[] { DoctorNameColumn, TimeColumn, DateColumn, ConsultaionColumn, StatusColumn, ResheduleColumn, CancelColumn });
+            appointmentdatagrid.Location = new Point(42, 87);
+            appointmentdatagrid.Name = "appointmentdatagrid";
+            appointmentdatagrid.Size = new Size(742, 210);
+            appointmentdatagrid.TabIndex = 11;
+            appointmentdatagrid.CellFormatting += appointmentdatagrid_CellFormatting;
+=======
             label27.AutoSize = true;
             label27.ForeColor = SystemColors.ControlDarkDark;
             label27.Location = new Point(11, 15);
@@ -271,6 +391,7 @@
             label27.Size = new Size(63, 15);
             label27.TabIndex = 6;
             label27.Text = "Upcoming";
+>>>>>>> 63bf6b3de4e7ec695561107f4179636a221018c6
             // 
             // timelbl2
             // 
@@ -456,7 +577,6 @@
             //Load += this.Bookappointmentform_Load;
             flowLayoutPanelmain.ResumeLayout(false);
             panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             totalappopanel.ResumeLayout(false);
@@ -478,8 +598,6 @@
         private Panel panel1;
         private Button profilebtn;
         private Button appointmentbtn;
-        private Label lablid;
-        private Label lablpatient1;
         private Panel panel5;
         private Panel totalappopanel;
         private Label label15;
