@@ -31,6 +31,10 @@ namespace CMS.View.Patient
 
         }
 
+        
+
+
+
         private void ViewDoctor_Load(object sender, EventArgs e)
 
         {
@@ -67,10 +71,6 @@ namespace CMS.View.Patient
         }
 
 
-        
-
-
-
         private void navmedicalhistory_Click(object sender, EventArgs e)//Medical History
 
         {
@@ -97,13 +97,14 @@ namespace CMS.View.Patient
 
         private void navprofile_Click(object sender, EventArgs e) //My profile
         {
-            Edit_Patient_Profile profileForm = new Edit_Patient_Profile();
+           
+            DocViewProfile profileForm = new DocViewProfile();  // use _doctorId here
             profileForm.Show();
-            this.Hide(); // Hide the current form
+            this.Hide();
 
         }
 
-        private void logout_Click(object sender, EventArgs e)// Logout
+        private void logout_Click(object sender, EventArgs e) // Logout
         {
             LoginForm loginForm = new LoginForm();
             loginForm.Show();
