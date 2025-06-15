@@ -14,7 +14,10 @@ namespace CMS.View.Patient
 {
     public partial class Edit_Patient_Profile : Form
     {
-        private PatientController _controller;
+        
+        private PatientController _controller; // Controller instance for this form
+
+        // Default constructor for adding a new patient (no initial patient object)
         public Edit_Patient_Profile()
         {
             InitializeComponent();
@@ -23,65 +26,37 @@ namespace CMS.View.Patient
             this.Load += Edit_Patient_Profile_Load; 
 
         }
-        // Properties to expose UI control values to the Controller
 
-
-        public string FirstName
-        {
-            get { return txtFirstName.Text; }
-            set { txtFirstName.Text = value; }
-        }
-
-        public string LastName
-        {
-            get { return txtLastName.Text; }
-            set { txtLastName.Text = value; }
-        }
-        public DateTime PatientDateOfBirth
-        {
-            get { return txtDateOfBirth.Value; }
-        }
-
-
-        public string PatientId { get; set; } // ✅ needed for updating the same row
-        private Patients _patientToEdit;
-
-
-
-
-        public string PatientPhoneNumber
-        {
-            get { return txtPhoneNumber.Text; }
-            set { txtPhoneNumber.Text = value; }
-        }
-
-        public string Email
-        {
-            get { return txtEmail.Text; }
-            set { txtEmail.Text = value; }
-        }
-
-        public string Gender
-        {
-            get { return cmbGender.SelectedItem?.ToString(); }
-            set { cmbGender.SelectedItem = value; }
-        }
-
-        //public Edit_Patient_Profile()
-        //{
-        //}
-
-        public Edit_Patient_Profile(Patients patientToEdit)
+        // Constructor for editing an existing patient
+        public Edit_Patient_Profile(Patients patient)
         {
             InitializeComponent();
-
-            _controller = new PatientController();
-
-
-
-            _patientToEdit = patientToEdit; // save patient for later
+            _controller = new PatientController(this, patient); // Pass THIS form instance AND the patient
+            // The controller's LoadInitialPatientProfile will automatically call LoadPatientData to populate fields.
         }
 
+        // --- Properties to expose form control values to the controller ---
+        // These MUST correspond to actual UI controls on your form.
+
+        public string PatientId => txtPatientId.Text; // Assuming a TextBox named txtPatientId
+        public string FirstName => txtFirstName.Text; // Assuming a TextBox named txtFirstName
+        public string LastName => txtLastName.Text;   // Assuming a TextBox named txtLastName
+        public string Email => txtEmail.Text;         // Assuming a TextBox named txtEmail
+        public DateTime PatientDateOfBirth => dtpDateOfBirth.Value; // Assuming a DateTimePicker named dtpDateOfBirth
+        public string PatientPhoneNumber => txtPhoneNumber.Text; // Assuming a TextBox named txtPhoneNumber
+        public string Gender
+        {
+            get
+            {
+                // Adjust this based on your actual gender control (e.g., ComboBox, RadioButtons)
+                // If using a ComboBox:
+                return cmbGender.SelectedItem?.ToString();
+                // If using RadioButtons (e.g., radioBtnMale, radioBtnFemale):
+                // if (radioBtnMale.Checked) return "Male";
+                // else if (radioBtnFemale.Checked) return "Female";
+                // return string.Empty; // Or a default value
+            }
+        }
 
         public void Edit_Patient_Profile_Load(object sender, EventArgs e)
         {
@@ -110,41 +85,63 @@ namespace CMS.View.Patient
         }
 
         // Method to display messages to the user (e.g., validation errors, success)
-        public void DisplayMessage(string message, string title, MessageBoxIcon icon)
-        {
-            MessageBox.Show(message, title, MessageBoxButtons.OK, icon);
-        }
+        
 
-        // Method to close the form
-        public void CloseForm()
-        {
-            this.Close();
-        }
+        
 
         // Method to load initial data into the form (called by controller)
         public void LoadPatientData(Patients patient)
         {
             if (patient != null)
             {
-                PatientId = patient.PatientId;
-                FirstName = patient.FirstName;
-                LastName = patient.LastName;
-                Email = patient.Email;
-                Gender = patient.Gender;
-                PatientPhoneNumber = patient.PhoneNumber;
+                txtPatientId.Text = patient.PatientId;
+                txtFirstName.Text = patient.FirstName;
+                txtLastName.Text = patient.LastName;
+                txtEmail.Text = patient.Email;
+                dtpDateOfBirth.Value = patient.DateOfBirth; // Assign the date
+                txtPhoneNumber.Text = patient.PhoneNumber;
 
-                // ✅ One solid guard against invalid DOB
-                if (patient.DateOfBirth > txtDateOfBirth.MinDate &&
-                    patient.DateOfBirth < txtDateOfBirth.MaxDate)
+                // Set the gender control based on your UI
+                if (cmbGender.Items.Contains(patient.Gender)) // Assuming ComboBox
                 {
-                    txtDateOfBirth.Value = patient.DateOfBirth;
+                    cmbGender.SelectedItem = patient.Gender;
                 }
-                else
-                {
-                    txtDateOfBirth.Value = DateTime.Today; // fallback if null/invalid
-                }
+                // If using RadioButtons:
+                // if (patient.Gender == "Male") radioBtnMale.Checked = true;
+                // else if (patient.Gender == "Female") radioBtnFemale.Checked = true;
+            }
+            else
+            {
+                ClearFormFields(); // Clear if no patient data
             }
         }
+        // Method to display messages (called by controller)
+        public void DisplayMessage(string message, string title, MessageBoxIcon icon)
+        {
+            MessageBox.Show(message, title, MessageBoxButtons.OK, icon);
+        }
+
+        // Method to close the form (called by controller)
+        public void CloseForm()
+        {
+            this.DialogResult = DialogResult.OK; // Indicate successful operation
+            this.Close();
+        }
+        private void ClearFormFields()
+        {
+            txtPatientId.Text = "";
+            txtFirstName.Text = "";
+            txtLastName.Text = "";
+            txtEmail.Text = "";
+            dtpDateOfBirth.Value = DateTime.Today; // Reset to today or a default
+            txtPhoneNumber.Text = "";
+            if (cmbGender.Items.Count > 0)
+            {
+                cmbGender.SelectedIndex = -1; // Clear selection for ComboBox
+            }
+            // Reset other controls as needed
+        }
+
 
         private void txtDateOfBirth_ValueChanged(object sender, EventArgs e)
         {
