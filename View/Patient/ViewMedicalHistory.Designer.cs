@@ -26,14 +26,13 @@
             colDoctorName = new DataGridViewTextBoxColumn();
             label2 = new Label();
             sidenav = new Panel();
-            label3 = new Label();
             navmedicalhistory = new Button();
-            label4 = new Label();
             navprofile = new Button();
             logout = new Button();
             navprescription = new Button();
             navappointment = new Button();
             navdoc = new Button();
+            label10 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvHistory).BeginInit();
             sidenav.SuspendLayout();
             SuspendLayout();
@@ -42,7 +41,7 @@
             // 
             txtPatientName.Location = new Point(214, 129);
             txtPatientName.Name = "txtPatientName";
-            txtPatientName.Size = new Size(200, 27);
+            txtPatientName.Size = new Size(200, 23);
             txtPatientName.TabIndex = 0;
             // 
             // label1
@@ -52,7 +51,7 @@
             label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.Location = new Point(214, 97);
             label1.Name = "label1";
-            label1.Size = new Size(190, 23);
+            label1.Size = new Size(143, 17);
             label1.TabIndex = 1;
             label1.Text = "Enter Patient Full Name";
             // 
@@ -130,16 +129,15 @@
             label2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(214, 9);
             label2.Name = "label2";
-            label2.Size = new Size(294, 39);
+            label2.Size = new Size(224, 32);
             label2.TabIndex = 4;
             label2.Text = "View Medical History";
             // 
             // sidenav
             // 
             sidenav.BackColor = Color.CornflowerBlue;
-            sidenav.Controls.Add(label3);
+            sidenav.Controls.Add(label10);
             sidenav.Controls.Add(navmedicalhistory);
-            sidenav.Controls.Add(label4);
             sidenav.Controls.Add(navprofile);
             sidenav.Controls.Add(logout);
             sidenav.Controls.Add(navprescription);
@@ -149,20 +147,8 @@
             sidenav.Location = new Point(0, 0);
             sidenav.Margin = new Padding(2);
             sidenav.Name = "sidenav";
-            sidenav.Size = new Size(183, 423);
+            sidenav.Size = new Size(201, 423);
             sidenav.TabIndex = 5;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Yu Gothic UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = SystemColors.ButtonHighlight;
-            label3.Location = new Point(57, 52);
-            label3.Margin = new Padding(2, 0, 2, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(130, 23);
-            label3.TabIndex = 22;
-            label3.Text = "Patient ID-2346";
             // 
             // navmedicalhistory
             // 
@@ -175,18 +161,6 @@
             navmedicalhistory.Text = "Medical History";
             navmedicalhistory.UseVisualStyleBackColor = false;
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Kristen ITC", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = SystemColors.ButtonFace;
-            label4.Location = new Point(34, 29);
-            label4.Margin = new Padding(2, 0, 2, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(139, 33);
-            label4.TabIndex = 21;
-            label4.Text = "John Doe";
-            // 
             // navprofile
             // 
             navprofile.BackColor = Color.LightSteelBlue;
@@ -197,7 +171,6 @@
             navprofile.TabIndex = 4;
             navprofile.Text = "MyProfile";
             navprofile.UseVisualStyleBackColor = false;
-           
             // 
             // logout
             // 
@@ -244,6 +217,18 @@
             navdoc.UseVisualStyleBackColor = false;
             navdoc.Click += navdoc_Click;
             // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Kristen ITC", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label10.ForeColor = Color.MidnightBlue;
+            label10.Location = new Point(11, 27);
+            label10.Margin = new Padding(2, 0, 2, 0);
+            label10.Name = "label10";
+            label10.Size = new Size(169, 27);
+            label10.TabIndex = 22;
+            label10.Text = "MedLine Clinic";
+            // 
             // ViewMedicalHistory
             // 
             BackColor = SystemColors.GradientInactiveCaption;
@@ -277,13 +262,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colDoctorName;
         private Label label2;
         private Panel sidenav;
-        private Label label3;
         private Button navmedicalhistory;
-        private Label label4;
         private Button navprofile;
         private Button logout;
         private Button navprescription;
         private Button navappointment;
         private Button navdoc;
+        private Label label10;
     }
 }

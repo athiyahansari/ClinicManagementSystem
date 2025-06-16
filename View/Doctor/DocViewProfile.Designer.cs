@@ -272,10 +272,10 @@ namespace CMS.View.Doctor
             // label5
             // 
             label5.AutoSize = true;
-            label5.BackColor = SystemColors.ActiveCaption;
-            label5.BorderStyle = BorderStyle.Fixed3D;
+            label5.BackColor = Color.Transparent;
+            label5.BorderStyle = BorderStyle.FixedSingle;
             label5.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(325, 139);
+            label5.Location = new Point(376, 170);
             label5.Name = "label5";
             label5.Size = new Size(87, 22);
             label5.TabIndex = 0;
@@ -284,63 +284,67 @@ namespace CMS.View.Doctor
             // Speciality
             // 
             Speciality.AutoSize = true;
-            Speciality.BackColor = SystemColors.ActiveCaption;
+            Speciality.BackColor = Color.Transparent;
+            Speciality.BorderStyle = BorderStyle.FixedSingle;
             Speciality.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Speciality.Location = new Point(325, 193);
+            Speciality.Location = new Point(376, 222);
             Speciality.Name = "Speciality";
-            Speciality.Size = new Size(73, 20);
+            Speciality.Size = new Size(75, 22);
             Speciality.TabIndex = 1;
             Speciality.Text = "Speciality";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.BackColor = SystemColors.ActiveCaption;
+            label7.BackColor = Color.Transparent;
+            label7.BorderStyle = BorderStyle.FixedSingle;
             label7.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(325, 245);
+            label7.Location = new Point(376, 266);
             label7.Name = "label7";
             label7.RightToLeft = RightToLeft.Yes;
-            label7.Size = new Size(46, 20);
+            label7.Size = new Size(48, 22);
             label7.TabIndex = 2;
             label7.Text = "Email";
+            label7.Click += label7_Click;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.BackColor = SystemColors.ActiveCaption;
+            label8.BackColor = Color.Transparent;
+            label8.BorderStyle = BorderStyle.FixedSingle;
             label8.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(325, 300);
+            label8.Location = new Point(376, 319);
             label8.Name = "label8";
-            label8.Size = new Size(60, 20);
+            label8.Size = new Size(62, 22);
             label8.TabIndex = 3;
             label8.Text = "Contact";
             // 
             // txtDescription
             // 
-            txtDescription.Location = new Point(428, 138);
+            txtDescription.Location = new Point(520, 171);
             txtDescription.Name = "txtDescription";
             txtDescription.Size = new Size(300, 23);
             txtDescription.TabIndex = 4;
             // 
             // txtSpeciality
             // 
-            txtSpeciality.Location = new Point(428, 190);
+            txtSpeciality.Location = new Point(520, 223);
             txtSpeciality.Name = "txtSpeciality";
-            txtSpeciality.Size = new Size(204, 23);
+            txtSpeciality.Size = new Size(300, 23);
             txtSpeciality.TabIndex = 5;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(428, 242);
+            txtEmail.Location = new Point(520, 266);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(204, 23);
+            txtEmail.Size = new Size(300, 23);
             txtEmail.TabIndex = 6;
             // 
             // txtContact
             // 
-            txtContact.Location = new Point(428, 300);
+            txtContact.Location = new Point(520, 319);
             txtContact.Name = "txtContact";
-            txtContact.Size = new Size(204, 23);
+            txtContact.Size = new Size(300, 23);
             txtContact.TabIndex = 7;
             // 
             // panel3
@@ -355,28 +359,29 @@ namespace CMS.View.Doctor
             panel3.Location = new Point(0, 0);
             panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(192, 404);
+            panel3.Size = new Size(222, 404);
             panel3.TabIndex = 22;
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Kristen ITC", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.ForeColor = SystemColors.ButtonFace;
-            label10.Location = new Point(60, 29);
+            label10.ForeColor = Color.MidnightBlue;
+            label10.Location = new Point(21, 24);
             label10.Margin = new Padding(2, 0, 2, 0);
             label10.Name = "label10";
-            label10.Size = new Size(63, 27);
+            label10.Size = new Size(169, 27);
             label10.TabIndex = 21;
-            label10.Text = "CMS";
+            label10.Text = "MedLine Clinic";
+            label10.Click += label10_Click;
             // 
             // button2
             // 
             button2.BackColor = Color.LightSteelBlue;
-            button2.Location = new Point(34, 331);
+            button2.Location = new Point(34, 316);
             button2.Margin = new Padding(2);
             button2.Name = "button2";
-            button2.Size = new Size(125, 29);
+            button2.Size = new Size(156, 29);
             button2.TabIndex = 4;
             button2.Text = "MyProfile";
             button2.UseVisualStyleBackColor = false;
@@ -385,10 +390,10 @@ namespace CMS.View.Doctor
             // button3
             // 
             button3.BackColor = Color.LightSteelBlue;
-            button3.Location = new Point(34, 364);
+            button3.Location = new Point(34, 365);
             button3.Margin = new Padding(2);
             button3.Name = "button3";
-            button3.Size = new Size(125, 28);
+            button3.Size = new Size(156, 28);
             button3.TabIndex = 3;
             button3.Text = "LogOut";
             button3.UseVisualStyleBackColor = false;
@@ -400,7 +405,7 @@ namespace CMS.View.Doctor
             button4.Location = new Point(34, 139);
             button4.Margin = new Padding(2);
             button4.Name = "button4";
-            button4.Size = new Size(125, 28);
+            button4.Size = new Size(156, 28);
             button4.TabIndex = 2;
             button4.Text = "Prescriptions";
             button4.UseVisualStyleBackColor = false;
@@ -412,7 +417,7 @@ namespace CMS.View.Doctor
             button5.Location = new Point(34, 73);
             button5.Margin = new Padding(2);
             button5.Name = "button5";
-            button5.Size = new Size(125, 54);
+            button5.Size = new Size(156, 54);
             button5.TabIndex = 1;
             button5.Text = "Appointment Schedule";
             button5.UseVisualStyleBackColor = false;
@@ -420,20 +425,21 @@ namespace CMS.View.Doctor
             // 
             // DocName
             // 
-            DocName.Location = new Point(432, 88);
+            DocName.Location = new Point(520, 123);
             DocName.Name = "DocName";
-            DocName.Size = new Size(188, 23);
+            DocName.Size = new Size(300, 23);
             DocName.TabIndex = 23;
             DocName.TextChanged += DocName_TextChanged;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.BackColor = SystemColors.ActiveCaption;
+            label6.BackColor = Color.Transparent;
+            label6.BorderStyle = BorderStyle.FixedSingle;
             label6.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(326, 89);
+            label6.Location = new Point(376, 124);
             label6.Name = "label6";
-            label6.Size = new Size(99, 20);
+            label6.Size = new Size(101, 22);
             label6.TabIndex = 24;
             label6.Text = "Doctor Name";
             // 
@@ -441,17 +447,18 @@ namespace CMS.View.Doctor
             // 
             label11.AutoSize = true;
             label11.BackColor = SystemColors.GradientActiveCaption;
-            label11.BorderStyle = BorderStyle.Fixed3D;
+            label11.BorderStyle = BorderStyle.FixedSingle;
             label11.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label11.Location = new Point(401, 24);
+            label11.Location = new Point(520, 24);
             label11.Name = "label11";
             label11.Size = new Size(193, 32);
             label11.TabIndex = 25;
             label11.Text = "View Doctor Profile";
+            label11.Click += label11_Click;
             // 
             // DocViewProfile
             // 
-            ClientSize = new Size(792, 404);
+            ClientSize = new Size(968, 404);
             Controls.Add(label11);
             Controls.Add(label6);
             Controls.Add(DocName);

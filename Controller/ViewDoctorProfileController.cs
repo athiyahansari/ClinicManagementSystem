@@ -9,9 +9,9 @@ namespace CMS.Controller
         private readonly string connectionString = "server=localhost;user id=root;password=;database=clinic_db";
 
         //one method
-        public DoctorProfile GetDoctorProfile(int doctorId)
+        public ViewDoctorProfile GetDoctorProfile(int doctorId)
         {
-            DoctorProfile profile = null;
+            ViewDoctorProfile profile = null;
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
@@ -30,7 +30,7 @@ namespace CMS.Controller
                 {
                     if (reader.Read())
                     {
-                        profile = new DoctorProfile
+                        profile = new ViewDoctorProfile
                         {
                             ProfileId = Convert.ToInt32(reader["profile_id"]),
                             DoctorId = Convert.ToInt32(reader["doctor_id"]),

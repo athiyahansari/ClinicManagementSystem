@@ -8,10 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CMS.Controller;
+using CMS.Controllers;
 using CMS.Model;
 using CMS.View.Doctor;
 using CMS.View.Patient;
 using MySqlX.XDevAPI;
+using CMS.Utils; 
 
 
 
@@ -22,38 +24,12 @@ namespace CMS.View.Doctor
         private int _doctorId;
         private DoctorProfileController controller;
 
-        //public DocViewProfile(int doctorId) // constructor accepts doctor
-        //{
-        //    InitializeComponent();
-        //    controller = new DoctorProfileController();
-        //    _doctorId = doctorId; // store the doctorId
-        //    this.Load += DocViewProfile_Load;  // Step 3: hook up load event
-        //}
-
-        //private void DocViewProfile_Load(object sender, EventArgs e)
-        //{
-        //    DoctorProfile profile = controller.GetDoctorProfile(_doctorId);
-
-        //    if (profile != null)
-        //    {
-        //        txtDescription.Text = profile.Description;
-        //        txtSpeciality.Text = profile.Speciality;
-        //        txtEmail.Text = profile.Email;
-        //        txtContact.Text = profile.Contact;
-
-        //        // Load doctor name from the same profile object
-        //        DocName.Text = !string.IsNullOrEmpty(profile.DoctorName)
-        //            ? profile.DoctorName
-        //            : "Name not found";
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Doctor profile not found.");
-        //    }
 
 
+        //public DocViewProfile() : this(1) { }  // default doctorId = 1 for now
 
-        public DocViewProfile() : this(1) { }  // default doctorId = 1 for now
+        public DocViewProfile() : this(SessionManager.CurrentDoctorId) { }
+
 
         public DocViewProfile(int docId)
         {
@@ -62,7 +38,7 @@ namespace CMS.View.Doctor
             controller = new DoctorProfileController();
             this.Load += DocViewProfile_Load;  // Hook up the Load event here
         }
-        
+
 
         private void DocViewProfile_Load(object sender, EventArgs e)
         {
@@ -73,15 +49,15 @@ namespace CMS.View.Doctor
         {
             try
             {
-                DoctorProfile profile = controller.GetDoctorProfile(_doctorId);
+                ViewDoctorProfile profile = controller.GetDoctorProfile(_doctorId);
 
                 if (profile != null)
                 {
-                    label6.Text = profile.DoctorName;
-                    label5.Text = profile.Description;
-                    Speciality.Text = profile.Speciality;
-                    label7.Text = profile.Email;
-                    label8.Text = profile.Contact;
+                    DocName.Text = profile.DoctorName;
+                    txtDescription.Text = profile.Description;
+                    txtSpeciality.Text = profile.Speciality;
+                    txtEmail.Text = profile.Email;
+                    txtContact.Text = profile.Contact;
                 }
                 else
                 {
@@ -142,6 +118,21 @@ namespace CMS.View.Doctor
             LoginForm loginForm = new LoginForm();
             loginForm.Show();
             this.Hide(); // Hide the current form
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

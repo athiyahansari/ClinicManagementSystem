@@ -8,8 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CMS.Controller;
-using CMS.Model;             // Assuming your User class is here
-        // Assuming your LoginRepository is here
+using CMS.Model;// Assuming your User class is here
+using CMS.Utils;
+
+// Assuming your LoginRepository is here
 using CMS.View.Admin;
 using CMS.View.Doctor;
 using CMS.View.Patient;
@@ -26,7 +28,7 @@ namespace CMS.View
         public LoginForm()
         {
             InitializeComponent();
-            
+
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -51,7 +53,7 @@ namespace CMS.View
                 MessageBox.Show("Successfully logged in AdminDashBoard.");
                 new AdminDashboard().Show();
                 this.Hide();
-                
+
             }
             else
             {
@@ -65,6 +67,25 @@ namespace CMS.View
             this.Hide();
         }
 
+        //private void btnDoctorLogin_Click(object sender, EventArgs e)
+        //{
+        //    string username = txtDoctorUsername.Text.Trim();
+        //    string password = txtDoctorPassword.Text.Trim();
+
+        //    var user = loginController.Login(username, password);
+
+        //    if (user != null && user.Role.Equals("Doctor", StringComparison.OrdinalIgnoreCase))
+        //    {
+        //        MessageBox.Show("Successfully logged in DoctorDashBoard.");
+        //        new DoctorDashboard().Show();
+        //        this.Hide();
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Invalid Doctor login.");
+        //    }
+        //}
+
         private void btnDoctorLogin_Click(object sender, EventArgs e)
         {
             string username = txtDoctorUsername.Text.Trim();
@@ -74,6 +95,9 @@ namespace CMS.View
 
             if (user != null && user.Role.Equals("Doctor", StringComparison.OrdinalIgnoreCase))
             {
+                if (user.DoctorId.HasValue)
+                    SessionManager.CurrentDoctorId = user.DoctorId.Value; // set doctor ID in session
+
                 MessageBox.Show("Successfully logged in DoctorDashBoard.");
                 new DoctorDashboard().Show();
                 this.Hide();
@@ -84,6 +108,7 @@ namespace CMS.View
             }
         }
 
+
         private void btnPatientLogin_Click(object sender, EventArgs e)
         {
             string username = txtPatientUsername.Text.Trim();
@@ -93,6 +118,10 @@ namespace CMS.View
 
             if (user != null && user.Role.Equals("Patient", StringComparison.OrdinalIgnoreCase))
             {
+
+
+
+
                 MessageBox.Show("Successfully logged in PatientDashBoard.");
                 new PatientDashboard().Show();
                 this.Hide();
@@ -103,5 +132,13 @@ namespace CMS.View
             }
 
         }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
+
+

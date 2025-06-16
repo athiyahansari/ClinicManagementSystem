@@ -16,6 +16,9 @@ namespace CMS.Model
         public string Role { get; set; } = "patients";
         public string PasswordHash { get; set; }
 
+        // Add DoctorId (nullable since only doctors will have it)
+        public int? DoctorId { get; set; }
+
         public DateTime CreatedAt { get; set; }
 
 

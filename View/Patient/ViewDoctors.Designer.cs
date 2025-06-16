@@ -20,14 +20,14 @@
         {
             dgvDoctors = new DataGridView();
             sidenav = new Panel();
-            label2 = new Label();
+            navmedicalhistory = new Button();
             navprofile = new Button();
             logout = new Button();
             navprescription = new Button();
             navappointment = new Button();
             navdoc = new Button();
             label1 = new Label();
-            navmedicalhistory = new Button();
+            label10 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvDoctors).BeginInit();
             sidenav.SuspendLayout();
             SuspendLayout();
@@ -51,8 +51,8 @@
             // sidenav
             // 
             sidenav.BackColor = Color.CornflowerBlue;
+            sidenav.Controls.Add(label10);
             sidenav.Controls.Add(navmedicalhistory);
-            sidenav.Controls.Add(label2);
             sidenav.Controls.Add(navprofile);
             sidenav.Controls.Add(logout);
             sidenav.Controls.Add(navprescription);
@@ -65,18 +65,17 @@
             sidenav.Size = new Size(201, 386);
             sidenav.TabIndex = 22;
             // 
-            // label2
+            // navmedicalhistory
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Kristen ITC", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = SystemColors.ButtonFace;
-            label2.Location = new Point(59, 29);
-            label2.Margin = new Padding(2, 0, 2, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(63, 27);
-            label2.TabIndex = 21;
-            label2.Text = "CMS";
-            label2.Click += label2_Click;
+            navmedicalhistory.BackColor = Color.LightSteelBlue;
+            navmedicalhistory.Location = new Point(34, 170);
+            navmedicalhistory.Margin = new Padding(2);
+            navmedicalhistory.Name = "navmedicalhistory";
+            navmedicalhistory.Size = new Size(125, 29);
+            navmedicalhistory.TabIndex = 5;
+            navmedicalhistory.Text = "Medical History";
+            navmedicalhistory.UseVisualStyleBackColor = false;
+            navmedicalhistory.Click += navmedicalhistory_Click;
             // 
             // navprofile
             // 
@@ -150,17 +149,17 @@
             label1.Text = "View Doctors";
             label1.Click += label1_Click;
             // 
-            // navmedicalhistory
+            // label10
             // 
-            navmedicalhistory.BackColor = Color.LightSteelBlue;
-            navmedicalhistory.Location = new Point(34, 170);
-            navmedicalhistory.Margin = new Padding(2);
-            navmedicalhistory.Name = "navmedicalhistory";
-            navmedicalhistory.Size = new Size(125, 29);
-            navmedicalhistory.TabIndex = 5;
-            navmedicalhistory.Text = "Medical History";
-            navmedicalhistory.UseVisualStyleBackColor = false;
-            navmedicalhistory.Click += navmedicalhistory_Click;
+            label10.AutoSize = true;
+            label10.Font = new Font("Kristen ITC", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label10.ForeColor = Color.MidnightBlue;
+            label10.Location = new Point(21, 25);
+            label10.Margin = new Padding(2, 0, 2, 0);
+            label10.Name = "label10";
+            label10.Size = new Size(169, 27);
+            label10.TabIndex = 22;
+            label10.Text = "MedLine Clinic";
             // 
             // ViewDoctors
             // 
@@ -185,7 +184,6 @@
         #endregion
 
         private Panel sidenav;
-        private Label label2;
         private Button navprofile;
         private Button logout;
         private Button navprescription;
@@ -193,5 +191,6 @@
         private Button navdoc;
         private Label label1;
         private Button navmedicalhistory;
+        private Label label10;
     }
 }
